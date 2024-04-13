@@ -52,7 +52,7 @@ export default class GameLaunch extends mw.Script {
         this.onRegisterModule();
         GlobalData.logLevel = Number(this.logLevel);
         GlobalData.isHideHeadUI = this.isHideHeadUI;
-        GlobalData.isOpenIAA = this.isOpenIAA;
+        GlobalData.isOpenIAA = !mw.SystemUtil.isPIE || this.isOpenIAA;
         GlobalData.isOpenTest = this.isOpenTest;
         // await this.downloadAsset();
     }
