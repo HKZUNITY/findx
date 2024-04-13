@@ -14,7 +14,7 @@ export default class GlobalData {
     public static isOpenTest: boolean = false;
 
     /**排行榜显示前6名玩家 */
-    public static rankingNumber: number = 6;
+    public static rankingNumber: number = 18;
 
     /**全局UI点击音效Guid */
     public static uiClickSoundGuid: string = GameConfig.Assets.getElement(1).Guid;

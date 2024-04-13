@@ -33,7 +33,7 @@ export default class RankingPanel extends RankingPanel_Generate {
 		for (let i = 0; i < GlobalData.rankingNumber; ++i) {
 			let rankingItem = ObjectPoolServices.getPool(RankingItem).spawn();
 			this.mContent.addChild(rankingItem.rankingItem);
-			rankingItem.mContainerCanvas.visibility = mw.SlateVisibility.Collapsed;
+			rankingItem.rankingItem.visibility = mw.SlateVisibility.Collapsed;
 			this.rankingItems.push(rankingItem);
 		}
 
@@ -85,10 +85,10 @@ export default class RankingPanel extends RankingPanel_Generate {
 			this.rankingItems[i].mMaxHeightTxt.text = playerDatas[i].maxHeight.toString();
 			this.rankingItems[i].mKillCountTxt.text = playerDatas[i].killCount.toString();
 			this.rankingItems[i].mScoreTxt.text = playerDatas[i].score.toString();
-			this.rankingItems[i].mContainerCanvas.visibility = mw.SlateVisibility.SelfHitTestInvisible;
+			this.rankingItems[i].rankingItem.visibility = mw.SlateVisibility.SelfHitTestInvisible;
 		}
 		for (let i = playerDatas.length; i < GlobalData.rankingNumber; ++i) {
-			this.rankingItems[i].mContainerCanvas.visibility = mw.SlateVisibility.Collapsed;
+			this.rankingItems[i].rankingItem.visibility = mw.SlateVisibility.Collapsed;
 		}
 	}
 
