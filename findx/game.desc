@@ -1,0 +1,35 @@
+﻿{
+	"name": "斗破苍穹乐园（竞技派对）",
+	"packageName": "5C5C0895435CA63CF29576B9118B345C",
+	"intro": "更新UI布局。",
+	"notes": "更新UI布局。",
+	"editorVersion": "v0.30.0.8",
+	"parentGameIdentity": "",
+	"parentGameId": "",
+	"extra": "{\"attribute\":2,\"IsHorizontal\":true,\"useAvatar\":1}",
+	"devEnv": 4,
+	"needToMgs": 0,
+	"attribute": 2,
+	"autoSubmitAudit": false,
+	"ignore": [
+		"game.desc",
+		"Asset_Data_List"
+	],
+	"files": [
+		{
+			"type": "Game_Thumbnail",
+			"path": "Pictures/Game_Thumbnail.jpg"
+		},
+		{
+			"type": "GameSetting",
+			"path": "Config/GameSetting.ini"
+		},
+		{
+			"type": "Asset_Data_List",
+			"path": "Asset_Data_List"
+		}
+	],
+	"foldername": "findx",
+	"mainScene": 1,
+	"scenePublic": 1
+}

@@ -1,0 +1,72 @@
+import { ConfigBase, IElementBase } from "./ConfigBase";
+const EXCELDATA:Array<Array<any>> = [["id","IsIAA","WeaponName","WeaponGuid","WeaponIcon","offset","rotation","scale","AttackType","WeaponCD","AttackAnimationId","AttackTime","AttackDelayTime","AttackEffectId","EffectOffset","EffectRot","EffectScale","AttackSound","AttackRange","ImpulseValue","HurtValue","HitEffect","HitEffectOffset","HitEffectRot","HitEffectScale","HitSound","Annotation"],["","","","","","","","","","","","","","","","","","","","","","","","","","",""],[1,0,"挥拳",null,"37632",null,null,null,1,"1.8","84912","1.8","0.6","135894",80,new mw.Vector(0,0,-90),new mw.Vector(0.5,0.3,0.5),"47870",[110,50,50],1800,18,"107533",new mw.Vector(0,0,100),new mw.Vector(0,0,0),new mw.Vector(3,3,3),"47418","空手"],[2,1,"海盗刀","122181","131907",new mw.Vector(0,0,0),new mw.Vector(0,0,0),new mw.Vector(1,1,1),2,"1.3","96578","1.3","0.2","84942",0,new mw.Vector(0,0,0),new mw.Vector(0.8,0.8,0.8),"47421",[0,0,135],1300,20,"130641",new mw.Vector(0,0,100),new mw.Vector(0,0,0),new mw.Vector(2,2,2),"47414","旋转"],[3,1,"翡翠镰刀","103079","150630",new mw.Vector(0,0,0),new mw.Vector(0,0,0),new mw.Vector(1,1,1),1,"1.8","29718","1.8","0.9","84931",20,new mw.Vector(90,0,0),new mw.Vector(1,1,1),"47421",[160,20,150],1800,38,"150927",new mw.Vector(0,0,100),new mw.Vector(0,90,0),new mw.Vector(3,3,3),"47414","单手冷兵器跳跃攻击"],[4,1,"屠龙剑","103077","150563",new mw.Vector(0,0,0),new mw.Vector(0,0,0),new mw.Vector(1,1,1),1,"1.5","29723","1.5","0.5","84949",20,new mw.Vector(-95,0,0),new mw.Vector(1,1,1),"47421",[160,20,150],1500,32,"150929",new mw.Vector(0,0,100),new mw.Vector(0,0,0),new mw.Vector(3,3,3),"47414","单手冷兵器提砍"],[5,1,"青虹剑","122952","150579",new mw.Vector(0,0,0),new mw.Vector(0,0,0),new mw.Vector(1,1,1),1,"1.9","29747","1.9","0.5","84956",20,new mw.Vector(135,0,0),new mw.Vector(1,1,1),"47421",[180,180,50],1900,40,"107541",new mw.Vector(0,0,100),new mw.Vector(0,0,0),new mw.Vector(5,5,5),"47414","单手持刀挥砍"],[6,1,"龙泉剑","31728","150578",new mw.Vector(0,0,0),new mw.Vector(0,0,0),new mw.Vector(1,1,1),1,"1.5","29764","1.5","0.6","84932",20,new mw.Vector(0,0,0),new mw.Vector(1,1,1),"47421",[180,180,20],1500,30,"150930",new mw.Vector(0,0,100),new mw.Vector(0,0,0),new mw.Vector(5,5,5),"47414","单手冷武器360°砍（特效是180°）"],[7,1,"紫电剑","103064","150604",new mw.Vector(0,0,0),new mw.Vector(0,0,0),new mw.Vector(1,1,1),1,"1.55","29767","1.55","0.7","105211",20,new mw.Vector(0,0,0),new mw.Vector(0.5,0.5,0.5),"47421",[230,50,50],1550,31,"7750",new mw.Vector(0,0,100),new mw.Vector(0,0,0),new mw.Vector(2,2,2),"47414","单手冷兵器刺剑"],[8,1,"灵犀圣剑","122959","150562",new mw.Vector(0,0,0),new mw.Vector(0,0,0),new mw.Vector(1,1,1),2,"2.9","85957","2.9","0.9","120065",0,new mw.Vector(0,0,0),new mw.Vector(1,1,1),"47421",[0,0,150],2900,58,"150919",new mw.Vector(0,0,100),new mw.Vector(0,0,90),new mw.Vector(3,3,5),"47414","扫腿平砍"],[9,1,"白金剑","29043","150552",new mw.Vector(0,0,0),new mw.Vector(0,0,0),new mw.Vector(1,1,1),3,"2.15","115466","2.15","1","123287",120,new mw.Vector(0,0,0),new mw.Vector(0.5,0.5,0.5),"47421",[130,100,50],2150,43,"151737",new mw.Vector(0,0,100),new mw.Vector(0,0,0),new mw.Vector(3,3,3),"47414","飞天挥砍"],[10,1,"终极冰环剑","31734","150577",new mw.Vector(0,0,0),new mw.Vector(0,0,0),new mw.Vector(1,1,1),2,"2","117376","2","0.5","116459",0,new mw.Vector(0,0,0),new mw.Vector(0.6,0.6,0.6),"47421",[0,0,120],200,40,"151739",new mw.Vector(0,0,100),new mw.Vector(0,0,0),new mw.Vector(3,3,3),"47414","二连挥剑"],[11,1,"紫魔剑","103061","150591",new mw.Vector(0,0,0),new mw.Vector(0,0,0),new mw.Vector(1,1,1),1,"2.4","117382","2.4","0.5","123286",20,new mw.Vector(0,180,-90),new mw.Vector(1,1,1),"47421",[130,150,20],2400,48,"151741",new mw.Vector(0,0,100),new mw.Vector(0,0,0),new mw.Vector(3,3,3),"47414","蹲下扫砍"],[12,1,"天使剑","122955","150567",new mw.Vector(0,0,0),new mw.Vector(0,0,0),new mw.Vector(1,1,1),3,"2.9","162129","2.9","0.8","101410",150,new mw.Vector(0,45,0),new mw.Vector(0.5,0.5,0.5),"47421",[150,90,50],2900,58,"150932",new mw.Vector(0,0,100),new mw.Vector(0,0,0),new mw.Vector(3,3,3),"47414","法阵"],[13,1,"恶魔剑","122956","150613",new mw.Vector(0,0,0),new mw.Vector(0,0,0),new mw.Vector(1,1,1),2,"4.7","162136","4.7","1","101409",150,new mw.Vector(0,0,0),new mw.Vector(0.5,0.5,0.5),"47421",[150,0,200],4700,94,"7750",new mw.Vector(0,0,100),new mw.Vector(0,0,0),new mw.Vector(2,2,2),"47414","瞬移多砍"],[14,1,"紫虎剑","103069","150606",new mw.Vector(0,0,0),new mw.Vector(0,0,0),new mw.Vector(1,1,1),3,"3.3","122491","3.3","1.1","101411",150,new mw.Vector(0,60,0),new mw.Vector(0.6,0.6,0.6),"47421",[150,100,50],3300,66,"151736",new mw.Vector(0,0,100),new mw.Vector(0,0,0),new mw.Vector(5,5,5),"47414","双砍"],[15,1,"大砍刀","122961","150631",new mw.Vector(0,0,0),new mw.Vector(0,0,0),new mw.Vector(1,1,1),1,"2.1","85945","2.1","0.6","31260",50,new mw.Vector(0,0,-90),new mw.Vector(1,1,1),"47421",[130,130,20],2100,42,"150933",new mw.Vector(0,0,100),new mw.Vector(0,0,0),new mw.Vector(2,2,2),"47414","横挥砍"],[16,1,"泣血刀","122179","150616",new mw.Vector(0,0,0),new mw.Vector(0,0,0),new mw.Vector(1,1,1),2,"1.3","96578","1.3","0.2","84942",0,new mw.Vector(0,0,0),new mw.Vector(0.8,0.8,0.8),"47421",[0,0,135],1300,26,"130641",new mw.Vector(0,0,100),new mw.Vector(0,0,0),new mw.Vector(2,2,2),"47414","旋转"]];
+export interface IWeaponElement extends IElementBase{
+ 	/**唯一ID*/
+	id:number
+	/**武器类型
+0：直接获得
+1：看广告获取*/
+	IsIAA:number
+	/**武器的名字*/
+	WeaponName:string
+	/**模型Guid*/
+	WeaponGuid:string
+	/**对应的Icon*/
+	WeaponIcon:string
+	/**偏移*/
+	offset:mw.Vector
+	/**旋转*/
+	rotation:mw.Vector
+	/**缩放*/
+	scale:mw.Vector
+	/**攻击类型
+1：矩形
+2：圆形
+3：圆柱形*/
+	AttackType:number
+	/**武器CD*/
+	WeaponCD:string
+	/**攻击动画*/
+	AttackAnimationId:string
+	/**攻击时间*/
+	AttackTime:string
+	/**攻击延迟时间*/
+	AttackDelayTime:string
+	/**攻击特效*/
+	AttackEffectId:string
+	/**攻击特效偏移*/
+	EffectOffset:number
+	/**攻击特效旋转*/
+	EffectRot:mw.Vector
+	/**攻击特效缩放*/
+	EffectScale:mw.Vector
+	/**攻击音效*/
+	AttackSound:string
+	/**攻击范围
+1:矩形[长宽高]
+2:圆形[向前向上半径]
+3:圆柱形[向前半径高度]*/
+	AttackRange:Array<number>
+	/**冲量大小*/
+	ImpulseValue:number
+	/**伤害*/
+	HurtValue:number
+	/**受击特效*/
+	HitEffect:string
+	/**受击特效偏移*/
+	HitEffectOffset:mw.Vector
+	/**受击特效旋转*/
+	HitEffectRot:mw.Vector
+	/**受击特效缩放*/
+	HitEffectScale:mw.Vector
+	/**受击音效*/
+	HitSound:string
+	/**注释*/
+	Annotation:string
+ } 
+export class WeaponConfig extends ConfigBase<IWeaponElement>{
+	constructor(){
+		super(EXCELDATA);
+	}
+
+}
