@@ -289,6 +289,50 @@ export default class HUDModuleS extends ModuleS<HUDModuleC, HUDDate> {
         this.currentData.saveHurt(curAttackValue);
     }
     //#endregion
+
+    //#region 跳跃
+    /**
+     * 播放跳跃特效音效
+     * @param landingId 
+     * @param effectOffset 
+     * @param landingSoundId 
+     * @param playerScale 
+     */
+    public net_playLandEffectAndSound(landingId: string[], effectOffset: mw.Vector, landingSoundId: string, playerScale: number): void {
+        GeneralManager.rpcPlayEffectAtLocation(
+            landingId[0]
+            , effectOffset
+            , 1
+            , mw.Rotation.zero
+            , mw.Vector.one.multiply(playerScale));
+        SoundService.play3DSound(landingSoundId, effectOffset);
+        GeneralManager.rpcPlayEffectAtLocation(
+            landingId[1]
+            , effectOffset
+            , 1
+            , mw.Rotation.zero
+            , mw.Vector.one.multiply(0.4 * playerScale)
+        );
+    }
+
+    /**
+     * 播放落地特效音效
+     * @param stompingEffectId 
+     * @param stompingSoundId 
+     * @param playerScale 
+     */
+    public net_playStompingEffectAndSound(stompingEffectId: string, stompingSoundId: string, playerScale: number): void {
+        GeneralManager.rpcPlayEffectOnPlayer(
+            stompingEffectId
+            , this.currentPlayer
+            , mw.HumanoidSlotType.Root
+            , 1
+            , mw.Vector.zero
+            , mw.Rotation.zero
+            , mw.Vector.one.multiply(0.5 * playerScale));
+        SoundService.play3DSound(stompingSoundId, this.currentPlayer.character);
+    }
+    //#endregion 
 }
 
 class PlayerData {

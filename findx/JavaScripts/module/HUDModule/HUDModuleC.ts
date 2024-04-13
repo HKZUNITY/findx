@@ -78,9 +78,7 @@ export default class HUDModuleC extends ModuleC<HUDModuleS, HUDDate> {
 
     /**注册事件 */
     private registerActions(): void {
-        this.onJumpAction.add(() => {
-            this.jump();
-        });
+        this.onJumpAction.add(this.playerJump.bind(this));
 
         this.hudPanel.onBgmAction.add((isOpenBGM: boolean) => {
             if (isOpenBGM) {
@@ -127,6 +125,10 @@ export default class HUDModuleC extends ModuleC<HUDModuleS, HUDDate> {
         TimeUtil.delaySecond(10).then(() => {
             this.initGameGuide();
         });
+    }
+
+    protected onUpdate(dt: number): void {
+        this.updateJumpTime(dt);
     }
 
     /**延迟执行的测试用例 */
@@ -892,26 +894,65 @@ export default class HUDModuleC extends ModuleC<HUDModuleS, HUDDate> {
 
     //#region jump
     private currentJumpTime: number = 0;
-    private jumpAnimationId: string = "150691";
+    private secondJumpAniID: string = "150691";
+    private grilStompingEffect: string = "132627";
+    private boyStompingEffect: string = "130743";
+    private landingEffects: string[] = ["89128", "89129", "89130"];
+    private landingEffectId: string = "89089";
+    private landingSoundId: string = "122568";
     private girlJumpSoundId: string = "101208";
     private boyJumpSoundId: string = "121734";
-    private jump(): void {
-        if (this.localPlayer.character.isJumping && this.currentJumpTime >= 2) return;
-        if (!this.localPlayer.character.isJumping && this.currentJumpTime >= 2) this.currentJumpTime = 0;
-        this.currentJumpTime++;
+    private isStartTime: boolean = false;
+    private playerScale: number = 1;
+    /**
+     * 更新跳跃状态
+     * @param dt 
+     * @returns 
+     */
+    private updateJumpTime(dt: number): void {
+        if (!this.isStartTime) return;
+        if (!this.localPlayer.character.isJumping) {
+            this.currentJumpTime = 0;
+            this.isStartTime = false;
 
-        if (this.currentJumpTime == 2) {
-            this.localPlayer.character.jump();
-            PlayerManagerExtesion.rpcPlayAnimation(this.localPlayer.character, this.jumpAnimationId, 1)
-            let soundId = this.isGirl() ? this.girlJumpSoundId : this.boyJumpSoundId;
-            SoundService.play3DSound(soundId, this.localPlayer.character);
-        } else {
-            this.localPlayer.character.jump();
+            let effectId = this.landingEffects[Utils.getRandomInteger(0, 2)];
+            let startLoc = this.localPlayer.character.worldTransform.position;
+            let capsuleHalfHeight = this.localPlayer.character.collisionExtent.z / 2;
+            let effectOffset = new mw.Vector(startLoc.x, startLoc.y, startLoc.z - capsuleHalfHeight * this.playerScale);
+            this.server.net_playLandEffectAndSound([effectId, this.landingEffectId], effectOffset, this.landingSoundId, this.playerScale);
         }
     }
 
-    private isGirl(): boolean {
-        let somatotype: mw.SomatotypeV2 = Player.localPlayer.character.description.advance.base.characterSetting.somatotype;
+    /**
+     * JUmp
+     * @returns 
+     */
+    private playerJump(): void {
+        if (this.localPlayer.character.isJumping && this.currentJumpTime >= 2) return;
+        this.currentJumpTime++;
+        if (this.currentJumpTime == 2) {
+            PlayerManagerExtesion.rpcPlayAnimation(this.localPlayer.character, this.secondJumpAniID, 1)
+            let stompingEffectId: string = "";
+            let soundId: string = ""
+            if (this.IsGirl()) {
+                soundId = this.girlJumpSoundId;
+                stompingEffectId = this.grilStompingEffect;
+            } else {
+                soundId = this.boyJumpSoundId;
+                stompingEffectId = this.boyStompingEffect;
+            }
+            this.server.net_playStompingEffectAndSound(stompingEffectId, soundId, this.playerScale);
+        }
+        this.localPlayer.character.jump();
+        this.isStartTime = true;
+    }
+
+    /**
+     * 判断是否是女    
+     * @returns 
+     */
+    private IsGirl(): boolean {
+        let somatotype = Player.localPlayer.character.description.advance.base.characterSetting.somatotype;
         if (somatotype == mw.SomatotypeV2.AnimeFemale
             || somatotype == mw.SomatotypeV2.LowpolyAdultFemale
             || somatotype == mw.SomatotypeV2.RealisticAdultFemale

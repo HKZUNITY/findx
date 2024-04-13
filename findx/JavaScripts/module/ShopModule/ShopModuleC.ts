@@ -306,38 +306,41 @@ export default class ShopModuleC extends ModuleC<ShopModuleS, ShopData> {
     private changeClothToPlayer(): void {
         this.playEffectAndSoundToPlayer(0);
         if (this.clothGuids[0] != "" && this.clothGuids[0] != this.currentClothGuids[0]) {
-            this.localPlayer.character.description.advance.hair.frontHair.style = this.clothGuids[0], true;
+            this.localPlayer.character.description.advance.hair.frontHair.style = this.clothGuids[0];
             this.currentClothGuids[0] = this.clothGuids[0];
         }
         TimeUtil.delaySecond(0.2).then(() => {
             if (this.clothGuids[1] != "" && this.clothGuids[1] != this.currentClothGuids[1]) {
-                this.localPlayer.character.description.advance.hair.backHair.style = this.clothGuids[1], true;
+                this.localPlayer.character.description.advance.hair.backHair.style = this.clothGuids[1];
                 this.currentClothGuids[1] = this.clothGuids[1];
             }
             TimeUtil.delaySecond(0.2).then(() => {
                 if (this.clothGuids[2] != "" && this.clothGuids[2] != this.currentClothGuids[2]) {
-                    this.localPlayer.character.description.advance.clothing.upperCloth.style = this.clothGuids[2], true;
+                    this.localPlayer.character.description.advance.clothing.upperCloth.style = this.clothGuids[2];
                     this.currentClothGuids[2] = this.clothGuids[2];
                 }
                 TimeUtil.delaySecond(0.2).then(() => {
                     if (this.clothGuids[3] != "" && this.clothGuids[3] != this.currentClothGuids[3]) {
-                        this.localPlayer.character.description.advance.clothing.lowerCloth.style = this.clothGuids[3], true;
+                        this.localPlayer.character.description.advance.clothing.lowerCloth.style = this.clothGuids[3];
                         this.currentClothGuids[3] = this.clothGuids[3];
                     }
                     TimeUtil.delaySecond(0.2).then(() => {
                         if (this.clothGuids[4] != "" && this.clothGuids[4] != this.currentClothGuids[4]) {
-                            this.localPlayer.character.description.advance.clothing.gloves.style = this.clothGuids[4], true;
+                            this.localPlayer.character.description.advance.clothing.gloves.style = this.clothGuids[4];
                             this.currentClothGuids[4] = this.clothGuids[4];
                         }
                         TimeUtil.delaySecond(0.2).then(() => {
                             if (this.clothGuids[5] != "" && this.clothGuids[5] != this.currentClothGuids[5]) {
-                                this.localPlayer.character.description.advance.clothing.shoes.style = this.clothGuids[5], true;
+                                this.localPlayer.character.description.advance.clothing.shoes.style = this.clothGuids[5];
                                 this.currentClothGuids[5] = this.clothGuids[5];
                             }
                         });
                     });
                 });
             });
+        });
+        TimeUtil.delaySecond(2).then(() => {
+            this.localPlayer.character.syncDescription();
         });
     }
 
