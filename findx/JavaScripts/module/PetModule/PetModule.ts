@@ -179,14 +179,17 @@ export class PetModuleS extends ModuleS<PetModuleC, PetData> {
 
     }
 
+    @Decorator.noReply()
     public net_savePetList(pet: number): void {
         this.currentData.savePetList(pet);
     }
 
+    @Decorator.noReply()
     public net_saveLastPetDayAndRandomIds(petLastDay: string, value: number[]): void {
         this.currentData.saveLastPetDayAndRandomIds(petLastDay, value);
     }
 
+    @Decorator.noReply()
     public net_saveIsFreeCount(value: boolean): void {
         this.currentData.saveIsFreeCount(value);
     }

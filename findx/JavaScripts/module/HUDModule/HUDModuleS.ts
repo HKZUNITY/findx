@@ -3,6 +3,7 @@ import { GeneralManager, } from '../../Modified027Editor/ModifiedStaticAPI';
 import BaseAI from '../../Prefabs/AI敌人/Script/BaseAI';
 import { PrefabEvent } from "../../Prefabs/PrefabEvent";
 import Console from "../../Tools/Console";
+import { Utils } from '../../Tools/utils';
 import NPCBar from "../NPCModule/NPCBar";
 import RankingModuleS from '../RankingModule/RankingModuleS';
 import HUDDate from "./HUDDate";
@@ -83,6 +84,7 @@ export default class HUDModuleS extends ModuleS<HUDModuleC, HUDDate> {
     private wingMap: Map<number, number> = new Map<number, number>();
 
     /**拾取翅膀发给所有客户端 */
+    @Decorator.noReply()
     public net_pickWing(id: number): void {
         this.wingMap.set(this.currentPlayerId, id);
         this.getAllClient().net_pickUpWing(this.currentPlayerId, id);
@@ -102,6 +104,7 @@ export default class HUDModuleS extends ModuleS<HUDModuleC, HUDDate> {
     private wingTailEffect: Map<number, number> = new Map<number, number>();
 
     /**拾取拖尾特效发给所有客户端 */
+    @Decorator.noReply()
     public net_pickTailEffect(id: number): void {
         this.wingTailEffect.set(this.currentPlayerId, id);
         this.getAllClient().net_pickUpTailEffect(this.currentPlayerId, id);
@@ -134,18 +137,22 @@ export default class HUDModuleS extends ModuleS<HUDModuleC, HUDDate> {
     }
 
     /**升级 */
+    @Decorator.noReply()
     public net_addLevel(): void {
         this.getRankingModuleS.refreshScore(this.currentPlayer, 1);
     }
 
+    @Decorator.noReply()
     public net_addLevel1(): void {
         this.getRankingModuleS.refreshScore(this.currentPlayer, 20);
     }
 
+    @Decorator.noReply()
     public net_addLevel2(): void {
         this.getRankingModuleS.refreshScore(this.currentPlayer, 30);
     }
 
+    @Decorator.noReply()
     public net_addLevel3(lv: number): void {
         this.getRankingModuleS.refreshScore(this.currentPlayer, lv);
     }
@@ -165,6 +172,9 @@ export default class HUDModuleS extends ModuleS<HUDModuleC, HUDDate> {
             if (addPlayer) {
                 this.getRankingModuleS.refreshKillCount(addPlayer, 1);
                 this.getClient(addPlayer).net_killAch();
+                let names: string[] = [];
+                names = this.rankingModuleS.getNamesByUserId(addPlayer.playerId, player.playerId);
+                this.getAllClient().net_killTip(addPlayer.playerId, names[0], player.playerId, names[1]);
             }
             player.character.ragdollEnabled = true;
             this.spawnTombstoneS(player);
@@ -185,6 +195,10 @@ export default class HUDModuleS extends ModuleS<HUDModuleC, HUDDate> {
             playerAttackData.lifebar.hp = curHp;
         }
         Console.error("[hp] = " + this.playerLifeMap.get(playerId).lifebar.hp);
+    }
+
+    public playerKillNpc(playerId: number, playerMame: string): void {
+        this.getAllClient().net_killTip(playerId, playerMame, -1, Utils.randomNpcName());
     }
 
     /**生成墓碑（服务端） */
@@ -222,6 +236,7 @@ export default class HUDModuleS extends ModuleS<HUDModuleC, HUDDate> {
      * 攻击玩家
      * @param playerIds 被攻击到的玩家ID 
      */
+    @Decorator.noReply()
     public net_attackPlayer(playerIds: number[], aiIds: string[], ImpulseValue: number, badValue: number, weaponId: number): void {
         if (aiIds.length != 0) {
             for (let i = 0; i < aiIds.length; ++i) {
@@ -242,6 +257,7 @@ export default class HUDModuleS extends ModuleS<HUDModuleC, HUDDate> {
     }
 
     /**播放攻击动画、特效、音效（服务端同步给所有客户端执行某个客户端的攻击表现） */
+    @Decorator.noReply()
     public net_playAniEffSound(weaponId: number): void {
         if (this.playerLifeMap.get(this.currentPlayerId).isDie) return;
         this.getAllClient().net_playAniEffSound(this.currentPlayerId, weaponId);
@@ -251,6 +267,7 @@ export default class HUDModuleS extends ModuleS<HUDModuleC, HUDDate> {
     private weaponIdMap: Map<number, number> = new Map<number, number>();
 
     /**拾取武器（广播给所有客户端） */
+    @Decorator.noReply()
     public net_pickUpWeapon(id: number): void {
         this.weaponIdMap.set(this.currentPlayerId, id);
         this.getAllClient().net_pickUpWeapon(this.currentPlayerId, id);
@@ -266,6 +283,7 @@ export default class HUDModuleS extends ModuleS<HUDModuleC, HUDDate> {
 
     //#region 玩家属性
     /**设置最大血量 */
+    @Decorator.noReply()
     public net_setMaxHp(maxHp: number): void {
         let playerAttackData = this.playerLifeMap.get(this.currentPlayerId);
         playerAttackData.lifebar.maxHp = maxHp;
@@ -273,6 +291,7 @@ export default class HUDModuleS extends ModuleS<HUDModuleC, HUDDate> {
     }
 
     /**设置当前血量 */
+    @Decorator.noReply()
     public net_setCurHp(curAddHp: number): void {
         let playerAttackData = this.playerLifeMap.get(this.currentPlayerId);
         let maxHp = playerAttackData.lifebar.maxHp;
@@ -285,6 +304,7 @@ export default class HUDModuleS extends ModuleS<HUDModuleC, HUDDate> {
     }
 
     /**设置当前攻击力 */
+    @Decorator.noReply()
     public net_setCurAttackValue(curAttackValue: number): void {
         this.currentData.saveHurt(curAttackValue);
     }
@@ -298,6 +318,7 @@ export default class HUDModuleS extends ModuleS<HUDModuleC, HUDDate> {
      * @param landingSoundId 
      * @param playerScale 
      */
+    @Decorator.noReply()
     public net_playLandEffectAndSound(landingId: string[], effectOffset: mw.Vector, landingSoundId: string, playerScale: number): void {
         GeneralManager.rpcPlayEffectAtLocation(
             landingId[0]
@@ -321,6 +342,7 @@ export default class HUDModuleS extends ModuleS<HUDModuleC, HUDDate> {
      * @param stompingSoundId 
      * @param playerScale 
      */
+    @Decorator.noReply()
     public net_playStompingEffectAndSound(stompingEffectId: string, stompingSoundId: string, playerScale: number): void {
         GeneralManager.rpcPlayEffectOnPlayer(
             stompingEffectId

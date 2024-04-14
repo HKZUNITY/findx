@@ -3,7 +3,7 @@
  * WARNING: DO NOT MODIFY THIS FILE,MAY CAUSE CODE LOST.
  * AUTHOR: 爱玩游戏的小胖子
  * UI: UI/module/PetUI/PetPanel.ui
- * TIME: 2023.10.21-10.15.15
+ * TIME: 2024.04.14-22.02.14
  */
  
 @UIBind('UI/module/PetUI/PetPanel.ui')
@@ -22,19 +22,19 @@ export default class PetPanel_Generate extends UIScript {
 		}
 		return this.mRaffleButton_Internal
 	}
-	private mContentCanvas_Internal: mw.Canvas
-	public get mContentCanvas(): mw.Canvas {
-		if(!this.mContentCanvas_Internal&&this.uiWidgetBase) {
-			this.mContentCanvas_Internal = this.uiWidgetBase.findChildByPath('RootCanvas/Canvas/Canvas_1/mScrollBox/mContentCanvas') as mw.Canvas
-		}
-		return this.mContentCanvas_Internal
-	}
 	private mScrollBox_Internal: mw.ScrollBox
 	public get mScrollBox(): mw.ScrollBox {
 		if(!this.mScrollBox_Internal&&this.uiWidgetBase) {
 			this.mScrollBox_Internal = this.uiWidgetBase.findChildByPath('RootCanvas/Canvas/Canvas_1/mScrollBox') as mw.ScrollBox
 		}
 		return this.mScrollBox_Internal
+	}
+	private mContentCanvas_Internal: mw.Canvas
+	public get mContentCanvas(): mw.Canvas {
+		if(!this.mContentCanvas_Internal&&this.uiWidgetBase) {
+			this.mContentCanvas_Internal = this.uiWidgetBase.findChildByPath('RootCanvas/Canvas/Canvas_1/mScrollBox/mContentCanvas') as mw.Canvas
+		}
+		return this.mContentCanvas_Internal
 	}
 
 

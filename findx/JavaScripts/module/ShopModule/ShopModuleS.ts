@@ -1,5 +1,5 @@
 import { GeneralManager, } from '../../Modified027Editor/ModifiedStaticAPI';
-﻿import GlobalData from "../../const/GlobalData";
+import GlobalData from "../../const/GlobalData";
 import ShopData from "./ShopData";
 import ShopModuleC from "./ShopModuleC";
 
@@ -11,11 +11,13 @@ export default class ShopModuleS extends ModuleS<ShopModuleC, ShopData> {
     }
 
     /**保存完成游戏引导 */
+    @Decorator.noReply()
     public net_completeGameGuide(): void {
         this.currentData.completeGameGuide();
     }
 
     /**升级&换装特效音效播放 */
+    @Decorator.noReply()
     public net_playEffectAndSoundToPlayer(playType: number): void {
         let effectId: string = "";
         if (playType == 0) {

@@ -4,8 +4,8 @@
  * TIME: 2023.07.01-11.13.24
  */
 
+import { Notice } from "../../../Common/notice/Notice";
 import { ObjectPoolServices } from "../../../Tools/ObjectPool";
-import P_Tips from "../../../Common/P_Tips";
 import { GameConfig } from "../../../config/GameConfig";
 import { IPetElement } from "../../../config/Pet";
 import PetPanel_Generate from "../../../ui-generate/module/PetUI/PetPanel_generate";
@@ -148,7 +148,7 @@ class PetItem {
 				mw.UIService.getUI(PetPanel).updateItemState(this.id);
 			}
 			else {
-				P_Tips.show("未拥有、可在抽奖中获得哟~");
+				Notice.showDownNotice("未拥有、可在抽奖中获得哟~");
 			}
 		});
 		this.mIconButton.touchMethod = mw.ButtonTouchMethod.PreciseTap;

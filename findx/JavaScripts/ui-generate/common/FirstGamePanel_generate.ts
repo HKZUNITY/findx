@@ -3,7 +3,7 @@
  * WARNING: DO NOT MODIFY THIS FILE,MAY CAUSE CODE LOST.
  * AUTHOR: 爱玩游戏的小胖子
  * UI: UI/common/FirstGamePanel.ui
- * TIME: 2023.10.21-10.15.15
+ * TIME: 2024.04.14-22.02.13
  */
  
 @UIBind('UI/common/FirstGamePanel.ui')

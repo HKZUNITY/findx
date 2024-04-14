@@ -3,7 +3,7 @@
  * WARNING: DO NOT MODIFY THIS FILE,MAY CAUSE CODE LOST.
  * AUTHOR: 爱玩游戏的小胖子
  * UI: UI/module/HUDUI/HUDPanel.ui
- * TIME: 2023.10.21-10.15.15
+ * TIME: 2024.04.14-22.02.14
  */
  
 @UIBind('UI/module/HUDUI/HUDPanel.ui')
@@ -246,6 +246,41 @@ export default class HUDPanel_Generate extends UIScript {
 		}
 		return this.mPetButton_Internal
 	}
+	private mKillTipCanvas_Internal: mw.Canvas
+	public get mKillTipCanvas(): mw.Canvas {
+		if(!this.mKillTipCanvas_Internal&&this.uiWidgetBase) {
+			this.mKillTipCanvas_Internal = this.uiWidgetBase.findChildByPath('RootCanvas/mKillTipCanvas') as mw.Canvas
+		}
+		return this.mKillTipCanvas_Internal
+	}
+	private mKillTipCountCanvas_Internal: mw.Canvas
+	public get mKillTipCountCanvas(): mw.Canvas {
+		if(!this.mKillTipCountCanvas_Internal&&this.uiWidgetBase) {
+			this.mKillTipCountCanvas_Internal = this.uiWidgetBase.findChildByPath('RootCanvas/KillStreakCanvas/mKillTipCountCanvas') as mw.Canvas
+		}
+		return this.mKillTipCountCanvas_Internal
+	}
+	private mKillTipTextBlock1_Internal: mw.TextBlock
+	public get mKillTipTextBlock1(): mw.TextBlock {
+		if(!this.mKillTipTextBlock1_Internal&&this.uiWidgetBase) {
+			this.mKillTipTextBlock1_Internal = this.uiWidgetBase.findChildByPath('RootCanvas/KillStreakCanvas/mKillTipCountCanvas/mKillTipTextBlock1') as mw.TextBlock
+		}
+		return this.mKillTipTextBlock1_Internal
+	}
+	private mKillTipTextBlock2_Internal: mw.TextBlock
+	public get mKillTipTextBlock2(): mw.TextBlock {
+		if(!this.mKillTipTextBlock2_Internal&&this.uiWidgetBase) {
+			this.mKillTipTextBlock2_Internal = this.uiWidgetBase.findChildByPath('RootCanvas/KillStreakCanvas/mKillTipCountCanvas/mKillTipTextBlock2') as mw.TextBlock
+		}
+		return this.mKillTipTextBlock2_Internal
+	}
+	private mKillTipTextBlock3_Internal: mw.TextBlock
+	public get mKillTipTextBlock3(): mw.TextBlock {
+		if(!this.mKillTipTextBlock3_Internal&&this.uiWidgetBase) {
+			this.mKillTipTextBlock3_Internal = this.uiWidgetBase.findChildByPath('RootCanvas/KillStreakCanvas/mKillTipTextBlock3') as mw.TextBlock
+		}
+		return this.mKillTipTextBlock3_Internal
+	}
 
 
 	protected onAwake() {
@@ -381,6 +416,15 @@ export default class HUDPanel_Generate extends UIScript {
 		
 	
 		this.initLanguage(this.mJumpHeightText)
+		
+	
+		this.initLanguage(this.mKillTipTextBlock1)
+		
+	
+		this.initLanguage(this.mKillTipTextBlock2)
+		
+	
+		this.initLanguage(this.mKillTipTextBlock3)
 		
 	
 		//文本多语言

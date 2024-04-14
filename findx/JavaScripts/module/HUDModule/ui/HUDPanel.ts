@@ -5,11 +5,12 @@
  */
 
 import Console from "../../../Tools/Console";
-import { Tween } from "../../../Tools/utils";
-import P_Tips from "../../../Common/P_Tips";
+import { Tween, Utils } from "../../../Tools/utils";
 import GlobalData from "../../../const/GlobalData";
 import HUDPanel_Generate from "../../../ui-generate/module/HUDUI/HUDPanel_generate";
-import HUDModuleC from "../HUDModuleC";
+import HUDModuleC, { KillTipData, KillTipType } from "../HUDModuleC";
+import KillTipItem_Generate from "../../../ui-generate/module/HUDUI/KillTipItem_generate";
+import { Notice } from "../../../Common/notice/Notice";
 
 export default class HUDPanel extends HUDPanel_Generate {
 	private hudModuleC: HUDModuleC = null;
@@ -30,6 +31,7 @@ export default class HUDPanel extends HUDPanel_Generate {
 		this.canUpdate = false;
 		this.layer = mw.UILayerMiddle;
 
+		this.initUI();
 		this.initData();
 		this.bindButtons();
 		this.registerActions();
@@ -78,6 +80,12 @@ export default class HUDPanel extends HUDPanel_Generate {
 
 		this.initWingButton();
 		this.mFlyCanvas.visibility = mw.SlateVisibility.Collapsed;
+	}
+
+	private initUI(): void {
+		this.initKillTipItems();
+		Utils.setWidgetVisibility(this.mKillTipCountCanvas, mw.SlateVisibility.Collapsed);
+		Utils.setWidgetVisibility(this.mKillTipTextBlock3, mw.SlateVisibility.Collapsed);
 	}
 
 	/**注册事件 */
@@ -158,11 +166,11 @@ export default class HUDPanel extends HUDPanel_Generate {
 	private initWingButton(): void {
 		this.mFlyMaskBtn.clickedDelegate.add(() => {
 			if (!this.hudModuleC.IsFlying) {
-				P_Tips.show("正在使用飞行技能");
+				Notice.showDownNotice("正在使用飞行技能");
 				return;
 			}
 			if (!this.hudModuleC.IsCanFly) {
-				P_Tips.show("使用蹦床期间不可以使用飞行翅膀哟~");
+				Notice.showDownNotice("使用蹦床期间不可以使用飞行翅膀哟~");
 				return;
 			}
 			this.hudModuleC.IsFlying = false;
@@ -267,5 +275,133 @@ export default class HUDPanel extends HUDPanel_Generate {
 					.start();
 			})
 			.start();
+	}
+
+	//#region 击杀提示
+	private initKillTipItems(): void {
+		for (let i = 0; i < 4; ++i) {
+			let killTipItem = UIService.create(KillTipItem);
+			killTipItem.uiObject.position = new mw.Vector2(0, 37 * i);
+			Utils.setWidgetVisibility(killTipItem.uiObject, mw.SlateVisibility.Collapsed);
+			this.mKillTipCanvas.addChild(killTipItem.uiObject);
+			this.killTipItems.push(killTipItem);
+		}
+	}
+
+	private hideKillTipIntervalId: any = null;
+	private killTipItems: KillTipItem[] = [];
+	private killTipDatas: KillTipData[] = [];
+	public killTip(killTipType: KillTipType, killerName: string, killedName: string): void {
+		let killTipData: KillTipData = new KillTipData();
+		killTipData.killTipType = killTipType;
+		killTipData.killerName = killerName;
+		killTipData.killedName = killedName;
+		if (this.killTipDatas.length >= 4) {
+			this.killTipDatas.shift();
+		}
+		this.killTipDatas.push(killTipData);
+		this.updateKillTipItems();
+
+		this.clearHideKillTipIntervalId();
+		this.hideKillTipIntervalId = TimeUtil.setInterval(() => {
+			if (this.killTipDatas && this.killTipDatas.length > 0) {
+				this.killTipDatas.shift();
+				this.updateKillTipItems();
+			} else {
+				this.clearHideKillTipIntervalId();
+			}
+		}, 5);
+	}
+
+	private clearHideKillTipIntervalId(): void {
+		if (this.hideKillTipIntervalId) {
+			TimeUtil.clearInterval(this.hideKillTipIntervalId);
+			this.hideKillTipIntervalId = null;
+		}
+	}
+
+	private updateKillTipItems(): void {
+		for (let i = 0; i < this.killTipDatas.length; ++i) {
+			this.killTipItems[i].setInfo(this.killTipDatas[i]);
+		}
+		for (let i = this.killTipDatas.length; i < 4; ++i) {
+			Utils.setWidgetVisibility(this.killTipItems[i].uiObject, mw.SlateVisibility.Collapsed);
+		}
+	}
+	//#endregion
+
+	//#region 连杀提示
+	private killTipsTimeOutId1: any = null;
+	private killTipsTimeOutId2: any = null;
+	public showKillTips1(killTips: string, killerName: string, killedName: string): void {
+		Notice.showDownNotice("<color=#lime>" + "<size=18>" + killerName + " 击败了 " + killedName + "</size>" + "</color>"
+			+ "\n" + "<color=#red>" + killTips + "</color>");
+	}
+
+	private clearKillTipsTimeOutId1(): void {
+		if (this.killTipsTimeOutId1) {
+			clearTimeout(this.killTipsTimeOutId1);
+			this.killTipsTimeOutId1 = null;
+		}
+	}
+
+	public showKillTips2(killerName: string, killedName: string, killTipType: KillTipType): void {
+		if (killTipType == KillTipType.None) return;
+		this.clearKillTipsTimeOutId2();
+		if (killTipType == KillTipType.Killed) {
+			this.mKillTipTextBlock3.text = "你已被 " + killerName + " 击败";
+		} else if (killTipType == KillTipType.revenge) {
+			this.mKillTipTextBlock3.text = "击败 " + killedName + " 完成复仇";
+		}
+		Utils.setWidgetVisibility(this.mKillTipTextBlock3, mw.SlateVisibility.SelfHitTestInvisible);
+		this.killTipsTimeOutId2 = setTimeout(() => {
+			Utils.setWidgetVisibility(this.mKillTipTextBlock3, mw.SlateVisibility.Collapsed);
+			this.clearKillTipsTimeOutId2();
+		}, 3 * 1000);
+	}
+
+	private clearKillTipsTimeOutId2(): void {
+		if (this.killTipsTimeOutId2) {
+			clearTimeout(this.killTipsTimeOutId2);
+			this.killTipsTimeOutId2 = null;
+		}
+	}
+	//#endregion
+}
+
+export class KillTipItem extends KillTipItem_Generate {
+	protected onAwake(): void {
+
+	}
+
+	public setInfo(killTipDatas: KillTipData): void {
+		this.mKillerTextBlock.text = killTipDatas.killerName;
+		this.mKilledTextBlock.text = killTipDatas.killedName;
+		switch (killTipDatas.killTipType) {
+			case KillTipType.None:
+				this.mKillerTextBlock.fontColor = mw.LinearColor.white;
+				this.mKillerTextBlock.shadowColor = mw.LinearColor.white;
+				this.mKilledTextBlock.fontColor = mw.LinearColor.white;
+				this.mKilledTextBlock.shadowColor = mw.LinearColor.white;
+				break;
+			case KillTipType.Killer:
+				this.mKillerTextBlock.fontColor = mw.LinearColor.yellow;
+				this.mKillerTextBlock.shadowColor = mw.LinearColor.red;
+				this.mKilledTextBlock.fontColor = mw.LinearColor.white;
+				this.mKilledTextBlock.shadowColor = mw.LinearColor.white;
+				break;
+			case KillTipType.Killed:
+				this.mKillerTextBlock.fontColor = mw.LinearColor.white;
+				this.mKillerTextBlock.shadowColor = mw.LinearColor.white;
+				this.mKilledTextBlock.fontColor = mw.LinearColor.yellow;
+				this.mKilledTextBlock.shadowColor = mw.LinearColor.red;
+				break;
+			default:
+				break;
+		}
+		Utils.setWidgetVisibility(this.uiObject, mw.SlateVisibility.SelfHitTestInvisible);
+		setTimeout(() => {
+			this.mBgImage.size = new mw.Vector2(this.mMainCanvas.size.x + 20, this.mMainCanvas.size.y);
+		}, 1);
 	}
 }

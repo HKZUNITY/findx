@@ -195,7 +195,7 @@ export default class Boss extends Script {
         }
         if (this.curHp <= 0) {
             this.dieS();
-            if (senderGuid) this.getRankingModuleS.refreshKillCount(Player.getPlayer(senderGuid), 1);
+            if (senderGuid) this.getRankingModuleS.refreshKillCount(Player.getPlayer(senderGuid), 1, true);
             TimeUtil.delaySecond(this.respawnTime).then(() => {
                 this.curHp = this.maxHp;
                 this.respawnS();

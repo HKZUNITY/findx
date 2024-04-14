@@ -3,19 +3,12 @@
  * WARNING: DO NOT MODIFY THIS FILE,MAY CAUSE CODE LOST.
  * AUTHOR: 爱玩游戏的小胖子
  * UI: UI/module/CollectionUI/CollectionPanel.ui
- * TIME: 2023.10.21-10.15.15
+ * TIME: 2024.04.14-22.02.13
  */
  
 @UIBind('UI/module/CollectionUI/CollectionPanel.ui')
 export default class CollectionPanel_Generate extends UIScript {
-		private mCloseBtn_Internal: mw.Button
-	public get mCloseBtn(): mw.Button {
-		if(!this.mCloseBtn_Internal&&this.uiWidgetBase) {
-			this.mCloseBtn_Internal = this.uiWidgetBase.findChildByPath('RootCanvas/MainCanvas/mCloseBtn') as mw.Button
-		}
-		return this.mCloseBtn_Internal
-	}
-	private mCollectionBtn1_Internal: mw.Button
+		private mCollectionBtn1_Internal: mw.Button
 	public get mCollectionBtn1(): mw.Button {
 		if(!this.mCollectionBtn1_Internal&&this.uiWidgetBase) {
 			this.mCollectionBtn1_Internal = this.uiWidgetBase.findChildByPath('RootCanvas/MainCanvas/MiddleCanvas/CollectionTypeCanvas/mCollectionBtn1') as mw.Button
@@ -43,6 +36,13 @@ export default class CollectionPanel_Generate extends UIScript {
 		}
 		return this.mCollectionBtn4_Internal
 	}
+	private mScrollBox_Internal: mw.ScrollBox
+	public get mScrollBox(): mw.ScrollBox {
+		if(!this.mScrollBox_Internal&&this.uiWidgetBase) {
+			this.mScrollBox_Internal = this.uiWidgetBase.findChildByPath('RootCanvas/MainCanvas/MiddleCanvas/mScrollBox') as mw.ScrollBox
+		}
+		return this.mScrollBox_Internal
+	}
 	private mContentCanvas_Internal: mw.Canvas
 	public get mContentCanvas(): mw.Canvas {
 		if(!this.mContentCanvas_Internal&&this.uiWidgetBase) {
@@ -50,12 +50,12 @@ export default class CollectionPanel_Generate extends UIScript {
 		}
 		return this.mContentCanvas_Internal
 	}
-	private mScrollBox_Internal: mw.ScrollBox
-	public get mScrollBox(): mw.ScrollBox {
-		if(!this.mScrollBox_Internal&&this.uiWidgetBase) {
-			this.mScrollBox_Internal = this.uiWidgetBase.findChildByPath('RootCanvas/MainCanvas/MiddleCanvas/mScrollBox') as mw.ScrollBox
+	private mCloseBtn_Internal: mw.Button
+	public get mCloseBtn(): mw.Button {
+		if(!this.mCloseBtn_Internal&&this.uiWidgetBase) {
+			this.mCloseBtn_Internal = this.uiWidgetBase.findChildByPath('RootCanvas/MainCanvas/mCloseBtn') as mw.Button
 		}
-		return this.mScrollBox_Internal
+		return this.mCloseBtn_Internal
 	}
 	private mRecycleCanvas_Internal: mw.Canvas
 	public get mRecycleCanvas(): mw.Canvas {
@@ -77,12 +77,6 @@ export default class CollectionPanel_Generate extends UIScript {
 		
 		//按钮添加点击
 		
-		this.mCloseBtn.onClicked.add(()=>{
-			Event.dispatchToLocal("PlayButtonClick", "mCloseBtn");
-		});
-		this.mCloseBtn.touchMethod = (mw.ButtonTouchMethod.PreciseTap);
-		
-	
 		this.mCollectionBtn1.onClicked.add(()=>{
 			Event.dispatchToLocal("PlayButtonClick", "mCollectionBtn1");
 		});
@@ -105,6 +99,12 @@ export default class CollectionPanel_Generate extends UIScript {
 			Event.dispatchToLocal("PlayButtonClick", "mCollectionBtn4");
 		});
 		this.mCollectionBtn4.touchMethod = (mw.ButtonTouchMethod.PreciseTap);
+		
+	
+		this.mCloseBtn.onClicked.add(()=>{
+			Event.dispatchToLocal("PlayButtonClick", "mCloseBtn");
+		});
+		this.mCloseBtn.touchMethod = (mw.ButtonTouchMethod.PreciseTap);
 		
 	
 		//按钮多语言

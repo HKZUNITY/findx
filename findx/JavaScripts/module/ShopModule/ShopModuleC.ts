@@ -1,19 +1,18 @@
-import { GeneralManager, } from '../../Modified027Editor/ModifiedStaticAPI';
-import { SpawnManager, SpawnInfo, } from '../../Modified027Editor/ModifiedSpawn';
-import { PlayerManagerExtesion, } from '../../Modified027Editor/ModifiedPlayer';
-import Console from "../../Tools/Console";
-import { InputManagers, TouchData } from "../../Tools/InputManager";
 import AdTips from "../../Common/AdTips";
-import P_Tips from "../../Common/P_Tips";
+import { Notice } from "../../Common/notice/Notice";
 import { IClothesElement } from "../../config/Clothes";
 import { ITailElement } from "../../config/Tail";
 import { IWeaponElement } from "../../config/Weapon";
 import { IWingElement } from "../../config/Wing";
 import GlobalData from "../../const/GlobalData";
+import { PlayerManagerExtesion, } from '../../Modified027Editor/ModifiedPlayer';
+import { SpawnManager } from '../../Modified027Editor/ModifiedSpawn';
+import { GeneralManager, } from '../../Modified027Editor/ModifiedStaticAPI';
+import Console from "../../Tools/Console";
+import { InputManagers, TouchData } from "../../Tools/InputManager";
 import AchievementModuleC from "../AchievementModule/AchievementModuleC";
 import { AdType } from "../AdsModule/AdsModuleC";
 import HUDModuleC from "../HUDModule/HUDModuleC";
-import HUDPanel from "../HUDModule/ui/HUDPanel";
 import ShopData from "./ShopData";
 import ShopModuleS from "./ShopModuleS";
 import ShopPanel from "./ui/ShopPanel";
@@ -210,7 +209,7 @@ export default class ShopModuleC extends ModuleC<ShopModuleS, ShopData> {
         if (clothType == 1) {
             let hairGuids = clothGuid.split(',');
             if (this.clothGuids[0] == hairGuids[0] && this.clothGuids[1] == hairGuids[1]) {
-                P_Tips.show("已佩戴");
+                Notice.showDownNotice("已佩戴");
                 return;
             }
             this.clothGuids[0] = hairGuids[0];
@@ -220,7 +219,7 @@ export default class ShopModuleC extends ModuleC<ShopModuleS, ShopData> {
         }
         else {
             if (this.clothGuids[clothType] == clothGuid) {
-                P_Tips.show("已佩戴");
+                Notice.showDownNotice("已佩戴");
                 return;
             }
             this.clothGuids[clothType] = clothGuid;
@@ -391,7 +390,7 @@ export default class ShopModuleC extends ModuleC<ShopModuleS, ShopData> {
     /**使用武器 */
     public useWeapon(): void {
         if (this.weapon == null) {
-            P_Tips.show("请选择武器~");
+            Notice.showDownNotice("请选择武器~");
             return;
         }
         if (GlobalData.isOpenIAA) {
@@ -415,7 +414,7 @@ export default class ShopModuleC extends ModuleC<ShopModuleS, ShopData> {
     /**更新Weapon数据 */
     private updateWeaponItemData(id: number, weapon: IWeaponElement): void {
         if (this.weapon != null && this.weapon.id == weapon.id) {
-            P_Tips.show("已使用~");
+            Notice.showDownNotice("已使用~");
             return;
         }
         this.weapon = weapon;
@@ -488,7 +487,7 @@ export default class ShopModuleC extends ModuleC<ShopModuleS, ShopData> {
     /**更新Wing数据 */
     private updateWingItemData(id: number, wing: IWingElement): void {
         if (this.wing != null && this.wing.id == wing.id) {
-            P_Tips.show("已使用~");
+            Notice.showDownNotice("已使用~");
             return;
         }
         this.wing = wing;
@@ -553,7 +552,7 @@ export default class ShopModuleC extends ModuleC<ShopModuleS, ShopData> {
     /**更新Tail数据 */
     private updateTailItemData(id: number, tail: ITailElement): void {
         if (this.tail != null && this.tail.id == tail.id) {
-            P_Tips.show("已使用~");
+            Notice.showDownNotice("已使用~");
             return;
         }
         this.tail = tail;

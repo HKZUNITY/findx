@@ -24,6 +24,7 @@ export default class RankingModuleS extends ModuleS<RankingModuleC, null> {
         Event.addClientListener("RefreshMaxHeight", this.refreshMaxHeight.bind(this));
     }
 
+    @Decorator.noReply()
     public net_A(v: number): void {
         if (!this.playerDataMap.has(this.currentPlayerId)) return;
         let playerData = this.playerDataMap.get(this.currentPlayerId);
@@ -31,6 +32,7 @@ export default class RankingModuleS extends ModuleS<RankingModuleC, null> {
         this.sendPlayersData();
     }
 
+    @Decorator.noReply()
     public net_B(v: number): void {
         if (!this.playerDataMap.has(this.currentPlayerId)) return;
         let playerData = this.playerDataMap.get(this.currentPlayerId);
@@ -38,6 +40,7 @@ export default class RankingModuleS extends ModuleS<RankingModuleC, null> {
         this.sendPlayersData();
     }
 
+    @Decorator.noReply()
     public net_C(v: number): void {
         if (!this.playerDataMap.has(this.currentPlayerId)) return;
         let playerData = this.playerDataMap.get(this.currentPlayerId);
@@ -57,7 +60,7 @@ export default class RankingModuleS extends ModuleS<RankingModuleC, null> {
     }
 
     /**刷新击杀人数 */
-    public refreshKillCount(player: mw.Player, killCount: number): void {
+    public refreshKillCount(player: mw.Player, killCount: number, isBoss: boolean = false): void {
         let playerId = player.playerId;
         Console.error("[击杀playerId] = " + playerId);
         if (!this.playerDataMap.has(playerId)) return;
@@ -65,6 +68,7 @@ export default class RankingModuleS extends ModuleS<RankingModuleC, null> {
         playerData.killCount += killCount;
         DataCenterS.getData(player, ShopData).saveKillCount(playerData.killCount);
         this.sendPlayersData();
+        if (isBoss) this.hudModuleS.playerKillNpc(player.playerId, this.getNameByUserId(player.playerId));
     }
 
     /**刷新收集分数 */
@@ -80,6 +84,7 @@ export default class RankingModuleS extends ModuleS<RankingModuleC, null> {
     }
 
     /**生命周期方法-进入场景调用(客户端发来的) */
+    @Decorator.noReply()
     public net_onEnterScene(playerId: number, playerName: string, score: number, killCount: number, maxHeight: number): void {
         let playerData = new PlayerData();
         playerData.playerName = playerName;
@@ -115,6 +120,20 @@ export default class RankingModuleS extends ModuleS<RankingModuleC, null> {
             scores.push(playerData.score);
         });
         this.getAllClient().net_receivePlayersData(playerIds, playerNames, maxHeights, killCounts, scores);
+    }
+
+    public getNamesByUserId(playerId1: number, playerId2: number): string[] {
+        if (this.playerDataMap.has(playerId1) && this.playerDataMap.has(playerId2)) {
+            return [this.playerDataMap.get(playerId1).playerName, this.playerDataMap.get(playerId2).playerName];
+        }
+        return null;
+    }
+
+    public getNameByUserId(playerId: number): string {
+        if (this.playerDataMap.has(playerId)) {
+            return this.playerDataMap.get(playerId).playerName;
+        }
+        return null;
     }
 }
 

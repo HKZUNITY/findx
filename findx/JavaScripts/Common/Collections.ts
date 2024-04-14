@@ -4,7 +4,7 @@ import { GameConfig } from "../config/GameConfig";
 import CollectionModuleC from "../module/CollectionMOdule/CollectionModuleC";
 import { CollectionType } from "../module/CollectionMOdule/ui/CollectionPanel";
 import CollectionTipPanel from "../module/CollectionMOdule/ui/CollectionTipPanel";
-import P_Tips from "../Common/P_Tips";
+import { Notice } from "./notice/Notice";
 
 @Component
 export default class Collections extends mw.Script {
@@ -115,7 +115,7 @@ export default class Collections extends mw.Script {
     private onEnterTrigger(char: mw.Character, id: number, icon: string, name: string, collectionType: CollectionType): void {
         if (char != Player.localPlayer.character) return;
         if (this.getCollectionModuleC.isOwnItem(id)) {
-            P_Tips.show("宝箱是空的哎~");
+            Notice.showDownNotice("宝箱是空的哎~");
             return;
         }
         this.getCollectionModuleC.saveAcquiredItem(id);

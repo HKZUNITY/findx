@@ -17,6 +17,7 @@ export default class CollectionModuleS extends ModuleS<CollectionModuleC, Collec
     }
 
     /**保存获得的Item */
+    @Decorator.noReply()
     public net_saveAcquiredItem(id: number): void {
         this.saveAcquiredItem(this.currentPlayer, id);
     }

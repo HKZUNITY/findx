@@ -3,12 +3,19 @@
  * WARNING: DO NOT MODIFY THIS FILE,MAY CAUSE CODE LOST.
  * AUTHOR: 爱玩游戏的小胖子
  * UI: UI/module/ShopUI/ShopPanel.ui
- * TIME: 2023.10.21-10.15.16
+ * TIME: 2024.04.14-22.02.14
  */
  
 @UIBind('UI/module/ShopUI/ShopPanel.ui')
 export default class ShopPanel_Generate extends UIScript {
-		private mShopBtn1_Internal: mw.Button
+		private mLeftCanvas_Internal: mw.Canvas
+	public get mLeftCanvas(): mw.Canvas {
+		if(!this.mLeftCanvas_Internal&&this.uiWidgetBase) {
+			this.mLeftCanvas_Internal = this.uiWidgetBase.findChildByPath('RootCanvas/MainCanvas/mLeftCanvas') as mw.Canvas
+		}
+		return this.mLeftCanvas_Internal
+	}
+	private mShopBtn1_Internal: mw.Button
 	public get mShopBtn1(): mw.Button {
 		if(!this.mShopBtn1_Internal&&this.uiWidgetBase) {
 			this.mShopBtn1_Internal = this.uiWidgetBase.findChildByPath('RootCanvas/MainCanvas/mLeftCanvas/ShopCanvas/ShopCanvas_1/mShopBtn1') as mw.Button
@@ -35,6 +42,13 @@ export default class ShopPanel_Generate extends UIScript {
 			this.mShopBtn4_Internal = this.uiWidgetBase.findChildByPath('RootCanvas/MainCanvas/mLeftCanvas/ShopCanvas/ShopCanvas_4/mShopBtn4') as mw.Button
 		}
 		return this.mShopBtn4_Internal
+	}
+	private mClothesCanvas_Internal: mw.Canvas
+	public get mClothesCanvas(): mw.Canvas {
+		if(!this.mClothesCanvas_Internal&&this.uiWidgetBase) {
+			this.mClothesCanvas_Internal = this.uiWidgetBase.findChildByPath('RootCanvas/MainCanvas/mLeftCanvas/mClothesCanvas') as mw.Canvas
+		}
+		return this.mClothesCanvas_Internal
 	}
 	private mClothesBtn1_Internal: mw.Button
 	public get mClothesBtn1(): mw.Button {
@@ -78,12 +92,12 @@ export default class ShopPanel_Generate extends UIScript {
 		}
 		return this.mClothesBtn6_Internal
 	}
-	private mClothesCanvas_Internal: mw.Canvas
-	public get mClothesCanvas(): mw.Canvas {
-		if(!this.mClothesCanvas_Internal&&this.uiWidgetBase) {
-			this.mClothesCanvas_Internal = this.uiWidgetBase.findChildByPath('RootCanvas/MainCanvas/mLeftCanvas/mClothesCanvas') as mw.Canvas
+	private mScrollBox_Internal: mw.ScrollBox
+	public get mScrollBox(): mw.ScrollBox {
+		if(!this.mScrollBox_Internal&&this.uiWidgetBase) {
+			this.mScrollBox_Internal = this.uiWidgetBase.findChildByPath('RootCanvas/MainCanvas/mLeftCanvas/mScrollBox') as mw.ScrollBox
 		}
-		return this.mClothesCanvas_Internal
+		return this.mScrollBox_Internal
 	}
 	private mContentCanvas_Internal: mw.Canvas
 	public get mContentCanvas(): mw.Canvas {
@@ -92,19 +106,12 @@ export default class ShopPanel_Generate extends UIScript {
 		}
 		return this.mContentCanvas_Internal
 	}
-	private mScrollBox_Internal: mw.ScrollBox
-	public get mScrollBox(): mw.ScrollBox {
-		if(!this.mScrollBox_Internal&&this.uiWidgetBase) {
-			this.mScrollBox_Internal = this.uiWidgetBase.findChildByPath('RootCanvas/MainCanvas/mLeftCanvas/mScrollBox') as mw.ScrollBox
+	private mRightCanvas_Internal: mw.Canvas
+	public get mRightCanvas(): mw.Canvas {
+		if(!this.mRightCanvas_Internal&&this.uiWidgetBase) {
+			this.mRightCanvas_Internal = this.uiWidgetBase.findChildByPath('RootCanvas/MainCanvas/mRightCanvas') as mw.Canvas
 		}
-		return this.mScrollBox_Internal
-	}
-	private mLeftCanvas_Internal: mw.Canvas
-	public get mLeftCanvas(): mw.Canvas {
-		if(!this.mLeftCanvas_Internal&&this.uiWidgetBase) {
-			this.mLeftCanvas_Internal = this.uiWidgetBase.findChildByPath('RootCanvas/MainCanvas/mLeftCanvas') as mw.Canvas
-		}
-		return this.mLeftCanvas_Internal
+		return this.mRightCanvas_Internal
 	}
 	private mCloseBtn_Internal: mw.Button
 	public get mCloseBtn(): mw.Button {
@@ -133,13 +140,6 @@ export default class ShopPanel_Generate extends UIScript {
 			this.mIAAImg_Internal = this.uiWidgetBase.findChildByPath('RootCanvas/MainCanvas/mRightCanvas/RightBottomCanvas/SaveCanvas/mIAAImg') as mw.Image
 		}
 		return this.mIAAImg_Internal
-	}
-	private mRightCanvas_Internal: mw.Canvas
-	public get mRightCanvas(): mw.Canvas {
-		if(!this.mRightCanvas_Internal&&this.uiWidgetBase) {
-			this.mRightCanvas_Internal = this.uiWidgetBase.findChildByPath('RootCanvas/MainCanvas/mRightCanvas') as mw.Canvas
-		}
-		return this.mRightCanvas_Internal
 	}
 	private mRecycleCanvas_Internal: mw.Canvas
 	public get mRecycleCanvas(): mw.Canvas {

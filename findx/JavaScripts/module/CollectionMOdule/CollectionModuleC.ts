@@ -2,7 +2,6 @@ import { GeneralManager, } from '../../Modified027Editor/ModifiedStaticAPI';
 import Console from "../../Tools/Console";
 import { Utils } from "../../Tools/utils";
 import AdTips from "../../Common/AdTips";
-import P_Tips from "../../Common/P_Tips";
 import GlobalData from "../../const/GlobalData";
 import AchievementModuleC from "../AchievementModule/AchievementModuleC";
 import { AdType } from "../AdsModule/AdsModuleC";
@@ -11,6 +10,7 @@ import ShopModuleC from "../ShopModule/ShopModuleC";
 import CollectionData from "./CollectionData";
 import CollectionModuleS from "./CollectionModuleS";
 import CollectionPanel from "./ui/CollectionPanel";
+import { Notice } from '../../Common/notice/Notice';
 
 export default class CollectionModuleC extends ModuleC<CollectionModuleS, CollectionData> {
     private hudModuleC: HUDModuleC = null;
@@ -74,7 +74,7 @@ export default class CollectionModuleC extends ModuleC<CollectionModuleS, Collec
     /**得到某个Item在场景的位置 */
     public getItemLoc(id: number): mw.Vector {
         if (!this.itemVector3Map.has(id)) {
-            P_Tips.show("游戏出Bug啦~");
+            Notice.showDownNotice("游戏出Bug啦~");
             return mw.Vector.zero;
         }
         return this.itemVector3Map.get(id);
@@ -82,7 +82,7 @@ export default class CollectionModuleC extends ModuleC<CollectionModuleS, Collec
 
     public randomGetId(): void {
         if (!this.itemVector3Map || this.itemVector3Map.size == 0) {
-            P_Tips.show("你已经获得所有皮肤~");
+            Notice.showDownNotice("你已经获得所有皮肤~");
             return;
         }
         let randomList: number[] = [];
@@ -141,7 +141,7 @@ export default class CollectionModuleC extends ModuleC<CollectionModuleS, Collec
                     });
                     this.guideEffectIds.length = 0;
                 }
-                P_Tips.show("已到达目标点附近");
+                Notice.showDownNotice("已到达目标点附近");
                 return;
             }
 

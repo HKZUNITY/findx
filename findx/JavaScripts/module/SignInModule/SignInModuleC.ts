@@ -1,5 +1,5 @@
-﻿import { Utils } from "../../Tools/utils";
-import P_Tips from "../../Common/P_Tips";
+﻿import { Notice } from "../../Common/notice/Notice";
+import { Utils } from "../../Tools/utils";
 import HUDModuleC from "../HUDModule/HUDModuleC";
 import SignInData from "./SignInData";
 import SignInModuleS from "./SignInModuleS";
@@ -109,38 +109,38 @@ export default class SignInModuleC extends ModuleC<SignInModuleS, SignInData> {
             case 0:
                 this.hudModuleC.setCurAttackValue(100);
                 this.hudModuleC.setMaxHp(1000);
-                P_Tips.show("得到奖励攻击力+100生命值+1000");
+                Notice.showDownNotice("得到奖励攻击力+100生命值+1000");
                 break;
             case 1:
                 this.hudModuleC.setCurAttackValue(200);
                 this.hudModuleC.setMaxHp(2000);
-                P_Tips.show("得到奖励攻击力+200生命值+2000");
+                Notice.showDownNotice("得到奖励攻击力+200生命值+2000");
                 break;
             case 2:
                 this.hudModuleC.setCurAttackValue(300);
                 this.hudModuleC.setMaxHp(3000);
-                P_Tips.show("得到奖励攻击力+300生命值+3000");
+                Notice.showDownNotice("得到奖励攻击力+300生命值+3000");
                 break;
             case 3:
                 this.hudModuleC.setCurAttackValue(400);
                 this.hudModuleC.setMaxHp(4000);
-                P_Tips.show("得到奖励攻击力+400生命值+4000");
+                Notice.showDownNotice("得到奖励攻击力+400生命值+4000");
                 break;
             case 4:
                 this.hudModuleC.setCurAttackValue(500);
                 this.hudModuleC.setMaxHp(5000);
-                P_Tips.show("得到奖励攻击力+500生命值+5000");
+                Notice.showDownNotice("得到奖励攻击力+500生命值+5000");
                 break;
             case 5:
                 this.hudModuleC.setCurAttackValue(600);
                 this.hudModuleC.setMaxHp(6000);
-                P_Tips.show("得到奖励攻击力+600生命值+6000");
+                Notice.showDownNotice("得到奖励攻击力+600生命值+6000");
                 break;
             case 6:
                 this.hudModuleC.firstGame2();
                 this.hudModuleC.setCurAttackValue(700);
                 this.hudModuleC.setMaxHp(7000);
-                P_Tips.show("得到奖励攻击力+700生命值+7000");
+                Notice.showDownNotice("得到奖励攻击力+700生命值+7000");
                 break;
             default:
                 break;

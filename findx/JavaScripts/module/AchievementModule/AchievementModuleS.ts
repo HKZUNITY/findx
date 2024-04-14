@@ -29,6 +29,7 @@ export default class AchievementModuleS extends ModuleS<AchievementModuleC, Achi
         await this.currentData.saveAchievementTipStage(achievementType, isTipsIndex);
     }
 
+    @Decorator.noReply()
     public net_saveFirstAch(value: boolean): void {
         this.currentData.saveFirstAch(value);
     }

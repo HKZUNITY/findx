@@ -6,7 +6,6 @@ import { Utils } from "../../Tools/utils";
 import AdTips from "../../Common/AdTips";
 import { ExplosiveCoins } from "../../Common/ExplosiveCoins";
 import { FlyText } from "../../Common/FlyText";
-import P_Tips from "../../Common/P_Tips";
 import Test from "../../Common/Test";
 import { GameConfig } from "../../config/GameConfig";
 import { IMusicElement } from "../../config/Music";
@@ -22,6 +21,7 @@ import GuidePanel from "./ui/GuidePanel";
 import HUDPanel from "./ui/HUDPanel";
 import CollectionModuleC from '../CollectionMOdule/CollectionModuleC';
 import { PrefabEvent } from '../../Prefabs/PrefabEvent';
+import { Notice } from '../../Common/notice/Notice';
 
 export default class HUDModuleC extends ModuleC<HUDModuleS, HUDDate> {
     private hudPanel: HUDPanel = null;
@@ -198,7 +198,7 @@ export default class HUDModuleC extends ModuleC<HUDModuleS, HUDDate> {
 
     public net_rebirthHome(): void {
         this.rebirthHome();
-        P_Tips.show("获得5秒无敌防御");
+        Notice.showDownNotice("获得5秒无敌防御");
     }
 
     /**回家 */
@@ -960,6 +960,81 @@ export default class HUDModuleC extends ModuleC<HUDModuleS, HUDDate> {
         return false;
     }
     //#endregion
+
+    //#region 击杀提示
+    public net_killTip(killerPlayerId: number, killerName: string, killedPlayerId: number, killedName: string): void {
+        let killTipType: KillTipType = KillTipType.None;
+        if (killerPlayerId == this.localPlayer.playerId) {
+            killTipType = KillTipType.Killer;
+        } else if (killedPlayerId == this.localPlayer.playerId) {
+            killTipType = KillTipType.Killed;
+        }
+        this.hudPanel.killTip(killTipType, killerName, killedName);
+        this.killTipsSound(killerPlayerId, killerName, killedPlayerId, killedName);
+    }
+    //#endregion
+
+    //#region 连杀提示
+    private killCountMap: Map<number, number> = new Map<number, number>();
+    private revengePlayerIdMap: Set<number> = new Set<number>();
+    private killTipsSound(killerPlayerId: number, killerName: string, killedPlayerId: number, killedName: string): void {
+        let killTipType: KillTipType = KillTipType.None;
+        if (killedPlayerId == this.localPlayer.playerId) {
+            killTipType = KillTipType.Killed;
+            if (!this.revengePlayerIdMap.has(killerPlayerId)) this.revengePlayerIdMap.add(killerPlayerId);
+            SoundService.playSound("294343", 1);
+        } else if (killerPlayerId == this.localPlayer.playerId && this.revengePlayerIdMap.has(killedPlayerId)) {
+            killTipType = KillTipType.revenge;
+            this.revengePlayerIdMap.delete(killedPlayerId);
+            SoundService.playSound("294342", 1);
+        }
+        this.hudPanel.showKillTips2(killerName, killedName, killTipType);
+
+        if (this.killCountMap.has(killedPlayerId)) this.killCountMap.delete(killedPlayerId);
+        let killCount: number = 0;
+        if (this.killCountMap.has(killerPlayerId)) {
+            killCount = this.killCountMap.get(killerPlayerId);
+        }
+        killCount++;
+        this.killCountMap.set(killerPlayerId, killCount);
+        if (killCount <= 1) return;
+
+        let soundId: string = "";
+        let killCountTips: string = "";
+        switch (killCount) {
+            case 2:
+                soundId = "65877";
+                killCountTips = "连续消灭2人！势不可当！";
+                break;
+            case 3:
+                soundId = "65874";
+                killCountTips = "连续消灭3人！勇冠三军！";
+                break;
+            case 4:
+                soundId = "65873";
+                killCountTips = "连续消灭4人！无人能敌！";
+                break;
+            case 5:
+                soundId = "65881";
+                killCountTips = "连续消灭5人！横扫千军！";
+                break;
+            case 6:
+                soundId = "65871";
+                killCountTips = "连续消灭6人！接近神了！";
+                break;
+            case 7:
+                soundId = "65879";
+                killCountTips = "连续消灭7人！超越神了！";
+                break;
+            default:
+                soundId = "65879";
+                killCountTips = "连续消灭" + Utils.numChangeToCN(killCount) + "人！超越神了！";
+                break;
+        }
+        SoundService.playSound(soundId, 1);
+        this.hudPanel.showKillTips1(killCountTips, killerName, killedName);
+    }
+    //#endregion
 }
 
 enum AttackType {
@@ -969,4 +1044,17 @@ enum AttackType {
     CircularDetection = 2,
     /**圆柱形检测 */
     CylindricalDetection = 3,
+}
+
+export class KillTipData {
+    public killTipType: KillTipType;
+    public killerName: string;
+    public killedName: string;
+}
+
+export enum KillTipType {
+    None = 0,
+    Killer = 1,
+    Killed = 2,
+    revenge = 3,
 }

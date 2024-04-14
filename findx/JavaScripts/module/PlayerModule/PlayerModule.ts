@@ -137,6 +137,7 @@ export class PlayerModuleS extends ModuleS<PlayerModuleC, PlayerLevelData> {
 
     }
 
+    @Decorator.noReply()
     public net_saveCleared(cleared: number): void {
         this.currentData.saveCleared(cleared);
     }

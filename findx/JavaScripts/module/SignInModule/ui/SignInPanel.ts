@@ -6,11 +6,11 @@
 
 import { Utils } from "../../../Tools/utils";
 import AdTips from "../../../Common/AdTips";
-import P_Tips from "../../../Common/P_Tips";
 import GlobalData from "../../../const/GlobalData";
 import SignInPanel_Generate from "../../../ui-generate/module/SignInUI/SignInPanel_generate";
 import { AdType } from "../../AdsModule/AdsModuleC";
 import SignInModuleC from "../SignInModuleC";
+import { Notice } from "../../../Common/notice/Notice";
 
 export default class SignInPanel extends SignInPanel_Generate {
 	private signInModuleC: SignInModuleC = null;
@@ -58,7 +58,7 @@ export default class SignInPanel extends SignInPanel_Generate {
 	private whatDay: number = 0;
 	private bindSignInButton(index: number): void {
 		if (this.isSignIns[index]) {
-			P_Tips.show("已领取哟~");
+			Notice.showDownNotice("已领取哟~");
 		}
 		else {
 			if (index < this.whatDay) {
@@ -73,7 +73,7 @@ export default class SignInPanel extends SignInPanel_Generate {
 				this.signInModuleC.saveIsSignIns(index);
 			}
 			else {
-				P_Tips.show("未到领取时间哟~");
+				Notice.showDownNotice("未到领取时间哟~");
 			}
 		}
 	}

@@ -1,8 +1,8 @@
 ﻿{
 	"name": "斗破苍穹乐园（竞技派对）",
 	"packageName": "5C5C0895435CA63CF29576B9118B345C",
-	"intro": "更新UI布局。",
-	"notes": "更新UI布局。",
+	"intro": "增加击杀提示。",
+	"notes": "增加击杀提示。",
 	"editorVersion": "v0.31.0.4",
 	"parentGameIdentity": "",
 	"parentGameId": "",

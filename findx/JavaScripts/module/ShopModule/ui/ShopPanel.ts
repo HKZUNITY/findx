@@ -4,16 +4,16 @@
  * TIME: 2023.06.03-22.22.02
  */
 
-import Console from "../../../Tools/Console";
-import { ObjectPoolServices } from "../../../Tools/ObjectPool";
 import AdTips from "../../../Common/AdTips";
-import P_Tips from "../../../Common/P_Tips";
+import { Notice } from "../../../Common/notice/Notice";
 import { IClothesElement } from "../../../config/Clothes";
 import { GameConfig } from "../../../config/GameConfig";
 import { ITailElement } from "../../../config/Tail";
 import { IWeaponElement } from "../../../config/Weapon";
 import { IWingElement } from "../../../config/Wing";
 import GlobalData from "../../../const/GlobalData";
+import Console from "../../../Tools/Console";
+import { ObjectPoolServices } from "../../../Tools/ObjectPool";
 import ShopPanel_Generate from "../../../ui-generate/module/ShopUI/ShopPanel_generate";
 import { AdType } from "../../AdsModule/AdsModuleC";
 import ShopModuleC, { ClothType } from "../ShopModuleC";
@@ -714,7 +714,7 @@ class ClothItem {
 		this.mIconBtn.onClicked.add(() => {
 			Event.dispatchToLocal("PlayButtonClick");
 			if (!GlobalData.delayClick) {
-				P_Tips.show("小手别点太快");
+				Notice.showDownNotice("小手别点太快");
 				return;
 			}
 			GlobalData.delayClick = false;
@@ -786,7 +786,7 @@ class WeaponItem {
 		this.mIconBtn.onClicked.add(() => {
 			Event.dispatchToLocal("PlayButtonClick");
 			if (!GlobalData.delayClick) {
-				P_Tips.show("小手别点太快");
+				Notice.showDownNotice("小手别点太快");
 				return;
 			}
 			GlobalData.delayClick = false;
@@ -858,7 +858,7 @@ class WingItem {
 		this.mIconBtn.onClicked.add(() => {
 			Event.dispatchToLocal("PlayButtonClick");
 			if (!GlobalData.delayClick) {
-				P_Tips.show("小手别点太快");
+				Notice.showDownNotice("小手别点太快");
 				return;
 			}
 			GlobalData.delayClick = false;
@@ -930,7 +930,7 @@ class TailItem {
 		this.mIconBtn.onClicked.add(() => {
 			Event.dispatchToLocal("PlayButtonClick");
 			if (!GlobalData.delayClick) {
-				P_Tips.show("小手别点太快");
+				Notice.showDownNotice("小手别点太快");
 				return;
 			}
 			GlobalData.delayClick = false;

@@ -1,5 +1,5 @@
-﻿import Console from "../../Tools/Console";
-import P_Tips from "../../Common/P_Tips";
+﻿import { Notice } from "../../Common/notice/Notice";
+import Console from "../../Tools/Console";
 import GlobalData from "../../const/GlobalData";
 import HUDModuleC from "../HUDModule/HUDModuleC";
 import ShopModuleC from "../ShopModule/ShopModuleC";
@@ -46,7 +46,7 @@ export default class RankingModuleC extends ModuleC<RankingModuleS, null> {
 
         this.rankingPanel.onRankTypeAction.add((rankType: RankType) => {
             if (!this.isRefresh) {
-                P_Tips.show("小手别点太快哟~");
+                Notice.showDownNotice("小手别点太快哟~");
             }
             this.isRefresh = false;
             TimeUtil.delaySecond(1.5).then(() => {

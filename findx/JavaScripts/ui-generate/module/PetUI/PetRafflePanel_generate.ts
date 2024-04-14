@@ -3,7 +3,7 @@
  * WARNING: DO NOT MODIFY THIS FILE,MAY CAUSE CODE LOST.
  * AUTHOR: 爱玩游戏的小胖子
  * UI: UI/module/PetUI/PetRafflePanel.ui
- * TIME: 2023.10.21-10.15.16
+ * TIME: 2024.04.14-22.02.14
  */
  
 @UIBind('UI/module/PetUI/PetRafflePanel.ui')
@@ -183,13 +183,6 @@ export default class PetRafflePanel_Generate extends UIScript {
 		}
 		return this.mSelectImage12_Internal
 	}
-	private mRaffleText_Internal: mw.TextBlock
-	public get mRaffleText(): mw.TextBlock {
-		if(!this.mRaffleText_Internal&&this.uiWidgetBase) {
-			this.mRaffleText_Internal = this.uiWidgetBase.findChildByPath('RootCanvas/Canvas/mRaffleButton/mRaffleText') as mw.TextBlock
-		}
-		return this.mRaffleText_Internal
-	}
 	private mRaffleButton_Internal: mw.Button
 	public get mRaffleButton(): mw.Button {
 		if(!this.mRaffleButton_Internal&&this.uiWidgetBase) {
@@ -197,12 +190,26 @@ export default class PetRafflePanel_Generate extends UIScript {
 		}
 		return this.mRaffleButton_Internal
 	}
+	private mRaffleText_Internal: mw.TextBlock
+	public get mRaffleText(): mw.TextBlock {
+		if(!this.mRaffleText_Internal&&this.uiWidgetBase) {
+			this.mRaffleText_Internal = this.uiWidgetBase.findChildByPath('RootCanvas/Canvas/mRaffleButton/mRaffleText') as mw.TextBlock
+		}
+		return this.mRaffleText_Internal
+	}
 	private mPetButton_Internal: mw.Button
 	public get mPetButton(): mw.Button {
 		if(!this.mPetButton_Internal&&this.uiWidgetBase) {
 			this.mPetButton_Internal = this.uiWidgetBase.findChildByPath('RootCanvas/Canvas/mPetButton') as mw.Button
 		}
 		return this.mPetButton_Internal
+	}
+	private mGetCanvas_Internal: mw.Canvas
+	public get mGetCanvas(): mw.Canvas {
+		if(!this.mGetCanvas_Internal&&this.uiWidgetBase) {
+			this.mGetCanvas_Internal = this.uiWidgetBase.findChildByPath('RootCanvas/mGetCanvas') as mw.Canvas
+		}
+		return this.mGetCanvas_Internal
 	}
 	private mCloseGetButton_Internal: mw.Button
 	public get mCloseGetButton(): mw.Button {
@@ -217,13 +224,6 @@ export default class PetRafflePanel_Generate extends UIScript {
 			this.mGetImage_Internal = this.uiWidgetBase.findChildByPath('RootCanvas/mGetCanvas/Canvas_3/mGetImage') as mw.Image
 		}
 		return this.mGetImage_Internal
-	}
-	private mGetCanvas_Internal: mw.Canvas
-	public get mGetCanvas(): mw.Canvas {
-		if(!this.mGetCanvas_Internal&&this.uiWidgetBase) {
-			this.mGetCanvas_Internal = this.uiWidgetBase.findChildByPath('RootCanvas/mGetCanvas') as mw.Canvas
-		}
-		return this.mGetCanvas_Internal
 	}
 
 

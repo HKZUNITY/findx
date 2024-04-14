@@ -4,11 +4,11 @@
  * TIME: 2023.06.18-19.23.27
  */
 
-import { ObjectPoolServices } from "../../../Tools/ObjectPool";
-import P_Tips from "../../../Common/P_Tips";
+import { Notice } from "../../../Common/notice/Notice";
 import { ICollectionElement } from "../../../config/Collection";
 import { GameConfig } from "../../../config/GameConfig";
 import GlobalData from "../../../const/GlobalData";
+import { ObjectPoolServices } from "../../../Tools/ObjectPool";
 import CollectionPanel_Generate from "../../../ui-generate/module/CollectionUI/CollectionPanel_generate";
 import CollectionModuleC from "../CollectionModuleC";
 import CollectionItemPanel from "./CollectionItemPanel";
@@ -222,7 +222,7 @@ class CollectionItem {
 		this.mIconBtn.onClicked.add(() => {
 			Event.dispatchToLocal("PlayButtonClick");
 			if (!GlobalData.delayClick) {
-				P_Tips.show("小手别点太快");
+				Notice.showDownNotice("小手别点太快");
 				return;
 			}
 			GlobalData.delayClick = false;

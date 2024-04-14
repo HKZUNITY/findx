@@ -1,4 +1,5 @@
-﻿import GlobalData from "./const/GlobalData";
+﻿import { update } from "./Common/notice/Tween";
+import GlobalData from "./const/GlobalData";
 import AchievementData from "./module/AchievementModule/AchievementData";
 import AchievementModuleC from "./module/AchievementModule/AchievementModuleC";
 import AchievementModuleS from "./module/AchievementModule/AchievementModuleS";
@@ -65,6 +66,7 @@ export default class GameLaunch extends mw.Script {
     protected onUpdate(dt: number): void {
         mw.TweenUtil.TWEEN.update();
         if (mw.SystemUtil.isClient()) {
+            update();
             this.onUpdateC(dt);
         }
         else if (mw.SystemUtil.isServer()) {
