@@ -1,22 +1,20 @@
 **************************************************
 --开始检查项目资源
---项目路径:D:\桌面\027\MetaWorldSaved\Saved\MetaWorld\Project\Edit\findx
+--项目路径:E:\MetaApp\Editor_Win64\MetaWorldSaved\Saved\MetaWorld\Project\Edit\findx\findx
 **************************************************
 **************************************************
---项目资源检查结束，耗时:62.415
+--项目资源检查结束，耗时:6.93
 **************************************************
 -------------------------------------------
---需要修改的脚本[.ts文件]：7
-[D:/桌面/027/MetaWorldSaved/Saved/MetaWorld/Project/Edit/findx/JavaScripts/Prefabs/可发射的交互物/Script/prefab/PlayerLauncher/PlayerLauncher.ts]使用到ID[ 21062 ]确定这是资源？可替换=>[ 197884 ]
-[D:/桌面/027/MetaWorldSaved/Saved/MetaWorld/Project/Edit/findx/JavaScripts/Prefabs/可弹跳的交互物/Script/prefab/Trampoline/Trampoline.ts]使用到ID[ 7833 ]确定这是资源？可替换=>[ 197224 ]
-[D:/桌面/027/MetaWorldSaved/Saved/MetaWorld/Project/Edit/findx/JavaScripts/Prefabs/可电击的交互物/Script/prefab/TelegraphPole/TelegraphPole.ts]使用到ID[ 7806 ]确定这是资源？可替换=>[ 197173 ]
-[D:/桌面/027/MetaWorldSaved/Saved/MetaWorld/Project/Edit/findx/JavaScripts/config/Assets.ts]使用到ID[ 25514 ]确定这是资源？可替换=>[ 197487 ]
-[D:/桌面/027/MetaWorldSaved/Saved/MetaWorld/Project/Edit/findx/JavaScripts/config/Tail.ts]使用到ID[ 7982 ]确定这是资源？可替换=>[ 197208 ]
-[D:/桌面/027/MetaWorldSaved/Saved/MetaWorld/Project/Edit/findx/JavaScripts/config/Tail.ts]使用到ID[ 24979 ]确定这是资源？可替换=>[ 197461 ]
-[D:/桌面/027/MetaWorldSaved/Saved/MetaWorld/Project/Edit/findx/JavaScripts/config/Weapon.ts]使用到ID[ 7750 ]确定这是资源？可替换=>[ 197185 ]
+--需要修改的脚本[.ts文件]：5
+[E:/MetaApp/Editor_Win64/MetaWorldSaved/Saved/MetaWorld/Project/Edit/findx/findx/JavaScripts/config/Assets.ts]使用到ID[ 26045 ]确定这是资源ID？可替换=>[ 65657 ]
+[E:/MetaApp/Editor_Win64/MetaWorldSaved/Saved/MetaWorld/Project/Edit/findx/findx/JavaScripts/config/Clothes.ts]使用到ID[ 21396 ]确定这是资源ID？可替换=>[ 197552 ]
+[E:/MetaApp/Editor_Win64/MetaWorldSaved/Saved/MetaWorld/Project/Edit/findx/findx/JavaScripts/config/Clothes.ts]使用到ID[ 40327 ]确定这是资源ID？可替换=>[ 74115 ]
+[E:/MetaApp/Editor_Win64/MetaWorldSaved/Saved/MetaWorld/Project/Edit/findx/findx/JavaScripts/config/Clothes.ts]使用到ID[ 40328 ]确定这是资源ID？可替换=>[ 65058 ]
+[E:/MetaApp/Editor_Win64/MetaWorldSaved/Saved/MetaWorld/Project/Edit/findx/findx/JavaScripts/config/Dance.ts]使用到ID[ 26045 ]确定这是资源ID？可替换=>[ 65657 ]
 =>请修改上述ts文件，如果提示ID不是资源请忽略
 =>如果是配置文件转换的ts文件，请修改对应的配置表
 -------------------------------------------
-=>资源替换22个
-=>还有7个目标需要处理
+=>资源替换0处
+=>还有5个目标需要处理
 =========================================================

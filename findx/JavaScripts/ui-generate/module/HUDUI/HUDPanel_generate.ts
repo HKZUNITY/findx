@@ -3,7 +3,7 @@
  * WARNING: DO NOT MODIFY THIS FILE,MAY CAUSE CODE LOST.
  * AUTHOR: 爱玩游戏的小胖子
  * UI: UI/module/HUDUI/HUDPanel.ui
- * TIME: 2024.04.14-22.02.14
+ * TIME: 2024.05.19-23.41.26
  */
  
 @UIBind('UI/module/HUDUI/HUDPanel.ui')
