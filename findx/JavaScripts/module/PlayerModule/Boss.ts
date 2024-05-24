@@ -2,6 +2,7 @@
 import Console from "../../Tools/Console";
 import { Utils } from "../../Tools/utils";
 import NPCBar_Generate from "../../ui-generate/module/NPCModule/NPCBar_generate";
+import HUDModuleS from "../HUDModule/HUDModuleS";
 import RankingModuleS from "../RankingModule/RankingModuleS";
 
 @Component
@@ -151,6 +152,14 @@ export default class Boss extends Script {
         return this.rankingModuleS;
     }
 
+    private hudModuleS: HUDModuleS = null;
+    private get getHudModuleS(): HUDModuleS {
+        if (this.hudModuleS == null) {
+            this.hudModuleS = ModuleService.getModule(HUDModuleS);
+        }
+        return this.hudModuleS;
+    }
+
     /**服务端的onStart */
     private onStartS(): void {
         this.useUpdate = true;
@@ -172,7 +181,7 @@ export default class Boss extends Script {
      * 绑定事件
      */
     private bindEventS(): void {
-        PrefabEvent.PrefabEvtFight.onHurt(this.playerAtkEnemyS.bind(this));
+        PrefabEvent.PrefabEvtFight.onHit(this.playerAtkEnemyS.bind(this));
     }
 
     /**
@@ -183,7 +192,7 @@ export default class Boss extends Script {
      * @param hitPoint
      * @returns
      */
-    private playerAtkEnemyS(senderGuid: string, targetGuid: string, damage: number): void {
+    private playerAtkEnemyS(senderGuid: string, targetGuid: string, damage: number, hitPoint: mw.Vector): void {
         Console.error("Enemy_Cube onHit this.gameObject.gameObjectId = " + this.gameObject.gameObjectId + "。targetGuid = " + targetGuid + "。damage = " + damage + "。");
         if (this.gameObject.gameObjectId != targetGuid) return;
         if (this.curHp <= 0) return;
@@ -195,7 +204,7 @@ export default class Boss extends Script {
         }
         if (this.curHp <= 0) {
             this.dieS();
-            if (senderGuid) this.getRankingModuleS.refreshKillCount(Player.getPlayer(senderGuid), 1, true);
+            if (senderGuid) this.getRankingModuleS.refreshKillCount(this.getHudModuleS.getPlayerbyGameObjectId(senderGuid), 1, true);
             TimeUtil.delaySecond(this.respawnTime).then(() => {
                 this.curHp = this.maxHp;
                 this.respawnS();
@@ -203,6 +212,7 @@ export default class Boss extends Script {
         }
         Console.error("curHp = " + this.curHp);
         SoundService.play3DSound("47414", this.boss, 1, 10000);
+        this.getHudModuleS.playerAtkEnemyFlyText(senderGuid, hitPoint, damage);
     }
 
     private dieS(): void {

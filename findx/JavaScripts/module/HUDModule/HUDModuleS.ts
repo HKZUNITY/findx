@@ -1,10 +1,8 @@
 import { SpawnManager } from '../../Modified027Editor/ModifiedSpawn';
 import { GeneralManager, } from '../../Modified027Editor/ModifiedStaticAPI';
-import BaseAI from '../../Prefabs/AI敌人/Script/BaseAI';
 import { PrefabEvent } from "../../Prefabs/PrefabEvent";
 import Console from "../../Tools/Console";
 import { Utils } from '../../Tools/utils';
-import NPCBar from "../NPCModule/NPCBar";
 import RankingModuleS from '../RankingModule/RankingModuleS';
 import HUDDate from "./HUDDate";
 import HUDModuleC from "./HUDModuleC";
@@ -21,6 +19,7 @@ export default class HUDModuleS extends ModuleS<HUDModuleC, HUDDate> {
 
     /** 当脚本被实例后，会在第一帧更新前调用此函数 */
     protected onStart(): void {
+        PrefabEvent.PrefabEvtFight.onHit(this.playerAtkPlayer.bind(this));
     }
 
     /**生命周期方法-玩家进入游戏(客户端已就绪，数据就绪，前后端可正常通信) */
@@ -49,32 +48,32 @@ export default class HUDModuleS extends ModuleS<HUDModuleC, HUDDate> {
         /**-----[玩家进入游戏同步其他玩家的拖尾特效]----- */
 
         /**-----[玩家进入游戏同步其他玩家的武器]----- */
-        let weaponPlayerIds: number[] = [];
-        let weaponIds: number[] = [];
-        if (this.weaponIdMap.size > 0) {
-            this.weaponIdMap.forEach((weaponId: number, weaponPlayerId: number) => {
-                weaponPlayerIds.push(weaponPlayerId);
-                weaponIds.push(weaponId);
-            });
-        }
+        // let weaponPlayerIds: number[] = [];
+        // let weaponIds: number[] = [];
+        // if (this.weaponIdMap.size > 0) {
+        //     this.weaponIdMap.forEach((weaponId: number, weaponPlayerId: number) => {
+        //         weaponPlayerIds.push(weaponPlayerId);
+        //         weaponIds.push(weaponId);
+        //     });
+        // }
         /**-----[玩家进入游戏同步其他玩家的武器]----- */
         if (wingPlayerIds.length == 0
             && tailEffectplayerIds.length == 0
-            && weaponPlayerIds.length == 0) return;
+            /*&& weaponPlayerIds.length == 0*/) return;
         this.getClient(player).net_enterGameSnycData(
             wingPlayerIds, wingIds,
-            tailEffectplayerIds, tailEffectIds,
-            weaponPlayerIds, weaponIds
+            tailEffectplayerIds, tailEffectIds/*,
+            weaponPlayerIds, weaponIds*/
         );
     }
 
     /**生命周期方法-玩家离开房间 */
     protected onPlayerLeft(player: mw.Player): void {
         let playerId = player.playerId;
-        this.deletePlayerLifeData(playerId);
+        this.deletePlayerLifeData(player);
         this.deleteWingMap(playerId);
         this.deleteTailEffectMap(playerId);
-        this.deleteWeaponMap(playerId);
+        // this.deleteWeaponMap(playerId);
         this.getAllClient().net_exitGameSyncData(playerId);
     }
 
@@ -157,6 +156,22 @@ export default class HUDModuleS extends ModuleS<HUDModuleC, HUDDate> {
         this.getRankingModuleS.refreshScore(this.currentPlayer, lv);
     }
 
+    public getPlayerbyGameObjectId(gameObjectId: string): mw.Player {
+        return this.allPlayerMap.get(gameObjectId);
+    }
+
+    private allPlayerMap: Map<string, mw.Player> = new Map<string, mw.Player>();
+    private playerAtkPlayer(senderGuid: string, targetGuid: string, damage: number, hitPoint: mw.Vector): void {
+        Console.error("PlayerModuleS-playerAtkPlayerAndNPC");
+        if (!this.allPlayerMap.has(targetGuid) || !this.allPlayerMap.has(senderGuid)) return;
+        let sendPlayer = this.allPlayerMap.get(senderGuid);
+        let targetPlayer = this.allPlayerMap.get(targetGuid);
+        if (this.playerLifeMap.get(targetPlayer.playerId).isDie || this.playerLifeMap.get(sendPlayer.playerId).isDie) return;
+        // this.updatePlayerData(sendPlayer, targetPlayer, damage, hitPoint)
+        this.setPlayerHp(targetPlayer, damage, sendPlayer);
+        this.getClient(sendPlayer).net_onSelfAtkPlayer(damage, hitPoint);
+    }
+
     /**设置玩家血量 */
     private setPlayerHp(player: mw.Player, hp: number, addPlayer: mw.Player = null): void {
         let playerId = player.playerId;
@@ -201,6 +216,12 @@ export default class HUDModuleS extends ModuleS<HUDModuleC, HUDDate> {
         this.getAllClient().net_killTip(playerId, playerMame, -1, Utils.randomNpcName());
     }
 
+    public playerAtkEnemyFlyText(senderGuid: string, hitPoint: mw.Vector, damage: number): void {
+        if (!this.allPlayerMap.has(senderGuid)) return;
+        let sendPlayer = this.allPlayerMap.get(senderGuid);
+        this.getClient(sendPlayer).net_flyText(damage, hitPoint);
+    }
+
     /**生成墓碑（服务端） */
     private spawnTombstoneS(player: mw.Player): void {
         let tombstone: mw.GameObject = null;
@@ -223,61 +244,66 @@ export default class HUDModuleS extends ModuleS<HUDModuleC, HUDDate> {
         playerAttackData.lifebar = hpbar;
         playerAttackData.isDie = false;
         this.playerLifeMap.set(playerId, playerAttackData);
+        this.allPlayerMap.set(player.character.gameObjectId, player);
     }
 
     /**删除玩家生命数据 */
-    private deletePlayerLifeData(playerId: number): void {
-        if (!this.playerLifeMap.has(playerId)) return;
-        this.playerLifeMap.get(playerId).lifebar.destroy();
-        this.playerLifeMap.delete(playerId);
+    private deletePlayerLifeData(player: mw.Player): void {
+        if (this.playerLifeMap.has(player.playerId)) {
+            this.playerLifeMap.get(player.playerId).lifebar.destroy();
+            this.playerLifeMap.delete(player.playerId);
+        }
+        if (this.allPlayerMap.has(player.character.gameObjectId)) {
+            this.allPlayerMap.delete(player.character.gameObjectId);
+        }
     }
 
     /**
      * 攻击玩家
      * @param playerIds 被攻击到的玩家ID 
      */
-    @Decorator.noReply()
-    public net_attackPlayer(playerIds: number[], aiIds: string[], ImpulseValue: number, badValue: number, weaponId: number): void {
-        if (aiIds.length != 0) {
-            for (let i = 0; i < aiIds.length; ++i) {
-                PrefabEvent.PrefabEvtFight.hurt(this.currentPlayer.character.gameObjectId, aiIds[i], badValue);
-            }
-        }
-        if (playerIds.length == 0) return;
-        if (this.playerLifeMap.get(this.currentPlayerId).isDie) return;
-        let forwardVector = this.currentPlayer.character.worldTransform.getForwardVector();
-        let forwardMultiply = forwardVector.multiply(ImpulseValue);
+    // @Decorator.noReply()
+    // public net_attackPlayer(playerIds: number[], aiIds: string[], ImpulseValue: number, badValue: number, weaponId: number): void {
+    //     if (aiIds.length != 0) {
+    //         for (let i = 0; i < aiIds.length; ++i) {
+    //             PrefabEvent.PrefabEvtFight.hurt(this.currentPlayer.character.gameObjectId, aiIds[i], badValue);
+    //         }
+    //     }
+    //     if (playerIds.length == 0) return;
+    //     if (this.playerLifeMap.get(this.currentPlayerId).isDie) return;
+    //     let forwardVector = this.currentPlayer.character.worldTransform.getForwardVector();
+    //     let forwardMultiply = forwardVector.multiply(ImpulseValue);
 
-        for (const playerId of playerIds) {
-            let player = Player.getPlayer(playerId);
-            player.character.addImpulse(forwardMultiply, true);
-            this.setPlayerHp(player, badValue, this.currentPlayer);
-        }
-        this.getAllClient().net_playHitEffect(playerIds, weaponId);
-    }
+    //     for (const playerId of playerIds) {
+    //         let player = Player.getPlayer(playerId);
+    //         player.character.addImpulse(forwardMultiply, true);
+    //         this.setPlayerHp(player, badValue, this.currentPlayer);
+    //     }
+    //     this.getAllClient().net_playHitEffect(playerIds, weaponId);
+    // }
 
     /**播放攻击动画、特效、音效（服务端同步给所有客户端执行某个客户端的攻击表现） */
-    @Decorator.noReply()
-    public net_playAniEffSound(weaponId: number): void {
-        if (this.playerLifeMap.get(this.currentPlayerId).isDie) return;
-        this.getAllClient().net_playAniEffSound(this.currentPlayerId, weaponId);
-    }
+    // @Decorator.noReply()
+    // public net_playAniEffSound(weaponId: number): void {
+    //     if (this.playerLifeMap.get(this.currentPlayerId).isDie) return;
+    //     this.getAllClient().net_playAniEffSound(this.currentPlayerId, weaponId);
+    // }
 
     /**服务端存储房间内所有玩家所持有的武器数据 */
-    private weaponIdMap: Map<number, number> = new Map<number, number>();
+    // private weaponIdMap: Map<number, number> = new Map<number, number>();
 
     /**拾取武器（广播给所有客户端） */
-    @Decorator.noReply()
-    public net_pickUpWeapon(id: number): void {
-        this.weaponIdMap.set(this.currentPlayerId, id);
-        this.getAllClient().net_pickUpWeapon(this.currentPlayerId, id);
-    }
+    // @Decorator.noReply()
+    // public net_pickUpWeapon(id: number): void {
+    //     this.weaponIdMap.set(this.currentPlayerId, id);
+    //     this.getAllClient().net_pickUpWeapon(this.currentPlayerId, id);
+    // }
 
     /**玩家离开游戏删除所持有武器数据 */
-    private deleteWeaponMap(playerId: number): void {
-        if (!this.weaponIdMap.has(playerId)) return;
-        this.weaponIdMap.delete(playerId);
-    }
+    // private deleteWeaponMap(playerId: number): void {
+    //     if (!this.weaponIdMap.has(playerId)) return;
+    //     this.weaponIdMap.delete(playerId);
+    // }
     /**------------------------------【武器-攻击】------------------------------*/
     //#endregion
 
@@ -361,11 +387,4 @@ class PlayerData {
     public lifebar: Lifebar = null;
     public isDie: boolean = false;
     public isWudi: boolean = false
-}
-
-class AIData {
-    public npcBar: NPCBar = null
-    public npc: mw.Character = null;
-    public npcAI: BaseAI = null;
-    public isDie: boolean = false;
 }

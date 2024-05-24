@@ -7,13 +7,14 @@
 import AdTips from "../../../Common/AdTips";
 import { Notice } from "../../../Common/notice/Notice";
 import { IClothesElement } from "../../../config/Clothes";
+import { IColdWeaponElement } from "../../../config/ColdWeapon";
 import { GameConfig } from "../../../config/GameConfig";
 import { ITailElement } from "../../../config/Tail";
-import { IWeaponElement } from "../../../config/Weapon";
 import { IWingElement } from "../../../config/Wing";
 import GlobalData from "../../../const/GlobalData";
 import Console from "../../../Tools/Console";
 import { ObjectPoolServices } from "../../../Tools/ObjectPool";
+import { Utils } from "../../../Tools/utils";
 import ShopPanel_Generate from "../../../ui-generate/module/ShopUI/ShopPanel_generate";
 import { AdType } from "../../AdsModule/AdsModuleC";
 import ShopModuleC, { ClothType } from "../ShopModuleC";
@@ -424,15 +425,15 @@ export default class ShopPanel extends ShopPanel_Generate {
 
 	//#region 武器
 	/**--------------------------[武器]-------------------------- */
-	private weapons: IWeaponElement[] = [];
+	private weapons: IColdWeaponElement[] = [];
 	/**储存当前页签下的WeaponItem */
 	private weaponItems: WeaponItem[] = [];
 	/**给NPC换武器 */
-	public onChangeWeaponToNPCAnction: Action2<number, IWeaponElement> = new Action2<number, IWeaponElement>();
+	public onChangeWeaponToNPCAnction: Action2<number, IColdWeaponElement> = new Action2<number, IColdWeaponElement>();
 
 	/**初始化Weapon数据 */
 	private initWeaponData(): void {
-		this.weapons = GameConfig.Weapon.getAllElement();
+		this.weapons = GameConfig.ColdWeapon.getAllElement();
 		this.showWeaponContentPanel();
 	}
 
@@ -756,10 +757,11 @@ class WeaponItem {
 	public mSelectImg: mw.Image = undefined;
 	public mIAAImg: mw.Image = undefined;
 	public mIconBtn: mw.Button = undefined;
+	public mIconImage: mw.Image = undefined;
 	public mNameText: mw.TextBlock = undefined;
 
 	private id: number = null;
-	private weapon: IWeaponElement = null;
+	private weapon: IColdWeaponElement = null;
 
 	private isSelect: boolean = false;
 
@@ -769,20 +771,19 @@ class WeaponItem {
 
 		this.mCanvas = this.weaponItem.findChildByPath("RootCanvas/mCanvas") as mw.Canvas;
 		this.mIconBtn = this.weaponItem.findChildByPath("RootCanvas/mCanvas/mIconBtn") as mw.Button;
+		this.mIconImage = this.weaponItem.findChildByPath("RootCanvas/mCanvas/mIconImage") as mw.Image;
 		this.mIAAImg = this.weaponItem.findChildByPath("RootCanvas/mCanvas/mIAAImg") as mw.Image;
 		this.mSelectImg = this.weaponItem.findChildByPath("RootCanvas/mCanvas/mSelectImg") as mw.Image;
 		this.mNameText = this.weaponItem.findChildByPath("RootCanvas/mCanvas/mNameText") as mw.TextBlock;
 	}
 
 	/**填充数据 */
-	public initData(id: number, weapon: IWeaponElement): void {
+	public initData(id: number, weapon: IColdWeaponElement): void {
 		this.id = id;
 		this.weapon = weapon;
 		let vis: mw.SlateVisibility = (weapon.IsIAA == 0) ? mw.SlateVisibility.Collapsed : mw.SlateVisibility.SelfHitTestInvisible;
 		this.mIAAImg.visibility = vis;
-		this.mIconBtn.normalImageGuid = weapon.WeaponIcon;
-		this.mIconBtn.pressedImageGuid = weapon.WeaponIcon;
-		this.mIconBtn.disableImageGuid = weapon.WeaponIcon;
+		Utils.setImageByAssetIconData(this.mIconImage, weapon.rightWeaponGuid);
 		this.mIconBtn.onClicked.add(() => {
 			Event.dispatchToLocal("PlayButtonClick");
 			if (!GlobalData.delayClick) {

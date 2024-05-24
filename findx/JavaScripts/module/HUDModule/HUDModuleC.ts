@@ -1,27 +1,25 @@
-import { GeneralManager, } from '../../Modified027Editor/ModifiedStaticAPI';
-import { SpawnManager, SpawnInfo, } from '../../Modified027Editor/ModifiedSpawn';
-import { PlayerManagerExtesion, } from '../../Modified027Editor/ModifiedPlayer';
-import Console from "../../Tools/Console";
-import { Utils } from "../../Tools/utils";
 import AdTips from "../../Common/AdTips";
 import { ExplosiveCoins } from "../../Common/ExplosiveCoins";
 import { FlyText } from "../../Common/FlyText";
+import { Notice } from '../../Common/notice/Notice';
 import Test from "../../Common/Test";
 import { GameConfig } from "../../config/GameConfig";
 import { IMusicElement } from "../../config/Music";
-import { IWeaponElement } from "../../config/Weapon";
 import GlobalData from "../../const/GlobalData";
+import { PlayerManagerExtesion, } from '../../Modified027Editor/ModifiedPlayer';
+import { GeneralManager, } from '../../Modified027Editor/ModifiedStaticAPI';
+import Console from "../../Tools/Console";
+import { Utils } from "../../Tools/utils";
 import AchievementModuleC from "../AchievementModule/AchievementModuleC";
 import { AdType } from "../AdsModule/AdsModuleC";
+import { ColdWeapon } from '../ColdWeapon/ColdWeapon';
+import CollectionModuleC from '../CollectionMOdule/CollectionModuleC';
 import PetPanel from "../PetModule/ui/PetPanel";
 import ShopModuleC from "../ShopModule/ShopModuleC";
 import HUDDate from "./HUDDate";
 import HUDModuleS from "./HUDModuleS";
 import GuidePanel from "./ui/GuidePanel";
 import HUDPanel from "./ui/HUDPanel";
-import CollectionModuleC from '../CollectionMOdule/CollectionModuleC';
-import { PrefabEvent } from '../../Prefabs/PrefabEvent';
-import { Notice } from '../../Common/notice/Notice';
 
 export default class HUDModuleC extends ModuleC<HUDModuleS, HUDDate> {
     private hudPanel: HUDPanel = null;
@@ -102,7 +100,7 @@ export default class HUDModuleC extends ModuleC<HUDModuleS, HUDDate> {
             this.hudPanel.mJoystick.resetJoyStick();
             isOpenSkinShop ? this.hudPanel.hide() : this.hudPanel.show();
         });
-        this.onAttackAction.add(this.attack.bind(this));
+        // this.onAttackAction.add(this.attack.bind(this));
         this.onFlyOrWalkAction.add(() => {
             this.switchToFlyingOrWalking();
         });
@@ -120,10 +118,11 @@ export default class HUDModuleC extends ModuleC<HUDModuleS, HUDDate> {
         // this.hudPanel.mAttackMaskBtn.visibility = mw.SlateVisibility.Collapsed;
         this.registerGlobalClickSound();
         this.delayedOperation();
-        this.initWeaponData();
+        // this.initWeaponData();
         this.initPlayerData();
         TimeUtil.delaySecond(10).then(() => {
             this.initGameGuide();
+            this.pickUpWeapon(Utils.getRandomInteger(1, 2));
         });
     }
 
@@ -334,24 +333,24 @@ export default class HUDModuleC extends ModuleC<HUDModuleS, HUDDate> {
     /**本客户端进入游戏同步其他客户端数据 */
     public net_enterGameSnycData(
         wingPlayerIds: number[], wingIds: number[],
-        tailEffectplayerIds: number[], tailEffectIds: number[],
-        weaponPlayerIds: number[], weaponIds: number[]): void {
+        tailEffectplayerIds: number[], tailEffectIds: number[]/*,
+        weaponPlayerIds: number[], weaponIds: number[]*/): void {
         if (wingPlayerIds.length > 0) {
             this.syncWing(wingPlayerIds, wingIds);
         }
         if (tailEffectplayerIds.length > 0) {
             this.snycTailEffect(tailEffectplayerIds, tailEffectIds);
         }
-        if (weaponPlayerIds.length < 0) {
-            this.syncWeaponData(weaponPlayerIds, weaponIds);
-        }
+        // if (weaponPlayerIds.length < 0) {
+        //     this.syncWeaponData(weaponPlayerIds, weaponIds);
+        // }
     }
 
     /**某个客户端玩家离开游戏同步给其他客户端 */
     public net_exitGameSyncData(playerId: number): void {
         this.exitGameDeleteWing(playerId);
         this.exitGameDeletetailEffect(playerId);
-        this.exitGameDeleteWeapon(playerId);
+        // this.exitGameDeleteWeapon(playerId);
     }
 
     //#region  翅膀
@@ -519,74 +518,73 @@ export default class HUDModuleC extends ModuleC<HUDModuleS, HUDDate> {
     //#region 攻击
     /**------------------------------【武器-攻击】------------------------------*/
     /**当前客户端所持有的武器ID */
-    private weaponId: number = 1;
+    private weaponId: number = 0;
     /**攻击事件 */
-    public onAttackAction: Action = new Action();
+    // public onAttackAction: Action = new Action();
     /**更新当前武器CD */
-    public onUpdateAttackCD: Action1<number> = new Action1<number>();
+    // public onUpdateAttackCD: Action1<number> = new Action1<number>();
 
     /**初始化武器数据 */
-    private initWeaponData(): void {
-        let weapon = GameConfig.Weapon.getElement(this.weaponId);
-        this.onUpdateAttackCD.call(Number(weapon.WeaponCD));
-        this.baseAttackValue = weapon.HurtValue;
-    }
+    // private initWeaponData(): void {
+    //     let weapon = GameConfig.ColdWeapon.getElement(this.weaponId);
+    //     this.baseAttackValue = weapon.hitDamage;
+    // }
 
     /**攻击 */
-    private attack(): void {
-        this.server.net_playAniEffSound(this.weaponId);
-        let weapons = GameConfig.Weapon.getElement(this.weaponId);
-        let attackDelayTime = weapons.AttackDelayTime;
-        TimeUtil.delaySecond(Number(attackDelayTime)).then(() => {
-            this.attackDetection(weapons);
-        });
+    // private attack(): void {
+    //     this.server.net_playAniEffSound(this.weaponId);
+    //     let weapons = GameConfig.Weapon.getElement(this.weaponId);
+    //     let attackDelayTime = weapons.AttackDelayTime;
+    //     TimeUtil.delaySecond(Number(attackDelayTime)).then(() => {
+    //         this.attackDetection(weapons);
+    //     });
 
-        this.localPlayer.character.movementEnabled = false;
-        TimeUtil.delaySecond(Number(weapons.AttackTime)).then(() => {
-            this.localPlayer.character.movementEnabled = true;
-        });
-    }
+    //     this.localPlayer.character.movementEnabled = false;
+    //     TimeUtil.delaySecond(Number(weapons.AttackTime)).then(() => {
+    //         this.localPlayer.character.movementEnabled = true;
+    //     });
+    // }
 
     /**攻击检测 */
-    private attackDetection(weapons: IWeaponElement): void {
-        let goList: mw.GameObject[] = [];
-        let attackType = weapons.AttackType;
-        switch (attackType) {
-            case AttackType.RectangleDetection:
-                goList = this.rectangleDetection(weapons);
-                break;
-            case AttackType.CircularDetection:
-                goList = this.circularDetection(weapons);
-                break;
-            case AttackType.CylindricalDetection:
-                goList = this.cylindricalDetection(weapons);
-                break;
-            default:
-                Console.error("attackType = " + attackType + "|[检测类型数据出错了]");
-                break;
-        }
-        Console.error("[len]:" + goList.length);
-        if (goList.length == 0) return;
-        let playerIds: number[] = [];
-        let aiIds: string[] = [];
-        for (const go of goList) {
-            if (PlayerManagerExtesion.isCharacter(go)) {
-                let char = go as mw.Character;
-                let playerId = char.player.playerId;
-                if (char.player.playerId == this.localPlayerId) continue;
-                playerIds.push(playerId);
-                this.flyText(weapons.HurtValue + this.curAttackValue, char.worldTransform.position, true);
-            }
-            if (!go || !go.gameObjectId) continue;
-            if (go.tag == "Boss" && go instanceof mw.Character) {
-                this.flyText(weapons.HurtValue + this.curAttackValue, go.worldTransform.position, true);
-                PrefabEvent.PrefabEvtFight.hurt(this.localPlayer.userId, go.gameObjectId, weapons.HurtValue + this.curAttackValue);
-            }
-        }
-        Console.error("[playerIds.Length] " + playerIds.length);
-        if (playerIds.length == 0 && aiIds.length == 0) return;
-        this.server.net_attackPlayer(playerIds, aiIds, weapons.ImpulseValue, weapons.HurtValue + this.curAttackValue, this.weaponId);
-    }
+    // private attackDetection(weapons: IWeaponElement): void {
+    //     let goList: mw.GameObject[] = [];
+    //     let attackType = weapons.AttackType;
+    //     switch (attackType) {
+    //         case AttackType.RectangleDetection:
+    //             goList = this.rectangleDetection(weapons);
+    //             break;
+    //         case AttackType.CircularDetection:
+    //             goList = this.circularDetection(weapons);
+    //             break;
+    //         case AttackType.CylindricalDetection:
+    //             goList = this.cylindricalDetection(weapons);
+    //             break;
+    //         default:
+    //             Console.error("attackType = " + attackType + "|[检测类型数据出错了]");
+    //             break;
+    //     }
+    //     Console.error("[len]:" + goList.length);
+    //     if (goList.length == 0) return;
+    //     let playerIds: number[] = [];
+    //     let aiIds: string[] = [];
+    //     for (const go of goList) {
+    //         if (PlayerManagerExtesion.isCharacter(go)) {
+    //             let char = go as mw.Character;
+    //             let playerId = char.player.playerId;
+    //             if (char.player.playerId == this.localPlayerId) continue;
+    //             playerIds.push(playerId);
+    //             this.flyText(weapons.HurtValue + this.curAttackValue, char.worldTransform.position, true);
+    //         }
+    //         if (!go || !go.gameObjectId) continue;
+    //         if (go.tag == "Boss" && go instanceof mw.Character) {
+    //             this.flyText(weapons.HurtValue + this.curAttackValue, go.worldTransform.position, true);
+    //             PrefabEvent.PrefabEvtFight.hurt(this.localPlayer.userId, go.gameObjectId, weapons.HurtValue + this.curAttackValue);
+    //         }
+    //     }
+    //     Console.error("[playerIds.Length] " + playerIds.length);
+    //     if (playerIds.length == 0 && aiIds.length == 0) return;
+    //     this.server.net_attackPlayer(playerIds, aiIds, weapons.ImpulseValue, weapons.HurtValue + this.curAttackValue, this.weaponId);
+    // }
     private exp: number = 0;
     private flyText(damage: number, hitPoint: mw.Vector, isSelf: boolean = false): void {
         let fontColor: mw.LinearColor[] = Utils.randomColor();
@@ -608,161 +606,176 @@ export default class HUDModuleC extends ModuleC<HUDModuleS, HUDDate> {
         this.flyText(hp, this.localPlayer.character.worldTransform.position);
     }
 
-    /**矩形检测 */
-    private rectangleDetection(weapons: IWeaponElement): mw.GameObject[] {
-        let startLocation = this.localPlayer.character.worldTransform.position;
-        let forwardVector = this.localPlayer.character.worldTransform.getForwardVector();
-        let forwardMultiply = forwardVector.multiply(weapons.AttackRange[0]);
-        let endLocation = new mw.Vector(startLocation.x + forwardMultiply.x, startLocation.y + forwardMultiply.y, startLocation.z + forwardMultiply.z);
-        let goList = GeneralManager.modiftboxOverlap(startLocation, endLocation, weapons.AttackRange[1], weapons.AttackRange[2], mw.SystemUtil.isPIE);
-        return goList;
+    public net_flyText(damage: number, hitPoint: mw.Vector): void {
+        let fontColor: mw.LinearColor[] = Utils.randomColor();
+        FlyText.instance.showFlyText("-" + damage, hitPoint, fontColor[0], fontColor[1]);
     }
+
+    public net_onSelfAtkPlayer(damage: number, hitPoint: mw.Vector): void {
+        Console.error("net_onSelfAtkPlayer");
+        let fontColor: mw.LinearColor[] = Utils.randomColor();
+        FlyText.instance.showFlyText("-" + damage, hitPoint, fontColor[0], fontColor[1]);
+    }
+
+    /**矩形检测 */
+    // private rectangleDetection(weapons: IWeaponElement): mw.GameObject[] {
+    //     let startLocation = this.localPlayer.character.worldTransform.position;
+    //     let forwardVector = this.localPlayer.character.worldTransform.getForwardVector();
+    //     let forwardMultiply = forwardVector.multiply(weapons.AttackRange[0]);
+    //     let endLocation = new mw.Vector(startLocation.x + forwardMultiply.x, startLocation.y + forwardMultiply.y, startLocation.z + forwardMultiply.z);
+    //     let goList = GeneralManager.modiftboxOverlap(startLocation, endLocation, weapons.AttackRange[1], weapons.AttackRange[2], mw.SystemUtil.isPIE);
+    //     return goList;
+    // }
 
     /**圆形检测 */
-    private circularDetection(weapons: IWeaponElement): mw.GameObject[] {
-        let playerLoc = this.localPlayer.character.worldTransform.position;
-        let forwardVector = this.localPlayer.character.worldTransform.getForwardVector();
-        let forwardMultiply = forwardVector.multiply(weapons.AttackRange[0]);
-        let startLocation = new mw.Vector(playerLoc.x + forwardMultiply.x, playerLoc.y + forwardMultiply.y, playerLoc.z + forwardMultiply.z + weapons.AttackRange[1]);
-        let goList = QueryUtil.sphereOverlap(startLocation, weapons.AttackRange[2], mw.SystemUtil.isPIE);
-        return goList;
-    }
+    // private circularDetection(weapons: IWeaponElement): mw.GameObject[] {
+    //     let playerLoc = this.localPlayer.character.worldTransform.position;
+    //     let forwardVector = this.localPlayer.character.worldTransform.getForwardVector();
+    //     let forwardMultiply = forwardVector.multiply(weapons.AttackRange[0]);
+    //     let startLocation = new mw.Vector(playerLoc.x + forwardMultiply.x, playerLoc.y + forwardMultiply.y, playerLoc.z + forwardMultiply.z + weapons.AttackRange[1]);
+    //     let goList = QueryUtil.sphereOverlap(startLocation, weapons.AttackRange[2], mw.SystemUtil.isPIE);
+    //     return goList;
+    // }
 
     /**圆柱形检测 */
-    private cylindricalDetection(weapons: IWeaponElement): mw.GameObject[] {
-        let playerLoc = this.localPlayer.character.worldTransform.position;
-        let forwardVector = this.localPlayer.character.worldTransform.getForwardVector();
-        let forwardMultiply = forwardVector.multiply(weapons.AttackRange[0]);
-        let startLocation = new mw.Vector(playerLoc.x + forwardMultiply.x, playerLoc.y + forwardMultiply.y, playerLoc.z + forwardMultiply.z);
-        let goList = QueryUtil.capsuleOverlap(startLocation, weapons.AttackRange[1], weapons.AttackRange[2], mw.SystemUtil.isPIE);
-        return goList;
-    }
+    // private cylindricalDetection(weapons: IWeaponElement): mw.GameObject[] {
+    //     let playerLoc = this.localPlayer.character.worldTransform.position;
+    //     let forwardVector = this.localPlayer.character.worldTransform.getForwardVector();
+    //     let forwardMultiply = forwardVector.multiply(weapons.AttackRange[0]);
+    //     let startLocation = new mw.Vector(playerLoc.x + forwardMultiply.x, playerLoc.y + forwardMultiply.y, playerLoc.z + forwardMultiply.z);
+    //     let goList = QueryUtil.capsuleOverlap(startLocation, weapons.AttackRange[1], weapons.AttackRange[2], mw.SystemUtil.isPIE);
+    //     return goList;
+    // }
 
     /**播放攻击动画、特效、音效（服务端同步给所有客户端执行某个客户端的攻击表现） */
-    public net_playAniEffSound(playerId: number, weaponId: number): void {
-        this.playAniEffSound_StoC(playerId, weaponId);
-    }
+    // public net_playAniEffSound(playerId: number, weaponId: number): void {
+    // this.playAniEffSound_StoC(playerId, weaponId);
+    // }
 
     /**播放攻击动画、特效、音效（服务端同步给所有客户端执行某个客户端的攻击表现） */
-    private async playAniEffSound_StoC(playerId: number, weaponId: number): Promise<void> {
-        let player = await Player.asyncGetPlayer(playerId);
-        let weapons = GameConfig.Weapon.getElement(weaponId);
+    // private async playAniEffSound_StoC(playerId: number, weaponId: number): Promise<void> {
+    //     let player = await Player.asyncGetPlayer(playerId);
+    //     let weapons = GameConfig.Weapon.getElement(weaponId);
 
-        if (!weapons.AttackAnimationId) return;
+    //     if (!weapons.AttackAnimationId) return;
 
-        if (player && player.character) player.character.loadAnimation(weapons.AttackAnimationId).play();
-        let startLocation = player.character.worldTransform.position;
-        let forwardVector = player.character.worldTransform.getForwardVector();
-        let forwardMultiply = forwardVector.multiply(weapons.EffectOffset);
-        let offset = new mw.Vector(startLocation.x + forwardMultiply.x, startLocation.y + forwardMultiply.y, startLocation.z + forwardMultiply.z);
-        let tmpRot = new mw.Rotation(forwardVector, mw.Vector.zero);
-        let rot = new mw.Rotation(tmpRot.x + weapons.EffectRot.x, tmpRot.y + weapons.EffectRot.y, tmpRot.z + weapons.EffectRot.z);
-        TimeUtil.delaySecond(Number(weapons.AttackDelayTime)).then(async () => {
-            GeneralManager.rpcPlayEffectAtLocation(
-                weapons.AttackEffectId,
-                offset,
-                1,
-                rot,
-                weapons.EffectScale
-            );
-            SoundService.play3DSound(weapons.AttackSound, player.character);
-        });
-    }
-
-    /**播放受击特效 */
-    public net_playHitEffect(playerIds: number[], weaponId: number): void {
-        this.playHitEffect_StoC(playerIds, weaponId);
-    }
+    //     if (player && player.character) player.character.loadAnimation(weapons.AttackAnimationId).play();
+    //     let startLocation = player.character.worldTransform.position;
+    //     let forwardVector = player.character.worldTransform.getForwardVector();
+    //     let forwardMultiply = forwardVector.multiply(weapons.EffectOffset);
+    //     let offset = new mw.Vector(startLocation.x + forwardMultiply.x, startLocation.y + forwardMultiply.y, startLocation.z + forwardMultiply.z);
+    //     let tmpRot = new mw.Rotation(forwardVector, mw.Vector.zero);
+    //     let rot = new mw.Rotation(tmpRot.x + weapons.EffectRot.x, tmpRot.y + weapons.EffectRot.y, tmpRot.z + weapons.EffectRot.z);
+    //     TimeUtil.delaySecond(Number(weapons.AttackDelayTime)).then(async () => {
+    //         GeneralManager.rpcPlayEffectAtLocation(
+    //             weapons.AttackEffectId,
+    //             offset,
+    //             1,
+    //             rot,
+    //             weapons.EffectScale
+    //         );
+    //         SoundService.play3DSound(weapons.AttackSound, player.character);
+    //     });
+    // }
 
     /**播放受击特效 */
-    public async playHitEffect_StoC(playerIds: number[], weaponId: number): Promise<void> {
-        let weapon = GameConfig.Weapon.getElement(weaponId);
-        for (const playerId of playerIds) {
-            let player = await Player.asyncGetPlayer(playerId);
-            GeneralManager.rpcPlayEffectOnPlayer(
-                weapon.HitEffect,
-                player,
-                mw.HumanoidSlotType.Root,
-                1,
-                weapon.HitEffectOffset,
-                new mw.Rotation(weapon.HitEffectRot),
-                weapon.HitEffectScale
-            );
-            if (weapon.HitSound == null ||
-                player == undefined || player == null ||
-                player.character == undefined || player.character == null) continue;
-            SoundService.play3DSound(
-                weapon.HitSound,
-                player.character,
-                1,
-                10000
-            );
-        }
-    }
+    // public net_playHitEffect(playerIds: number[], weaponId: number): void {
+    // this.playHitEffect_StoC(playerIds, weaponId);
+    // }
+
+    /**播放受击特效 */
+    // public async playHitEffect_StoC(playerIds: number[], weaponId: number): Promise<void> {
+    //     let weapon = GameConfig.Weapon.getElement(weaponId);
+    //     for (const playerId of playerIds) {
+    //         let player = await Player.asyncGetPlayer(playerId);
+    //         GeneralManager.rpcPlayEffectOnPlayer(
+    //             weapon.HitEffect,
+    //             player,
+    //             mw.HumanoidSlotType.Root,
+    //             1,
+    //             weapon.HitEffectOffset,
+    //             new mw.Rotation(weapon.HitEffectRot),
+    //             weapon.HitEffectScale
+    //         );
+    //         if (weapon.HitSound == null ||
+    //             player == undefined || player == null ||
+    //             player.character == undefined || player.character == null) continue;
+    //         SoundService.play3DSound(
+    //             weapon.HitSound,
+    //             player.character,
+    //             1,
+    //             10000
+    //         );
+    //     }
+    // }
     //#endregion
 
     //#region 武器拾取
     /**每个客户端都存储所有玩家的武器 */
-    private weaponModelMap: Map<number, mw.GameObject> = new Map<number, mw.GameObject>();
+    // private weaponModelMap: Map<number, mw.GameObject> = new Map<number, mw.GameObject>();
 
     /**拾取武器 */
     public pickUpWeapon(id: number): void {
         if (this.weaponId == id) return;
         this.weaponId = id;
-        let weapon = GameConfig.Weapon.getElement(id);
-        this.onUpdateAttackCD.call(Number(weapon.WeaponCD));
-        this.baseAttackValue = weapon.HurtValue;
-        this.hudPanel.mAttackText.text = "攻击力：" + (this.baseAttackValue + this.curAttackValue);
-        this.achievementModuleC.onExecuteAchievementAction.call(12, 1);
-        this.shopModuleC.useWeaponCloseShopPanel();
-        this.server.net_pickUpWeapon(id);
+
+        const userInstance = ColdWeapon.getInstance();
+        userInstance.register(GameConfig.ColdWeapon.getElement(id));
+        Notice.showDownNotice("使用成功");
+        // let weapon = GameConfig.ColdWeapon.getElement(id);
+        // this.onUpdateAttackCD.call(Number(weapon.WeaponCD));
+        // this.baseAttackValue = weapon.HurtValue;
+        // this.hudPanel.mAttackText.text = "攻击力：" + (this.baseAttackValue + this.curAttackValue);
+        // this.achievementModuleC.onExecuteAchievementAction.call(12, 1);
+        // this.shopModuleC.useWeaponCloseShopPanel();
+        // this.server.net_pickUpWeapon(id);
     }
 
     /**拾取武器（服务端通知所有客户端） */
-    public net_pickUpWeapon(playerId: number, id: number): void {
-        this.destoryWeapon(playerId);
-        this.spawnWeapon(playerId, id);
-    }
+    // public net_pickUpWeapon(playerId: number, id: number): void {
+    //     this.destoryWeapon(playerId);
+    //     this.spawnWeapon(playerId, id);
+    // }
 
     /**进入房间的玩家同步其他玩家所持有武器数据(服务端通知本客户端) */
-    private syncWeaponData(weaponPlayerIds: number[], weaponIds: number[]): void {
-        if (weaponPlayerIds.length == 0) return;
-        for (let i = 0; i < weaponPlayerIds.length; ++i) {
-            let player = Player.getPlayer(weaponPlayerIds[i]);
-            let playerId = player.playerId;
-            this.spawnWeapon(playerId, weaponIds[i]);
-        }
-    }
+    // private syncWeaponData(weaponPlayerIds: number[], weaponIds: number[]): void {
+    //     if (weaponPlayerIds.length == 0) return;
+    //     for (let i = 0; i < weaponPlayerIds.length; ++i) {
+    //         let player = Player.getPlayer(weaponPlayerIds[i]);
+    //         let playerId = player.playerId;
+    //         this.spawnWeapon(playerId, weaponIds[i]);
+    //     }
+    // }
 
     /**离开房间的玩家同步其他玩家所持有武器数据(服务端通知所有客户端) */
-    private exitGameDeleteWeapon(playerId: number): void {
-        this.destoryWeapon(playerId);
-    }
+    // private exitGameDeleteWeapon(playerId: number): void {
+    //     this.destoryWeapon(playerId);
+    // }
 
     /**销毁武器 */
-    private destoryWeapon(playerId: number): void {
-        if (this.weaponModelMap.has(playerId)) {
-            mwext.GameObjPool.despawn(this.weaponModelMap.get(playerId));
-            this.weaponModelMap.delete(playerId);
-        }
-    }
+    // private destoryWeapon(playerId: number): void {
+    //     if (this.weaponModelMap.has(playerId)) {
+    //         mwext.GameObjPool.despawn(this.weaponModelMap.get(playerId));
+    //         this.weaponModelMap.delete(playerId);
+    //     }
+    // }
 
     /**生成武器 */
-    private spawnWeapon(playerId: number, id: number): void {
-        let modelGuid = GameConfig.Weapon.getElement(id).WeaponGuid;
-        if (!modelGuid) return;
-        let weaponModel = SpawnManager.modifyPoolSpawn(modelGuid);
-        weaponModel.asyncReady().then(async () => {
-            let player = await Player.asyncGetPlayer(playerId);
-            if (!player.character) return;
-            player.character.attachToSlot(weaponModel, mw.HumanoidSlotType.RightHand);
-            weaponModel.localTransform.position = (mw.Vector.zero);
-            weaponModel.localTransform.rotation = (mw.Rotation.zero);
-            weaponModel.worldTransform.scale = (mw.Vector.one);
-            this.weaponModelMap.set(playerId, weaponModel);
-            Console.error("playerId = " + playerId + " 的玩家已使用guid = " + modelGuid + " 的武器");
-        });
-    }
+    // private spawnWeapon(playerId: number, id: number): void {
+    //     let modelGuid = GameConfig.Weapon.getElement(id).WeaponGuid;
+    //     if (!modelGuid) return;
+    //     let weaponModel = SpawnManager.modifyPoolSpawn(modelGuid);
+    //     weaponModel.asyncReady().then(async () => {
+    //         let player = await Player.asyncGetPlayer(playerId);
+    //         if (!player.character) return;
+    //         player.character.attachToSlot(weaponModel, mw.HumanoidSlotType.RightHand);
+    //         weaponModel.localTransform.position = (mw.Vector.zero);
+    //         weaponModel.localTransform.rotation = (mw.Rotation.zero);
+    //         weaponModel.worldTransform.scale = (mw.Vector.one);
+    //         this.weaponModelMap.set(playerId, weaponModel);
+    //         Console.error("playerId = " + playerId + " 的玩家已使用guid = " + modelGuid + " 的武器");
+    //     });
+    // }
     /**------------------------------【武器】------------------------------*/
     //#endregion
 
@@ -814,6 +827,9 @@ export default class HUDModuleC extends ModuleC<HUDModuleS, HUDDate> {
     }
     public net_killAch(): void {
         this.achievementModuleC.onExecuteAchievementAction.call(5, 1);
+    }
+    public get getAtk(): number {
+        return this.curAttackValue;
     }
     private maxHp: number = 100;
     private baseAttackValue: number = 0;

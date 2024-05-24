@@ -11,6 +11,7 @@ import HUDPanel_Generate from "../../../ui-generate/module/HUDUI/HUDPanel_genera
 import HUDModuleC, { KillTipData, KillTipType } from "../HUDModuleC";
 import KillTipItem_Generate from "../../../ui-generate/module/HUDUI/KillTipItem_generate";
 import { Notice } from "../../../Common/notice/Notice";
+import { ColdWeapon } from "../../ColdWeapon/ColdWeapon";
 
 export default class HUDPanel extends HUDPanel_Generate {
 	private hudModuleC: HUDModuleC = null;
@@ -21,7 +22,7 @@ export default class HUDPanel extends HUDPanel_Generate {
 	/**重生事件 */
 	public onRebirthAction: Action = new Action();
 	/**攻击CD */
-	private attackCD: number = 2;
+	// private attackCD: number = 2;
 
 	/** 
 	 * 构造UI文件成功后，在合适的时机最先初始化一次 
@@ -34,7 +35,7 @@ export default class HUDPanel extends HUDPanel_Generate {
 		this.initUI();
 		this.initData();
 		this.bindButtons();
-		this.registerActions();
+		// this.registerActions();
 	}
 
 	/**初始化数据 */
@@ -89,12 +90,12 @@ export default class HUDPanel extends HUDPanel_Generate {
 	}
 
 	/**注册事件 */
-	private registerActions(): void {
-		this.hudModuleC.onUpdateAttackCD.add((cd: number) => {
-			this.attackCD = cd;
-			Console.error("[更新攻击CD：" + this.attackCD + "]");
-		});
-	}
+	// private registerActions(): void {
+	// 	this.hudModuleC.onUpdateAttackCD.add((cd: number) => {
+	// 		this.attackCD = cd;
+	// 		Console.error("[更新攻击CD：" + this.attackCD + "]");
+	// 	});
+	// }
 
 	/**是否打开BGM */
 	private isOpenBGM: boolean = true;
@@ -134,31 +135,20 @@ export default class HUDPanel extends HUDPanel_Generate {
 
 	/**初始化攻击按钮 */
 	private initAttackButton(): void {
-		this.mCDTxt.visibility = mw.SlateVisibility.Collapsed;
-		this.mAttackMaskBtn.clickedDelegate.add(() => {
-			Console.error("[攻击]");
-			this.hudModuleC.onAttackAction.call();
-			this.updateAttackCD(this.attackCD);
-		});
-		this.mAttackMaskBtn.fanShapedValue = 1;
-		this.mAttackMaskBtn.enable = true;
+		this.atk(0);
 	}
 
-	/**更新攻击CD显示以及按钮可用性 */
-	private updateAttackCD(cd: number): void {
-		this.mAttackMaskBtn.enable = false;
-		this.mCDTxt.visibility = mw.SlateVisibility.SelfHitTestInvisible;
-
-		let tmpCD = cd;
-		this.mCDTxt.text = tmpCD.toString();
-		this.mAttackMaskBtn.fanShapedValue = 0;
-
-		new mw.Tween({ value: 0 }).to({ value: 1 }, tmpCD * 1000).onUpdate((v) => {
-			this.mCDTxt.text = (tmpCD - v.value * tmpCD).toFixed(1);
-			this.mAttackMaskBtn.fanShapedValue = v.value;
-		}).start().onComplete(() => {
-			this.mAttackMaskBtn.enable = true;
-			this.mCDTxt.visibility = mw.SlateVisibility.Collapsed;
+	private curInputIndex: number = -1;
+	private atk(index: number): void {
+		this.mAttackButton.onPressed.add(() => {
+			if (this.curInputIndex != -1) return;
+			ColdWeapon.getInstance().attack(index);
+			this.curInputIndex = index;
+		});
+		this.mAttackButton.onReleased.add(() => {
+			if (this.curInputIndex != index) return;
+			ColdWeapon.getInstance().endCharge(true);
+			this.curInputIndex = -1;
 		});
 	}
 

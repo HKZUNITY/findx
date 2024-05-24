@@ -3,7 +3,7 @@
  * WARNING: DO NOT MODIFY THIS FILE,MAY CAUSE CODE LOST.
  * AUTHOR: 爱玩游戏的小胖子
  * UI: UI/module/HUDUI/HUDPanel.ui
- * TIME: 2024.05.19-23.41.26
+ * TIME: 2024.05.24-23.38.06
  */
  
 @UIBind('UI/module/HUDUI/HUDPanel.ui')
@@ -64,19 +64,12 @@ export default class HUDPanel_Generate extends UIScript {
 		}
 		return this.mAttackCanvas_Internal
 	}
-	private mAttackMaskBtn_Internal: mw.MaskButton
-	public get mAttackMaskBtn(): mw.MaskButton {
-		if(!this.mAttackMaskBtn_Internal&&this.uiWidgetBase) {
-			this.mAttackMaskBtn_Internal = this.uiWidgetBase.findChildByPath('RootCanvas/RightDownCanvas/mAttackCanvas/mAttackMaskBtn') as mw.MaskButton
+	private mAttackButton_Internal: mw.Button
+	public get mAttackButton(): mw.Button {
+		if(!this.mAttackButton_Internal&&this.uiWidgetBase) {
+			this.mAttackButton_Internal = this.uiWidgetBase.findChildByPath('RootCanvas/RightDownCanvas/mAttackCanvas/mAttackButton') as mw.Button
 		}
-		return this.mAttackMaskBtn_Internal
-	}
-	private mCDTxt_Internal: mw.TextBlock
-	public get mCDTxt(): mw.TextBlock {
-		if(!this.mCDTxt_Internal&&this.uiWidgetBase) {
-			this.mCDTxt_Internal = this.uiWidgetBase.findChildByPath('RootCanvas/RightDownCanvas/mAttackCanvas/mCDTxt') as mw.TextBlock
-		}
-		return this.mCDTxt_Internal
+		return this.mAttackButton_Internal
 	}
 	private mTimeText_Internal: mw.TextBlock
 	public get mTimeText(): mw.TextBlock {
@@ -300,6 +293,12 @@ export default class HUDPanel_Generate extends UIScript {
 		this.mJumpBtn.touchMethod = (mw.ButtonTouchMethod.PreciseTap);
 		
 	
+		this.mAttackButton.onClicked.add(()=>{
+			Event.dispatchToLocal("PlayButtonClick", "mAttackButton");
+		});
+		this.mAttackButton.touchMethod = (mw.ButtonTouchMethod.PreciseTap);
+		
+	
 		this.mRaffleButton.onClicked.add(()=>{
 			Event.dispatchToLocal("PlayButtonClick", "mRaffleButton");
 		});
@@ -389,9 +388,6 @@ export default class HUDPanel_Generate extends UIScript {
 		//文本多语言
 		
 		this.initLanguage(this.mFlyText)
-		
-	
-		this.initLanguage(this.mCDTxt)
 		
 	
 		this.initLanguage(this.mTimeText)

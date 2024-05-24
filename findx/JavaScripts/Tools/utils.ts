@@ -237,6 +237,21 @@ export class Utils {
         }
         else return "零";
     }
+
+    private static assetIconDataMap: Map<string, mw.AssetIconData> = new Map<string, mw.AssetIconData>();
+    public static setImageByAssetIconData(image: mw.Image, icon: string): void {
+        if (this.assetIconDataMap.has(icon)) {
+            image.setImageByAssetIconData(this.assetIconDataMap.get(icon));
+        } else {
+            mw.assetIDChangeIconUrlRequest([icon]).then(() => {
+                try {
+                    let assetIconData = mw.getAssetIconDataByAssetID(icon);
+                    image.setImageByAssetIconData(assetIconData);
+                    this.assetIconDataMap.set(icon, assetIconData);
+                } catch (error) { }
+            });
+        }
+    }
 }
 
 /**贝塞尔曲线 */

@@ -3,7 +3,7 @@
  * WARNING: DO NOT MODIFY THIS FILE,MAY CAUSE CODE LOST.
  * AUTHOR: 爱玩游戏的小胖子
  * UI: UI/common/ImpactRadiusWindow.ui
- * TIME: 2024.05.19-23.41.25
+ * TIME: 2024.05.24-23.38.06
  */
  
 @UIBind('UI/common/ImpactRadiusWindow.ui')

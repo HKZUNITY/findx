@@ -3,6 +3,7 @@ import {AchievementsConfig} from "./Achievements";
 import {AssetsConfig} from "./Assets";
 import {BlockingVolumeConfig} from "./BlockingVolume";
 import {ClothesConfig} from "./Clothes";
+import {ColdWeaponConfig} from "./ColdWeapon";
 import {CollectionConfig} from "./Collection";
 import {DanceConfig} from "./Dance";
 import {FlashlightConfig} from "./Flashlight";
@@ -17,7 +18,6 @@ import {SitConfig} from "./Sit";
 import {TailConfig} from "./Tail";
 import {TelegraphPoleConfig} from "./TelegraphPole";
 import {TrampolineConfig} from "./Trampoline";
-import {WeaponConfig} from "./Weapon";
 import {WingConfig} from "./Wing";
 
 export class GameConfig{
@@ -41,6 +41,7 @@ export class GameConfig{
 	public static get Assets():AssetsConfig{ return this.getConfig(AssetsConfig) };
 	public static get BlockingVolume():BlockingVolumeConfig{ return this.getConfig(BlockingVolumeConfig) };
 	public static get Clothes():ClothesConfig{ return this.getConfig(ClothesConfig) };
+	public static get ColdWeapon():ColdWeaponConfig{ return this.getConfig(ColdWeaponConfig) };
 	public static get Collection():CollectionConfig{ return this.getConfig(CollectionConfig) };
 	public static get Dance():DanceConfig{ return this.getConfig(DanceConfig) };
 	public static get Flashlight():FlashlightConfig{ return this.getConfig(FlashlightConfig) };
@@ -55,6 +56,5 @@ export class GameConfig{
 	public static get Tail():TailConfig{ return this.getConfig(TailConfig) };
 	public static get TelegraphPole():TelegraphPoleConfig{ return this.getConfig(TelegraphPoleConfig) };
 	public static get Trampoline():TrampolineConfig{ return this.getConfig(TrampolineConfig) };
-	public static get Weapon():WeaponConfig{ return this.getConfig(WeaponConfig) };
 	public static get Wing():WingConfig{ return this.getConfig(WingConfig) };
 }

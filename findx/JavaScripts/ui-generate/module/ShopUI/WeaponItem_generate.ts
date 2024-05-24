@@ -3,12 +3,19 @@
  * WARNING: DO NOT MODIFY THIS FILE,MAY CAUSE CODE LOST.
  * AUTHOR: 爱玩游戏的小胖子
  * UI: UI/module/ShopUI/WeaponItem.ui
- * TIME: 2024.05.19-23.41.26
+ * TIME: 2024.05.24-23.38.07
  */
  
 @UIBind('UI/module/ShopUI/WeaponItem.ui')
 export default class WeaponItem_Generate extends UIScript {
-		private mSelectImg_Internal: mw.Image
+		private mCanvas_Internal: mw.Canvas
+	public get mCanvas(): mw.Canvas {
+		if(!this.mCanvas_Internal&&this.uiWidgetBase) {
+			this.mCanvas_Internal = this.uiWidgetBase.findChildByPath('RootCanvas/mCanvas') as mw.Canvas
+		}
+		return this.mCanvas_Internal
+	}
+	private mSelectImg_Internal: mw.Image
 	public get mSelectImg(): mw.Image {
 		if(!this.mSelectImg_Internal&&this.uiWidgetBase) {
 			this.mSelectImg_Internal = this.uiWidgetBase.findChildByPath('RootCanvas/mCanvas/mSelectImg') as mw.Image
@@ -21,6 +28,13 @@ export default class WeaponItem_Generate extends UIScript {
 			this.mIAAImg_Internal = this.uiWidgetBase.findChildByPath('RootCanvas/mCanvas/mIAAImg') as mw.Image
 		}
 		return this.mIAAImg_Internal
+	}
+	private mIconImage_Internal: mw.Image
+	public get mIconImage(): mw.Image {
+		if(!this.mIconImage_Internal&&this.uiWidgetBase) {
+			this.mIconImage_Internal = this.uiWidgetBase.findChildByPath('RootCanvas/mCanvas/mIconImage') as mw.Image
+		}
+		return this.mIconImage_Internal
 	}
 	private mIconBtn_Internal: mw.Button
 	public get mIconBtn(): mw.Button {
@@ -35,13 +49,6 @@ export default class WeaponItem_Generate extends UIScript {
 			this.mNameText_Internal = this.uiWidgetBase.findChildByPath('RootCanvas/mCanvas/mNameText') as mw.TextBlock
 		}
 		return this.mNameText_Internal
-	}
-	private mCanvas_Internal: mw.Canvas
-	public get mCanvas(): mw.Canvas {
-		if(!this.mCanvas_Internal&&this.uiWidgetBase) {
-			this.mCanvas_Internal = this.uiWidgetBase.findChildByPath('RootCanvas/mCanvas') as mw.Canvas
-		}
-		return this.mCanvas_Internal
 	}
 
 

@@ -1,8 +1,8 @@
 import AdTips from "../../Common/AdTips";
 import { Notice } from "../../Common/notice/Notice";
 import { IClothesElement } from "../../config/Clothes";
+import { IColdWeaponElement } from "../../config/ColdWeapon";
 import { ITailElement } from "../../config/Tail";
-import { IWeaponElement } from "../../config/Weapon";
 import { IWingElement } from "../../config/Wing";
 import GlobalData from "../../const/GlobalData";
 import { PlayerManagerExtesion, } from '../../Modified027Editor/ModifiedPlayer';
@@ -197,7 +197,7 @@ export default class ShopModuleC extends ModuleC<ShopModuleS, ShopData> {
         });
     }
 
-    private npcAnimation: mw.Animation = null;
+    // private npcAnimation: mw.Animation = null;
     private clothGuids: string[] = ["", "", "", "", "", "", ""];
     private clothIAA: number[] = [0, 0, 0, 0, 0, 0, 0];
     private currentClothGuids: string[] = ["", "", "", "", "", "", ""];
@@ -261,12 +261,12 @@ export default class ShopModuleC extends ModuleC<ShopModuleS, ShopData> {
             default:
                 break;
         }
-        if (this.npcAnimation) {
-            this.npcAnimation.stop();
-            this.npcAnimation = null;
-        }
-        this.npcAnimation = PlayerManagerExtesion.loadAnimationExtesion(this.getShopNpc, animation, false)
-        this.npcAnimation.play();
+        // if (this.npcAnimation) {
+        //     this.npcAnimation.stop();
+        //     this.npcAnimation = null;
+        // }
+        // this.npcAnimation = PlayerManagerExtesion.loadAnimationExtesion(this.getShopNpc, animation, false)
+        // this.npcAnimation.play();
     }
 
     /**保存服装 */
@@ -409,10 +409,10 @@ export default class ShopModuleC extends ModuleC<ShopModuleS, ShopData> {
     public useWeaponCloseShopPanel(): void {
         this.shopPanel.closeShop();
     }
-    private weapon: IWeaponElement = null;
+    private weapon: IColdWeaponElement = null;
     private weaponIsIAA: number = 0;
     /**更新Weapon数据 */
-    private updateWeaponItemData(id: number, weapon: IWeaponElement): void {
+    private updateWeaponItemData(id: number, weapon: IColdWeaponElement): void {
         if (this.weapon != null && this.weapon.id == weapon.id) {
             Notice.showDownNotice("已使用~");
             return;
@@ -430,7 +430,7 @@ export default class ShopModuleC extends ModuleC<ShopModuleS, ShopData> {
             mwext.GameObjPool.despawn(this.npcWeaponModel);
             this.npcWeaponModel = null;
         }
-        let modelGuid = this.weapon.WeaponGuid;
+        let modelGuid = this.weapon.rightWeaponGuid;
         if (!modelGuid) return;
         let weaponModel = SpawnManager.modifyPoolSpawn(modelGuid);
         weaponModel.asyncReady().then(() => {
@@ -439,12 +439,12 @@ export default class ShopModuleC extends ModuleC<ShopModuleS, ShopData> {
             weaponModel.localTransform.rotation = (mw.Rotation.zero);
             weaponModel.worldTransform.scale = (mw.Vector.one);
             this.npcWeaponModel = weaponModel;
-            if (this.npcAnimation) {
-                this.npcAnimation.stop();
-                this.npcAnimation = null;
-            }
-            this.npcAnimation = PlayerManagerExtesion.loadAnimationExtesion(this.getShopNpc, this.weapon.AttackAnimationId, false)
-            this.npcAnimation.play();
+            // if (this.npcAnimation) {
+            //     this.npcAnimation.stop();
+            //     this.npcAnimation = null;
+            // }
+            // this.npcAnimation = PlayerManagerExtesion.loadAnimationExtesion(this.getShopNpc, this.weapon.AttackAnimationId, false)
+            // this.npcAnimation.play();
         });
     }
 
