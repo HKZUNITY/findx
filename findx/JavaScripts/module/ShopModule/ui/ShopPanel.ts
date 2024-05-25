@@ -194,8 +194,8 @@ export default class ShopPanel extends ShopPanel_Generate {
 
 	/**布局位置Cloth */
 	private getClothChildPos(): mw.Vector2 {
-		let x = (((this.currentChildIndex - 1) % 3) * 300) + 35;
-		let y = (Math.ceil(this.currentChildIndex / 3) - 1) * 280;
+		let x = (((this.currentChildIndex - 1) % 3) * 350) + 75;
+		let y = (Math.ceil(this.currentChildIndex / 3) - 1) * 300;
 		++this.currentChildIndex;
 		return new mw.Vector2(x, y);
 	}
@@ -274,14 +274,14 @@ export default class ShopPanel extends ShopPanel_Generate {
 	}
 
 	/**记录当前点击的衣服类型按钮 */
-	private currentClothTypeBtn: mw.Button = this.mClothesBtn1;
+	private currentClothTypeBtn: mw.Button = this.mClothesBtn6;
 	/**记录当前点击的衣服类型 */
-	private currentClothType: ClothType = ClothType.hair;
+	private currentClothType: ClothType = ClothType.body;
 	/**服装按钮绑定 */
 	private bindClothButtons(): void {
 		this.mClothesCanvas.visibility = mw.SlateVisibility.Collapsed;
-		this.currentClothTypeBtn = this.mClothesBtn1;
-		this.currentClothType = ClothType.hair;
+		this.currentClothTypeBtn = this.mClothesBtn6;
+		this.currentClothType = ClothType.body;
 		this.currentClothTypeBtn.normalImageColor = GlobalData.selectShopTypeBtnColor;
 		for (let i = 0; i < 6; ++i) {
 			(this['mClothesBtn' + (i + 1)] as mw.Button).onClicked.add(() => {
@@ -319,11 +319,11 @@ export default class ShopPanel extends ShopPanel_Generate {
 	/**显示的服装内容 */
 	private showClothTypeContentPanel(clothType: ClothType): void {
 		this.currentChildIndex = 1;
-		this.mScrollBox.size = new mw.Vector(900, 850);
-		this.mScrollBox.position = new mw.Vector(200, 200);
+		this.mScrollBox.size = new mw.Vector(1100, 850);
+		this.mScrollBox.position = new mw.Vector(0, 200);
 		this.mScrollBox.scrollOffset = 0;
 		this.mContentCanvas.position = new mw.Vector2(0, 0);
-		this.mContentCanvas.size = new mw.Vector2(900, 0);
+		this.mContentCanvas.size = new mw.Vector2(1100, 0);
 		if (this.clothItems.length > 0) {
 			this.recycleCurrentClothShopItems();
 		}
@@ -354,7 +354,7 @@ export default class ShopPanel extends ShopPanel_Generate {
 			let clothItem = ObjectPoolServices.getPool(ClothItem).spawn();
 			clothItem.initData(i, tmpCloths[i]);
 			this.mContentCanvas.addChild(clothItem.clothItem);
-			clothItem.clothItem.size = new mw.Vector2(230, 230);
+			clothItem.clothItem.size = new mw.Vector2(260, 260);
 			clothItem.clothItem.position = this.getClothChildPos();
 			this.clothItems.push(clothItem);
 		}
@@ -364,12 +364,12 @@ export default class ShopPanel extends ShopPanel_Generate {
 		--this.currentChildIndex;
 		let y = 0;
 		if (this.currentChildIndex % 3 == 0) {
-			y = (this.currentChildIndex / 3) * 280;
+			y = (this.currentChildIndex / 3) * 300;
 		}
 		else {
-			y = (Math.ceil(this.currentChildIndex / 3)) * 280;
+			y = (Math.ceil(this.currentChildIndex / 3)) * 300;
 		}
-		this.mContentCanvas.size = new mw.Vector2(900, y);
+		this.mContentCanvas.size = new mw.Vector2(1100, y);
 	}
 	/**记录当前选中的Clothitem */
 	private currentSelectClothIndexs: number[] = [-1, -1, -1, -1, -1, -1, -1];
@@ -686,6 +686,7 @@ class ClothItem {
 	public mSelectImg: mw.Image = undefined;
 	public mIAAImg: mw.Image = undefined;
 	public mIconBtn: mw.Button = undefined;
+	public mIconImage: mw.Image = undefined;
 	public mCanvas: mw.Canvas = undefined;
 
 	private id: number = null;
@@ -699,6 +700,7 @@ class ClothItem {
 
 		this.mCanvas = this.clothItem.findChildByPath("RootCanvas/mCanvas") as mw.Canvas;
 		this.mIconBtn = this.clothItem.findChildByPath("RootCanvas/mCanvas/mIconBtn") as mw.Button;
+		this.mIconImage = this.clothItem.findChildByPath("RootCanvas/mCanvas/mIconImage") as mw.Image;
 		this.mIAAImg = this.clothItem.findChildByPath("RootCanvas/mCanvas/mIAAImg") as mw.Image;
 		this.mSelectImg = this.clothItem.findChildByPath("RootCanvas/mCanvas/mSelectImg") as mw.Image;
 	}
@@ -709,9 +711,7 @@ class ClothItem {
 		this.cloth = cloth;
 		let vis: mw.SlateVisibility = (cloth.IsIAA == 0) ? mw.SlateVisibility.Collapsed : mw.SlateVisibility.SelfHitTestInvisible;
 		this.mIAAImg.visibility = vis;
-		this.mIconBtn.normalImageGuid = cloth.Icon;
-		this.mIconBtn.pressedImageGuid = cloth.Icon;
-		this.mIconBtn.disableImageGuid = cloth.Icon;
+		Utils.setImageByAssetIconData(this.mIconImage, cloth.ClothGuid);
 		this.mIconBtn.onClicked.add(() => {
 			Event.dispatchToLocal("PlayButtonClick");
 			if (!GlobalData.delayClick) {

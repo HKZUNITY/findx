@@ -3,7 +3,7 @@
  * WARNING: DO NOT MODIFY THIS FILE,MAY CAUSE CODE LOST.
  * AUTHOR: 爱玩游戏的小胖子
  * UI: UI/Prefabs/可弹跳的交互物/UI/Prefab/Trampoline/JumpRecordUI.ui
- * TIME: 2024.05.24-23.38.07
+ * TIME: 2024.05.25-14.47.29
  */
  
 @UIBind('UI/Prefabs/可弹跳的交互物/UI/Prefab/Trampoline/JumpRecordUI.ui')

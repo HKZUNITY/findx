@@ -232,11 +232,11 @@ export default class ShopModuleC extends ModuleC<ShopModuleS, ShopData> {
             }
         }
         this.shopPanel.updateClothItemState(id);
-        this.changeClothesToNpc(clothGuid, cloth.Animation, clothType);
+        this.changeClothesToNpc(clothGuid,/* cloth.Animation,*/ clothType);
     }
 
     /**给NPC换装 */
-    public changeClothesToNpc(clothGuid: string, animation: string, clothType: ClothType): void {
+    public changeClothesToNpc(clothGuid: string,/* animation: string,*/ clothType: ClothType): void {
         switch (clothType) {
             case ClothType.hair:
                 let hairGuids = clothGuid.split(',');

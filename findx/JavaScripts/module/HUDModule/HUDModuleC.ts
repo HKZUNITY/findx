@@ -122,7 +122,7 @@ export default class HUDModuleC extends ModuleC<HUDModuleS, HUDDate> {
         this.initPlayerData();
         TimeUtil.delaySecond(10).then(() => {
             this.initGameGuide();
-            this.pickUpWeapon(Utils.getRandomInteger(1, 2));
+            this.pickUpWeapon(Utils.getRandomInteger(1, 3));
         });
     }
 

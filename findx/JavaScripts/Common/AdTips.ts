@@ -50,7 +50,7 @@ export default class AdTips extends AdTips_Generate {
 
 	/**显示此界面 */
 	public showAdTips(id: number, adType: number): void {
-		if (this.visible) return;
+		// if (this.visible) return;
 		this.id = id;
 		this.adType = adType;
 		this.show();

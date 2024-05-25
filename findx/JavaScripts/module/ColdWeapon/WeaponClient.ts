@@ -491,6 +491,7 @@ export abstract class WeaponClient extends WeaponData {
                 this.curPlayEffs.push(eff);
             } else {
                 setTimeout(() => {
+                    eff.forceStop();
                     GameObjPool.despawn(eff);
                 }, stopTime);
             }
@@ -508,6 +509,7 @@ export abstract class WeaponClient extends WeaponData {
                 this.curPlayEffs.push(eff);
             } else {
                 setTimeout(() => {
+                    eff.forceStop();
                     GameObjPool.despawn(eff);
                 }, stopTime);
             }

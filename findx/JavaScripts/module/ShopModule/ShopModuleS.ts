@@ -21,7 +21,7 @@ export default class ShopModuleS extends ModuleS<ShopModuleC, ShopData> {
     public net_playEffectAndSoundToPlayer(playType: number): void {
         let effectId: string = "";
         if (playType == 0) {
-            effectId = GlobalData.changeClothEffectGuid;
+            effectId = GlobalData.playerAddEffectGuid;
         }
         else if (playType == 1) {
             effectId = GlobalData.upgradeEffectGuid;
