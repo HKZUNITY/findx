@@ -126,7 +126,7 @@ ConfigBase.TAG_MAINLANGUAGE = 'MainLanguage'; //主语言tag
 ConfigBase.TAG_CHILDLANGUAGE = 'ChildLanguage'; //子语言tag
 ConfigBase.languageIndex = 0;
 
-var foreign26 = /*#__PURE__*/Object.freeze({
+var foreign28 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     ConfigBase: ConfigBase
 });
@@ -138,7 +138,7 @@ class AchievementsConfig extends ConfigBase {
     }
 }
 
-var foreign20 = /*#__PURE__*/Object.freeze({
+var foreign22 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     AchievementsConfig: AchievementsConfig
 });
@@ -150,7 +150,7 @@ class AssetsConfig extends ConfigBase {
     }
 }
 
-var foreign21 = /*#__PURE__*/Object.freeze({
+var foreign23 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     AssetsConfig: AssetsConfig
 });
@@ -162,7 +162,7 @@ class BlockingVolumeConfig extends ConfigBase {
     }
 }
 
-var foreign22 = /*#__PURE__*/Object.freeze({
+var foreign24 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     BlockingVolumeConfig: BlockingVolumeConfig
 });
@@ -174,7 +174,7 @@ class ClothesConfig extends ConfigBase {
     }
 }
 
-var foreign23 = /*#__PURE__*/Object.freeze({
+var foreign25 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     ClothesConfig: ClothesConfig
 });
@@ -186,7 +186,7 @@ class ColdWeaponConfig extends ConfigBase {
     }
 }
 
-var foreign24 = /*#__PURE__*/Object.freeze({
+var foreign26 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     ColdWeaponConfig: ColdWeaponConfig
 });
@@ -198,7 +198,7 @@ class CollectionConfig extends ConfigBase {
     }
 }
 
-var foreign25 = /*#__PURE__*/Object.freeze({
+var foreign27 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     CollectionConfig: CollectionConfig
 });
@@ -210,7 +210,7 @@ class DanceConfig extends ConfigBase {
     }
 }
 
-var foreign27 = /*#__PURE__*/Object.freeze({
+var foreign29 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     DanceConfig: DanceConfig
 });
@@ -222,7 +222,7 @@ class FlashlightConfig extends ConfigBase {
     }
 }
 
-var foreign29 = /*#__PURE__*/Object.freeze({
+var foreign31 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     FlashlightConfig: FlashlightConfig
 });
@@ -234,6 +234,11 @@ class MonsterInfoConfig extends ConfigBase {
     }
 }
 
+var foreign33 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    MonsterInfoConfig: MonsterInfoConfig
+});
+
 const EXCELDATA$d = [["id", "Guid", "Annotation"], ["", "", ""], [1, "118698", "STAY"], [2, "118699", "bad guy"], [3, "117222", "我会活下去"], [4, "118697", "Let Me Love You"], [5, "118700", "Running up That Hill"], [6, "118701", "Love To Hate Me"], [7, "118702", "TOMBOY"], [8, "118703", "Shut Down"], [9, "118704", "Celestial"], [10, "118712", "As It Was"], [11, "118706", "Good Morning"], [12, "118707", "Alone"], [13, "118709", "Chanderiler"], [14, "118711", "Don't Wanna Know"], [15, "118716", "Mood"], [16, "117220", "金轮"], [17, "128884", "不知道叫啥"], [18, "128888", "也不知道叫啥"]];
 class MusicConfig extends ConfigBase {
     constructor() {
@@ -241,7 +246,7 @@ class MusicConfig extends ConfigBase {
     }
 }
 
-var foreign32 = /*#__PURE__*/Object.freeze({
+var foreign34 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     MusicConfig: MusicConfig
 });
@@ -253,7 +258,7 @@ class NPCSitDanceConfig extends ConfigBase {
     }
 }
 
-var foreign33 = /*#__PURE__*/Object.freeze({
+var foreign35 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     NPCSitDanceConfig: NPCSitDanceConfig
 });
@@ -265,7 +270,7 @@ class PetConfig extends ConfigBase {
     }
 }
 
-var foreign34 = /*#__PURE__*/Object.freeze({
+var foreign36 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     PetConfig: PetConfig
 });
@@ -277,7 +282,7 @@ class PlayerLauncherConfig extends ConfigBase {
     }
 }
 
-var foreign35 = /*#__PURE__*/Object.freeze({
+var foreign37 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     PlayerLauncherConfig: PlayerLauncherConfig
 });
@@ -289,7 +294,7 @@ class PortalConfig extends ConfigBase {
     }
 }
 
-var foreign36 = /*#__PURE__*/Object.freeze({
+var foreign38 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     PortalConfig: PortalConfig
 });
@@ -301,7 +306,7 @@ class RotaryKnifeTriggerConfig extends ConfigBase {
     }
 }
 
-var foreign37 = /*#__PURE__*/Object.freeze({
+var foreign39 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     RotaryKnifeTriggerConfig: RotaryKnifeTriggerConfig
 });
@@ -313,7 +318,7 @@ class ShakeConfig extends ConfigBase {
     }
 }
 
-var foreign38 = /*#__PURE__*/Object.freeze({
+var foreign40 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     ShakeConfig: ShakeConfig
 });
@@ -325,7 +330,7 @@ class SitConfig extends ConfigBase {
     }
 }
 
-var foreign39 = /*#__PURE__*/Object.freeze({
+var foreign41 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     SitConfig: SitConfig
 });
@@ -337,7 +342,7 @@ class TailConfig extends ConfigBase {
     }
 }
 
-var foreign40 = /*#__PURE__*/Object.freeze({
+var foreign42 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     TailConfig: TailConfig
 });
@@ -349,7 +354,7 @@ class TelegraphPoleConfig extends ConfigBase {
     }
 }
 
-var foreign41 = /*#__PURE__*/Object.freeze({
+var foreign43 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     TelegraphPoleConfig: TelegraphPoleConfig
 });
@@ -361,7 +366,7 @@ class TrampolineConfig extends ConfigBase {
     }
 }
 
-var foreign42 = /*#__PURE__*/Object.freeze({
+var foreign44 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     TrampolineConfig: TrampolineConfig
 });
@@ -373,7 +378,7 @@ class WingConfig extends ConfigBase {
     }
 }
 
-var foreign44 = /*#__PURE__*/Object.freeze({
+var foreign46 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     WingConfig: WingConfig
 });
@@ -439,7 +444,7 @@ class GameConfig {
 }
 GameConfig.configMap = new Map();
 
-var foreign30 = /*#__PURE__*/Object.freeze({
+var foreign32 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     GameConfig: GameConfig
 });
@@ -559,7 +564,7 @@ GlobalData.completeImageBgColor = [0, 255, 0, 255];
 /**item间隔 */
 GlobalData.itemPositionInterval = 270;
 
-var foreign46 = /*#__PURE__*/Object.freeze({
+var foreign48 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     default: GlobalData
 });
@@ -585,7 +590,7 @@ class Console {
     }
 }
 
-var foreign103 = /*#__PURE__*/Object.freeze({
+var foreign105 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     default: Console
 });
@@ -780,7 +785,7 @@ class GeneralManager {
     }
 }
 
-var foreign51 = /*#__PURE__*/Object.freeze({
+var foreign53 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     GeneralManager: GeneralManager
 });
@@ -1076,7 +1081,7 @@ function cubicBezier(p1x, p1y, p2x, p2y) {
     return solve;
 }
 
-var foreign106 = /*#__PURE__*/Object.freeze({
+var foreign108 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     Tween: Tween$2,
     Utils: Utils,
@@ -1174,7 +1179,7 @@ class FlyText {
     }
 }
 
-var foreign6 = /*#__PURE__*/Object.freeze({
+var foreign7 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     FlyText: FlyText
 });
@@ -1279,7 +1284,7 @@ class ExplosiveCoins {
     }
 }
 
-var foreign4 = /*#__PURE__*/Object.freeze({
+var foreign5 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     ExplosiveCoins: ExplosiveCoins
 });
@@ -1313,7 +1318,7 @@ function __decorate(decorators, target, key, desc) {
  * WARNING: DO NOT MODIFY THIS FILE,MAY CAUSE CODE LOST.
  * AUTHOR: 爱玩游戏的小胖子
  * UI: UI/common/notice/NoticeView.ui
- * TIME: 2024.05.25-14.47.28
+ * TIME: 2024.08.04-18.39.52
  */
 let NoticeView_Generate = class NoticeView_Generate extends UIScript {
     get con_top_notice() {
@@ -1370,7 +1375,7 @@ NoticeView_Generate = __decorate([
 ], NoticeView_Generate);
 var NoticeView_Generate$1 = NoticeView_Generate;
 
-var foreign110 = /*#__PURE__*/Object.freeze({
+var foreign114 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     default: NoticeView_Generate$1
 });
@@ -1380,7 +1385,7 @@ var foreign110 = /*#__PURE__*/Object.freeze({
  * WARNING: DO NOT MODIFY THIS FILE,MAY CAUSE CODE LOST.
  * AUTHOR: 爱玩游戏的小胖子
  * UI: UI/common/notice/TopNoticeItem.ui
- * TIME: 2024.05.25-14.47.28
+ * TIME: 2024.08.04-18.39.52
  */
 let TopNoticeItem_Generate = class TopNoticeItem_Generate extends UIScript {
     get txt_context() {
@@ -1444,7 +1449,7 @@ TopNoticeItem_Generate = __decorate([
 ], TopNoticeItem_Generate);
 var TopNoticeItem_Generate$1 = TopNoticeItem_Generate;
 
-var foreign112 = /*#__PURE__*/Object.freeze({
+var foreign116 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     default: TopNoticeItem_Generate$1
 });
@@ -2176,7 +2181,7 @@ const add = TWEEN.add.bind(TWEEN);
 const remove = TWEEN.remove.bind(TWEEN);
 const update = TWEEN.update.bind(TWEEN);
 
-var foreign9 = /*#__PURE__*/Object.freeze({
+var foreign11 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     Easing: Easing,
     Group: Group,
@@ -2354,7 +2359,7 @@ class WorldUIPool {
     }
 }
 
-var foreign10 = /*#__PURE__*/Object.freeze({
+var foreign12 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     UIElementPool: UIElementPool,
     UIPool: UIPool,
@@ -2386,7 +2391,7 @@ var updater;
     };
 })(updater || (updater = {}));
 
-var foreign11 = /*#__PURE__*/Object.freeze({
+var foreign13 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     get updater () { return updater; }
 });
@@ -2675,7 +2680,7 @@ class TopNoticeItem extends TopNoticeItem_Generate$1 {
     }
 }
 
-var foreign8 = /*#__PURE__*/Object.freeze({
+var foreign10 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     Notice: Notice
 });
@@ -2685,7 +2690,7 @@ var foreign8 = /*#__PURE__*/Object.freeze({
  * WARNING: DO NOT MODIFY THIS FILE,MAY CAUSE CODE LOST.
  * AUTHOR: 爱玩游戏的小胖子
  * UI: UI/common/Test.ui
- * TIME: 2024.05.25-14.47.28
+ * TIME: 2024.08.04-18.39.52
  */
 let Test_Generate = class Test_Generate extends UIScript {
     get mInputBox() {
@@ -2746,7 +2751,7 @@ Test_Generate = __decorate([
 ], Test_Generate);
 var Test_Generate$1 = Test_Generate;
 
-var foreign114 = /*#__PURE__*/Object.freeze({
+var foreign118 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     default: Test_Generate$1
 });
@@ -2794,7 +2799,7 @@ class Test extends Test_Generate$1 {
     }
 }
 
-var foreign19 = /*#__PURE__*/Object.freeze({
+var foreign21 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     default: Test
 });
@@ -3160,7 +3165,7 @@ class RpcStance {
 }
 PlayerManagerExtesion.init();
 
-var foreign49 = /*#__PURE__*/Object.freeze({
+var foreign51 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     PlayerManagerExtesion: PlayerManagerExtesion
 });
@@ -3838,7 +3843,7 @@ var PrefabEvent;
     initEvent();
 })(PrefabEvent || (PrefabEvent = {}));
 
-var foreign97 = /*#__PURE__*/Object.freeze({
+var foreign99 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     get PrefabEvent () { return PrefabEvent; }
 });
@@ -4038,7 +4043,7 @@ __decorate([
     mw.Property({ replicated: true, onChanged: "client_OnChangeCharGuid" })
 ], WeaponData.prototype, "charGuid", void 0);
 
-var foreign63 = /*#__PURE__*/Object.freeze({
+var foreign65 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     AnimationInfo: AnimationInfo$1,
     NodeInfo: NodeInfo,
@@ -4114,7 +4119,7 @@ class SkillRectCheck {
 }
 SkillRectCheck.showRect = true;
 
-var foreign60 = /*#__PURE__*/Object.freeze({
+var foreign62 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     SkillRectCheck: SkillRectCheck
 });
@@ -4217,7 +4222,7 @@ SpawnManager.deleteDic = new Map([
     ["14197", true],
 ]);
 
-var foreign50 = /*#__PURE__*/Object.freeze({
+var foreign52 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     SpawnManager: SpawnManager
 });
@@ -4417,7 +4422,7 @@ class WeaponManager extends WeaponManagerSvr {
 WeaponManager._Instance = null;
 WeaponManager.GetInstance();
 
-var foreign64 = /*#__PURE__*/Object.freeze({
+var foreign66 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     WeaponManager: WeaponManager
 });
@@ -4563,7 +4568,7 @@ class ColdWeapon {
     }
 }
 
-var foreign59 = /*#__PURE__*/Object.freeze({
+var foreign61 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     ColdWeapon: ColdWeapon
 });
@@ -4748,7 +4753,7 @@ class ObjPool {
     }
 }
 
-var foreign105 = /*#__PURE__*/Object.freeze({
+var foreign107 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     ObjPool: ObjPool,
     get ObjectPoolServices () { return ObjectPoolServices; }
@@ -4759,7 +4764,7 @@ var foreign105 = /*#__PURE__*/Object.freeze({
  * WARNING: DO NOT MODIFY THIS FILE,MAY CAUSE CODE LOST.
  * AUTHOR: 爱玩游戏的小胖子
  * UI: UI/module/PetUI/PetPanel.ui
- * TIME: 2024.05.25-14.47.29
+ * TIME: 2024.08.04-18.39.53
  */
 let PetPanel_Generate = class PetPanel_Generate extends UIScript {
     get mCloseButton() {
@@ -4832,7 +4837,7 @@ PetPanel_Generate = __decorate([
 ], PetPanel_Generate);
 var PetPanel_Generate$1 = PetPanel_Generate;
 
-var foreign130 = /*#__PURE__*/Object.freeze({
+var foreign134 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     default: PetPanel_Generate$1
 });
@@ -4842,7 +4847,7 @@ var foreign130 = /*#__PURE__*/Object.freeze({
  * WARNING: DO NOT MODIFY THIS FILE,MAY CAUSE CODE LOST.
  * AUTHOR: 爱玩游戏的小胖子
  * UI: UI/module/PetUI/PetRafflePanel.ui
- * TIME: 2024.05.25-14.47.29
+ * TIME: 2024.08.04-18.39.54
  */
 let PetRafflePanel_Generate = class PetRafflePanel_Generate extends UIScript {
     get mCloseButton() {
@@ -5086,7 +5091,7 @@ PetRafflePanel_Generate = __decorate([
 ], PetRafflePanel_Generate);
 var PetRafflePanel_Generate$1 = PetRafflePanel_Generate;
 
-var foreign131 = /*#__PURE__*/Object.freeze({
+var foreign135 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     default: PetRafflePanel_Generate$1
 });
@@ -5236,7 +5241,7 @@ class PetRafflePanel extends PetRafflePanel_Generate$1 {
     }
 }
 
-var foreign83 = /*#__PURE__*/Object.freeze({
+var foreign85 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     default: PetRafflePanel
 });
@@ -5419,7 +5424,7 @@ __decorate([
     Decorator.noReply()
 ], PetModuleS.prototype, "net_saveIsFreeCount", null);
 
-var foreign81 = /*#__PURE__*/Object.freeze({
+var foreign83 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     PetData: PetData,
     PetModuleC: PetModuleC,
@@ -5578,7 +5583,7 @@ class PetItem {
     }
 }
 
-var foreign82 = /*#__PURE__*/Object.freeze({
+var foreign84 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     default: PetPanel
 });
@@ -5714,7 +5719,7 @@ class TouchData {
     }
 }
 
-var foreign104 = /*#__PURE__*/Object.freeze({
+var foreign106 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     InputManagers: InputManagers,
     TouchData: TouchData
@@ -5725,7 +5730,7 @@ var foreign104 = /*#__PURE__*/Object.freeze({
  * WARNING: DO NOT MODIFY THIS FILE,MAY CAUSE CODE LOST.
  * AUTHOR: 爱玩游戏的小胖子
  * UI: UI/module/ShopUI/ShopPanel.ui
- * TIME: 2024.05.25-14.47.29
+ * TIME: 2024.08.04-18.39.54
  */
 let ShopPanel_Generate = class ShopPanel_Generate extends UIScript {
     get mLeftCanvas() {
@@ -5944,7 +5949,7 @@ ShopPanel_Generate = __decorate([
 ], ShopPanel_Generate);
 var ShopPanel_Generate$1 = ShopPanel_Generate;
 
-var foreign136 = /*#__PURE__*/Object.freeze({
+var foreign140 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     default: ShopPanel_Generate$1
 });
@@ -6820,7 +6825,7 @@ var ShopType;
     ShopType[ShopType["Tail"] = 4] = "Tail";
 })(ShopType || (ShopType = {}));
 
-var foreign92 = /*#__PURE__*/Object.freeze({
+var foreign94 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     get ShopType () { return ShopType; },
     default: ShopPanel
@@ -7384,7 +7389,7 @@ var ClothType;
     ClothType[ClothType["body"] = 6] = "body";
 })(ClothType || (ClothType = {}));
 
-var foreign90 = /*#__PURE__*/Object.freeze({
+var foreign92 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     get ClothType () { return ClothType; },
     default: ShopModuleC
@@ -7395,7 +7400,7 @@ var foreign90 = /*#__PURE__*/Object.freeze({
  * WARNING: DO NOT MODIFY THIS FILE,MAY CAUSE CODE LOST.
  * AUTHOR: 爱玩游戏的小胖子
  * UI: UI/module/HUDUI/HUDPanel.ui
- * TIME: 2024.05.25-14.47.28
+ * TIME: 2024.08.04-18.39.53
  */
 let HUDPanel_Generate = class HUDPanel_Generate extends UIScript {
     get mJoystick() {
@@ -7749,7 +7754,7 @@ HUDPanel_Generate = __decorate([
 ], HUDPanel_Generate);
 var HUDPanel_Generate$1 = HUDPanel_Generate;
 
-var foreign125 = /*#__PURE__*/Object.freeze({
+var foreign129 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     default: HUDPanel_Generate$1
 });
@@ -7759,7 +7764,7 @@ var foreign125 = /*#__PURE__*/Object.freeze({
  * WARNING: DO NOT MODIFY THIS FILE,MAY CAUSE CODE LOST.
  * AUTHOR: 爱玩游戏的小胖子
  * UI: UI/module/HUDUI/KillTipItem.ui
- * TIME: 2024.05.25-14.47.28
+ * TIME: 2024.08.04-18.39.53
  */
 let KillTipItem_Generate = class KillTipItem_Generate extends UIScript {
     get mBgImage() {
@@ -7825,7 +7830,7 @@ KillTipItem_Generate = __decorate([
 ], KillTipItem_Generate);
 var KillTipItem_Generate$1 = KillTipItem_Generate;
 
-var foreign126 = /*#__PURE__*/Object.freeze({
+var foreign130 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     default: KillTipItem_Generate$1
 });
@@ -8188,7 +8193,7 @@ class KillTipItem extends KillTipItem_Generate$1 {
     }
 }
 
-var foreign77 = /*#__PURE__*/Object.freeze({
+var foreign79 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     KillTipItem: KillTipItem,
     default: HUDPanel
@@ -9174,7 +9179,7 @@ var KillTipType;
     KillTipType[KillTipType["revenge"] = 3] = "revenge";
 })(KillTipType || (KillTipType = {}));
 
-var foreign74 = /*#__PURE__*/Object.freeze({
+var foreign76 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     KillTipData: KillTipData,
     get KillTipType () { return KillTipType; },
@@ -9262,7 +9267,7 @@ __decorate([
     Decorator.persistence()
 ], AchievementData.prototype, "isFirstAch", void 0);
 
-var foreign52 = /*#__PURE__*/Object.freeze({
+var foreign54 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     Achievement: Achievement,
     default: AchievementData
@@ -9273,7 +9278,7 @@ var foreign52 = /*#__PURE__*/Object.freeze({
  * WARNING: DO NOT MODIFY THIS FILE,MAY CAUSE CODE LOST.
  * AUTHOR: 爱玩游戏的小胖子
  * UI: UI/module/Achievement/AchievementMain.ui
- * TIME: 2024.05.25-14.47.28
+ * TIME: 2024.08.04-18.39.53
  */
 let AchievementMain_Generate = class AchievementMain_Generate extends UIScript {
     get mScrollBox() {
@@ -9341,7 +9346,7 @@ AchievementMain_Generate = __decorate([
 ], AchievementMain_Generate);
 var AchievementMain_Generate$1 = AchievementMain_Generate;
 
-var foreign118 = /*#__PURE__*/Object.freeze({
+var foreign122 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     default: AchievementMain_Generate$1
 });
@@ -9569,7 +9574,7 @@ var GradeType;
     GradeType[GradeType["Complete"] = 6] = "Complete";
 })(GradeType || (GradeType = {}));
 
-var foreign55 = /*#__PURE__*/Object.freeze({
+var foreign57 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     get GradeType () { return GradeType; },
     default: AchievementPanel
@@ -9580,7 +9585,7 @@ var foreign55 = /*#__PURE__*/Object.freeze({
  * WARNING: DO NOT MODIFY THIS FILE,MAY CAUSE CODE LOST.
  * AUTHOR: 爱玩游戏的小胖子
  * UI: UI/module/Achievement/Completed.ui
- * TIME: 2024.05.25-14.47.28
+ * TIME: 2024.08.04-18.39.53
  */
 let Completed_Generate = class Completed_Generate extends UIScript {
     get mCanvas() {
@@ -9652,7 +9657,7 @@ Completed_Generate = __decorate([
 ], Completed_Generate);
 var Completed_Generate$1 = Completed_Generate;
 
-var foreign119 = /*#__PURE__*/Object.freeze({
+var foreign123 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     default: Completed_Generate$1
 });
@@ -9733,7 +9738,7 @@ class CompletedPanel extends Completed_Generate$1 {
     }
 }
 
-var foreign56 = /*#__PURE__*/Object.freeze({
+var foreign58 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     default: CompletedPanel
 });
@@ -9951,7 +9956,7 @@ class AchievementModuleC extends ModuleC {
     }
 }
 
-var foreign53 = /*#__PURE__*/Object.freeze({
+var foreign55 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     default: AchievementModuleC
 });
@@ -9961,7 +9966,7 @@ var foreign53 = /*#__PURE__*/Object.freeze({
  * WARNING: DO NOT MODIFY THIS FILE,MAY CAUSE CODE LOST.
  * AUTHOR: 爱玩游戏的小胖子
  * UI: UI/module/CollectionUI/CollectionPanel.ui
- * TIME: 2024.05.25-14.47.28
+ * TIME: 2024.08.04-18.39.53
  */
 let CollectionPanel_Generate = class CollectionPanel_Generate extends UIScript {
     get mCollectionBtn1() {
@@ -10072,7 +10077,7 @@ CollectionPanel_Generate = __decorate([
 ], CollectionPanel_Generate);
 var CollectionPanel_Generate$1 = CollectionPanel_Generate;
 
-var foreign121 = /*#__PURE__*/Object.freeze({
+var foreign125 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     default: CollectionPanel_Generate$1
 });
@@ -10082,7 +10087,7 @@ var foreign121 = /*#__PURE__*/Object.freeze({
  * WARNING: DO NOT MODIFY THIS FILE,MAY CAUSE CODE LOST.
  * AUTHOR: 爱玩游戏的小胖子
  * UI: UI/module/CollectionUI/CollectionItemTip.ui
- * TIME: 2024.05.25-14.47.28
+ * TIME: 2024.08.04-18.39.53
  */
 let CollectionItemTip_Generate = class CollectionItemTip_Generate extends UIScript {
     get mCloseButton() {
@@ -10174,7 +10179,7 @@ CollectionItemTip_Generate = __decorate([
 ], CollectionItemTip_Generate);
 var CollectionItemTip_Generate$1 = CollectionItemTip_Generate;
 
-var foreign120 = /*#__PURE__*/Object.freeze({
+var foreign124 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     default: CollectionItemTip_Generate$1
 });
@@ -10293,7 +10298,7 @@ class CollectionItemPanel extends CollectionItemTip_Generate$1 {
     }
 }
 
-var foreign69 = /*#__PURE__*/Object.freeze({
+var foreign71 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     default: CollectionItemPanel
 });
@@ -10533,7 +10538,7 @@ var CollectionType;
     CollectionType[CollectionType["AnomalousFire"] = 4] = "AnomalousFire";
 })(CollectionType || (CollectionType = {}));
 
-var foreign70 = /*#__PURE__*/Object.freeze({
+var foreign72 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     get CollectionType () { return CollectionType; },
     default: CollectionPanel
@@ -10733,7 +10738,7 @@ class CollectionModuleC extends ModuleC {
     }
 }
 
-var foreign67 = /*#__PURE__*/Object.freeze({
+var foreign69 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     default: CollectionModuleC
 });
@@ -10743,7 +10748,7 @@ var foreign67 = /*#__PURE__*/Object.freeze({
  * WARNING: DO NOT MODIFY THIS FILE,MAY CAUSE CODE LOST.
  * AUTHOR: 爱玩游戏的小胖子
  * UI: UI/module/SignInUI/SignInPanel.ui
- * TIME: 2024.05.25-14.47.29
+ * TIME: 2024.08.04-18.39.54
  */
 let SignInPanel_Generate = class SignInPanel_Generate extends UIScript {
     get mSignInBtn1() {
@@ -10977,7 +10982,7 @@ SignInPanel_Generate = __decorate([
 ], SignInPanel_Generate);
 var SignInPanel_Generate$1 = SignInPanel_Generate;
 
-var foreign140 = /*#__PURE__*/Object.freeze({
+var foreign144 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     default: SignInPanel_Generate$1
 });
@@ -11071,7 +11076,7 @@ class SignInPanel extends SignInPanel_Generate$1 {
     }
 }
 
-var foreign96 = /*#__PURE__*/Object.freeze({
+var foreign98 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     default: SignInPanel
 });
@@ -11208,7 +11213,7 @@ class SignInModuleC extends ModuleC {
     }
 }
 
-var foreign94 = /*#__PURE__*/Object.freeze({
+var foreign96 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     default: SignInModuleC
 });
@@ -11312,7 +11317,7 @@ var AdType;
     AdType[AdType["RandomGetId"] = 10] = "RandomGetId";
 })(AdType || (AdType = {}));
 
-var foreign57 = /*#__PURE__*/Object.freeze({
+var foreign59 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     get AdType () { return AdType; },
     default: AdsModuleC
@@ -11323,7 +11328,7 @@ var foreign57 = /*#__PURE__*/Object.freeze({
  * WARNING: DO NOT MODIFY THIS FILE,MAY CAUSE CODE LOST.
  * AUTHOR: 爱玩游戏的小胖子
  * UI: UI/common/AdTips.ui
- * TIME: 2024.05.25-14.47.28
+ * TIME: 2024.08.04-18.39.52
  */
 let AdTips_Generate = class AdTips_Generate extends UIScript {
     get mTitleTxt() {
@@ -11393,7 +11398,7 @@ AdTips_Generate = __decorate([
 ], AdTips_Generate);
 var AdTips_Generate$1 = AdTips_Generate;
 
-var foreign107 = /*#__PURE__*/Object.freeze({
+var foreign109 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     default: AdTips_Generate$1
 });
@@ -11497,7 +11502,7 @@ var foreign1 = /*#__PURE__*/Object.freeze({
  * WARNING: DO NOT MODIFY THIS FILE,MAY CAUSE CODE LOST.
  * AUTHOR: 爱玩游戏的小胖子
  * UI: UI/module/CollectionUI/CollectionTip.ui
- * TIME: 2024.05.25-14.47.29
+ * TIME: 2024.08.04-18.39.53
  */
 let CollectionTip_Generate = class CollectionTip_Generate extends UIScript {
     get mCloseBtn() {
@@ -11560,7 +11565,7 @@ CollectionTip_Generate = __decorate([
 ], CollectionTip_Generate);
 var CollectionTip_Generate$1 = CollectionTip_Generate;
 
-var foreign122 = /*#__PURE__*/Object.freeze({
+var foreign126 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     default: CollectionTip_Generate$1
 });
@@ -11597,7 +11602,7 @@ class CollectionTipPanel extends CollectionTip_Generate$1 {
     }
 }
 
-var foreign71 = /*#__PURE__*/Object.freeze({
+var foreign73 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     default: CollectionTipPanel
 });
@@ -11763,6 +11768,142 @@ var foreign2 = /*#__PURE__*/Object.freeze({
     default: Collections$1
 });
 
+/**
+ * AUTO GENERATE BY UI EDITOR.
+ * WARNING: DO NOT MODIFY THIS FILE,MAY CAUSE CODE LOST.
+ * AUTHOR: 爱玩游戏的小胖子
+ * UI: UI/common/ConfirmPanel.ui
+ * TIME: 2024.08.04-18.39.52
+ */
+let ConfirmPanel_Generate = class ConfirmPanel_Generate extends UIScript {
+    get mTitleTextBlock() {
+        if (!this.mTitleTextBlock_Internal && this.uiWidgetBase) {
+            this.mTitleTextBlock_Internal = this.uiWidgetBase.findChildByPath('RootCanvas/MainCanvas/mTitleTextBlock');
+        }
+        return this.mTitleTextBlock_Internal;
+    }
+    get mContentTextBlock() {
+        if (!this.mContentTextBlock_Internal && this.uiWidgetBase) {
+            this.mContentTextBlock_Internal = this.uiWidgetBase.findChildByPath('RootCanvas/MainCanvas/mContentTextBlock');
+        }
+        return this.mContentTextBlock_Internal;
+    }
+    get mSureButton() {
+        if (!this.mSureButton_Internal && this.uiWidgetBase) {
+            this.mSureButton_Internal = this.uiWidgetBase.findChildByPath('RootCanvas/MainCanvas/mSureButton');
+        }
+        return this.mSureButton_Internal;
+    }
+    get mSureTextBlock() {
+        if (!this.mSureTextBlock_Internal && this.uiWidgetBase) {
+            this.mSureTextBlock_Internal = this.uiWidgetBase.findChildByPath('RootCanvas/MainCanvas/mSureButton/mSureTextBlock');
+        }
+        return this.mSureTextBlock_Internal;
+    }
+    get mCancleButton() {
+        if (!this.mCancleButton_Internal && this.uiWidgetBase) {
+            this.mCancleButton_Internal = this.uiWidgetBase.findChildByPath('RootCanvas/MainCanvas/mCancleButton');
+        }
+        return this.mCancleButton_Internal;
+    }
+    get mCancleTextBlock() {
+        if (!this.mCancleTextBlock_Internal && this.uiWidgetBase) {
+            this.mCancleTextBlock_Internal = this.uiWidgetBase.findChildByPath('RootCanvas/MainCanvas/mCancleButton/mCancleTextBlock');
+        }
+        return this.mCancleTextBlock_Internal;
+    }
+    onAwake() {
+        //设置能否每帧触发onUpdate
+        this.canUpdate = false;
+        this.layer = mw.UILayerBottom;
+        this.initButtons();
+    }
+    initButtons() {
+        //按钮添加点击
+        //按钮添加点击
+        this.mSureButton.onClicked.add(() => {
+            Event.dispatchToLocal("PlayButtonClick", "mSureButton");
+        });
+        this.mSureButton.touchMethod = (mw.ButtonTouchMethod.PreciseTap);
+        this.mCancleButton.onClicked.add(() => {
+            Event.dispatchToLocal("PlayButtonClick", "mCancleButton");
+        });
+        this.mCancleButton.touchMethod = (mw.ButtonTouchMethod.PreciseTap);
+        //按钮多语言
+        //文本多语言
+        this.initLanguage(this.mTitleTextBlock);
+        this.initLanguage(this.mContentTextBlock);
+        this.initLanguage(this.mSureTextBlock);
+        this.initLanguage(this.mCancleTextBlock);
+        //文本多语言
+    }
+    /*初始化多语言*/
+    initLanguage(ui) {
+        let call = mw.UIScript.getBehavior("lan");
+        if (call && ui) {
+            call(ui);
+        }
+    }
+    onShow(...params) { }
+    ;
+    /*显示panel*/
+    show(...param) {
+        mw.UIService.showUI(this, this.layer, ...param);
+    }
+    /*隐藏panel*/
+    hide() {
+        mw.UIService.hideUI(this);
+    }
+};
+ConfirmPanel_Generate = __decorate([
+    UIBind('UI/common/ConfirmPanel.ui')
+], ConfirmPanel_Generate);
+var ConfirmPanel_Generate$1 = ConfirmPanel_Generate;
+
+var foreign110 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: ConfirmPanel_Generate$1
+});
+
+class ConfirmPanel extends ConfirmPanel_Generate$1 {
+    constructor() {
+        super(...arguments);
+        this.callback = null;
+    }
+    /**
+     * 构造UI文件成功后，在合适的时机最先初始化一次
+     */
+    onStart() {
+        //设置能否每帧触发onUpdate
+        this.canUpdate = false;
+        this.layer = UILayerMiddle;
+        this.bindButton();
+    }
+    bindButton() {
+        this.mSureButton.onClicked.add(() => {
+            this.hide();
+            if (this.callback)
+                this.callback();
+        });
+        this.mCancleButton.onClicked.add(() => {
+            this.hide();
+        });
+    }
+    confirmTips(callback, contentText, yesText = "购买", noText = "取消", titleText = "提示") {
+        this.mSureTextBlock.text = yesText;
+        this.mCancleTextBlock.text = noText;
+        this.mTitleTextBlock.text = titleText;
+        this.mContentTextBlock.text = contentText;
+        this.callback = callback;
+        this.show();
+    }
+}
+
+var foreign3 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: ConfirmPanel
+});
+
 var OnClickType;
 (function (OnClickType) {
     /**坐 */
@@ -11822,7 +11963,7 @@ var AchievementType;
     AchievementType[AchievementType["achType29"] = 29] = "achType29";
 })(AchievementType || (AchievementType = {}));
 
-var foreign45 = /*#__PURE__*/Object.freeze({
+var foreign47 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     get AchievementType () { return AchievementType; },
     get OnClickType () { return OnClickType; }
@@ -11833,7 +11974,7 @@ var foreign45 = /*#__PURE__*/Object.freeze({
  * WARNING: DO NOT MODIFY THIS FILE,MAY CAUSE CODE LOST.
  * AUTHOR: 爱玩游戏的小胖子
  * UI: UI/common/OnClickPanel.ui
- * TIME: 2024.05.25-14.47.28
+ * TIME: 2024.08.04-18.39.52
  */
 let OnClickPanel_Generate = class OnClickPanel_Generate extends UIScript {
     get mBgImage() {
@@ -11888,7 +12029,7 @@ OnClickPanel_Generate = __decorate([
 ], OnClickPanel_Generate);
 var OnClickPanel_Generate$1 = OnClickPanel_Generate;
 
-var foreign113 = /*#__PURE__*/Object.freeze({
+var foreign117 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     default: OnClickPanel_Generate$1
 });
@@ -12009,7 +12150,7 @@ class OnClickPanel extends OnClickPanel_Generate$1 {
     }
 }
 
-var foreign13 = /*#__PURE__*/Object.freeze({
+var foreign15 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     default: OnClickPanel
 });
@@ -12150,7 +12291,7 @@ Dance = __decorate([
 ], Dance);
 var Dance$1 = Dance;
 
-var foreign3 = /*#__PURE__*/Object.freeze({
+var foreign4 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     default: Dance$1
 });
@@ -12313,9 +12454,80 @@ Flashlight = __decorate([
 ], Flashlight);
 var Flashlight$1 = Flashlight;
 
-var foreign5 = /*#__PURE__*/Object.freeze({
+var foreign6 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     default: Flashlight$1
+});
+
+let JumpGame = class JumpGame extends Script {
+    constructor() {
+        super(...arguments);
+        /**------------------------------------------- 客户端 ------------------------------------------------ */
+        this.confirmPanel = null;
+        this.jumpTrigger = null;
+        /**------------------------------------------- 服务端 ------------------------------------------------ */
+    }
+    /** 当脚本被实例后，会在第一帧更新前调用此函数 */
+    onStart() {
+        if (mw.SystemUtil.isClient()) {
+            this.useUpdate = false;
+            this.onStartC();
+        }
+        else if (mw.SystemUtil.isServer()) {
+            this.useUpdate = false;
+            this.onStartS();
+        }
+    }
+    /**
+     * 周期函数 每帧执行
+     * 此函数执行需要将this.useUpdate赋值为true
+     * @param dt 当前帧与上一帧的延迟 / 秒
+     */
+    onUpdate(dt) {
+        if (mw.SystemUtil.isClient()) {
+            this.onUpdateC(dt);
+        }
+        else if (mw.SystemUtil.isServer()) {
+            this.onUpdateS(dt);
+        }
+    }
+    get getConfirmPanel() {
+        if (this.confirmPanel == null) {
+            this.confirmPanel = UIService.getUI(ConfirmPanel);
+        }
+        return this.confirmPanel;
+    }
+    /**客户端的OnStart */
+    onStartC() {
+        this.jumpTrigger = this.gameObject;
+        this.jumpTrigger.onEnter.add((character) => {
+            if (Player.localPlayer.character != character)
+                return;
+            this.getConfirmPanel.confirmTips(() => {
+                mw.RouteService.enterNewGame("P_32799aaa30a6577f2bf8de668f5be161f3cad400");
+            }, "前往 斗破苍穹乐园2（美杜莎）", "前往", "取消");
+        });
+    }
+    /**客户端的update */
+    onUpdateC(dt) {
+    }
+    /**------------------------------------------- 客户端 ------------------------------------------------ */
+    /**------------------------------------------- 服务端 ------------------------------------------------ */
+    /**服务端的OnStart */
+    onStartS() {
+    }
+    /**服务端的update */
+    onUpdateS(dt) {
+    }
+};
+JumpGame = __decorate([
+    Component
+], JumpGame);
+var JumpGame$1 = JumpGame;
+
+var foreign8 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: JumpGame$1
 });
 
 var MyClearDayNight_1;
@@ -12595,7 +12807,7 @@ MyClearDayNight = MyClearDayNight_1 = __decorate([
 ], MyClearDayNight);
 var MyClearDayNight$1 = MyClearDayNight;
 
-var foreign7 = /*#__PURE__*/Object.freeze({
+var foreign9 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     default: MyClearDayNight$1
 });
@@ -12697,7 +12909,7 @@ NPCSitDance = __decorate([
 ], NPCSitDance);
 var NPCSitDance$1 = NPCSitDance;
 
-var foreign12 = /*#__PURE__*/Object.freeze({
+var foreign14 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     default: NPCSitDance$1
 });
@@ -12780,7 +12992,7 @@ Portal = __decorate([
 ], Portal);
 var Portal$1 = Portal;
 
-var foreign14 = /*#__PURE__*/Object.freeze({
+var foreign16 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     default: Portal$1
 });
@@ -12895,7 +13107,7 @@ var foreign14 = /*#__PURE__*/Object.freeze({
 //     }
 // }
 
-var foreign15 = /*#__PURE__*/Object.freeze({
+var foreign17 = /*#__PURE__*/Object.freeze({
     __proto__: null
 });
 
@@ -13049,7 +13261,7 @@ Shakes = __decorate([
 ], Shakes);
 var Shakes$1 = Shakes;
 
-var foreign16 = /*#__PURE__*/Object.freeze({
+var foreign18 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     default: Shakes$1
 });
@@ -13205,7 +13417,7 @@ Sit = __decorate([
 ], Sit);
 var Sit$1 = Sit;
 
-var foreign17 = /*#__PURE__*/Object.freeze({
+var foreign19 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     default: Sit$1
 });
@@ -13259,7 +13471,7 @@ SkyWheel = __decorate([
 ], SkyWheel);
 var SkyWheel$1 = SkyWheel;
 
-var foreign18 = /*#__PURE__*/Object.freeze({
+var foreign20 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     default: SkyWheel$1
 });
@@ -13271,7 +13483,7 @@ class DressUpConfig extends ConfigBase {
     }
 }
 
-var foreign28 = /*#__PURE__*/Object.freeze({
+var foreign30 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     DressUpConfig: DressUpConfig
 });
@@ -13283,7 +13495,7 @@ class WeaponConfig extends ConfigBase {
     }
 }
 
-var foreign43 = /*#__PURE__*/Object.freeze({
+var foreign45 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     WeaponConfig: WeaponConfig
 });
@@ -13317,7 +13529,7 @@ __decorate([
     Decorator.noReply()
 ], AchievementModuleS.prototype, "net_saveFirstAch", null);
 
-var foreign54 = /*#__PURE__*/Object.freeze({
+var foreign56 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     default: AchievementModuleS
 });
@@ -13328,7 +13540,7 @@ class AdsModuleS extends ModuleS {
     }
 }
 
-var foreign58 = /*#__PURE__*/Object.freeze({
+var foreign60 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     default: AdsModuleS
 });
@@ -13352,7 +13564,7 @@ __decorate([
     Decorator.persistence()
 ], CollectionData.prototype, "itemList", void 0);
 
-var foreign66 = /*#__PURE__*/Object.freeze({
+var foreign68 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     default: CollectionData
 });
@@ -13387,7 +13599,7 @@ __decorate([
     Decorator.persistence()
 ], HUDDate.prototype, "hurt", void 0);
 
-var foreign73 = /*#__PURE__*/Object.freeze({
+var foreign75 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     default: HUDDate
 });
@@ -13397,7 +13609,7 @@ var foreign73 = /*#__PURE__*/Object.freeze({
  * WARNING: DO NOT MODIFY THIS FILE,MAY CAUSE CODE LOST.
  * AUTHOR: 爱玩游戏的小胖子
  * UI: UI/module/HUDUI/Lifebar.ui
- * TIME: 2024.05.25-14.47.28
+ * TIME: 2024.08.04-18.39.53
  */
 let Lifebar_Generate = class Lifebar_Generate extends UIScript {
     get mLevelText() {
@@ -13463,7 +13675,7 @@ Lifebar_Generate = __decorate([
 ], Lifebar_Generate);
 var Lifebar_Generate$1 = Lifebar_Generate;
 
-var foreign127 = /*#__PURE__*/Object.freeze({
+var foreign131 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     default: Lifebar_Generate$1
 });
@@ -13579,7 +13791,7 @@ Lifebar = __decorate([
 ], Lifebar);
 var Lifebar$1 = Lifebar;
 
-var foreign78 = /*#__PURE__*/Object.freeze({
+var foreign80 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     default: Lifebar$1
 });
@@ -13951,7 +14163,7 @@ let PlayerData$1 = class PlayerData {
     }
 };
 
-var foreign75 = /*#__PURE__*/Object.freeze({
+var foreign77 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     default: HUDModuleS
 });
@@ -14008,7 +14220,7 @@ __decorate([
     Decorator.persistence()
 ], ShopData.prototype, "isFirstGame", void 0);
 
-var foreign89 = /*#__PURE__*/Object.freeze({
+var foreign91 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     default: ShopData
 });
@@ -14164,7 +14376,7 @@ class PlayerData {
     }
 }
 
-var foreign87 = /*#__PURE__*/Object.freeze({
+var foreign89 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     PlayerData: PlayerData,
     default: RankingModuleS
@@ -14198,7 +14410,7 @@ __decorate([
     Decorator.noReply()
 ], CollectionModuleS.prototype, "net_saveAcquiredItem", null);
 
-var foreign68 = /*#__PURE__*/Object.freeze({
+var foreign70 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     default: CollectionModuleS
 });
@@ -14208,7 +14420,7 @@ var foreign68 = /*#__PURE__*/Object.freeze({
  * WARNING: DO NOT MODIFY THIS FILE,MAY CAUSE CODE LOST.
  * AUTHOR: 爱玩游戏的小胖子
  * UI: UI/module/RankingUI/RankingPanel.ui
- * TIME: 2024.05.25-14.47.29
+ * TIME: 2024.08.04-18.39.54
  */
 let RankingPanel_Generate = class RankingPanel_Generate extends UIScript {
     get mTitle_txt() {
@@ -14394,7 +14606,7 @@ RankingPanel_Generate = __decorate([
 ], RankingPanel_Generate);
 var RankingPanel_Generate$1 = RankingPanel_Generate;
 
-var foreign134 = /*#__PURE__*/Object.freeze({
+var foreign138 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     default: RankingPanel_Generate$1
 });
@@ -14516,7 +14728,7 @@ class RankingItem {
     }
 }
 
-var foreign88 = /*#__PURE__*/Object.freeze({
+var foreign90 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     default: RankingPanel
 });
@@ -14669,7 +14881,7 @@ var RankType;
     RankType[RankType["Score"] = 3] = "Score";
 })(RankType || (RankType = {}));
 
-var foreign86 = /*#__PURE__*/Object.freeze({
+var foreign88 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     get RankType () { return RankType; },
     default: RankingModuleC
@@ -14708,7 +14920,7 @@ __decorate([
     Decorator.noReply()
 ], ShopModuleS.prototype, "net_playEffectAndSoundToPlayer", null);
 
-var foreign91 = /*#__PURE__*/Object.freeze({
+var foreign93 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     default: ShopModuleS
 });
@@ -14758,7 +14970,7 @@ __decorate([
     Decorator.persistence()
 ], SignInData.prototype, "lastDay", void 0);
 
-var foreign93 = /*#__PURE__*/Object.freeze({
+var foreign95 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     default: SignInData
 });
@@ -14796,7 +15008,7 @@ __decorate([
     Decorator.noReply()
 ], SignInModuleS.prototype, "net_saveLastDay", null);
 
-var foreign95 = /*#__PURE__*/Object.freeze({
+var foreign97 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     default: SignInModuleS
 });
@@ -14905,7 +15117,7 @@ GameLaunch = __decorate([
 ], GameLaunch);
 var GameLaunch$1 = GameLaunch;
 
-var foreign47 = /*#__PURE__*/Object.freeze({
+var foreign49 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     default: GameLaunch$1
 });
@@ -15075,7 +15287,7 @@ const cameraSystemConfig = {
     cameraDownLimitAngle: -40,
 };
 
-var foreign48 = /*#__PURE__*/Object.freeze({
+var foreign50 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     get CameraModifid () { return CameraModifid; },
     ModifiedCameraSystem: ModifiedCameraSystem
@@ -15735,7 +15947,7 @@ __decorate([
     RemoteFunction(mw.Client, mw.Multicast)
 ], WeaponClient.prototype, "client_PlayEffect", null);
 
-var foreign62 = /*#__PURE__*/Object.freeze({
+var foreign64 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     WeaponClient: WeaponClient
 });
@@ -15863,7 +16075,7 @@ __decorate([
     RemoteFunction(mw.Server)
 ], WeaponServer.prototype, "server_setChar", null);
 
-var foreign65 = /*#__PURE__*/Object.freeze({
+var foreign67 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     WeaponServer: WeaponServer
 });
@@ -15883,7 +16095,7 @@ Weapon = __decorate([
 ], Weapon);
 var Weapon$1 = Weapon;
 
-var foreign61 = /*#__PURE__*/Object.freeze({
+var foreign63 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     default: Weapon$1
 });
@@ -15976,7 +16188,7 @@ class DanceModuleS extends ModuleS {
     }
 }
 
-var foreign72 = /*#__PURE__*/Object.freeze({
+var foreign74 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     DanceModuleC: DanceModuleC,
     DanceModuleS: DanceModuleS
@@ -15987,7 +16199,7 @@ var foreign72 = /*#__PURE__*/Object.freeze({
  * WARNING: DO NOT MODIFY THIS FILE,MAY CAUSE CODE LOST.
  * AUTHOR: 爱玩游戏的小胖子
  * UI: UI/common/FirstGamePanel.ui
- * TIME: 2024.05.25-14.47.28
+ * TIME: 2024.08.04-18.39.52
  */
 let FirstGamePanel_Generate = class FirstGamePanel_Generate extends UIScript {
     get mCloseButton() {
@@ -16037,7 +16249,7 @@ FirstGamePanel_Generate = __decorate([
 ], FirstGamePanel_Generate);
 var FirstGamePanel_Generate$1 = FirstGamePanel_Generate;
 
-var foreign108 = /*#__PURE__*/Object.freeze({
+var foreign111 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     default: FirstGamePanel_Generate$1
 });
@@ -16047,7 +16259,7 @@ var foreign108 = /*#__PURE__*/Object.freeze({
  * WARNING: DO NOT MODIFY THIS FILE,MAY CAUSE CODE LOST.
  * AUTHOR: 爱玩游戏的小胖子
  * UI: UI/module/HUDUI/GuidePanel.ui
- * TIME: 2024.05.25-14.47.28
+ * TIME: 2024.08.04-18.39.53
  */
 let GuidePanel_Generate = class GuidePanel_Generate extends UIScript {
     get mRoleBgImage() {
@@ -16110,7 +16322,7 @@ GuidePanel_Generate = __decorate([
 ], GuidePanel_Generate);
 var GuidePanel_Generate$1 = GuidePanel_Generate;
 
-var foreign124 = /*#__PURE__*/Object.freeze({
+var foreign128 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     default: GuidePanel_Generate$1
 });
@@ -16205,7 +16417,7 @@ class GuidePanel extends GuidePanel_Generate$1 {
     }
 }
 
-var foreign76 = /*#__PURE__*/Object.freeze({
+var foreign78 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     default: GuidePanel
 });
@@ -16215,7 +16427,7 @@ var foreign76 = /*#__PURE__*/Object.freeze({
  * WARNING: DO NOT MODIFY THIS FILE,MAY CAUSE CODE LOST.
  * AUTHOR: 爱玩游戏的小胖子
  * UI: UI/module/NPCModule/NPCBar.ui
- * TIME: 2024.05.25-14.47.29
+ * TIME: 2024.08.04-18.39.54
  */
 let NPCBar_Generate = class NPCBar_Generate extends UIScript {
     get mProgressBar() {
@@ -16267,7 +16479,7 @@ NPCBar_Generate = __decorate([
 ], NPCBar_Generate);
 var NPCBar_Generate$1 = NPCBar_Generate;
 
-var foreign128 = /*#__PURE__*/Object.freeze({
+var foreign132 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     default: NPCBar_Generate$1
 });
@@ -16802,7 +17014,7 @@ __decorate([
     mw.Property({ displayName: "maxHp", group: "Info", tooltip: "maxHp", replicated: true, onChanged: "onHpChanged" })
 ], Monster.prototype, "maxHp", void 0);
 
-var foreign79 = /*#__PURE__*/Object.freeze({
+var foreign81 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     AnimationInfo: AnimationInfo,
     AttackEffectInfo: AttackEffectInfo,
@@ -16862,7 +17074,7 @@ NPCBar = __decorate([
 ], NPCBar);
 var NPCBar$1 = NPCBar;
 
-var foreign80 = /*#__PURE__*/Object.freeze({
+var foreign82 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     default: NPCBar$1
 });
@@ -17147,7 +17359,7 @@ Boss = __decorate([
 ], Boss);
 var Boss$1 = Boss;
 
-var foreign84 = /*#__PURE__*/Object.freeze({
+var foreign86 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     default: Boss$1
 });
@@ -17157,7 +17369,7 @@ var foreign84 = /*#__PURE__*/Object.freeze({
  * WARNING: DO NOT MODIFY THIS FILE,MAY CAUSE CODE LOST.
  * AUTHOR: 爱玩游戏的小胖子
  * UI: UI/module/PlayerModule/LevelPanel.ui
- * TIME: 2024.05.25-14.47.29
+ * TIME: 2024.08.04-18.39.54
  */
 let LevelPanel_Generate = class LevelPanel_Generate extends UIScript {
     get mTextBlock() {
@@ -17203,7 +17415,7 @@ LevelPanel_Generate = __decorate([
 ], LevelPanel_Generate);
 var LevelPanel_Generate$1 = LevelPanel_Generate;
 
-var foreign132 = /*#__PURE__*/Object.freeze({
+var foreign136 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     default: LevelPanel_Generate$1
 });
@@ -17353,7 +17565,7 @@ __decorate([
     Decorator.noReply()
 ], PlayerModuleS.prototype, "net_saveCleared", null);
 
-var foreign85 = /*#__PURE__*/Object.freeze({
+var foreign87 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     PlayerLevelData: PlayerLevelData,
     PlayerModuleC: PlayerModuleC,
@@ -17594,7 +17806,7 @@ var KnifeRescourse;
     KnifeRescourse["TombstoneGuid"] = "110950";
 })(KnifeRescourse || (KnifeRescourse = {}));
 
-var foreign98 = /*#__PURE__*/Object.freeze({
+var foreign100 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     get KnifeRescourse () { return KnifeRescourse; },
     get ListenerEventsType () { return ListenerEventsType$3; },
@@ -17927,7 +18139,7 @@ var ListenerEventsType$2;
     ListenerEventsType["ClientToServer"] = "ClientToServer_Lanuncher";
 })(ListenerEventsType$2 || (ListenerEventsType$2 = {}));
 
-var foreign99 = /*#__PURE__*/Object.freeze({
+var foreign101 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     get LauncherRescourse () { return LauncherRescourse; },
     get ListenerEventsType () { return ListenerEventsType$2; },
@@ -18507,7 +18719,7 @@ var TrampolineRescourse;
     TrampolineRescourse["Roll"] = "14736";
 })(TrampolineRescourse || (TrampolineRescourse = {}));
 
-var foreign100 = /*#__PURE__*/Object.freeze({
+var foreign102 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     get ListenerEventsType () { return ListenerEventsType$1; },
     OBB: OBB,
@@ -18668,7 +18880,7 @@ var ListenerEventsType;
     ListenerEventsType["ServerToAllClient_HideJumpRecordUI"] = "ServerToAllClient_HideJumpRecordUI";
 })(ListenerEventsType || (ListenerEventsType = {}));
 
-var foreign101 = /*#__PURE__*/Object.freeze({
+var foreign103 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     get ListenerEventsType () { return ListenerEventsType; },
     default: P_Game_Trampoline
@@ -18896,7 +19108,7 @@ var ListenerEventType;
     ListenerEventType["SendClient"] = "SendClient_TelegraphPole";
 })(ListenerEventType || (ListenerEventType = {}));
 
-var foreign102 = /*#__PURE__*/Object.freeze({
+var foreign104 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     get ListenerEventType () { return ListenerEventType; },
     get TelegraphPoleResource () { return TelegraphPoleResource; },
@@ -18908,7 +19120,7 @@ var foreign102 = /*#__PURE__*/Object.freeze({
  * WARNING: DO NOT MODIFY THIS FILE,MAY CAUSE CODE LOST.
  * AUTHOR: 爱玩游戏的小胖子
  * UI: UI/common/ImpactRadiusWindow.ui
- * TIME: 2024.05.25-14.47.28
+ * TIME: 2024.08.04-18.39.52
  */
 let ImpactRadiusWindow_Generate = class ImpactRadiusWindow_Generate extends UIScript {
     get img() {
@@ -18953,7 +19165,7 @@ ImpactRadiusWindow_Generate = __decorate([
 ], ImpactRadiusWindow_Generate);
 var ImpactRadiusWindow_Generate$1 = ImpactRadiusWindow_Generate;
 
-var foreign109 = /*#__PURE__*/Object.freeze({
+var foreign112 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     default: ImpactRadiusWindow_Generate$1
 });
@@ -18962,8 +19174,58 @@ var foreign109 = /*#__PURE__*/Object.freeze({
  * AUTO GENERATE BY UI EDITOR.
  * WARNING: DO NOT MODIFY THIS FILE,MAY CAUSE CODE LOST.
  * AUTHOR: 爱玩游戏的小胖子
+ * UI: UI/common/JumpGameTips.ui
+ * TIME: 2024.08.04-18.39.52
+ */
+let JumpGameTips_Generate = class JumpGameTips_Generate extends UIScript {
+    onAwake() {
+        //设置能否每帧触发onUpdate
+        this.canUpdate = false;
+        this.layer = mw.UILayerBottom;
+        this.initButtons();
+    }
+    initButtons() {
+        //按钮添加点击
+        //按钮添加点击
+        //按钮多语言
+        //文本多语言
+        //文本多语言
+        this.initLanguage(this.uiWidgetBase.findChildByPath("RootCanvas/TextBlock"));
+    }
+    /*初始化多语言*/
+    initLanguage(ui) {
+        let call = mw.UIScript.getBehavior("lan");
+        if (call && ui) {
+            call(ui);
+        }
+    }
+    onShow(...params) { }
+    ;
+    /*显示panel*/
+    show(...param) {
+        mw.UIService.showUI(this, this.layer, ...param);
+    }
+    /*隐藏panel*/
+    hide() {
+        mw.UIService.hideUI(this);
+    }
+};
+JumpGameTips_Generate = __decorate([
+    UIBind('UI/common/JumpGameTips.ui')
+], JumpGameTips_Generate);
+var JumpGameTips_Generate$1 = JumpGameTips_Generate;
+
+var foreign113 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: JumpGameTips_Generate$1
+});
+
+/**
+ * AUTO GENERATE BY UI EDITOR.
+ * WARNING: DO NOT MODIFY THIS FILE,MAY CAUSE CODE LOST.
+ * AUTHOR: 爱玩游戏的小胖子
  * UI: UI/common/notice/SecondNoticeItem.ui
- * TIME: 2024.05.25-14.47.28
+ * TIME: 2024.08.04-18.39.52
  */
 let SecondNoticeItem_Generate = class SecondNoticeItem_Generate extends UIScript {
     get txt_context() {
@@ -19021,7 +19283,7 @@ SecondNoticeItem_Generate = __decorate([
 ], SecondNoticeItem_Generate);
 var SecondNoticeItem_Generate$1 = SecondNoticeItem_Generate;
 
-var foreign111 = /*#__PURE__*/Object.freeze({
+var foreign115 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     default: SecondNoticeItem_Generate$1
 });
@@ -19031,7 +19293,7 @@ var foreign111 = /*#__PURE__*/Object.freeze({
  * WARNING: DO NOT MODIFY THIS FILE,MAY CAUSE CODE LOST.
  * AUTHOR: 爱玩游戏的小胖子
  * UI: UI/common/world0.ui
- * TIME: 2024.05.25-14.47.28
+ * TIME: 2024.08.04-18.39.52
  */
 let world0_Generate = class world0_Generate extends UIScript {
     onAwake() {
@@ -19071,7 +19333,7 @@ world0_Generate = __decorate([
 ], world0_Generate);
 var world0_Generate$1 = world0_Generate;
 
-var foreign115 = /*#__PURE__*/Object.freeze({
+var foreign119 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     default: world0_Generate$1
 });
@@ -19081,7 +19343,7 @@ var foreign115 = /*#__PURE__*/Object.freeze({
  * WARNING: DO NOT MODIFY THIS FILE,MAY CAUSE CODE LOST.
  * AUTHOR: 爱玩游戏的小胖子
  * UI: UI/common/world0_副本1.ui
- * TIME: 2024.05.25-14.47.28
+ * TIME: 2024.08.04-18.39.52
  */
 let world0_副本1_Generate = class world0_副本1_Generate extends UIScript {
     onAwake() {
@@ -19121,7 +19383,7 @@ world0_副本1_Generate = __decorate([
 ], world0_副本1_Generate);
 var world0_副本1_Generate$1 = world0_副本1_Generate;
 
-var foreign116 = /*#__PURE__*/Object.freeze({
+var foreign120 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     default: world0_副本1_Generate$1
 });
@@ -19131,7 +19393,7 @@ var foreign116 = /*#__PURE__*/Object.freeze({
  * WARNING: DO NOT MODIFY THIS FILE,MAY CAUSE CODE LOST.
  * AUTHOR: 爱玩游戏的小胖子
  * UI: UI/module/Achievement/AchievementItem.ui
- * TIME: 2024.05.25-14.47.28
+ * TIME: 2024.08.04-18.39.53
  */
 let AchievementItem_Generate = class AchievementItem_Generate extends UIScript {
     get mBgImage_1() {
@@ -19235,7 +19497,7 @@ AchievementItem_Generate = __decorate([
 ], AchievementItem_Generate);
 var AchievementItem_Generate$1 = AchievementItem_Generate;
 
-var foreign117 = /*#__PURE__*/Object.freeze({
+var foreign121 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     default: AchievementItem_Generate$1
 });
@@ -19245,7 +19507,7 @@ var foreign117 = /*#__PURE__*/Object.freeze({
  * WARNING: DO NOT MODIFY THIS FILE,MAY CAUSE CODE LOST.
  * AUTHOR: 爱玩游戏的小胖子
  * UI: UI/module/CollectionUI/CollectItem.ui
- * TIME: 2024.05.25-14.47.29
+ * TIME: 2024.08.04-18.39.53
  */
 let CollectItem_Generate = class CollectItem_Generate extends UIScript {
     get mBgImage() {
@@ -19323,7 +19585,7 @@ CollectItem_Generate = __decorate([
 ], CollectItem_Generate);
 var CollectItem_Generate$1 = CollectItem_Generate;
 
-var foreign123 = /*#__PURE__*/Object.freeze({
+var foreign127 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     default: CollectItem_Generate$1
 });
@@ -19333,7 +19595,7 @@ var foreign123 = /*#__PURE__*/Object.freeze({
  * WARNING: DO NOT MODIFY THIS FILE,MAY CAUSE CODE LOST.
  * AUTHOR: 爱玩游戏的小胖子
  * UI: UI/module/PetUI/PetItem.ui
- * TIME: 2024.05.25-14.47.29
+ * TIME: 2024.08.04-18.39.53
  */
 let PetItem_Generate = class PetItem_Generate extends UIScript {
     get mIconButton() {
@@ -19395,7 +19657,7 @@ PetItem_Generate = __decorate([
 ], PetItem_Generate);
 var PetItem_Generate$1 = PetItem_Generate;
 
-var foreign129 = /*#__PURE__*/Object.freeze({
+var foreign133 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     default: PetItem_Generate$1
 });
@@ -19405,7 +19667,7 @@ var foreign129 = /*#__PURE__*/Object.freeze({
  * WARNING: DO NOT MODIFY THIS FILE,MAY CAUSE CODE LOST.
  * AUTHOR: 爱玩游戏的小胖子
  * UI: UI/module/RankingUI/RankingItem.ui
- * TIME: 2024.05.25-14.47.29
+ * TIME: 2024.08.04-18.39.54
  */
 let RankingItem_Generate = class RankingItem_Generate extends UIScript {
     get mRankingTxt() {
@@ -19485,7 +19747,7 @@ RankingItem_Generate = __decorate([
 ], RankingItem_Generate);
 var RankingItem_Generate$1 = RankingItem_Generate;
 
-var foreign133 = /*#__PURE__*/Object.freeze({
+var foreign137 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     default: RankingItem_Generate$1
 });
@@ -19495,7 +19757,7 @@ var foreign133 = /*#__PURE__*/Object.freeze({
  * WARNING: DO NOT MODIFY THIS FILE,MAY CAUSE CODE LOST.
  * AUTHOR: 爱玩游戏的小胖子
  * UI: UI/module/ShopUI/ClothItem.ui
- * TIME: 2024.05.25-14.47.29
+ * TIME: 2024.08.04-18.39.54
  */
 let ClothItem_Generate = class ClothItem_Generate extends UIScript {
     get mCanvas() {
@@ -19568,7 +19830,7 @@ ClothItem_Generate = __decorate([
 ], ClothItem_Generate);
 var ClothItem_Generate$1 = ClothItem_Generate;
 
-var foreign135 = /*#__PURE__*/Object.freeze({
+var foreign139 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     default: ClothItem_Generate$1
 });
@@ -19578,7 +19840,7 @@ var foreign135 = /*#__PURE__*/Object.freeze({
  * WARNING: DO NOT MODIFY THIS FILE,MAY CAUSE CODE LOST.
  * AUTHOR: 爱玩游戏的小胖子
  * UI: UI/module/ShopUI/TailItem.ui
- * TIME: 2024.05.25-14.47.29
+ * TIME: 2024.08.04-18.39.54
  */
 let TailItem_Generate = class TailItem_Generate extends UIScript {
     get mSelectImg() {
@@ -19645,7 +19907,7 @@ TailItem_Generate = __decorate([
 ], TailItem_Generate);
 var TailItem_Generate$1 = TailItem_Generate;
 
-var foreign137 = /*#__PURE__*/Object.freeze({
+var foreign141 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     default: TailItem_Generate$1
 });
@@ -19655,7 +19917,7 @@ var foreign137 = /*#__PURE__*/Object.freeze({
  * WARNING: DO NOT MODIFY THIS FILE,MAY CAUSE CODE LOST.
  * AUTHOR: 爱玩游戏的小胖子
  * UI: UI/module/ShopUI/WeaponItem.ui
- * TIME: 2024.05.25-14.47.29
+ * TIME: 2024.08.04-18.39.54
  */
 let WeaponItem_Generate = class WeaponItem_Generate extends UIScript {
     get mCanvas() {
@@ -19735,7 +19997,7 @@ WeaponItem_Generate = __decorate([
 ], WeaponItem_Generate);
 var WeaponItem_Generate$1 = WeaponItem_Generate;
 
-var foreign138 = /*#__PURE__*/Object.freeze({
+var foreign142 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     default: WeaponItem_Generate$1
 });
@@ -19745,7 +20007,7 @@ var foreign138 = /*#__PURE__*/Object.freeze({
  * WARNING: DO NOT MODIFY THIS FILE,MAY CAUSE CODE LOST.
  * AUTHOR: 爱玩游戏的小胖子
  * UI: UI/module/ShopUI/WingItem.ui
- * TIME: 2024.05.25-14.47.29
+ * TIME: 2024.08.04-18.39.54
  */
 let WingItem_Generate = class WingItem_Generate extends UIScript {
     get mSelectImg() {
@@ -19812,7 +20074,7 @@ WingItem_Generate = __decorate([
 ], WingItem_Generate);
 var WingItem_Generate$1 = WingItem_Generate;
 
-var foreign139 = /*#__PURE__*/Object.freeze({
+var foreign143 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     default: WingItem_Generate$1
 });
@@ -19822,7 +20084,7 @@ var foreign139 = /*#__PURE__*/Object.freeze({
  * WARNING: DO NOT MODIFY THIS FILE,MAY CAUSE CODE LOST.
  * AUTHOR: 爱玩游戏的小胖子
  * UI: UI/Prefabs/可弹跳的交互物/UI/Prefab/Trampoline/JumpRecordUI.ui
- * TIME: 2024.05.25-14.47.29
+ * TIME: 2024.08.04-18.39.54
  */
 let JumpRecordUI_Generate = class JumpRecordUI_Generate extends UIScript {
     get mRecordMaxHeightText() {
@@ -19887,7 +20149,7 @@ JumpRecordUI_Generate = __decorate([
 ], JumpRecordUI_Generate);
 var JumpRecordUI_Generate$1 = JumpRecordUI_Generate;
 
-var foreign141 = /*#__PURE__*/Object.freeze({
+var foreign145 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     default: JumpRecordUI_Generate$1
 });
@@ -19895,285 +20157,295 @@ var foreign141 = /*#__PURE__*/Object.freeze({
 const MWModuleMap = { 
      '7ECCB6A64B78EA5423F9B9B8EB9A8AA3': foreign1,
      'D0C047774D0553DBFEDA47988B641D80': foreign2,
-     'D99E0C484254158895E26FBFF16CFAA5': foreign3,
-     'C67CC3814AB68108A2112EA6CB2CCCEC': foreign4,
-     'D879A1674F4CD5C0C4DAA9AF23667ACC': foreign5,
-     '1EB82B9D4146CFF941BCD8BAF2FF3B2C': foreign6,
-     'F2F4506A436D3630E6315F90716A69AD': foreign7,
-     '8DF07A104215E9DEF260A5A4372BE5E0': foreign8,
-     '740BB31D48B3C30ED822209215CFEA59': foreign9,
-     '7A19EAB641B24574842EF8B0D5D11161': foreign10,
-     '8D505D9D47BCCBFBC25CACA016DD9447': foreign11,
-     '553725DC427DF80EF2751CB8F2762514': foreign12,
-     'C9FCF90C4738035BADDDA38C9677292D': foreign13,
-     '5678A2A54D344DB920AA24B440EE82F5': foreign14,
-     '989E79334DBF0E7C7A101A9405B52E87': foreign15,
-     '2533CA9D466380D8941118B5FAC4AC8B': foreign16,
-     'FB64B0AE4FF3375CC338DBA9451598AC': foreign17,
-     'B3F1342D4E87D7EB00062E8E0DB6A10E': foreign18,
-     'E494D96048B7DD3D66AE9C83808890CC': foreign19,
-     '10BB2D474E07A327C01E05B6749F4E0F': foreign20,
-     '4AA712EF4A9FBFFB6EB89797A46F9B36': foreign21,
-     '04B0C3A545B7E2357E8524A95B562B09': foreign22,
-     '8457B937421512A33DF04C985370B55D': foreign23,
-     'E49CC67A421745C7A7240A82D4A4772C': foreign24,
-     'A90D230045BA23B8FC0787BD521B5B27': foreign25,
-     '3B55A2244CB173179CE2A7869004303B': foreign26,
-     '94E49AA94CF2AC3D84FFC1A7E1343688': foreign27,
-     'D60B0B544268DE5730D6488E9F67F52D': foreign28,
-     'E9D24F394E2C74EDC92CF290BD2785CC': foreign29,
-     '3556E4F44A713D43F9547BB9F56FCE40': foreign30,
-     '1FA5248042E9E37A2FD5A1B33F4306AF': foreign32,
-     'EEDB4B154C3198E61CDB869600E53391': foreign33,
-     '954744EC4E16872D1DC207B1E12E05A4': foreign34,
-     '5D49AE43441954A04032438861C72FD7': foreign35,
-     '375FB9614C3CD278281E4B9F30840886': foreign36,
-     '95A5A0C041A3CEB2DE4F34982FCD2240': foreign37,
-     '092264C34BE2B45328996393B7389103': foreign38,
-     '75128BAB45D5451ABBC708BE8DA602CE': foreign39,
-     'F040459540011865EC0345922939F873': foreign40,
-     'C125D9F5445B7E490124E08E822118B5': foreign41,
-     '7DF77BCF49481CBFB09687890FAB335D': foreign42,
-     '5B597A3444DEDE389F15BBB1B2A31AB9': foreign43,
-     'DBDFB9F445B78F8C9D8B95B1C7F1BDE4': foreign44,
-     '5C6E2B9D4E475A10F6E2CB97A478F3C1': foreign45,
-     'C15DDFE44BC4B6C25DD111B130A5D197': foreign46,
-     '6F88C40447DB24A8687D74A29C47E936': foreign47,
-     'B259B7B84AD27881DCBCC0858BC7DA80': foreign48,
-     '2415A9E546ADE8758DA36BBE5D8C5DDF': foreign49,
-     '89DF92E6453F5B57EDE6728765FCDB83': foreign50,
-     '826E84B741E807951D5AE4801FE0AC86': foreign51,
-     '44B7B44C4B6CB0485CC64C9E7D787988': foreign52,
-     '7FF491814A04888628E26280878DA4F2': foreign53,
-     'BE1B900B40409473AC5A55A32D727078': foreign54,
-     'D9483EA848DD67A5D6027A9834FA0087': foreign55,
-     'D9A11684418D70557B4608ACE0003617': foreign56,
-     'ED23BBF34B5F0FD622DB9E8B204BB63A': foreign57,
-     '6C7F83344D08B83F8B1C4998A4C54AE8': foreign58,
-     '2F56257244B48DB12232C3B29F558118': foreign59,
-     '36199799473CBF1BB8E5E1BBA9126803': foreign60,
-     '79EAB7A743FEAD2E7700419AFA2CCC57': foreign61,
-     'DC73DACC42CFE2DE1E2BD8A5B3AB0161': foreign62,
-     '7BB2CD8B48C4133E20706B9D8AEA7409': foreign63,
-     'E46295934A372F28FCC0BD88997D4C9A': foreign64,
-     '0C6DFB764F91F965C5215EBF3F2DA0CD': foreign65,
-     '3265C4C945183AE28FF46B9E0B36612A': foreign66,
-     'B274311A491689648BB2FFA4AB1EABD0': foreign67,
-     'A82A0EBB469BEB10BC5E7F93616124A3': foreign68,
-     '5451EC784F3474B27873F2B3AFDB95DE': foreign69,
-     'A86CDD014B353BFAF7F18DBEC67B2EE5': foreign70,
-     'AC4B614C4A13563DB038D9B78A6F2E80': foreign71,
-     '830082A2486CEC863728F59B546080A1': foreign72,
-     '6FCC85344595AD2B9E45F996A86B410B': foreign73,
-     'DF0B2F144C243DD78D93B2A74DE02BDB': foreign74,
-     'B03D76CA492BAA440E2D1780B5F642DE': foreign75,
-     '56EBF5F244E68CD9BD9825AC39B10974': foreign76,
-     '9BCDB33344AFBB8D7E1D3EBC073556A3': foreign77,
-     '89DCEA7941528B3BD1A16DA8C5C88EE1': foreign78,
-     '9E78FFA14882F31B5A3C549B39FEC218': foreign79,
-     '50B02C1C44E8AD10F9760CBC3178F07F': foreign80,
-     '72BA820E47B5DC06A25C0B9DE2A1ACC4': foreign81,
-     'E52E26894457A63DEAEB1BA27209552D': foreign82,
-     '90BD0B254690445621F522B7B3BC45E3': foreign83,
-     '4849DA4C4CB85CC732BE458C18F6379E': foreign84,
-     '923B76E6476954B0B0DA02BC98E3FAA4': foreign85,
-     '21D4445D449C30E78652DA8FEBDB5B7C': foreign86,
-     'A5B98FA7470902A28E5F9C9DF097BB1F': foreign87,
-     '868B505D43ACE71DD8A57097D27E6B8B': foreign88,
-     '297E48804EC2CE3BEC392F8A3CAC6CF5': foreign89,
-     '6D157CC6469B8C9F3567A29FE650576C': foreign90,
-     'FDA0DBA147650990118C55A0825BDFEE': foreign91,
-     'C8F66A6843EBCCDA82E46DB41B04A24A': foreign92,
-     'C03181D74635A49A6E944BA569B849DF': foreign93,
-     '1CF4255D4558936736B0168910CB6E85': foreign94,
-     'C983066745C7F20E269D83A032915A5A': foreign95,
-     'F927107048D151F143B51F98CFFACCAE': foreign96,
-     'CD82A2E448FA71DD00529A8B5261ED6C': foreign97,
-     'A099C00749C364C9D60BBD885F36EDAB': foreign98,
-     '8631500449380F926E4F61A89F4DDC38': foreign99,
-     '214EADC64028F27CC65544956CE411F1': foreign100,
-     '3B483A84480FD82E59AA5597E7C4D986': foreign101,
-     '189DADBA40C525C5906BC7B220ACD8A8': foreign102,
-     'E6EE5F054BE51F828EFA2E8E2B75BC22': foreign103,
-     'B6D27EAC444C85D1D925F986D613D5B3': foreign104,
-     'C21422064060FC0412F08EAAD527453E': foreign105,
-     'E08DC42B45A65EE74232E6B7819467BF': foreign106,
-     '94AC5EDC41970AA136CF54A0D283F564': foreign107,
-     '065127E9429137BDD37B65A8F02F1DF9': foreign108,
-     'B717B8174F93B395FECBB1AD598AB7A7': foreign109,
-     'EE52C023433809A455CD54B47AE547A4': foreign110,
-     'BDE756FF454330E2C5881385290EF05C': foreign111,
-     'CB21811D400FF71D719CE59F97622867': foreign112,
-     '710687624B02A2E18DD152A097EB3160': foreign113,
-     '370096C546122EE5DA0AE3BF1535FF5A': foreign114,
-     'E3296951464D4AE99A231CABA9DFEB5D': foreign115,
-     '344CCE0A4CCC3E3D40B9DAAF93F9A6BC': foreign116,
-     '8DA9DF4F4EAC6D5635E6E291B56CA262': foreign117,
-     'DBFA36A34F3399D56B1662BF1ED3CEF0': foreign118,
-     '4364255442302B8A49B73E90991A9583': foreign119,
-     'EA524BE3465EF000F605CE8C6B704D6B': foreign120,
-     '7CEA1CB949085CA6E7C0F48C45700674': foreign121,
-     '2528EAD243F6FB25EAB612B3D94EBDAC': foreign122,
-     'B6BDFEB14D8838D358B3D28924C27CF3': foreign123,
-     'A606984840804F6EFB25D0A4C7191DB5': foreign124,
-     'A639488E4045BA40B1363285A8BC88C0': foreign125,
-     '31DAEEA74B645DBF966BDBB71155357F': foreign126,
-     '5B10F1794471BFE32E9CE085D3AE414F': foreign127,
-     'CFD81FDF4E103BA3E77DC8ADE7B3466F': foreign128,
-     'E0AB58B34AE7EB16305F529C6FA36BB3': foreign129,
-     'EA1F9DDE412822BAA582B48AB647BBA6': foreign130,
-     'C355104C46F120CA76B19698AB2233E6': foreign131,
-     'BE07506F46A0EB91CA5E04BA797F06D9': foreign132,
-     '4D4C6F124C1A7FAE19BA719FF4DE9E6F': foreign133,
-     '256A668342053E3AF30DE5B8B94E07B8': foreign134,
-     '1C83BDBF48A2400CE7912CB5DE86E7EC': foreign135,
-     'D576481D44EE711294EAA6A7A7031590': foreign136,
-     'EB6C431843573960FE4767BAAE016943': foreign137,
-     '3FB5E7C2434EEDB3A28F5E8CDE22FBA6': foreign138,
-     'DF2ED0244B24B75C285526ADF7F0EC9D': foreign139,
-     'FCABE3234E35CFE468AEB79BEC6F2E72': foreign140,
-     '62E6AAFB40905C05BF1A9C898D66F7CC': foreign141,
+     '37F3E36F42C62AAC9D5820931EC227B3': foreign3,
+     'D99E0C484254158895E26FBFF16CFAA5': foreign4,
+     'C67CC3814AB68108A2112EA6CB2CCCEC': foreign5,
+     'D879A1674F4CD5C0C4DAA9AF23667ACC': foreign6,
+     '1EB82B9D4146CFF941BCD8BAF2FF3B2C': foreign7,
+     '449123384A9556B02B9C90B5A834E4B8': foreign8,
+     'F2F4506A436D3630E6315F90716A69AD': foreign9,
+     '8DF07A104215E9DEF260A5A4372BE5E0': foreign10,
+     '740BB31D48B3C30ED822209215CFEA59': foreign11,
+     '7A19EAB641B24574842EF8B0D5D11161': foreign12,
+     '8D505D9D47BCCBFBC25CACA016DD9447': foreign13,
+     '553725DC427DF80EF2751CB8F2762514': foreign14,
+     'C9FCF90C4738035BADDDA38C9677292D': foreign15,
+     '5678A2A54D344DB920AA24B440EE82F5': foreign16,
+     '989E79334DBF0E7C7A101A9405B52E87': foreign17,
+     '2533CA9D466380D8941118B5FAC4AC8B': foreign18,
+     'FB64B0AE4FF3375CC338DBA9451598AC': foreign19,
+     'B3F1342D4E87D7EB00062E8E0DB6A10E': foreign20,
+     'E494D96048B7DD3D66AE9C83808890CC': foreign21,
+     '10BB2D474E07A327C01E05B6749F4E0F': foreign22,
+     '4AA712EF4A9FBFFB6EB89797A46F9B36': foreign23,
+     '04B0C3A545B7E2357E8524A95B562B09': foreign24,
+     '8457B937421512A33DF04C985370B55D': foreign25,
+     'E49CC67A421745C7A7240A82D4A4772C': foreign26,
+     'A90D230045BA23B8FC0787BD521B5B27': foreign27,
+     '3B55A2244CB173179CE2A7869004303B': foreign28,
+     '94E49AA94CF2AC3D84FFC1A7E1343688': foreign29,
+     'D60B0B544268DE5730D6488E9F67F52D': foreign30,
+     'E9D24F394E2C74EDC92CF290BD2785CC': foreign31,
+     '3556E4F44A713D43F9547BB9F56FCE40': foreign32,
+     '3B5AAE7548E4E6E8479FF7A847AEBD59': foreign33,
+     '1FA5248042E9E37A2FD5A1B33F4306AF': foreign34,
+     'EEDB4B154C3198E61CDB869600E53391': foreign35,
+     '954744EC4E16872D1DC207B1E12E05A4': foreign36,
+     '5D49AE43441954A04032438861C72FD7': foreign37,
+     '375FB9614C3CD278281E4B9F30840886': foreign38,
+     '95A5A0C041A3CEB2DE4F34982FCD2240': foreign39,
+     '092264C34BE2B45328996393B7389103': foreign40,
+     '75128BAB45D5451ABBC708BE8DA602CE': foreign41,
+     'F040459540011865EC0345922939F873': foreign42,
+     'C125D9F5445B7E490124E08E822118B5': foreign43,
+     '7DF77BCF49481CBFB09687890FAB335D': foreign44,
+     '5B597A3444DEDE389F15BBB1B2A31AB9': foreign45,
+     'DBDFB9F445B78F8C9D8B95B1C7F1BDE4': foreign46,
+     '5C6E2B9D4E475A10F6E2CB97A478F3C1': foreign47,
+     'C15DDFE44BC4B6C25DD111B130A5D197': foreign48,
+     '6F88C40447DB24A8687D74A29C47E936': foreign49,
+     'B259B7B84AD27881DCBCC0858BC7DA80': foreign50,
+     '2415A9E546ADE8758DA36BBE5D8C5DDF': foreign51,
+     '89DF92E6453F5B57EDE6728765FCDB83': foreign52,
+     '826E84B741E807951D5AE4801FE0AC86': foreign53,
+     '44B7B44C4B6CB0485CC64C9E7D787988': foreign54,
+     '7FF491814A04888628E26280878DA4F2': foreign55,
+     'BE1B900B40409473AC5A55A32D727078': foreign56,
+     'D9483EA848DD67A5D6027A9834FA0087': foreign57,
+     'D9A11684418D70557B4608ACE0003617': foreign58,
+     'ED23BBF34B5F0FD622DB9E8B204BB63A': foreign59,
+     '6C7F83344D08B83F8B1C4998A4C54AE8': foreign60,
+     '2F56257244B48DB12232C3B29F558118': foreign61,
+     '36199799473CBF1BB8E5E1BBA9126803': foreign62,
+     '79EAB7A743FEAD2E7700419AFA2CCC57': foreign63,
+     'DC73DACC42CFE2DE1E2BD8A5B3AB0161': foreign64,
+     '7BB2CD8B48C4133E20706B9D8AEA7409': foreign65,
+     'E46295934A372F28FCC0BD88997D4C9A': foreign66,
+     '0C6DFB764F91F965C5215EBF3F2DA0CD': foreign67,
+     '3265C4C945183AE28FF46B9E0B36612A': foreign68,
+     'B274311A491689648BB2FFA4AB1EABD0': foreign69,
+     'A82A0EBB469BEB10BC5E7F93616124A3': foreign70,
+     '5451EC784F3474B27873F2B3AFDB95DE': foreign71,
+     'A86CDD014B353BFAF7F18DBEC67B2EE5': foreign72,
+     'AC4B614C4A13563DB038D9B78A6F2E80': foreign73,
+     '830082A2486CEC863728F59B546080A1': foreign74,
+     '6FCC85344595AD2B9E45F996A86B410B': foreign75,
+     'DF0B2F144C243DD78D93B2A74DE02BDB': foreign76,
+     'B03D76CA492BAA440E2D1780B5F642DE': foreign77,
+     '56EBF5F244E68CD9BD9825AC39B10974': foreign78,
+     '9BCDB33344AFBB8D7E1D3EBC073556A3': foreign79,
+     '89DCEA7941528B3BD1A16DA8C5C88EE1': foreign80,
+     '9E78FFA14882F31B5A3C549B39FEC218': foreign81,
+     '50B02C1C44E8AD10F9760CBC3178F07F': foreign82,
+     '72BA820E47B5DC06A25C0B9DE2A1ACC4': foreign83,
+     'E52E26894457A63DEAEB1BA27209552D': foreign84,
+     '90BD0B254690445621F522B7B3BC45E3': foreign85,
+     '4849DA4C4CB85CC732BE458C18F6379E': foreign86,
+     '923B76E6476954B0B0DA02BC98E3FAA4': foreign87,
+     '21D4445D449C30E78652DA8FEBDB5B7C': foreign88,
+     'A5B98FA7470902A28E5F9C9DF097BB1F': foreign89,
+     '868B505D43ACE71DD8A57097D27E6B8B': foreign90,
+     '297E48804EC2CE3BEC392F8A3CAC6CF5': foreign91,
+     '6D157CC6469B8C9F3567A29FE650576C': foreign92,
+     'FDA0DBA147650990118C55A0825BDFEE': foreign93,
+     'C8F66A6843EBCCDA82E46DB41B04A24A': foreign94,
+     'C03181D74635A49A6E944BA569B849DF': foreign95,
+     '1CF4255D4558936736B0168910CB6E85': foreign96,
+     'C983066745C7F20E269D83A032915A5A': foreign97,
+     'F927107048D151F143B51F98CFFACCAE': foreign98,
+     'CD82A2E448FA71DD00529A8B5261ED6C': foreign99,
+     'A099C00749C364C9D60BBD885F36EDAB': foreign100,
+     '8631500449380F926E4F61A89F4DDC38': foreign101,
+     '214EADC64028F27CC65544956CE411F1': foreign102,
+     '3B483A84480FD82E59AA5597E7C4D986': foreign103,
+     '189DADBA40C525C5906BC7B220ACD8A8': foreign104,
+     'E6EE5F054BE51F828EFA2E8E2B75BC22': foreign105,
+     'B6D27EAC444C85D1D925F986D613D5B3': foreign106,
+     'C21422064060FC0412F08EAAD527453E': foreign107,
+     'E08DC42B45A65EE74232E6B7819467BF': foreign108,
+     '94AC5EDC41970AA136CF54A0D283F564': foreign109,
+     '5D91777D438033676E4112A36CC070B0': foreign110,
+     '065127E9429137BDD37B65A8F02F1DF9': foreign111,
+     'B717B8174F93B395FECBB1AD598AB7A7': foreign112,
+     'AA1079D241B6BB30743EDA9F4A9C5412': foreign113,
+     'EE52C023433809A455CD54B47AE547A4': foreign114,
+     'BDE756FF454330E2C5881385290EF05C': foreign115,
+     'CB21811D400FF71D719CE59F97622867': foreign116,
+     '710687624B02A2E18DD152A097EB3160': foreign117,
+     '370096C546122EE5DA0AE3BF1535FF5A': foreign118,
+     'E3296951464D4AE99A231CABA9DFEB5D': foreign119,
+     '344CCE0A4CCC3E3D40B9DAAF93F9A6BC': foreign120,
+     '8DA9DF4F4EAC6D5635E6E291B56CA262': foreign121,
+     'DBFA36A34F3399D56B1662BF1ED3CEF0': foreign122,
+     '4364255442302B8A49B73E90991A9583': foreign123,
+     'EA524BE3465EF000F605CE8C6B704D6B': foreign124,
+     '7CEA1CB949085CA6E7C0F48C45700674': foreign125,
+     '2528EAD243F6FB25EAB612B3D94EBDAC': foreign126,
+     'B6BDFEB14D8838D358B3D28924C27CF3': foreign127,
+     'A606984840804F6EFB25D0A4C7191DB5': foreign128,
+     'A639488E4045BA40B1363285A8BC88C0': foreign129,
+     '31DAEEA74B645DBF966BDBB71155357F': foreign130,
+     '5B10F1794471BFE32E9CE085D3AE414F': foreign131,
+     'CFD81FDF4E103BA3E77DC8ADE7B3466F': foreign132,
+     'E0AB58B34AE7EB16305F529C6FA36BB3': foreign133,
+     'EA1F9DDE412822BAA582B48AB647BBA6': foreign134,
+     'C355104C46F120CA76B19698AB2233E6': foreign135,
+     'BE07506F46A0EB91CA5E04BA797F06D9': foreign136,
+     '4D4C6F124C1A7FAE19BA719FF4DE9E6F': foreign137,
+     '256A668342053E3AF30DE5B8B94E07B8': foreign138,
+     '1C83BDBF48A2400CE7912CB5DE86E7EC': foreign139,
+     'D576481D44EE711294EAA6A7A7031590': foreign140,
+     'EB6C431843573960FE4767BAAE016943': foreign141,
+     '3FB5E7C2434EEDB3A28F5E8CDE22FBA6': foreign142,
+     'DF2ED0244B24B75C285526ADF7F0EC9D': foreign143,
+     'FCABE3234E35CFE468AEB79BEC6F2E72': foreign144,
+     '62E6AAFB40905C05BF1A9C898D66F7CC': foreign145,
 };
 const MWFileMapping = new WeakMap([[foreign1 || {}, "JavaScripts/Common/AdTips"],
 [foreign2 || {}, "JavaScripts/Common/Collections"],
-[foreign3 || {}, "JavaScripts/Common/Dance"],
-[foreign4 || {}, "JavaScripts/Common/ExplosiveCoins"],
-[foreign5 || {}, "JavaScripts/Common/Flashlight"],
-[foreign6 || {}, "JavaScripts/Common/FlyText"],
-[foreign7 || {}, "JavaScripts/Common/MyClearDayNight"],
-[foreign8 || {}, "JavaScripts/Common/notice/Notice"],
-[foreign9 || {}, "JavaScripts/Common/notice/Tween"],
-[foreign10 || {}, "JavaScripts/Common/notice/UIPool"],
-[foreign11 || {}, "JavaScripts/Common/notice/Updater"],
-[foreign12 || {}, "JavaScripts/Common/NPCSitDance"],
-[foreign13 || {}, "JavaScripts/Common/OnClickPanel"],
-[foreign14 || {}, "JavaScripts/Common/Portal"],
-[foreign15 || {}, "JavaScripts/Common/P_Tips"],
-[foreign16 || {}, "JavaScripts/Common/Shakes"],
-[foreign17 || {}, "JavaScripts/Common/Sit"],
-[foreign18 || {}, "JavaScripts/Common/SkyWheel"],
-[foreign19 || {}, "JavaScripts/Common/Test"],
-[foreign20 || {}, "JavaScripts/config/Achievements"],
-[foreign21 || {}, "JavaScripts/config/Assets"],
-[foreign22 || {}, "JavaScripts/config/BlockingVolume"],
-[foreign23 || {}, "JavaScripts/config/Clothes"],
-[foreign24 || {}, "JavaScripts/config/ColdWeapon"],
-[foreign25 || {}, "JavaScripts/config/Collection"],
-[foreign26 || {}, "JavaScripts/config/ConfigBase"],
-[foreign27 || {}, "JavaScripts/config/Dance"],
-[foreign28 || {}, "JavaScripts/config/DressUp"],
-[foreign29 || {}, "JavaScripts/config/Flashlight"],
-[foreign30 || {}, "JavaScripts/config/GameConfig"],
-[foreign32 || {}, "JavaScripts/config/Music"],
-[foreign33 || {}, "JavaScripts/config/NPCSitDance"],
-[foreign34 || {}, "JavaScripts/config/Pet"],
-[foreign35 || {}, "JavaScripts/config/PlayerLauncher"],
-[foreign36 || {}, "JavaScripts/config/Portal"],
-[foreign37 || {}, "JavaScripts/config/RotaryKnifeTrigger"],
-[foreign38 || {}, "JavaScripts/config/Shake"],
-[foreign39 || {}, "JavaScripts/config/Sit"],
-[foreign40 || {}, "JavaScripts/config/Tail"],
-[foreign41 || {}, "JavaScripts/config/TelegraphPole"],
-[foreign42 || {}, "JavaScripts/config/Trampoline"],
-[foreign43 || {}, "JavaScripts/config/Weapon"],
-[foreign44 || {}, "JavaScripts/config/Wing"],
-[foreign45 || {}, "JavaScripts/const/Enum"],
-[foreign46 || {}, "JavaScripts/const/GlobalData"],
-[foreign47 || {}, "JavaScripts/GameLaunch"],
-[foreign48 || {}, "JavaScripts/Modified027Editor/ModifiedCamera"],
-[foreign49 || {}, "JavaScripts/Modified027Editor/ModifiedPlayer"],
-[foreign50 || {}, "JavaScripts/Modified027Editor/ModifiedSpawn"],
-[foreign51 || {}, "JavaScripts/Modified027Editor/ModifiedStaticAPI"],
-[foreign52 || {}, "JavaScripts/module/AchievementModule/AchievementData"],
-[foreign53 || {}, "JavaScripts/module/AchievementModule/AchievementModuleC"],
-[foreign54 || {}, "JavaScripts/module/AchievementModule/AchievementModuleS"],
-[foreign55 || {}, "JavaScripts/module/AchievementModule/ui/AchievementPanel"],
-[foreign56 || {}, "JavaScripts/module/AchievementModule/ui/CompletedPanel"],
-[foreign57 || {}, "JavaScripts/module/AdsModule/AdsModuleC"],
-[foreign58 || {}, "JavaScripts/module/AdsModule/AdsModuleS"],
-[foreign59 || {}, "JavaScripts/module/ColdWeapon/ColdWeapon"],
-[foreign60 || {}, "JavaScripts/module/ColdWeapon/SkillRectCheck"],
-[foreign61 || {}, "JavaScripts/module/ColdWeapon/Weapon"],
-[foreign62 || {}, "JavaScripts/module/ColdWeapon/WeaponClient"],
-[foreign63 || {}, "JavaScripts/module/ColdWeapon/WeaponDef"],
-[foreign64 || {}, "JavaScripts/module/ColdWeapon/WeaponManager"],
-[foreign65 || {}, "JavaScripts/module/ColdWeapon/WeaponServer"],
-[foreign66 || {}, "JavaScripts/module/CollectionMOdule/CollectionData"],
-[foreign67 || {}, "JavaScripts/module/CollectionMOdule/CollectionModuleC"],
-[foreign68 || {}, "JavaScripts/module/CollectionMOdule/CollectionModuleS"],
-[foreign69 || {}, "JavaScripts/module/CollectionMOdule/ui/CollectionItemPanel"],
-[foreign70 || {}, "JavaScripts/module/CollectionMOdule/ui/CollectionPanel"],
-[foreign71 || {}, "JavaScripts/module/CollectionMOdule/ui/CollectionTipPanel"],
-[foreign72 || {}, "JavaScripts/module/DanceModule"],
-[foreign73 || {}, "JavaScripts/module/HUDModule/HUDDate"],
-[foreign74 || {}, "JavaScripts/module/HUDModule/HUDModuleC"],
-[foreign75 || {}, "JavaScripts/module/HUDModule/HUDModuleS"],
-[foreign76 || {}, "JavaScripts/module/HUDModule/ui/GuidePanel"],
-[foreign77 || {}, "JavaScripts/module/HUDModule/ui/HUDPanel"],
-[foreign78 || {}, "JavaScripts/module/HUDModule/ui/Lifebar"],
-[foreign79 || {}, "JavaScripts/module/NPCModule/Monster"],
-[foreign80 || {}, "JavaScripts/module/NPCModule/NPCBar"],
-[foreign81 || {}, "JavaScripts/module/PetModule/PetModule"],
-[foreign82 || {}, "JavaScripts/module/PetModule/ui/PetPanel"],
-[foreign83 || {}, "JavaScripts/module/PetModule/ui/PetRafflePanel"],
-[foreign84 || {}, "JavaScripts/module/PlayerModule/Boss"],
-[foreign85 || {}, "JavaScripts/module/PlayerModule/PlayerModule"],
-[foreign86 || {}, "JavaScripts/module/RankingModule/RankingModuleC"],
-[foreign87 || {}, "JavaScripts/module/RankingModule/RankingModuleS"],
-[foreign88 || {}, "JavaScripts/module/RankingModule/ui/RankingPanel"],
-[foreign89 || {}, "JavaScripts/module/ShopModule/ShopData"],
-[foreign90 || {}, "JavaScripts/module/ShopModule/ShopModuleC"],
-[foreign91 || {}, "JavaScripts/module/ShopModule/ShopModuleS"],
-[foreign92 || {}, "JavaScripts/module/ShopModule/ui/ShopPanel"],
-[foreign93 || {}, "JavaScripts/module/SignInModule/SignInData"],
-[foreign94 || {}, "JavaScripts/module/SignInModule/SignInModuleC"],
-[foreign95 || {}, "JavaScripts/module/SignInModule/SignInModuleS"],
-[foreign96 || {}, "JavaScripts/module/SignInModule/ui/SignInPanel"],
-[foreign97 || {}, "JavaScripts/Prefabs/PrefabEvent"],
-[foreign98 || {}, "JavaScripts/Prefabs/可击飞的交互物/Script/prefab/RotaryKnife/RotaryKnifeTrigger"],
-[foreign99 || {}, "JavaScripts/Prefabs/可发射的交互物/Script/prefab/PlayerLauncher/PlayerLauncher"],
-[foreign100 || {}, "JavaScripts/Prefabs/可弹跳的交互物/Script/prefab/Trampoline/Trampoline"],
-[foreign101 || {}, "JavaScripts/Prefabs/可弹跳的交互物/Script/prefab/Trampoline/ui/P_Game_Trampoline"],
-[foreign102 || {}, "JavaScripts/Prefabs/可电击的交互物/Script/prefab/TelegraphPole/TelegraphPole"],
-[foreign103 || {}, "JavaScripts/Tools/Console"],
-[foreign104 || {}, "JavaScripts/Tools/InputManager"],
-[foreign105 || {}, "JavaScripts/Tools/ObjectPool"],
-[foreign106 || {}, "JavaScripts/Tools/utils"],
-[foreign107 || {}, "JavaScripts/ui-generate/common/AdTips_generate"],
-[foreign108 || {}, "JavaScripts/ui-generate/common/FirstGamePanel_generate"],
-[foreign109 || {}, "JavaScripts/ui-generate/common/ImpactRadiusWindow_generate"],
-[foreign110 || {}, "JavaScripts/ui-generate/common/notice/NoticeView_generate"],
-[foreign111 || {}, "JavaScripts/ui-generate/common/notice/SecondNoticeItem_generate"],
-[foreign112 || {}, "JavaScripts/ui-generate/common/notice/TopNoticeItem_generate"],
-[foreign113 || {}, "JavaScripts/ui-generate/common/OnClickPanel_generate"],
-[foreign114 || {}, "JavaScripts/ui-generate/common/Test_generate"],
-[foreign115 || {}, "JavaScripts/ui-generate/common/world0_generate"],
-[foreign116 || {}, "JavaScripts/ui-generate/common/world0_副本1_generate"],
-[foreign117 || {}, "JavaScripts/ui-generate/module/Achievement/AchievementItem_generate"],
-[foreign118 || {}, "JavaScripts/ui-generate/module/Achievement/AchievementMain_generate"],
-[foreign119 || {}, "JavaScripts/ui-generate/module/Achievement/Completed_generate"],
-[foreign120 || {}, "JavaScripts/ui-generate/module/CollectionUI/CollectionItemTip_generate"],
-[foreign121 || {}, "JavaScripts/ui-generate/module/CollectionUI/CollectionPanel_generate"],
-[foreign122 || {}, "JavaScripts/ui-generate/module/CollectionUI/CollectionTip_generate"],
-[foreign123 || {}, "JavaScripts/ui-generate/module/CollectionUI/CollectItem_generate"],
-[foreign124 || {}, "JavaScripts/ui-generate/module/HUDUI/GuidePanel_generate"],
-[foreign125 || {}, "JavaScripts/ui-generate/module/HUDUI/HUDPanel_generate"],
-[foreign126 || {}, "JavaScripts/ui-generate/module/HUDUI/KillTipItem_generate"],
-[foreign127 || {}, "JavaScripts/ui-generate/module/HUDUI/Lifebar_generate"],
-[foreign128 || {}, "JavaScripts/ui-generate/module/NPCModule/NPCBar_generate"],
-[foreign129 || {}, "JavaScripts/ui-generate/module/PetUI/PetItem_generate"],
-[foreign130 || {}, "JavaScripts/ui-generate/module/PetUI/PetPanel_generate"],
-[foreign131 || {}, "JavaScripts/ui-generate/module/PetUI/PetRafflePanel_generate"],
-[foreign132 || {}, "JavaScripts/ui-generate/module/PlayerModule/LevelPanel_generate"],
-[foreign133 || {}, "JavaScripts/ui-generate/module/RankingUI/RankingItem_generate"],
-[foreign134 || {}, "JavaScripts/ui-generate/module/RankingUI/RankingPanel_generate"],
-[foreign135 || {}, "JavaScripts/ui-generate/module/ShopUI/ClothItem_generate"],
-[foreign136 || {}, "JavaScripts/ui-generate/module/ShopUI/ShopPanel_generate"],
-[foreign137 || {}, "JavaScripts/ui-generate/module/ShopUI/TailItem_generate"],
-[foreign138 || {}, "JavaScripts/ui-generate/module/ShopUI/WeaponItem_generate"],
-[foreign139 || {}, "JavaScripts/ui-generate/module/ShopUI/WingItem_generate"],
-[foreign140 || {}, "JavaScripts/ui-generate/module/SignInUI/SignInPanel_generate"],
-[foreign141 || {}, "JavaScripts/ui-generate/Prefabs/可弹跳的交互物/UI/Prefab/Trampoline/JumpRecordUI_generate"]]);
+[foreign3 || {}, "JavaScripts/Common/ConfirmPanel"],
+[foreign4 || {}, "JavaScripts/Common/Dance"],
+[foreign5 || {}, "JavaScripts/Common/ExplosiveCoins"],
+[foreign6 || {}, "JavaScripts/Common/Flashlight"],
+[foreign7 || {}, "JavaScripts/Common/FlyText"],
+[foreign8 || {}, "JavaScripts/Common/JumpGame"],
+[foreign9 || {}, "JavaScripts/Common/MyClearDayNight"],
+[foreign10 || {}, "JavaScripts/Common/notice/Notice"],
+[foreign11 || {}, "JavaScripts/Common/notice/Tween"],
+[foreign12 || {}, "JavaScripts/Common/notice/UIPool"],
+[foreign13 || {}, "JavaScripts/Common/notice/Updater"],
+[foreign14 || {}, "JavaScripts/Common/NPCSitDance"],
+[foreign15 || {}, "JavaScripts/Common/OnClickPanel"],
+[foreign16 || {}, "JavaScripts/Common/Portal"],
+[foreign17 || {}, "JavaScripts/Common/P_Tips"],
+[foreign18 || {}, "JavaScripts/Common/Shakes"],
+[foreign19 || {}, "JavaScripts/Common/Sit"],
+[foreign20 || {}, "JavaScripts/Common/SkyWheel"],
+[foreign21 || {}, "JavaScripts/Common/Test"],
+[foreign22 || {}, "JavaScripts/config/Achievements"],
+[foreign23 || {}, "JavaScripts/config/Assets"],
+[foreign24 || {}, "JavaScripts/config/BlockingVolume"],
+[foreign25 || {}, "JavaScripts/config/Clothes"],
+[foreign26 || {}, "JavaScripts/config/ColdWeapon"],
+[foreign27 || {}, "JavaScripts/config/Collection"],
+[foreign28 || {}, "JavaScripts/config/ConfigBase"],
+[foreign29 || {}, "JavaScripts/config/Dance"],
+[foreign30 || {}, "JavaScripts/config/DressUp"],
+[foreign31 || {}, "JavaScripts/config/Flashlight"],
+[foreign32 || {}, "JavaScripts/config/GameConfig"],
+[foreign33 || {}, "JavaScripts/config/MonsterInfo"],
+[foreign34 || {}, "JavaScripts/config/Music"],
+[foreign35 || {}, "JavaScripts/config/NPCSitDance"],
+[foreign36 || {}, "JavaScripts/config/Pet"],
+[foreign37 || {}, "JavaScripts/config/PlayerLauncher"],
+[foreign38 || {}, "JavaScripts/config/Portal"],
+[foreign39 || {}, "JavaScripts/config/RotaryKnifeTrigger"],
+[foreign40 || {}, "JavaScripts/config/Shake"],
+[foreign41 || {}, "JavaScripts/config/Sit"],
+[foreign42 || {}, "JavaScripts/config/Tail"],
+[foreign43 || {}, "JavaScripts/config/TelegraphPole"],
+[foreign44 || {}, "JavaScripts/config/Trampoline"],
+[foreign45 || {}, "JavaScripts/config/Weapon"],
+[foreign46 || {}, "JavaScripts/config/Wing"],
+[foreign47 || {}, "JavaScripts/const/Enum"],
+[foreign48 || {}, "JavaScripts/const/GlobalData"],
+[foreign49 || {}, "JavaScripts/GameLaunch"],
+[foreign50 || {}, "JavaScripts/Modified027Editor/ModifiedCamera"],
+[foreign51 || {}, "JavaScripts/Modified027Editor/ModifiedPlayer"],
+[foreign52 || {}, "JavaScripts/Modified027Editor/ModifiedSpawn"],
+[foreign53 || {}, "JavaScripts/Modified027Editor/ModifiedStaticAPI"],
+[foreign54 || {}, "JavaScripts/module/AchievementModule/AchievementData"],
+[foreign55 || {}, "JavaScripts/module/AchievementModule/AchievementModuleC"],
+[foreign56 || {}, "JavaScripts/module/AchievementModule/AchievementModuleS"],
+[foreign57 || {}, "JavaScripts/module/AchievementModule/ui/AchievementPanel"],
+[foreign58 || {}, "JavaScripts/module/AchievementModule/ui/CompletedPanel"],
+[foreign59 || {}, "JavaScripts/module/AdsModule/AdsModuleC"],
+[foreign60 || {}, "JavaScripts/module/AdsModule/AdsModuleS"],
+[foreign61 || {}, "JavaScripts/module/ColdWeapon/ColdWeapon"],
+[foreign62 || {}, "JavaScripts/module/ColdWeapon/SkillRectCheck"],
+[foreign63 || {}, "JavaScripts/module/ColdWeapon/Weapon"],
+[foreign64 || {}, "JavaScripts/module/ColdWeapon/WeaponClient"],
+[foreign65 || {}, "JavaScripts/module/ColdWeapon/WeaponDef"],
+[foreign66 || {}, "JavaScripts/module/ColdWeapon/WeaponManager"],
+[foreign67 || {}, "JavaScripts/module/ColdWeapon/WeaponServer"],
+[foreign68 || {}, "JavaScripts/module/CollectionMOdule/CollectionData"],
+[foreign69 || {}, "JavaScripts/module/CollectionMOdule/CollectionModuleC"],
+[foreign70 || {}, "JavaScripts/module/CollectionMOdule/CollectionModuleS"],
+[foreign71 || {}, "JavaScripts/module/CollectionMOdule/ui/CollectionItemPanel"],
+[foreign72 || {}, "JavaScripts/module/CollectionMOdule/ui/CollectionPanel"],
+[foreign73 || {}, "JavaScripts/module/CollectionMOdule/ui/CollectionTipPanel"],
+[foreign74 || {}, "JavaScripts/module/DanceModule"],
+[foreign75 || {}, "JavaScripts/module/HUDModule/HUDDate"],
+[foreign76 || {}, "JavaScripts/module/HUDModule/HUDModuleC"],
+[foreign77 || {}, "JavaScripts/module/HUDModule/HUDModuleS"],
+[foreign78 || {}, "JavaScripts/module/HUDModule/ui/GuidePanel"],
+[foreign79 || {}, "JavaScripts/module/HUDModule/ui/HUDPanel"],
+[foreign80 || {}, "JavaScripts/module/HUDModule/ui/Lifebar"],
+[foreign81 || {}, "JavaScripts/module/NPCModule/Monster"],
+[foreign82 || {}, "JavaScripts/module/NPCModule/NPCBar"],
+[foreign83 || {}, "JavaScripts/module/PetModule/PetModule"],
+[foreign84 || {}, "JavaScripts/module/PetModule/ui/PetPanel"],
+[foreign85 || {}, "JavaScripts/module/PetModule/ui/PetRafflePanel"],
+[foreign86 || {}, "JavaScripts/module/PlayerModule/Boss"],
+[foreign87 || {}, "JavaScripts/module/PlayerModule/PlayerModule"],
+[foreign88 || {}, "JavaScripts/module/RankingModule/RankingModuleC"],
+[foreign89 || {}, "JavaScripts/module/RankingModule/RankingModuleS"],
+[foreign90 || {}, "JavaScripts/module/RankingModule/ui/RankingPanel"],
+[foreign91 || {}, "JavaScripts/module/ShopModule/ShopData"],
+[foreign92 || {}, "JavaScripts/module/ShopModule/ShopModuleC"],
+[foreign93 || {}, "JavaScripts/module/ShopModule/ShopModuleS"],
+[foreign94 || {}, "JavaScripts/module/ShopModule/ui/ShopPanel"],
+[foreign95 || {}, "JavaScripts/module/SignInModule/SignInData"],
+[foreign96 || {}, "JavaScripts/module/SignInModule/SignInModuleC"],
+[foreign97 || {}, "JavaScripts/module/SignInModule/SignInModuleS"],
+[foreign98 || {}, "JavaScripts/module/SignInModule/ui/SignInPanel"],
+[foreign99 || {}, "JavaScripts/Prefabs/PrefabEvent"],
+[foreign100 || {}, "JavaScripts/Prefabs/可击飞的交互物/Script/prefab/RotaryKnife/RotaryKnifeTrigger"],
+[foreign101 || {}, "JavaScripts/Prefabs/可发射的交互物/Script/prefab/PlayerLauncher/PlayerLauncher"],
+[foreign102 || {}, "JavaScripts/Prefabs/可弹跳的交互物/Script/prefab/Trampoline/Trampoline"],
+[foreign103 || {}, "JavaScripts/Prefabs/可弹跳的交互物/Script/prefab/Trampoline/ui/P_Game_Trampoline"],
+[foreign104 || {}, "JavaScripts/Prefabs/可电击的交互物/Script/prefab/TelegraphPole/TelegraphPole"],
+[foreign105 || {}, "JavaScripts/Tools/Console"],
+[foreign106 || {}, "JavaScripts/Tools/InputManager"],
+[foreign107 || {}, "JavaScripts/Tools/ObjectPool"],
+[foreign108 || {}, "JavaScripts/Tools/utils"],
+[foreign109 || {}, "JavaScripts/ui-generate/common/AdTips_generate"],
+[foreign110 || {}, "JavaScripts/ui-generate/common/ConfirmPanel_generate"],
+[foreign111 || {}, "JavaScripts/ui-generate/common/FirstGamePanel_generate"],
+[foreign112 || {}, "JavaScripts/ui-generate/common/ImpactRadiusWindow_generate"],
+[foreign113 || {}, "JavaScripts/ui-generate/common/JumpGameTips_generate"],
+[foreign114 || {}, "JavaScripts/ui-generate/common/notice/NoticeView_generate"],
+[foreign115 || {}, "JavaScripts/ui-generate/common/notice/SecondNoticeItem_generate"],
+[foreign116 || {}, "JavaScripts/ui-generate/common/notice/TopNoticeItem_generate"],
+[foreign117 || {}, "JavaScripts/ui-generate/common/OnClickPanel_generate"],
+[foreign118 || {}, "JavaScripts/ui-generate/common/Test_generate"],
+[foreign119 || {}, "JavaScripts/ui-generate/common/world0_generate"],
+[foreign120 || {}, "JavaScripts/ui-generate/common/world0_副本1_generate"],
+[foreign121 || {}, "JavaScripts/ui-generate/module/Achievement/AchievementItem_generate"],
+[foreign122 || {}, "JavaScripts/ui-generate/module/Achievement/AchievementMain_generate"],
+[foreign123 || {}, "JavaScripts/ui-generate/module/Achievement/Completed_generate"],
+[foreign124 || {}, "JavaScripts/ui-generate/module/CollectionUI/CollectionItemTip_generate"],
+[foreign125 || {}, "JavaScripts/ui-generate/module/CollectionUI/CollectionPanel_generate"],
+[foreign126 || {}, "JavaScripts/ui-generate/module/CollectionUI/CollectionTip_generate"],
+[foreign127 || {}, "JavaScripts/ui-generate/module/CollectionUI/CollectItem_generate"],
+[foreign128 || {}, "JavaScripts/ui-generate/module/HUDUI/GuidePanel_generate"],
+[foreign129 || {}, "JavaScripts/ui-generate/module/HUDUI/HUDPanel_generate"],
+[foreign130 || {}, "JavaScripts/ui-generate/module/HUDUI/KillTipItem_generate"],
+[foreign131 || {}, "JavaScripts/ui-generate/module/HUDUI/Lifebar_generate"],
+[foreign132 || {}, "JavaScripts/ui-generate/module/NPCModule/NPCBar_generate"],
+[foreign133 || {}, "JavaScripts/ui-generate/module/PetUI/PetItem_generate"],
+[foreign134 || {}, "JavaScripts/ui-generate/module/PetUI/PetPanel_generate"],
+[foreign135 || {}, "JavaScripts/ui-generate/module/PetUI/PetRafflePanel_generate"],
+[foreign136 || {}, "JavaScripts/ui-generate/module/PlayerModule/LevelPanel_generate"],
+[foreign137 || {}, "JavaScripts/ui-generate/module/RankingUI/RankingItem_generate"],
+[foreign138 || {}, "JavaScripts/ui-generate/module/RankingUI/RankingPanel_generate"],
+[foreign139 || {}, "JavaScripts/ui-generate/module/ShopUI/ClothItem_generate"],
+[foreign140 || {}, "JavaScripts/ui-generate/module/ShopUI/ShopPanel_generate"],
+[foreign141 || {}, "JavaScripts/ui-generate/module/ShopUI/TailItem_generate"],
+[foreign142 || {}, "JavaScripts/ui-generate/module/ShopUI/WeaponItem_generate"],
+[foreign143 || {}, "JavaScripts/ui-generate/module/ShopUI/WingItem_generate"],
+[foreign144 || {}, "JavaScripts/ui-generate/module/SignInUI/SignInPanel_generate"],
+[foreign145 || {}, "JavaScripts/ui-generate/Prefabs/可弹跳的交互物/UI/Prefab/Trampoline/JumpRecordUI_generate"]]);
 
 exports.MWFileMapping = MWFileMapping;
 exports.MWModuleMap = MWModuleMap;
