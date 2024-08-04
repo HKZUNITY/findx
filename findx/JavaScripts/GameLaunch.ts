@@ -84,7 +84,7 @@ export default class GameLaunch extends mw.Script {
         ModuleService.registerModule(AdsModuleS, AdsModuleC, null);
         ModuleService.registerModule(PetModuleS, PetModuleC, PetData);
         ModuleService.registerModule(AchievementModuleS, AchievementModuleC, AchievementData);
-        ModuleService.registerModule(PlayerModuleS, PlayerModuleC, PlayerLevelData);
+        // ModuleService.registerModule(PlayerModuleS, PlayerModuleC, PlayerLevelData);
     }
 
     /**预加载 */

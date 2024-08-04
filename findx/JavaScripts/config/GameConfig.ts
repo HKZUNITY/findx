@@ -7,6 +7,7 @@ import {ColdWeaponConfig} from "./ColdWeapon";
 import {CollectionConfig} from "./Collection";
 import {DanceConfig} from "./Dance";
 import {FlashlightConfig} from "./Flashlight";
+import {MonsterInfoConfig} from "./MonsterInfo";
 import {MusicConfig} from "./Music";
 import {NPCSitDanceConfig} from "./NPCSitDance";
 import {PetConfig} from "./Pet";
@@ -45,6 +46,7 @@ export class GameConfig{
 	public static get Collection():CollectionConfig{ return this.getConfig(CollectionConfig) };
 	public static get Dance():DanceConfig{ return this.getConfig(DanceConfig) };
 	public static get Flashlight():FlashlightConfig{ return this.getConfig(FlashlightConfig) };
+	public static get MonsterInfo():MonsterInfoConfig{ return this.getConfig(MonsterInfoConfig) };
 	public static get Music():MusicConfig{ return this.getConfig(MusicConfig) };
 	public static get NPCSitDance():NPCSitDanceConfig{ return this.getConfig(NPCSitDanceConfig) };
 	public static get Pet():PetConfig{ return this.getConfig(PetConfig) };

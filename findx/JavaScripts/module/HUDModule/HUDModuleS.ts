@@ -163,13 +163,18 @@ export default class HUDModuleS extends ModuleS<HUDModuleC, HUDDate> {
     private allPlayerMap: Map<string, mw.Player> = new Map<string, mw.Player>();
     private playerAtkPlayer(senderGuid: string, targetGuid: string, damage: number, hitPoint: mw.Vector): void {
         Console.error("PlayerModuleS-playerAtkPlayerAndNPC");
-        if (!this.allPlayerMap.has(targetGuid) || !this.allPlayerMap.has(senderGuid)) return;
-        let sendPlayer = this.allPlayerMap.get(senderGuid);
-        let targetPlayer = this.allPlayerMap.get(targetGuid);
-        if (this.playerLifeMap.get(targetPlayer.playerId).isDie || this.playerLifeMap.get(sendPlayer.playerId).isDie) return;
-        // this.updatePlayerData(sendPlayer, targetPlayer, damage, hitPoint)
-        this.setPlayerHp(targetPlayer, damage, sendPlayer);
-        this.getClient(sendPlayer).net_onSelfAtkPlayer(damage, hitPoint);
+        if (senderGuid) {
+            if (!this.allPlayerMap.has(targetGuid) || !this.allPlayerMap.has(senderGuid)) return;
+            let sendPlayer = this.allPlayerMap.get(senderGuid);
+            let targetPlayer = this.allPlayerMap.get(targetGuid);
+            if (this.playerLifeMap.get(targetPlayer.playerId).isDie || this.playerLifeMap.get(sendPlayer.playerId).isDie) return;
+            this.setPlayerHp(targetPlayer, damage, sendPlayer);
+            this.getClient(sendPlayer).net_onSelfAtkPlayer(damage, hitPoint);
+        } else {
+            let targetPlayer = this.allPlayerMap.get(targetGuid);
+            if (this.playerLifeMap.get(targetPlayer.playerId).isDie) return;
+            this.setPlayerHp(targetPlayer, damage);
+        }
     }
 
     /**设置玩家血量 */
