@@ -43,8 +43,8 @@ export default class JumpGame extends Script {
         this.jumpTrigger.onEnter.add((character: mw.Character) => {
             if (Player.localPlayer.character != character) return;
             this.getConfirmPanel.confirmTips(() => {
-                mw.RouteService.enterNewGame("P_32799aaa30a6577f2bf8de668f5be161f3cad400");
-            }, "前往 斗破苍穹乐园2（美杜莎）", "前往", "取消");
+                mw.RouteService.enterNewGame("P_2dde3ca89dea5ab82f6109a8f46e3dcf37f541a2");
+            }, "前往 斗破苍穹乐园2\n无限升级", "前往", "取消");
         });
     }
 
