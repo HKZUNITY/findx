@@ -266,7 +266,7 @@ export default class Monster extends Script {
         } else {
             this.hp = 0;
             this.die_S();
-            if (senderGuid) this.getRankingModuleS.refreshKillCount(this.getHudModuleS.getPlayerbyGameObjectId(senderGuid), 1, true);
+            if (senderGuid) this.getRankingModuleS.refreshKillCount(this.getHudModuleS.getPlayerbyGameObjectId(senderGuid), 1, this.monsterId);
         }
         SoundService.play3DSound("47414", this.monster, 1, 10000);
         this.getHudModuleS.playerAtkEnemyFlyText(senderGuid, hitPoint, damage);

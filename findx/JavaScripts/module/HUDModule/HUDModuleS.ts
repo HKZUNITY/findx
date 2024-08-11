@@ -217,8 +217,8 @@ export default class HUDModuleS extends ModuleS<HUDModuleC, HUDDate> {
         Console.error("[hp] = " + this.playerLifeMap.get(playerId).lifebar.hp);
     }
 
-    public playerKillNpc(playerId: number, playerMame: string): void {
-        this.getAllClient().net_killTip(playerId, playerMame, -1, Utils.randomNpcName());
+    public playerKillNpc(playerId: number, playerMame: string, monsterId: number): void {
+        this.getAllClient().net_killTip(playerId, playerMame, -1, Utils.randomNpcName(monsterId));
     }
 
     public playerAtkEnemyFlyText(senderGuid: string, hitPoint: mw.Vector, damage: number): void {

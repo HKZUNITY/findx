@@ -963,7 +963,21 @@ class Utils {
         if (ui.visibility != visibility)
             ui.visibility = visibility;
     }
-    static randomNpcName() {
+    static randomNpcName(monsterId) {
+        switch (monsterId) {
+            case 1:
+                return "魔兽美杜莎";
+            case 2:
+                return "魔兽炫彩蜘蛛";
+            case 3:
+                return "魔兽蜘蛛精";
+            case 4:
+                return "龙之魔兽";
+            case 5:
+                return "丧尸";
+            case 6:
+                return "变异布偶";
+        }
         return this.npcNames[this.getRandomInteger(0, this.npcNames.length - 1)];
     }
     /**根据数字获取汉字*/
@@ -8764,6 +8778,16 @@ class HUDModuleC extends ModuleC {
     net_flyText(damage, hitPoint) {
         let fontColor = Utils.randomColor();
         FlyText.instance.showFlyText("-" + damage, hitPoint, fontColor[0], fontColor[1]);
+        ExplosiveCoins.instance.explosiveCoins(new mw.Vector(hitPoint.x, hitPoint.y, hitPoint.z / 2), damage, Utils.getRandomInteger(5, 10));
+        this.exp++;
+        this.hudPanel.mExpProgressBar.currentValue = this.exp / 50;
+        if (this.exp >= 50) {
+            this.exp = 0;
+            this.server.net_addLevel();
+            this.setCurAttackValue(50);
+            this.setMaxHp(500);
+            this.shopModuleC.playEffectAndSoundToPlayer(1);
+        }
     }
     net_onSelfAtkPlayer(damage, hitPoint) {
         Console.error("net_onSelfAtkPlayer");
@@ -13990,8 +14014,8 @@ class HUDModuleS extends ModuleS {
         }
         Console.error("[hp] = " + this.playerLifeMap.get(playerId).lifebar.hp);
     }
-    playerKillNpc(playerId, playerMame) {
-        this.getAllClient().net_killTip(playerId, playerMame, -1, Utils.randomNpcName());
+    playerKillNpc(playerId, playerMame, monsterId) {
+        this.getAllClient().net_killTip(playerId, playerMame, -1, Utils.randomNpcName(monsterId));
     }
     playerAtkEnemyFlyText(senderGuid, hitPoint, damage) {
         if (!this.allPlayerMap.has(senderGuid))
@@ -14280,7 +14304,7 @@ class RankingModuleS extends ModuleS {
         this.sendPlayersData();
     }
     /**刷新击杀人数 */
-    refreshKillCount(player, killCount, isBoss = false) {
+    refreshKillCount(player, killCount, monsterId = -1) {
         let playerId = player.playerId;
         Console.error("[击杀playerId] = " + playerId);
         if (!this.playerDataMap.has(playerId))
@@ -14289,8 +14313,8 @@ class RankingModuleS extends ModuleS {
         playerData.killCount += killCount;
         DataCenterS.getData(player, ShopData).saveKillCount(playerData.killCount);
         this.sendPlayersData();
-        if (isBoss)
-            this.hudModuleS.playerKillNpc(player.playerId, this.getNameByUserId(player.playerId));
+        if (monsterId > 0)
+            this.hudModuleS.playerKillNpc(player.playerId, this.getNameByUserId(player.playerId), monsterId);
     }
     /**刷新收集分数 */
     refreshScore(player, score) {
@@ -16731,7 +16755,7 @@ class Monster extends Script {
             this.hp = 0;
             this.die_S();
             if (senderGuid)
-                this.getRankingModuleS.refreshKillCount(this.getHudModuleS.getPlayerbyGameObjectId(senderGuid), 1, true);
+                this.getRankingModuleS.refreshKillCount(this.getHudModuleS.getPlayerbyGameObjectId(senderGuid), 1, this.monsterId);
         }
         SoundService.play3DSound("47414", this.monster, 1, 10000);
         this.getHudModuleS.playerAtkEnemyFlyText(senderGuid, hitPoint, damage);
@@ -17251,8 +17275,7 @@ let Boss = class Boss extends Script {
         }
         if (this.curHp <= 0) {
             this.dieS();
-            if (senderGuid)
-                this.getRankingModuleS.refreshKillCount(this.getHudModuleS.getPlayerbyGameObjectId(senderGuid), 1, true);
+            // if (senderGuid) this.getRankingModuleS.refreshKillCount(this.getHudModuleS.getPlayerbyGameObjectId(senderGuid), 1, true);
             TimeUtil.delaySecond(this.respawnTime).then(() => {
                 this.curHp = this.maxHp;
                 this.respawnS();

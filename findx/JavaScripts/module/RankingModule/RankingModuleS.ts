@@ -60,7 +60,7 @@ export default class RankingModuleS extends ModuleS<RankingModuleC, null> {
     }
 
     /**刷新击杀人数 */
-    public refreshKillCount(player: mw.Player, killCount: number, isBoss: boolean = false): void {
+    public refreshKillCount(player: mw.Player, killCount: number, monsterId: number = -1): void {
         let playerId = player.playerId;
         Console.error("[击杀playerId] = " + playerId);
         if (!this.playerDataMap.has(playerId)) return;
@@ -68,7 +68,7 @@ export default class RankingModuleS extends ModuleS<RankingModuleC, null> {
         playerData.killCount += killCount;
         DataCenterS.getData(player, ShopData).saveKillCount(playerData.killCount);
         this.sendPlayersData();
-        if (isBoss) this.hudModuleS.playerKillNpc(player.playerId, this.getNameByUserId(player.playerId));
+        if (monsterId > 0) this.hudModuleS.playerKillNpc(player.playerId, this.getNameByUserId(player.playerId), monsterId);
     }
 
     /**刷新收集分数 */

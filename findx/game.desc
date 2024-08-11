@@ -1,8 +1,8 @@
 ﻿{
 	"name": "斗破苍穹乐园（竞技派对）",
 	"packageName": "5C5C0895435CA63CF29576B9118B345C",
-	"intro": "修复线上报错",
-	"notes": "修复线上报错",
+	"intro": "修复bug",
+	"notes": "修复bug",
 	"editorVersion": "v0.36.0.6",
 	"parentGameIdentity": "",
 	"parentGameId": "",

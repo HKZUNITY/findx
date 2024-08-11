@@ -609,6 +609,17 @@ export default class HUDModuleC extends ModuleC<HUDModuleS, HUDDate> {
     public net_flyText(damage: number, hitPoint: mw.Vector): void {
         let fontColor: mw.LinearColor[] = Utils.randomColor();
         FlyText.instance.showFlyText("-" + damage, hitPoint, fontColor[0], fontColor[1]);
+
+        ExplosiveCoins.instance.explosiveCoins(new mw.Vector(hitPoint.x, hitPoint.y, hitPoint.z / 2), damage, Utils.getRandomInteger(5, 10));
+        this.exp++;
+        this.hudPanel.mExpProgressBar.currentValue = this.exp / 50;
+        if (this.exp >= 50) {
+            this.exp = 0;
+            this.server.net_addLevel();
+            this.setCurAttackValue(50);
+            this.setMaxHp(500);
+            this.shopModuleC.playEffectAndSoundToPlayer(1);
+        }
     }
 
     public net_onSelfAtkPlayer(damage: number, hitPoint: mw.Vector): void {
