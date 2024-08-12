@@ -16949,7 +16949,7 @@ class Monster extends Script {
             let hitGo = hitResults[i].gameObject;
             if (hitGo instanceof mw.Character && hitGo?.player) {
                 let targetGameObjectId = hitGo?.gameObjectId;
-                PrefabEvent.PrefabEvtFight.hit(null, targetGameObjectId, this.attackInfo.damages[this.attackIndex], hitGo.worldTransform.position);
+                PrefabEvent.PrefabEvtFight.hit(null, targetGameObjectId, Math.round(this.maxHp / 10), hitGo.worldTransform.position);
             }
         }
     }
