@@ -3,7 +3,7 @@
  * WARNING: DO NOT MODIFY THIS FILE,MAY CAUSE CODE LOST.
  * AUTHOR: 爱玩游戏的小胖子
  * UI: UI/module/HUDUI/HUDPanel.ui
- * TIME: 2024.08.04-18.39.53
+ * TIME: 2024.12.31-21.32.41
  */
  
 @UIBind('UI/module/HUDUI/HUDPanel.ui')
@@ -77,6 +77,13 @@ export default class HUDPanel_Generate extends UIScript {
 			this.mTimeText_Internal = this.uiWidgetBase.findChildByPath('RootCanvas/RightTopCanvas/ClockCanvas/mTimeText') as mw.TextBlock
 		}
 		return this.mTimeText_Internal
+	}
+	private mRoleButton_Internal: mw.Button
+	public get mRoleButton(): mw.Button {
+		if(!this.mRoleButton_Internal&&this.uiWidgetBase) {
+			this.mRoleButton_Internal = this.uiWidgetBase.findChildByPath('RootCanvas/RightTopCanvas/RoleCanvas/mRoleButton') as mw.Button
+		}
+		return this.mRoleButton_Internal
 	}
 	private mRaffleButton_Internal: mw.Button
 	public get mRaffleButton(): mw.Button {
@@ -299,6 +306,12 @@ export default class HUDPanel_Generate extends UIScript {
 		this.mAttackButton.touchMethod = (mw.ButtonTouchMethod.PreciseTap);
 		
 	
+		this.mRoleButton.onClicked.add(()=>{
+			Event.dispatchToLocal("PlayButtonClick", "mRoleButton");
+		});
+		this.mRoleButton.touchMethod = (mw.ButtonTouchMethod.PreciseTap);
+		
+	
 		this.mRaffleButton.onClicked.add(()=>{
 			Event.dispatchToLocal("PlayButtonClick", "mRaffleButton");
 		});
@@ -425,6 +438,9 @@ export default class HUDPanel_Generate extends UIScript {
 	
 		//文本多语言
 		
+		this.initLanguage(this.uiWidgetBase.findChildByPath("RootCanvas/RightTopCanvas/RoleCanvas/TextBlock") as any);
+		
+	
 		this.initLanguage(this.uiWidgetBase.findChildByPath("RootCanvas/RightTopCanvas/RaffleCanvas/TextBlock") as any);
 		
 	

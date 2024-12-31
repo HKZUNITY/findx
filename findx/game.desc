@@ -1,20 +1,38 @@
 ﻿{
+	"IsHorizontal": true,
 	"name": "斗破苍穹乐园（竞技派对）",
 	"packageName": "5C5C0895435CA63CF29576B9118B345C",
-	"intro": "修复报错",
-	"notes": "修复报错",
-	"editorVersion": "v0.36.0.6",
+	"foldername": "findx",
+	"mainScene": 1,
+	"scenePublic": 1,
+	"intro": "接入角色组件，修复报错",
+	"notes": "接入角色组件，修复报错",
+	"editorVersion": "v0.42.0.2",
 	"parentGameIdentity": "",
 	"parentGameId": "",
 	"extra": "{\"attribute\":2,\"IsHorizontal\":true,\"useAvatar\":1}",
 	"devEnv": 4,
-	"needToMgs": 1,
+	"needToMgs": 0,
 	"attribute": 2,
 	"autoSubmitAudit": false,
-	"ignore": [
-		"game.desc",
-		"Asset_Data_List"
-	],
+	"lightZipIgnore":
+	{
+		"suffixMatches": [
+			".meta",
+			".ts",
+			".ui",
+			".uimap",
+			".mat"
+		],
+		"fullMatches": [
+			"Asset_Data_List"
+		],
+		"prefixMatches": [
+			"AutoBackup/",
+			"JavaScripts/",
+			"Plugins/"
+		]
+	},
 	"files": [
 		{
 			"type": "Game_Thumbnail",
@@ -28,8 +46,5 @@
 			"type": "Asset_Data_List",
 			"path": "Asset_Data_List"
 		}
-	],
-	"foldername": "findx",
-	"mainScene": 1,
-	"scenePublic": 1
+	]
 }

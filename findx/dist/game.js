@@ -1332,7 +1332,7 @@ function __decorate(decorators, target, key, desc) {
  * WARNING: DO NOT MODIFY THIS FILE,MAY CAUSE CODE LOST.
  * AUTHOR: 爱玩游戏的小胖子
  * UI: UI/common/notice/NoticeView.ui
- * TIME: 2024.08.04-18.39.52
+ * TIME: 2024.12.31-21.32.41
  */
 let NoticeView_Generate = class NoticeView_Generate extends UIScript {
     get con_top_notice() {
@@ -1399,7 +1399,7 @@ var foreign114 = /*#__PURE__*/Object.freeze({
  * WARNING: DO NOT MODIFY THIS FILE,MAY CAUSE CODE LOST.
  * AUTHOR: 爱玩游戏的小胖子
  * UI: UI/common/notice/TopNoticeItem.ui
- * TIME: 2024.08.04-18.39.52
+ * TIME: 2024.12.31-21.32.41
  */
 let TopNoticeItem_Generate = class TopNoticeItem_Generate extends UIScript {
     get txt_context() {
@@ -2704,7 +2704,7 @@ var foreign10 = /*#__PURE__*/Object.freeze({
  * WARNING: DO NOT MODIFY THIS FILE,MAY CAUSE CODE LOST.
  * AUTHOR: 爱玩游戏的小胖子
  * UI: UI/common/Test.ui
- * TIME: 2024.08.04-18.39.52
+ * TIME: 2024.12.31-21.32.41
  */
 let Test_Generate = class Test_Generate extends UIScript {
     get mInputBox() {
@@ -3857,7 +3857,7 @@ var PrefabEvent;
     initEvent();
 })(PrefabEvent || (PrefabEvent = {}));
 
-var foreign99 = /*#__PURE__*/Object.freeze({
+var foreign104 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     get PrefabEvent () { return PrefabEvent; }
 });
@@ -4778,7 +4778,7 @@ var foreign107 = /*#__PURE__*/Object.freeze({
  * WARNING: DO NOT MODIFY THIS FILE,MAY CAUSE CODE LOST.
  * AUTHOR: 爱玩游戏的小胖子
  * UI: UI/module/PetUI/PetPanel.ui
- * TIME: 2024.08.04-18.39.53
+ * TIME: 2024.12.31-21.32.41
  */
 let PetPanel_Generate = class PetPanel_Generate extends UIScript {
     get mCloseButton() {
@@ -4861,7 +4861,7 @@ var foreign134 = /*#__PURE__*/Object.freeze({
  * WARNING: DO NOT MODIFY THIS FILE,MAY CAUSE CODE LOST.
  * AUTHOR: 爱玩游戏的小胖子
  * UI: UI/module/PetUI/PetRafflePanel.ui
- * TIME: 2024.08.04-18.39.54
+ * TIME: 2024.12.31-21.32.41
  */
 let PetRafflePanel_Generate = class PetRafflePanel_Generate extends UIScript {
     get mCloseButton() {
@@ -5744,7 +5744,7 @@ var foreign106 = /*#__PURE__*/Object.freeze({
  * WARNING: DO NOT MODIFY THIS FILE,MAY CAUSE CODE LOST.
  * AUTHOR: 爱玩游戏的小胖子
  * UI: UI/module/ShopUI/ShopPanel.ui
- * TIME: 2024.08.04-18.39.54
+ * TIME: 2024.12.31-21.32.42
  */
 let ShopPanel_Generate = class ShopPanel_Generate extends UIScript {
     get mLeftCanvas() {
@@ -7414,7 +7414,7 @@ var foreign92 = /*#__PURE__*/Object.freeze({
  * WARNING: DO NOT MODIFY THIS FILE,MAY CAUSE CODE LOST.
  * AUTHOR: 爱玩游戏的小胖子
  * UI: UI/module/HUDUI/HUDPanel.ui
- * TIME: 2024.08.04-18.39.53
+ * TIME: 2024.12.31-21.32.41
  */
 let HUDPanel_Generate = class HUDPanel_Generate extends UIScript {
     get mJoystick() {
@@ -7476,6 +7476,12 @@ let HUDPanel_Generate = class HUDPanel_Generate extends UIScript {
             this.mTimeText_Internal = this.uiWidgetBase.findChildByPath('RootCanvas/RightTopCanvas/ClockCanvas/mTimeText');
         }
         return this.mTimeText_Internal;
+    }
+    get mRoleButton() {
+        if (!this.mRoleButton_Internal && this.uiWidgetBase) {
+            this.mRoleButton_Internal = this.uiWidgetBase.findChildByPath('RootCanvas/RightTopCanvas/RoleCanvas/mRoleButton');
+        }
+        return this.mRoleButton_Internal;
     }
     get mRaffleButton() {
         if (!this.mRaffleButton_Internal && this.uiWidgetBase) {
@@ -7662,6 +7668,10 @@ let HUDPanel_Generate = class HUDPanel_Generate extends UIScript {
             Event.dispatchToLocal("PlayButtonClick", "mAttackButton");
         });
         this.mAttackButton.touchMethod = (mw.ButtonTouchMethod.PreciseTap);
+        this.mRoleButton.onClicked.add(() => {
+            Event.dispatchToLocal("PlayButtonClick", "mRoleButton");
+        });
+        this.mRoleButton.touchMethod = (mw.ButtonTouchMethod.PreciseTap);
         this.mRaffleButton.onClicked.add(() => {
             Event.dispatchToLocal("PlayButtonClick", "mRaffleButton");
         });
@@ -7733,6 +7743,7 @@ let HUDPanel_Generate = class HUDPanel_Generate extends UIScript {
         this.initLanguage(this.mKillTipTextBlock2);
         this.initLanguage(this.mKillTipTextBlock3);
         //文本多语言
+        this.initLanguage(this.uiWidgetBase.findChildByPath("RootCanvas/RightTopCanvas/RoleCanvas/TextBlock"));
         this.initLanguage(this.uiWidgetBase.findChildByPath("RootCanvas/RightTopCanvas/RaffleCanvas/TextBlock"));
         this.initLanguage(this.uiWidgetBase.findChildByPath("RootCanvas/RightTopCanvas/AdsCanvas/TextBlock"));
         this.initLanguage(this.uiWidgetBase.findChildByPath("RootCanvas/RightTopCanvas/AchCanvas/TextBlock"));
@@ -7778,7 +7789,7 @@ var foreign129 = /*#__PURE__*/Object.freeze({
  * WARNING: DO NOT MODIFY THIS FILE,MAY CAUSE CODE LOST.
  * AUTHOR: 爱玩游戏的小胖子
  * UI: UI/module/HUDUI/KillTipItem.ui
- * TIME: 2024.08.04-18.39.53
+ * TIME: 2024.12.31-21.32.42
  */
 let KillTipItem_Generate = class KillTipItem_Generate extends UIScript {
     get mBgImage() {
@@ -7933,6 +7944,9 @@ class HUDPanel extends HUDPanel_Generate$1 {
         });
         this.mRaffleButton.onClicked.add(() => {
             this.hudModuleC.onOpenRaffleAction.call();
+        });
+        this.mRoleButton.onClicked.add(() => {
+            AvatarEditorService.asyncOpenAvatarEditorModule();
         });
         this.initAttackButton();
         this.initMusicButton();
@@ -9302,7 +9316,7 @@ var foreign54 = /*#__PURE__*/Object.freeze({
  * WARNING: DO NOT MODIFY THIS FILE,MAY CAUSE CODE LOST.
  * AUTHOR: 爱玩游戏的小胖子
  * UI: UI/module/Achievement/AchievementMain.ui
- * TIME: 2024.08.04-18.39.53
+ * TIME: 2024.12.31-21.32.41
  */
 let AchievementMain_Generate = class AchievementMain_Generate extends UIScript {
     get mScrollBox() {
@@ -9609,7 +9623,7 @@ var foreign57 = /*#__PURE__*/Object.freeze({
  * WARNING: DO NOT MODIFY THIS FILE,MAY CAUSE CODE LOST.
  * AUTHOR: 爱玩游戏的小胖子
  * UI: UI/module/Achievement/Completed.ui
- * TIME: 2024.08.04-18.39.53
+ * TIME: 2024.12.31-21.32.41
  */
 let Completed_Generate = class Completed_Generate extends UIScript {
     get mCanvas() {
@@ -9990,7 +10004,7 @@ var foreign55 = /*#__PURE__*/Object.freeze({
  * WARNING: DO NOT MODIFY THIS FILE,MAY CAUSE CODE LOST.
  * AUTHOR: 爱玩游戏的小胖子
  * UI: UI/module/CollectionUI/CollectionPanel.ui
- * TIME: 2024.08.04-18.39.53
+ * TIME: 2024.12.31-21.32.42
  */
 let CollectionPanel_Generate = class CollectionPanel_Generate extends UIScript {
     get mCollectionBtn1() {
@@ -10111,7 +10125,7 @@ var foreign125 = /*#__PURE__*/Object.freeze({
  * WARNING: DO NOT MODIFY THIS FILE,MAY CAUSE CODE LOST.
  * AUTHOR: 爱玩游戏的小胖子
  * UI: UI/module/CollectionUI/CollectionItemTip.ui
- * TIME: 2024.08.04-18.39.53
+ * TIME: 2024.12.31-21.32.42
  */
 let CollectionItemTip_Generate = class CollectionItemTip_Generate extends UIScript {
     get mCloseButton() {
@@ -10772,7 +10786,7 @@ var foreign69 = /*#__PURE__*/Object.freeze({
  * WARNING: DO NOT MODIFY THIS FILE,MAY CAUSE CODE LOST.
  * AUTHOR: 爱玩游戏的小胖子
  * UI: UI/module/SignInUI/SignInPanel.ui
- * TIME: 2024.08.04-18.39.54
+ * TIME: 2024.12.31-21.32.42
  */
 let SignInPanel_Generate = class SignInPanel_Generate extends UIScript {
     get mSignInBtn1() {
@@ -11352,7 +11366,7 @@ var foreign59 = /*#__PURE__*/Object.freeze({
  * WARNING: DO NOT MODIFY THIS FILE,MAY CAUSE CODE LOST.
  * AUTHOR: 爱玩游戏的小胖子
  * UI: UI/common/AdTips.ui
- * TIME: 2024.08.04-18.39.52
+ * TIME: 2024.12.31-21.32.41
  */
 let AdTips_Generate = class AdTips_Generate extends UIScript {
     get mTitleTxt() {
@@ -11526,7 +11540,7 @@ var foreign1 = /*#__PURE__*/Object.freeze({
  * WARNING: DO NOT MODIFY THIS FILE,MAY CAUSE CODE LOST.
  * AUTHOR: 爱玩游戏的小胖子
  * UI: UI/module/CollectionUI/CollectionTip.ui
- * TIME: 2024.08.04-18.39.53
+ * TIME: 2024.12.31-21.32.42
  */
 let CollectionTip_Generate = class CollectionTip_Generate extends UIScript {
     get mCloseBtn() {
@@ -11797,7 +11811,7 @@ var foreign2 = /*#__PURE__*/Object.freeze({
  * WARNING: DO NOT MODIFY THIS FILE,MAY CAUSE CODE LOST.
  * AUTHOR: 爱玩游戏的小胖子
  * UI: UI/common/ConfirmPanel.ui
- * TIME: 2024.08.04-18.39.52
+ * TIME: 2024.12.31-21.32.41
  */
 let ConfirmPanel_Generate = class ConfirmPanel_Generate extends UIScript {
     get mTitleTextBlock() {
@@ -11998,7 +12012,7 @@ var foreign47 = /*#__PURE__*/Object.freeze({
  * WARNING: DO NOT MODIFY THIS FILE,MAY CAUSE CODE LOST.
  * AUTHOR: 爱玩游戏的小胖子
  * UI: UI/common/OnClickPanel.ui
- * TIME: 2024.08.04-18.39.52
+ * TIME: 2024.12.31-21.32.41
  */
 let OnClickPanel_Generate = class OnClickPanel_Generate extends UIScript {
     get mBgImage() {
@@ -12528,8 +12542,8 @@ let JumpGame = class JumpGame extends Script {
             if (Player.localPlayer.character != character)
                 return;
             this.getConfirmPanel.confirmTips(() => {
-                mw.RouteService.enterNewGame("P_2dde3ca89dea5ab82f6109a8f46e3dcf37f541a2");
-            }, "前往 斗破苍穹乐园2\n无限升级", "前往", "取消");
+                mw.RouteService.enterNewGame("P_9ef5fb11a9845cd9c7c45b245c99a664cf745d6f");
+            }, "前往 斗神大陆\n复活小舞", "前往", "取消");
         });
     }
     /**客户端的update */
@@ -12938,89 +12952,6 @@ var foreign14 = /*#__PURE__*/Object.freeze({
     default: NPCSitDance$1
 });
 
-let Portal = class Portal extends mw.Script {
-    constructor() {
-        super(...arguments);
-        /**----------------------------------------[客户端]---------------------------------------- */
-        this.portals = null;
-        this.hudModuleC = null;
-        /**----------------------------------------[服务端]---------------------------------------- */
-    }
-    /** 当脚本被实例后，会在第一帧更新前调用此函数 */
-    onStart() {
-        if (mw.SystemUtil.isClient()) {
-            this.onStartC();
-        }
-        else if (mw.SystemUtil.isServer()) {
-            this.onStartS();
-        }
-    }
-    /**
-     * 周期函数 每帧执行
-     * 此函数执行需要将this.useUpdate赋值为true
-     * @param dt 当前帧与上一帧的延迟 / 秒
-     */
-    onUpdate(dt) {
-        if (mw.SystemUtil.isClient()) {
-            this.onUpdateC(dt);
-        }
-        else if (mw.SystemUtil.isServer()) {
-            this.onUpdateS(dt);
-        }
-    }
-    get getHUDModuleC() {
-        if (this.hudModuleC == null) {
-            this.hudModuleC = ModuleService.getModule(HUDModuleC);
-        }
-        return this.hudModuleC;
-    }
-    /**客户端的onStart */
-    onStartC() {
-        this.portals = GameConfig.Portal;
-        this.findGameObjects();
-    }
-    /**find GameObject */
-    findGameObjects() {
-        let length = this.portals.getAllElement().length;
-        let i = 0;
-        let triggerInterval = TimeUtil.setInterval(async () => {
-            let trigger = await GameObject.asyncFindGameObjectById(this.portals.getElement(i + 1).TriggerGuid);
-            trigger.onEnter.add(this.onEnterTrigger.bind(this));
-            ++i;
-            if (i >= length) {
-                TimeUtil.clearInterval(triggerInterval);
-            }
-            Console.error("[hkz]");
-        }, 2);
-    }
-    /**玩家进入触发器 */
-    onEnterTrigger(char) {
-        if (char != Player.localPlayer.character)
-            return;
-        this.getHUDModuleC.randomPortal();
-    }
-    /**客户端的onUpdate */
-    onUpdateC(dt) {
-    }
-    /**----------------------------------------[客户端]---------------------------------------- */
-    /**----------------------------------------[服务端]---------------------------------------- */
-    /**服务端的onStart */
-    onStartS() {
-    }
-    /**服务端的onUpdate */
-    onUpdateS(dt) {
-    }
-};
-Portal = __decorate([
-    Component
-], Portal);
-var Portal$1 = Portal;
-
-var foreign16 = /*#__PURE__*/Object.freeze({
-    __proto__: null,
-    default: Portal$1
-});
-
 // import Tips_Generate from "../ui-generate/common/Tips_generate";
 // /**
 //  * 系统提示
@@ -13131,8 +13062,91 @@ var foreign16 = /*#__PURE__*/Object.freeze({
 //     }
 // }
 
-var foreign17 = /*#__PURE__*/Object.freeze({
+var foreign16 = /*#__PURE__*/Object.freeze({
     __proto__: null
+});
+
+let Portal = class Portal extends mw.Script {
+    constructor() {
+        super(...arguments);
+        /**----------------------------------------[客户端]---------------------------------------- */
+        this.portals = null;
+        this.hudModuleC = null;
+        /**----------------------------------------[服务端]---------------------------------------- */
+    }
+    /** 当脚本被实例后，会在第一帧更新前调用此函数 */
+    onStart() {
+        if (mw.SystemUtil.isClient()) {
+            this.onStartC();
+        }
+        else if (mw.SystemUtil.isServer()) {
+            this.onStartS();
+        }
+    }
+    /**
+     * 周期函数 每帧执行
+     * 此函数执行需要将this.useUpdate赋值为true
+     * @param dt 当前帧与上一帧的延迟 / 秒
+     */
+    onUpdate(dt) {
+        if (mw.SystemUtil.isClient()) {
+            this.onUpdateC(dt);
+        }
+        else if (mw.SystemUtil.isServer()) {
+            this.onUpdateS(dt);
+        }
+    }
+    get getHUDModuleC() {
+        if (this.hudModuleC == null) {
+            this.hudModuleC = ModuleService.getModule(HUDModuleC);
+        }
+        return this.hudModuleC;
+    }
+    /**客户端的onStart */
+    onStartC() {
+        this.portals = GameConfig.Portal;
+        this.findGameObjects();
+    }
+    /**find GameObject */
+    findGameObjects() {
+        let length = this.portals.getAllElement().length;
+        let i = 0;
+        let triggerInterval = TimeUtil.setInterval(async () => {
+            let trigger = await GameObject.asyncFindGameObjectById(this.portals.getElement(i + 1).TriggerGuid);
+            trigger.onEnter.add(this.onEnterTrigger.bind(this));
+            ++i;
+            if (i >= length) {
+                TimeUtil.clearInterval(triggerInterval);
+            }
+            Console.error("[hkz]");
+        }, 2);
+    }
+    /**玩家进入触发器 */
+    onEnterTrigger(char) {
+        if (char != Player.localPlayer.character)
+            return;
+        this.getHUDModuleC.randomPortal();
+    }
+    /**客户端的onUpdate */
+    onUpdateC(dt) {
+    }
+    /**----------------------------------------[客户端]---------------------------------------- */
+    /**----------------------------------------[服务端]---------------------------------------- */
+    /**服务端的onStart */
+    onStartS() {
+    }
+    /**服务端的onUpdate */
+    onUpdateS(dt) {
+    }
+};
+Portal = __decorate([
+    Component
+], Portal);
+var Portal$1 = Portal;
+
+var foreign17 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: Portal$1
 });
 
 let Shakes = class Shakes extends mw.Script {
@@ -13633,7 +13647,7 @@ var foreign75 = /*#__PURE__*/Object.freeze({
  * WARNING: DO NOT MODIFY THIS FILE,MAY CAUSE CODE LOST.
  * AUTHOR: 爱玩游戏的小胖子
  * UI: UI/module/HUDUI/Lifebar.ui
- * TIME: 2024.08.04-18.39.53
+ * TIME: 2024.12.31-21.32.42
  */
 let Lifebar_Generate = class Lifebar_Generate extends UIScript {
     get mLevelText() {
@@ -14444,7 +14458,7 @@ var foreign70 = /*#__PURE__*/Object.freeze({
  * WARNING: DO NOT MODIFY THIS FILE,MAY CAUSE CODE LOST.
  * AUTHOR: 爱玩游戏的小胖子
  * UI: UI/module/RankingUI/RankingPanel.ui
- * TIME: 2024.08.04-18.39.54
+ * TIME: 2024.12.31-21.32.41
  */
 let RankingPanel_Generate = class RankingPanel_Generate extends UIScript {
     get mTitle_txt() {
@@ -16223,7 +16237,7 @@ var foreign74 = /*#__PURE__*/Object.freeze({
  * WARNING: DO NOT MODIFY THIS FILE,MAY CAUSE CODE LOST.
  * AUTHOR: 爱玩游戏的小胖子
  * UI: UI/common/FirstGamePanel.ui
- * TIME: 2024.08.04-18.39.52
+ * TIME: 2024.12.31-21.32.41
  */
 let FirstGamePanel_Generate = class FirstGamePanel_Generate extends UIScript {
     get mCloseButton() {
@@ -16283,7 +16297,7 @@ var foreign111 = /*#__PURE__*/Object.freeze({
  * WARNING: DO NOT MODIFY THIS FILE,MAY CAUSE CODE LOST.
  * AUTHOR: 爱玩游戏的小胖子
  * UI: UI/module/HUDUI/GuidePanel.ui
- * TIME: 2024.08.04-18.39.53
+ * TIME: 2024.12.31-21.32.41
  */
 let GuidePanel_Generate = class GuidePanel_Generate extends UIScript {
     get mRoleBgImage() {
@@ -16451,7 +16465,7 @@ var foreign78 = /*#__PURE__*/Object.freeze({
  * WARNING: DO NOT MODIFY THIS FILE,MAY CAUSE CODE LOST.
  * AUTHOR: 爱玩游戏的小胖子
  * UI: UI/module/NPCModule/NPCBar.ui
- * TIME: 2024.08.04-18.39.54
+ * TIME: 2024.12.31-21.32.42
  */
 let NPCBar_Generate = class NPCBar_Generate extends UIScript {
     get mProgressBar() {
@@ -17392,7 +17406,7 @@ var foreign86 = /*#__PURE__*/Object.freeze({
  * WARNING: DO NOT MODIFY THIS FILE,MAY CAUSE CODE LOST.
  * AUTHOR: 爱玩游戏的小胖子
  * UI: UI/module/PlayerModule/LevelPanel.ui
- * TIME: 2024.08.04-18.39.54
+ * TIME: 2024.12.31-21.32.42
  */
 let LevelPanel_Generate = class LevelPanel_Generate extends UIScript {
     get mTextBlock() {
@@ -17595,580 +17609,6 @@ var foreign87 = /*#__PURE__*/Object.freeze({
     PlayerModuleS: PlayerModuleS
 });
 
-let RotaryKnifeTrigger = class RotaryKnifeTrigger extends mw.Script {
-    constructor() {
-        super(...arguments);
-        this.backImpulse = 1000;
-        this.upImpulse = 1000;
-        this.reborn = 5;
-        this.tombstonePosZ = 110;
-        /**墓碑的预制体的Guid */
-        this.tombstoneGuid = "110950";
-        /** 当预加载资源改动的时候自动调用此函数 */
-        // public async onPreloadAssetsChangedInEditor() {
-        //     for (let key in KnifeRescourse) {
-        //         let keyToAny: any = key;
-        //         if (isNaN(keyToAny)) {
-        //             let knifeRescourse: any = KnifeRescourse[key];
-        //             let knifeRescourseEnum: KnifeRescourse = knifeRescourse;
-        //             await Utils.downloadAsset(knifeRescourseEnum);
-        //         }
-        //     }
-        // }
-        /**------------------------------------------- 客户端 ------------------------------------------------ */
-        /**触发器 */
-        this.triggers = [];
-        /**当前客户端玩家 */
-        this.player = null;
-        this.rotaryKnifeTrigger = null;
-        this.rotaryKnifeTriggerLen = 0;
-        /**------------------------------------------- 客户端 ------------------------------------------------ */
-        /**------------------------------------------- 服务端 ------------------------------------------------ */
-        this.playerMapS = new Map();
-        this.animationIdMapS = new Map();
-        this.playerEffectMapId = new Map();
-        /**资源下载 */
-        // public async downloadRes(guid: string): Promise<boolean> {
-        //     if (mw.AssetUtil.assetLoaded(guid)) {
-        //         return true;
-        //     }
-        //     return await mw.AssetUtil.asyncDownloadAsset(guid);
-        // }
-        /**------------------------------------------- 通用 ------------------------------------------------ */
-    }
-    /** 当脚本被实例后，会在第一帧更新前调用此函数 */
-    async onStart() {
-        // await this.onPreloadAssetsChangedInEditor();
-        if (mw.SystemUtil.isClient()) {
-            this.initDataC();
-            this.bindTriggerC();
-            this.registerEventsC();
-            this.useUpdate = false;
-        }
-        if (mw.SystemUtil.isServer()) {
-            this.registerEventsS();
-            this.initDataS();
-            this.useUpdate = true;
-        }
-    }
-    /**初始化数据(客户端) */
-    async initDataC() {
-        this.player = await Player.asyncGetLocalPlayer();
-    }
-    /**绑定触发器(客户端) */
-    async bindTriggerC() {
-        this.rotaryKnifeTrigger = GameConfig.RotaryKnifeTrigger;
-        this.rotaryKnifeTriggerLen = this.rotaryKnifeTrigger.getAllElement().length;
-        if (this.rotaryKnifeTriggerLen == 0)
-            return;
-        for (let i = 0; i < this.rotaryKnifeTriggerLen; ++i) {
-            let trigger = (await GameObject.asyncFindGameObjectById(this.rotaryKnifeTrigger.getElement(i + 1).TriggerGuid));
-            trigger.onEnter.add((char) => {
-                this.onEnterTriggerC(char);
-            });
-        }
-    }
-    /**注册事件（客户端） */
-    registerEventsC() {
-    }
-    /**进入触发器(客户端) */
-    onEnterTriggerC(char) {
-        if (char != Player.localPlayer.character)
-            return;
-        Console.error("[起飞喽]");
-        Event.dispatchToLocal("dianji", 1);
-        Event.dispatchToServer(ListenerEventsType$3.ClientToServer);
-    }
-    /**客户端的Update */
-    onUpdateC(dt) {
-        // this.isTouchDownS(this.player);
-    }
-    /**初始化数据 */
-    initDataS() {
-    }
-    /**注册事件（服务端） */
-    registerEventsS() {
-        Event.addClientListener(ListenerEventsType$3.ClientToServer, this.takeOffS.bind(this));
-        Player.onPlayerLeave.add((player) => {
-            let playerId = player.playerId;
-            if (this.playerMapS.has(playerId)) {
-                this.playerMapS.delete(playerId);
-            }
-        });
-    }
-    /**开始起飞（服务端） */
-    takeOffS(player) {
-        let lookUp = player.character.worldTransform.getUpVector();
-        lookUp = lookUp.multiply(this.upImpulse);
-        let lookForward = player.character.worldTransform.getForwardVector();
-        lookForward = lookForward.multiply(-this.backImpulse);
-        let lookBack = new mw.Vector(lookForward.x + lookUp.x, lookForward.y + lookUp.y, lookForward.z + lookUp.z);
-        Console.error("[lookBack--]" + lookBack);
-        player.character.addImpulse(lookBack, true);
-        mw.SoundService.play3DSound(KnifeRescourse.Knife, player.character.worldTransform.position, 1, 1);
-        let playerId = player.playerId;
-        let animationId = null;
-        if (this.animationIdMapS.has(playerId)) {
-            animationId = this.animationIdMapS.get(playerId);
-            if (animationId) {
-                animationId.stop();
-            }
-        }
-        animationId = PlayerManagerExtesion.rpcPlayAnimation(player.character, KnifeRescourse.LieDown, 0, 1);
-        this.animationIdMapS.set(player.playerId, animationId);
-        if (this.playerEffectMapId.has(playerId)) {
-            let effectId = this.playerEffectMapId.get(playerId);
-            if (effectId) {
-                EffectService.stop(effectId);
-            }
-        }
-        let playerEffectId = GeneralManager.rpcPlayEffectOnPlayer(KnifeRescourse.TailEffect, player, mw.HumanoidSlotType.Root, 0, new mw.Vector(0, 0, 0), mw.Rotation.zero, new mw.Vector(2, 2, 2));
-        this.playerEffectMapId.set(playerId, playerEffectId);
-        setTimeout(() => {
-            this.playerMapS.set(playerId, player);
-        }, 500);
-    }
-    /**服务端的Update */
-    onUpdateS(dt) {
-        if (this.playerMapS.size > 0) {
-            this.playerMapS.forEach((v) => {
-                this.isTouchDownS(v);
-            });
-        }
-    }
-    /**判断玩家是否落地（服务端） */
-    isTouchDownS(player) {
-        if (player.character.isJumping)
-            return;
-        this.playerMapS.delete(player.playerId);
-        let p = player;
-        this.dieS(p);
-    }
-    /**玩家死亡（服务端） */
-    dieS(player) {
-        Console.error("[Die]--" + player.playerId);
-        mw.SoundService.play3DSound(KnifeRescourse.Die, player.character.worldTransform.position, 1, 1);
-        let playerId = player.playerId;
-        if (this.animationIdMapS.has(playerId)) {
-            let animationId = this.animationIdMapS.get(playerId);
-            if (animationId) {
-                animationId.stop();
-                this.animationIdMapS.set(playerId, null);
-            }
-        }
-        if (this.playerEffectMapId.has(playerId)) {
-            let effectId = this.playerEffectMapId.get(playerId);
-            if (effectId) {
-                EffectService.stop(effectId);
-                this.playerEffectMapId.set(playerId, null);
-            }
-        }
-        player.character.ragdollEnabled = true;
-        this.spawnTombstoneS(player);
-    }
-    /**生成墓碑（服务端） */
-    spawnTombstoneS(player) {
-        let tombstone = null;
-        if (this.tombstoneGuid) {
-            tombstone = SpawnManager.wornSpawn(this.tombstoneGuid);
-            let pos = player.character.worldTransform.position;
-            tombstone.worldTransform.position = (new mw.Vector(pos.x, pos.y, pos.z - this.tombstonePosZ));
-        }
-        setTimeout(() => {
-            player.character.ragdollEnabled = false;
-            if (this.tombstoneGuid) {
-                tombstone.destroy();
-            }
-        }, this.reborn * 1000);
-    }
-    /**------------------------------------------- 服务端 ------------------------------------------------ */
-    /**------------------------------------------- 通用 ------------------------------------------------ */
-    onUpdate(dt) {
-        if (mw.SystemUtil.isClient()) {
-            this.onUpdateC(dt);
-        }
-        if (mw.SystemUtil.isServer()) {
-            this.onUpdateS(dt);
-        }
-    }
-};
-__decorate([
-    mw.Property({ displayName: "向后的冲量", group: "属性" })
-], RotaryKnifeTrigger.prototype, "backImpulse", void 0);
-__decorate([
-    mw.Property({ displayName: "向上的冲量", group: "属性" })
-], RotaryKnifeTrigger.prototype, "upImpulse", void 0);
-__decorate([
-    mw.Property({ displayName: "重生时间（s）", group: "属性" })
-], RotaryKnifeTrigger.prototype, "reborn", void 0);
-__decorate([
-    mw.Property({ displayName: "墓碑的生成位置偏移", group: "属性" })
-], RotaryKnifeTrigger.prototype, "tombstonePosZ", void 0);
-RotaryKnifeTrigger = __decorate([
-    Component
-], RotaryKnifeTrigger);
-var RotaryKnifeTrigger$1 = RotaryKnifeTrigger;
-/**客户端&服务端发送的事件类型 */
-var ListenerEventsType$3;
-(function (ListenerEventsType) {
-    /**客户端发给服务端 */
-    ListenerEventsType["ClientToServer"] = "ClientToServer_Knife";
-})(ListenerEventsType$3 || (ListenerEventsType$3 = {}));
-/**优先加载资源 */
-var KnifeRescourse;
-(function (KnifeRescourse) {
-    /**落地摔死叫 */
-    KnifeRescourse["Die"] = "115263";
-    /**闸刀触发 */
-    KnifeRescourse["Knife"] = "19608";
-    /**躺下耍赖 */
-    KnifeRescourse["LieDown"] = "14562";
-    /**拖尾特效 */
-    KnifeRescourse["TailEffect"] = "27392";
-    /**墓碑Guid */
-    KnifeRescourse["TombstoneGuid"] = "110950";
-})(KnifeRescourse || (KnifeRescourse = {}));
-
-var foreign100 = /*#__PURE__*/Object.freeze({
-    __proto__: null,
-    get KnifeRescourse () { return KnifeRescourse; },
-    get ListenerEventsType () { return ListenerEventsType$3; },
-    default: RotaryKnifeTrigger$1
-});
-
-/*
- * @Author: 侯凯召
- * @QQ邮箱: 3046916186@qq.com
- * @Date: 2023-01-17 09:53:58
- * @LastEditors: 穿迷彩服的鲨鱼
- * @LastEditTime: 2023-01-29 16:11:32
- * @Description: 可发射飞行交互物预制体
- * @FilePath: \Demo\JavaScripts\prefab\PlayerLauncher\PlayerLauncher.ts
- */
-let PlayerLauncher = class PlayerLauncher extends mw.Script {
-    constructor() {
-        super(...arguments);
-        this.reborn = 5;
-        this.impulse = 2000;
-        this.tombstonePosZ = 110;
-        /**墓碑的预制体的Guid */
-        this.tombstoneGuid = "110950";
-        this.playerLauncher = null;
-        this.playerLauncherLen = 0;
-        /** 当预加载资源改动的时候自动调用此函数 */
-        // public async onPreloadAssetsChangedInEditor() {
-        //     for (let key in LauncherRescourse) {
-        //         let keyToAny: any = key;
-        //         if (isNaN(keyToAny)) {
-        //             let launcherRescourse: any = LauncherRescourse[key];
-        //             let launcherRescourseEnum: LauncherRescourse = launcherRescourse;
-        //             await Utils.downloadAsset(launcherRescourseEnum);
-        //         }
-        //     }
-        // }
-        /**------------------------------------------- 客户端 ------------------------------------------------ */
-        this.player = null;
-        /**------------------------------------------- 客户端 ------------------------------------------------ */
-        /**------------------------------------------- 服务端 ------------------------------------------------ */
-        /**需要变化的模型 */
-        this.barrelModels = [];
-        /**交互物 */
-        this.interactivitys = [];
-        /**当前需要发射的玩家 */
-        this.curPlayers = [];
-        /**发射方向(每个交互物对应一个发射方向 */
-        this.fireDirections = [];
-        this.curPlayersMap = new Map();
-        this.playerMapS = new Map();
-        this.animationIdMapS = new Map();
-        this.preAnimationIdMapS = new Map();
-        this.playerEffectMapId = new Map();
-        /**资源下载 */
-        // public async downloadRes(guid: string): Promise<boolean> {
-        //     if (mw.AssetUtil.assetLoaded(guid)) {
-        //         return true;
-        //     }
-        //     return await mw.AssetUtil.asyncDownloadAsset(guid);
-        // }
-    }
-    /** 当脚本被实例后，会在第一帧更新前调用此函数 */
-    async onStart() {
-        // await this.onPreloadAssetsChangedInEditor();
-        this.playerLauncher = GameConfig.PlayerLauncher;
-        this.playerLauncherLen = this.playerLauncher.getAllElement().length;
-        if (mw.SystemUtil.isClient()) {
-            this.initDataC();
-            this.bindTriggerC();
-            this.useUpdate = false;
-        }
-        if (mw.SystemUtil.isServer()) {
-            this.initDataS();
-            this.registerEventsS();
-            this.useUpdate = true;
-        }
-    }
-    /**初始化数据（客户端） */
-    async initDataC() {
-        this.player = await Player.asyncGetLocalPlayer();
-    }
-    /**绑定触发器（客户端） */
-    async bindTriggerC() {
-        if (this.playerLauncherLen == 0)
-            return;
-        for (let i = 0; i < this.playerLauncherLen; ++i) {
-            let trigger = (await GameObject.asyncFindGameObjectById(this.playerLauncher.getElement(i + 1).TriggerGuid));
-            trigger.onEnter.add((char) => {
-                this.onEnterTriggerC(char, i);
-            });
-        }
-    }
-    /**进入触发器(客户端) */
-    onEnterTriggerC(char, triggerIndex) {
-        if (char != Player.localPlayer.character)
-            return;
-        this.igniteC(triggerIndex);
-    }
-    /**点火（客户端） */
-    igniteC(triggerIndex) {
-        Event.dispatchToLocal("dianji", 1);
-        Event.dispatchToServer(ListenerEventsType$2.ClientToServer, triggerIndex);
-    }
-    /**初始化数据（服务端） */
-    async initDataS() {
-        this.findGameObjectsS();
-    }
-    /**根据object的guid find到它（服务端） */
-    async findGameObjectsS() {
-        if (this.playerLauncherLen > 0) {
-            for (let i = 0; i < this.playerLauncherLen; ++i) {
-                let playerLauncherElement = this.playerLauncher.getElement(i + 1);
-                let barrelModel = await GameObject.asyncFindGameObjectById(playerLauncherElement.ModelGuid);
-                barrelModel.setCollision(mw.PropertyStatus.Off);
-                this.barrelModels.push(barrelModel);
-                let fireDirection = barrelModel.worldTransform.getForwardVector();
-                this.fireDirections.push(fireDirection);
-                let interactivity = await GameObject.asyncFindGameObjectById(playerLauncherElement.InteractivityGuid);
-                this.interactivitys.push(interactivity);
-            }
-        }
-    }
-    /**注册事件&监听事件（服务端） */
-    registerEventsS() {
-        Event.addClientListener(ListenerEventsType$2.ClientToServer, this.igniteS.bind(this));
-        Player.onPlayerLeave.add((player) => {
-            let playerId = player.playerId;
-            if (this.curPlayersMap.has(playerId)) {
-                this.curPlayers[this.curPlayersMap.get(playerId)] = null;
-                this.curPlayersMap.delete(playerId);
-            }
-            if (this.playerMapS.has(playerId)) {
-                this.playerMapS.delete(playerId);
-            }
-        });
-    }
-    /**点火（服务端） */
-    async igniteS(player, triggerIndex) {
-        Console.error("[player--] " + player.playerId + " -- " + triggerIndex);
-        if (this.curPlayers[triggerIndex])
-            return;
-        this.curPlayers[triggerIndex] = player;
-        this.curPlayersMap.set(player.playerId, triggerIndex);
-        let isEnterSucceed = await this.interactivitys[triggerIndex].enter(this.curPlayers[triggerIndex].character);
-        if (!isEnterSucceed)
-            return;
-        this.interactivitys[triggerIndex].localTransform.position = (new mw.Vector(250, 0, 0));
-        new mw.Tween({ x: 250, z: 0 }).to({ x: 115, z: 230 }, 0.5 * 1000).onUpdate((v) => {
-            this.interactivitys[triggerIndex].localTransform.position = (new mw.Vector(v.x, 0, v.z));
-        }).start().onComplete(() => {
-            let playerId = this.curPlayers[triggerIndex].playerId;
-            this.playerAnimationS(playerId, this.preAnimationIdMapS, LauncherRescourse.LieDown);
-            this.preLaunch(triggerIndex);
-        });
-    }
-    /**预备发射（服务端） */
-    preLaunch(triggerIndex) {
-        let soundId = mw.SoundService.play3DSound(LauncherRescourse.StoragePowerSound, this.barrelModels[triggerIndex].worldTransform.position, 1, 1);
-        GeneralManager.rpcPlayEffectOnGameObject(LauncherRescourse.StoragePowerEffect, this.barrelModels[triggerIndex], 1, new mw.Vector(250, 0, 0), new mw.Rotation(180, 85, 180), new mw.Vector(0.5, 0.5, 0.5));
-        new mw.Tween({ x: 1.5, }).to({ x: 1, }, 0.6 * 1000).onUpdate((v) => {
-            this.barrelModels[triggerIndex].localTransform.scale = (new mw.Vector(v.x, 1.5, 1.5));
-        }).start().onComplete(() => {
-            new mw.Tween({ x: 1, }).to({ x: 1.5, }, 0.3 * 1000).onUpdate((v) => {
-                this.barrelModels[triggerIndex].localTransform.scale = (new mw.Vector(v.x, 1.5, 1.5));
-            }).start().onComplete(() => {
-                mw.SoundService.stop3DSound(soundId);
-                if (!this.curPlayers[triggerIndex])
-                    return;
-                let playerId = this.curPlayers[triggerIndex].playerId;
-                this.stopAnimationS(playerId, this.preAnimationIdMapS);
-                this.startLaunch(triggerIndex);
-            });
-        });
-    }
-    /**开始发射（服务端） */
-    async startLaunch(triggerIndex) {
-        let isExitSuceed = await GeneralManager.modifyExitInteractiveState(this.interactivitys[triggerIndex], this.curPlayers[triggerIndex].character.worldTransform.position);
-        if (!isExitSuceed)
-            return;
-        let lookForwardAndUp = new mw.Vector(this.fireDirections[triggerIndex].x, this.fireDirections[triggerIndex].y, this.fireDirections[triggerIndex].z);
-        let lookForward = lookForwardAndUp.multiply(this.impulse);
-        Console.error("[lookForward--]" + lookForward);
-        this.curPlayers[triggerIndex].character.addImpulse(lookForward, true);
-        mw.SoundService.play3DSound(LauncherRescourse.LauncherSound, this.barrelModels[triggerIndex].worldTransform.position, 1, 1);
-        let playerId = this.curPlayers[triggerIndex].playerId;
-        this.playerAnimationS(playerId, this.animationIdMapS, LauncherRescourse.LauncheringAnimation);
-        this.playEffectS(playerId, this.playerEffectMapId, LauncherRescourse.TailEffect, new mw.Vector(0, 0, 0), mw.Rotation.zero, new mw.Vector(2, 2, 2));
-        this.playerMapS.set(playerId, this.curPlayers[triggerIndex]);
-        this.curPlayers[triggerIndex] = null;
-        if (this.curPlayersMap.has(playerId)) {
-            this.curPlayersMap.delete(playerId);
-        }
-    }
-    /**服务端的Update */
-    onUpdateS(dt) {
-        if (this.playerMapS.size > 0) {
-            this.playerMapS.forEach((v) => {
-                this.isTouchDownS(v);
-            });
-        }
-    }
-    /**判断玩家是否落地（服务端） */
-    isTouchDownS(player) {
-        if (player.character.isJumping)
-            return;
-        this.playerMapS.delete(player.playerId);
-        let p = player;
-        this.dieS(p);
-    }
-    /**玩家死亡（服务端） */
-    dieS(player) {
-        Console.error("[Die]--" + player.playerId);
-        mw.SoundService.play3DSound(LauncherRescourse.Die, player.character.worldTransform.position, 1, 1);
-        let playerId = player.playerId;
-        this.stopAnimationS(playerId, this.animationIdMapS);
-        this.stopEffectS(playerId, this.playerEffectMapId);
-        player.character.ragdollEnabled = true;
-        this.spawnTombstoneS(player);
-    }
-    /**生成墓碑（服务端） */
-    spawnTombstoneS(player) {
-        let tombstone = null;
-        if (this.tombstoneGuid) {
-            tombstone = SpawnManager.wornSpawn(this.tombstoneGuid);
-            let pos = player.character.worldTransform.position;
-            tombstone.worldTransform.position = (new mw.Vector(pos.x, pos.y, pos.z - this.tombstonePosZ));
-        }
-        setTimeout(() => {
-            player.character.ragdollEnabled = false;
-            if (this.tombstoneGuid) {
-                tombstone.destroy();
-            }
-        }, this.reborn * 1000);
-    }
-    /**播放动画（服务端） */
-    playerAnimationS(playerId, animationMap, clip) {
-        let player = Player.getPlayer(playerId);
-        let animationId = null;
-        if (animationMap.has(playerId)) {
-            animationId = animationMap.get(playerId);
-            if (animationId) {
-                animationId.stop();
-            }
-        }
-        animationId = PlayerManagerExtesion.rpcPlayAnimation(player.character, clip, 0, 1);
-        animationMap.set(playerId, animationId);
-    }
-    /**停止播放动画（服务端） */
-    stopAnimationS(playerId, animationMap) {
-        if (animationMap.has(playerId)) {
-            let animationId = animationMap.get(playerId);
-            if (animationId) {
-                animationId.stop();
-                animationMap.set(playerId, null);
-            }
-        }
-    }
-    /**播放特效（服务端） */
-    playEffectS(playerId, effectMap, effect, offset, rotation, scale) {
-        let player = Player.getPlayer(playerId);
-        if (effectMap.has(playerId)) {
-            let effectId = effectMap.get(playerId);
-            if (effectId) {
-                EffectService.stop(effectId);
-            }
-        }
-        let playerEffectId = GeneralManager.rpcPlayEffectOnPlayer(effect, player, mw.HumanoidSlotType.Root, 0, new mw.Vector(0, 0, 0), mw.Rotation.zero, new mw.Vector(2, 2, 2));
-        effectMap.set(playerId, playerEffectId);
-    }
-    /**停止播放特效（服务端） */
-    stopEffectS(playerId, effectMap) {
-        if (effectMap.has(playerId)) {
-            let effectId = effectMap.get(playerId);
-            if (effectId) {
-                EffectService.stop(effectId);
-                effectMap.set(playerId, null);
-            }
-        }
-    }
-    /**------------------------------------------- 服务端 ------------------------------------------------ */
-    /**------------------------------------------- 通用 ------------------------------------------------ */
-    /**
-     * 周期函数 每帧执行
-     * 此函数执行需要将this.useUpdate赋值为true
-     * @param dt 当前帧与上一帧的延迟 / 秒
-     */
-    onUpdate(dt) {
-        if (mw.SystemUtil.isClient()) ;
-        if (mw.SystemUtil.isServer()) {
-            this.onUpdateS(dt);
-        }
-    }
-};
-__decorate([
-    mw.Property({ displayName: "重生时间（s）", group: "脚本属性" })
-], PlayerLauncher.prototype, "reborn", void 0);
-__decorate([
-    mw.Property({ displayName: "冲量大小", group: "脚本属性" })
-], PlayerLauncher.prototype, "impulse", void 0);
-__decorate([
-    mw.Property({ displayName: "墓碑的生成位置偏移", group: "脚本属性" })
-], PlayerLauncher.prototype, "tombstonePosZ", void 0);
-PlayerLauncher = __decorate([
-    Component
-], PlayerLauncher);
-var PlayerLauncher$1 = PlayerLauncher;
-var LauncherRescourse;
-(function (LauncherRescourse) {
-    /**发射中动画 */
-    LauncherRescourse["LauncheringAnimation"] = "122289";
-    /**蓄力音效 */
-    LauncherRescourse["StoragePowerSound"] = "129650";
-    /**发射音效 */
-    LauncherRescourse["LauncherSound"] = "20589";
-    /**蓄力特效 */
-    LauncherRescourse["StoragePowerEffect"] = "197884";
-    /**拖尾特效 */
-    LauncherRescourse["TailEffect"] = "27392";
-    /**落地摔死叫音效 */
-    LauncherRescourse["Die"] = "115263";
-    /**躺下动画 */
-    LauncherRescourse["LieDown"] = "14503";
-    /**墓碑 */
-    LauncherRescourse["TombstoneGuid"] = "110950";
-})(LauncherRescourse || (LauncherRescourse = {}));
-/**客户端&服务端发送的事件类型 */
-var ListenerEventsType$2;
-(function (ListenerEventsType) {
-    /**客户端发给服务端 */
-    ListenerEventsType["ClientToServer"] = "ClientToServer_Lanuncher";
-})(ListenerEventsType$2 || (ListenerEventsType$2 = {}));
-
-var foreign101 = /*#__PURE__*/Object.freeze({
-    __proto__: null,
-    get LauncherRescourse () { return LauncherRescourse; },
-    get ListenerEventsType () { return ListenerEventsType$2; },
-    default: PlayerLauncher$1
-});
-
 /*
  * @Author: 侯凯召
  * @QQ邮箱: 3046916186@qq.com
@@ -18301,9 +17741,9 @@ let Trampoline = class Trampoline extends mw.Script {
     }
     /**注册事件&监听事件（客户端） */
     registerEventsC() {
-        Event.addServerListener(ListenerEventsType$1.ServerToAllClient_Shake, this.modelShakeVFXAndSFXC.bind(this));
-        Event.addServerListener(ListenerEventsType$1.ServerToAllClient_ShowRadiusUI, this.showRadiusUIC.bind(this));
-        Event.addServerListener(ListenerEventsType$1.ServerToAllClient_HideRadiusUI, this.hideRadiusUIC.bind(this));
+        Event.addServerListener(ListenerEventsType$3.ServerToAllClient_Shake, this.modelShakeVFXAndSFXC.bind(this));
+        Event.addServerListener(ListenerEventsType$3.ServerToAllClient_ShowRadiusUI, this.showRadiusUIC.bind(this));
+        Event.addServerListener(ListenerEventsType$3.ServerToAllClient_HideRadiusUI, this.hideRadiusUIC.bind(this));
     }
     /**客户端的Update */
     onUpdateC(dt) {
@@ -18484,7 +17924,7 @@ let Trampoline = class Trampoline extends mw.Script {
         mw.TimeUtil.delayExecute(() => {
             this.cantEnterPlayerIdS.delete(playerId);
         }, 20);
-        Event.dispatchToClient(player, ListenerEventsType$1.ServerToAllClient_ShowJumpRecordUI, this.triggersS[triggerIndex].worldTransform.position.z);
+        Event.dispatchToClient(player, ListenerEventsType$3.ServerToAllClient_ShowJumpRecordUI, this.triggersS[triggerIndex].worldTransform.position.z);
         this.modelVisualEffectS(playerId, triggerIndex);
         this.playerFlyS(player);
         this.showRadiusUIS(playerId);
@@ -18493,11 +17933,11 @@ let Trampoline = class Trampoline extends mw.Script {
     showRadiusUIS(playerId) {
         let num = this.impactRadius + 100 * this.playersJumpTimeS.get(playerId);
         this.playersImpactRadius.set(playerId, num);
-        Event.dispatchToAllClient(ListenerEventsType$1.ServerToAllClient_ShowRadiusUI, playerId, num);
+        Event.dispatchToAllClient(ListenerEventsType$3.ServerToAllClient_ShowRadiusUI, playerId, num);
     }
     /**模型视觉效果（服务端） */
     modelVisualEffectS(playerId, triggerIndex) {
-        Event.dispatchToAllClient(ListenerEventsType$1.ServerToAllClient_Shake, playerId, triggerIndex);
+        Event.dispatchToAllClient(ListenerEventsType$3.ServerToAllClient_Shake, playerId, triggerIndex);
     }
     /**玩家进入触发器玩家原地起飞（服务端） */
     playerFlyS(player) {
@@ -18607,8 +18047,8 @@ let Trampoline = class Trampoline extends mw.Script {
         this.stopTailEffectS(playerId);
         let player = Player.getPlayer(playerId);
         PlayerManagerExtesion.rpcStopAnimation(player.character, TrampolineRescourse.Roll);
-        Event.dispatchToAllClient(ListenerEventsType$1.ServerToAllClient_HideRadiusUI, playerId);
-        Event.dispatchToClient(Player.getPlayer(playerId), ListenerEventsType$1.ServerToAllClient_HideJumpRecordUI);
+        Event.dispatchToAllClient(ListenerEventsType$3.ServerToAllClient_HideRadiusUI, playerId);
+        Event.dispatchToClient(Player.getPlayer(playerId), ListenerEventsType$3.ServerToAllClient_HideJumpRecordUI);
     }
     /**播放特效（服务端） */
     playEffectS(playerId, effectMap, effect, slotType, offset, rotation, scale) {
@@ -18705,7 +18145,7 @@ class OBB {
     }
 }
 /**客户端&服务端发送的事件类型 */
-var ListenerEventsType$1;
+var ListenerEventsType$3;
 (function (ListenerEventsType) {
     /**服务端发给所有客户端（模型震动） */
     ListenerEventsType["ServerToAllClient_Shake"] = "ServerToAllClient_Shake";
@@ -18717,7 +18157,7 @@ var ListenerEventsType$1;
     ListenerEventsType["ServerToAllClient_ShowJumpRecordUI"] = "ServerToAllClient_ShowJumpRecordUI";
     /**服务端发给所有客户端（隐藏JumpRecordUI） */
     ListenerEventsType["ServerToAllClient_HideJumpRecordUI"] = "ServerToAllClient_HideJumpRecordUI";
-})(ListenerEventsType$1 || (ListenerEventsType$1 = {}));
+})(ListenerEventsType$3 || (ListenerEventsType$3 = {}));
 var TrampolineRescourse;
 (function (TrampolineRescourse) {
     /**蹦床拖尾特效 */
@@ -18742,9 +18182,9 @@ var TrampolineRescourse;
     TrampolineRescourse["Roll"] = "14736";
 })(TrampolineRescourse || (TrampolineRescourse = {}));
 
-var foreign102 = /*#__PURE__*/Object.freeze({
+var foreign99 = /*#__PURE__*/Object.freeze({
     __proto__: null,
-    get ListenerEventsType () { return ListenerEventsType$1; },
+    get ListenerEventsType () { return ListenerEventsType$3; },
     OBB: OBB,
     get TrampolineRescourse () { return TrampolineRescourse; },
     default: Trampoline$1
@@ -18828,8 +18268,8 @@ class P_Game_Trampoline extends mw.UIScript {
     }
     /**注册监听 */
     registerListener() {
-        Event.addServerListener(ListenerEventsType.ServerToAllClient_ShowJumpRecordUI, this.showUI.bind(this));
-        Event.addServerListener(ListenerEventsType.ServerToAllClient_HideJumpRecordUI, this.hideUI.bind(this));
+        Event.addServerListener(ListenerEventsType$2.ServerToAllClient_ShowJumpRecordUI, this.showUI.bind(this));
+        Event.addServerListener(ListenerEventsType$2.ServerToAllClient_HideJumpRecordUI, this.hideUI.bind(this));
         Event.addLocalListener("SyncMaxHeight", (maxHeight) => {
             this.recordMaxHight = maxHeight;
         });
@@ -18895,17 +18335,17 @@ class P_Game_Trampoline extends mw.UIScript {
     }
 }
 /**客户端&服务端发送的事件类型 */
-var ListenerEventsType;
+var ListenerEventsType$2;
 (function (ListenerEventsType) {
     /**服务端发给指定客户端（显示JumpRecordUI） */
     ListenerEventsType["ServerToAllClient_ShowJumpRecordUI"] = "ServerToAllClient_ShowJumpRecordUI";
     /**服务端发给所有客户端（隐藏JumpRecordUI） */
     ListenerEventsType["ServerToAllClient_HideJumpRecordUI"] = "ServerToAllClient_HideJumpRecordUI";
-})(ListenerEventsType || (ListenerEventsType = {}));
+})(ListenerEventsType$2 || (ListenerEventsType$2 = {}));
 
-var foreign103 = /*#__PURE__*/Object.freeze({
+var foreign100 = /*#__PURE__*/Object.freeze({
     __proto__: null,
-    get ListenerEventsType () { return ListenerEventsType; },
+    get ListenerEventsType () { return ListenerEventsType$2; },
     default: P_Game_Trampoline
 });
 
@@ -19131,11 +18571,585 @@ var ListenerEventType;
     ListenerEventType["SendClient"] = "SendClient_TelegraphPole";
 })(ListenerEventType || (ListenerEventType = {}));
 
-var foreign104 = /*#__PURE__*/Object.freeze({
+var foreign101 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     get ListenerEventType () { return ListenerEventType; },
     get TelegraphPoleResource () { return TelegraphPoleResource; },
     default: TelegraphPole$1
+});
+
+/*
+ * @Author: 侯凯召
+ * @QQ邮箱: 3046916186@qq.com
+ * @Date: 2023-01-17 09:53:58
+ * @LastEditors: 穿迷彩服的鲨鱼
+ * @LastEditTime: 2023-01-29 16:11:32
+ * @Description: 可发射飞行交互物预制体
+ * @FilePath: \Demo\JavaScripts\prefab\PlayerLauncher\PlayerLauncher.ts
+ */
+let PlayerLauncher = class PlayerLauncher extends mw.Script {
+    constructor() {
+        super(...arguments);
+        this.reborn = 5;
+        this.impulse = 2000;
+        this.tombstonePosZ = 110;
+        /**墓碑的预制体的Guid */
+        this.tombstoneGuid = "110950";
+        this.playerLauncher = null;
+        this.playerLauncherLen = 0;
+        /** 当预加载资源改动的时候自动调用此函数 */
+        // public async onPreloadAssetsChangedInEditor() {
+        //     for (let key in LauncherRescourse) {
+        //         let keyToAny: any = key;
+        //         if (isNaN(keyToAny)) {
+        //             let launcherRescourse: any = LauncherRescourse[key];
+        //             let launcherRescourseEnum: LauncherRescourse = launcherRescourse;
+        //             await Utils.downloadAsset(launcherRescourseEnum);
+        //         }
+        //     }
+        // }
+        /**------------------------------------------- 客户端 ------------------------------------------------ */
+        this.player = null;
+        /**------------------------------------------- 客户端 ------------------------------------------------ */
+        /**------------------------------------------- 服务端 ------------------------------------------------ */
+        /**需要变化的模型 */
+        this.barrelModels = [];
+        /**交互物 */
+        this.interactivitys = [];
+        /**当前需要发射的玩家 */
+        this.curPlayers = [];
+        /**发射方向(每个交互物对应一个发射方向 */
+        this.fireDirections = [];
+        this.curPlayersMap = new Map();
+        this.playerMapS = new Map();
+        this.animationIdMapS = new Map();
+        this.preAnimationIdMapS = new Map();
+        this.playerEffectMapId = new Map();
+        /**资源下载 */
+        // public async downloadRes(guid: string): Promise<boolean> {
+        //     if (mw.AssetUtil.assetLoaded(guid)) {
+        //         return true;
+        //     }
+        //     return await mw.AssetUtil.asyncDownloadAsset(guid);
+        // }
+    }
+    /** 当脚本被实例后，会在第一帧更新前调用此函数 */
+    async onStart() {
+        // await this.onPreloadAssetsChangedInEditor();
+        this.playerLauncher = GameConfig.PlayerLauncher;
+        this.playerLauncherLen = this.playerLauncher.getAllElement().length;
+        if (mw.SystemUtil.isClient()) {
+            this.initDataC();
+            this.bindTriggerC();
+            this.useUpdate = false;
+        }
+        if (mw.SystemUtil.isServer()) {
+            this.initDataS();
+            this.registerEventsS();
+            this.useUpdate = true;
+        }
+    }
+    /**初始化数据（客户端） */
+    async initDataC() {
+        this.player = await Player.asyncGetLocalPlayer();
+    }
+    /**绑定触发器（客户端） */
+    async bindTriggerC() {
+        if (this.playerLauncherLen == 0)
+            return;
+        for (let i = 0; i < this.playerLauncherLen; ++i) {
+            let trigger = (await GameObject.asyncFindGameObjectById(this.playerLauncher.getElement(i + 1).TriggerGuid));
+            trigger.onEnter.add((char) => {
+                this.onEnterTriggerC(char, i);
+            });
+        }
+    }
+    /**进入触发器(客户端) */
+    onEnterTriggerC(char, triggerIndex) {
+        if (char != Player.localPlayer.character)
+            return;
+        this.igniteC(triggerIndex);
+    }
+    /**点火（客户端） */
+    igniteC(triggerIndex) {
+        Event.dispatchToLocal("dianji", 1);
+        Event.dispatchToServer(ListenerEventsType$1.ClientToServer, triggerIndex);
+    }
+    /**初始化数据（服务端） */
+    async initDataS() {
+        this.findGameObjectsS();
+    }
+    /**根据object的guid find到它（服务端） */
+    async findGameObjectsS() {
+        if (this.playerLauncherLen > 0) {
+            for (let i = 0; i < this.playerLauncherLen; ++i) {
+                let playerLauncherElement = this.playerLauncher.getElement(i + 1);
+                let barrelModel = await GameObject.asyncFindGameObjectById(playerLauncherElement.ModelGuid);
+                barrelModel.setCollision(mw.PropertyStatus.Off);
+                this.barrelModels.push(barrelModel);
+                let fireDirection = barrelModel.worldTransform.getForwardVector();
+                this.fireDirections.push(fireDirection);
+                let interactivity = await GameObject.asyncFindGameObjectById(playerLauncherElement.InteractivityGuid);
+                this.interactivitys.push(interactivity);
+            }
+        }
+    }
+    /**注册事件&监听事件（服务端） */
+    registerEventsS() {
+        Event.addClientListener(ListenerEventsType$1.ClientToServer, this.igniteS.bind(this));
+        Player.onPlayerLeave.add((player) => {
+            let playerId = player.playerId;
+            if (this.curPlayersMap.has(playerId)) {
+                this.curPlayers[this.curPlayersMap.get(playerId)] = null;
+                this.curPlayersMap.delete(playerId);
+            }
+            if (this.playerMapS.has(playerId)) {
+                this.playerMapS.delete(playerId);
+            }
+        });
+    }
+    /**点火（服务端） */
+    async igniteS(player, triggerIndex) {
+        Console.error("[player--] " + player.playerId + " -- " + triggerIndex);
+        if (this.curPlayers[triggerIndex])
+            return;
+        this.curPlayers[triggerIndex] = player;
+        this.curPlayersMap.set(player.playerId, triggerIndex);
+        let isEnterSucceed = await this.interactivitys[triggerIndex].enter(this.curPlayers[triggerIndex].character);
+        if (!isEnterSucceed)
+            return;
+        this.interactivitys[triggerIndex].localTransform.position = (new mw.Vector(250, 0, 0));
+        new mw.Tween({ x: 250, z: 0 }).to({ x: 115, z: 230 }, 0.5 * 1000).onUpdate((v) => {
+            this.interactivitys[triggerIndex].localTransform.position = (new mw.Vector(v.x, 0, v.z));
+        }).start().onComplete(() => {
+            let playerId = this.curPlayers[triggerIndex].playerId;
+            this.playerAnimationS(playerId, this.preAnimationIdMapS, LauncherRescourse.LieDown);
+            this.preLaunch(triggerIndex);
+        });
+    }
+    /**预备发射（服务端） */
+    preLaunch(triggerIndex) {
+        let soundId = mw.SoundService.play3DSound(LauncherRescourse.StoragePowerSound, this.barrelModels[triggerIndex].worldTransform.position, 1, 1);
+        GeneralManager.rpcPlayEffectOnGameObject(LauncherRescourse.StoragePowerEffect, this.barrelModels[triggerIndex], 1, new mw.Vector(250, 0, 0), new mw.Rotation(180, 85, 180), new mw.Vector(0.5, 0.5, 0.5));
+        new mw.Tween({ x: 1.5, }).to({ x: 1, }, 0.6 * 1000).onUpdate((v) => {
+            this.barrelModels[triggerIndex].localTransform.scale = (new mw.Vector(v.x, 1.5, 1.5));
+        }).start().onComplete(() => {
+            new mw.Tween({ x: 1, }).to({ x: 1.5, }, 0.3 * 1000).onUpdate((v) => {
+                this.barrelModels[triggerIndex].localTransform.scale = (new mw.Vector(v.x, 1.5, 1.5));
+            }).start().onComplete(() => {
+                mw.SoundService.stop3DSound(soundId);
+                if (!this.curPlayers[triggerIndex])
+                    return;
+                let playerId = this.curPlayers[triggerIndex].playerId;
+                this.stopAnimationS(playerId, this.preAnimationIdMapS);
+                this.startLaunch(triggerIndex);
+            });
+        });
+    }
+    /**开始发射（服务端） */
+    async startLaunch(triggerIndex) {
+        let isExitSuceed = await GeneralManager.modifyExitInteractiveState(this.interactivitys[triggerIndex], this.curPlayers[triggerIndex].character.worldTransform.position);
+        if (!isExitSuceed)
+            return;
+        let lookForwardAndUp = new mw.Vector(this.fireDirections[triggerIndex].x, this.fireDirections[triggerIndex].y, this.fireDirections[triggerIndex].z);
+        let lookForward = lookForwardAndUp.multiply(this.impulse);
+        Console.error("[lookForward--]" + lookForward);
+        this.curPlayers[triggerIndex].character.addImpulse(lookForward, true);
+        mw.SoundService.play3DSound(LauncherRescourse.LauncherSound, this.barrelModels[triggerIndex].worldTransform.position, 1, 1);
+        let playerId = this.curPlayers[triggerIndex].playerId;
+        this.playerAnimationS(playerId, this.animationIdMapS, LauncherRescourse.LauncheringAnimation);
+        this.playEffectS(playerId, this.playerEffectMapId, LauncherRescourse.TailEffect, new mw.Vector(0, 0, 0), mw.Rotation.zero, new mw.Vector(2, 2, 2));
+        this.playerMapS.set(playerId, this.curPlayers[triggerIndex]);
+        this.curPlayers[triggerIndex] = null;
+        if (this.curPlayersMap.has(playerId)) {
+            this.curPlayersMap.delete(playerId);
+        }
+    }
+    /**服务端的Update */
+    onUpdateS(dt) {
+        if (this.playerMapS.size > 0) {
+            this.playerMapS.forEach((v) => {
+                this.isTouchDownS(v);
+            });
+        }
+    }
+    /**判断玩家是否落地（服务端） */
+    isTouchDownS(player) {
+        if (player.character.isJumping)
+            return;
+        this.playerMapS.delete(player.playerId);
+        let p = player;
+        this.dieS(p);
+    }
+    /**玩家死亡（服务端） */
+    dieS(player) {
+        Console.error("[Die]--" + player.playerId);
+        mw.SoundService.play3DSound(LauncherRescourse.Die, player.character.worldTransform.position, 1, 1);
+        let playerId = player.playerId;
+        this.stopAnimationS(playerId, this.animationIdMapS);
+        this.stopEffectS(playerId, this.playerEffectMapId);
+        player.character.ragdollEnabled = true;
+        this.spawnTombstoneS(player);
+    }
+    /**生成墓碑（服务端） */
+    spawnTombstoneS(player) {
+        let tombstone = null;
+        if (this.tombstoneGuid) {
+            tombstone = SpawnManager.wornSpawn(this.tombstoneGuid);
+            let pos = player.character.worldTransform.position;
+            tombstone.worldTransform.position = (new mw.Vector(pos.x, pos.y, pos.z - this.tombstonePosZ));
+        }
+        setTimeout(() => {
+            player.character.ragdollEnabled = false;
+            if (this.tombstoneGuid) {
+                tombstone.destroy();
+            }
+        }, this.reborn * 1000);
+    }
+    /**播放动画（服务端） */
+    playerAnimationS(playerId, animationMap, clip) {
+        let player = Player.getPlayer(playerId);
+        let animationId = null;
+        if (animationMap.has(playerId)) {
+            animationId = animationMap.get(playerId);
+            if (animationId) {
+                animationId.stop();
+            }
+        }
+        animationId = PlayerManagerExtesion.rpcPlayAnimation(player.character, clip, 0, 1);
+        animationMap.set(playerId, animationId);
+    }
+    /**停止播放动画（服务端） */
+    stopAnimationS(playerId, animationMap) {
+        if (animationMap.has(playerId)) {
+            let animationId = animationMap.get(playerId);
+            if (animationId) {
+                animationId.stop();
+                animationMap.set(playerId, null);
+            }
+        }
+    }
+    /**播放特效（服务端） */
+    playEffectS(playerId, effectMap, effect, offset, rotation, scale) {
+        let player = Player.getPlayer(playerId);
+        if (effectMap.has(playerId)) {
+            let effectId = effectMap.get(playerId);
+            if (effectId) {
+                EffectService.stop(effectId);
+            }
+        }
+        let playerEffectId = GeneralManager.rpcPlayEffectOnPlayer(effect, player, mw.HumanoidSlotType.Root, 0, new mw.Vector(0, 0, 0), mw.Rotation.zero, new mw.Vector(2, 2, 2));
+        effectMap.set(playerId, playerEffectId);
+    }
+    /**停止播放特效（服务端） */
+    stopEffectS(playerId, effectMap) {
+        if (effectMap.has(playerId)) {
+            let effectId = effectMap.get(playerId);
+            if (effectId) {
+                EffectService.stop(effectId);
+                effectMap.set(playerId, null);
+            }
+        }
+    }
+    /**------------------------------------------- 服务端 ------------------------------------------------ */
+    /**------------------------------------------- 通用 ------------------------------------------------ */
+    /**
+     * 周期函数 每帧执行
+     * 此函数执行需要将this.useUpdate赋值为true
+     * @param dt 当前帧与上一帧的延迟 / 秒
+     */
+    onUpdate(dt) {
+        if (mw.SystemUtil.isClient()) ;
+        if (mw.SystemUtil.isServer()) {
+            this.onUpdateS(dt);
+        }
+    }
+};
+__decorate([
+    mw.Property({ displayName: "重生时间（s）", group: "脚本属性" })
+], PlayerLauncher.prototype, "reborn", void 0);
+__decorate([
+    mw.Property({ displayName: "冲量大小", group: "脚本属性" })
+], PlayerLauncher.prototype, "impulse", void 0);
+__decorate([
+    mw.Property({ displayName: "墓碑的生成位置偏移", group: "脚本属性" })
+], PlayerLauncher.prototype, "tombstonePosZ", void 0);
+PlayerLauncher = __decorate([
+    Component
+], PlayerLauncher);
+var PlayerLauncher$1 = PlayerLauncher;
+var LauncherRescourse;
+(function (LauncherRescourse) {
+    /**发射中动画 */
+    LauncherRescourse["LauncheringAnimation"] = "122289";
+    /**蓄力音效 */
+    LauncherRescourse["StoragePowerSound"] = "129650";
+    /**发射音效 */
+    LauncherRescourse["LauncherSound"] = "20589";
+    /**蓄力特效 */
+    LauncherRescourse["StoragePowerEffect"] = "197884";
+    /**拖尾特效 */
+    LauncherRescourse["TailEffect"] = "27392";
+    /**落地摔死叫音效 */
+    LauncherRescourse["Die"] = "115263";
+    /**躺下动画 */
+    LauncherRescourse["LieDown"] = "14503";
+    /**墓碑 */
+    LauncherRescourse["TombstoneGuid"] = "110950";
+})(LauncherRescourse || (LauncherRescourse = {}));
+/**客户端&服务端发送的事件类型 */
+var ListenerEventsType$1;
+(function (ListenerEventsType) {
+    /**客户端发给服务端 */
+    ListenerEventsType["ClientToServer"] = "ClientToServer_Lanuncher";
+})(ListenerEventsType$1 || (ListenerEventsType$1 = {}));
+
+var foreign102 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    get LauncherRescourse () { return LauncherRescourse; },
+    get ListenerEventsType () { return ListenerEventsType$1; },
+    default: PlayerLauncher$1
+});
+
+let RotaryKnifeTrigger = class RotaryKnifeTrigger extends mw.Script {
+    constructor() {
+        super(...arguments);
+        this.backImpulse = 1000;
+        this.upImpulse = 1000;
+        this.reborn = 5;
+        this.tombstonePosZ = 110;
+        /**墓碑的预制体的Guid */
+        this.tombstoneGuid = "110950";
+        /** 当预加载资源改动的时候自动调用此函数 */
+        // public async onPreloadAssetsChangedInEditor() {
+        //     for (let key in KnifeRescourse) {
+        //         let keyToAny: any = key;
+        //         if (isNaN(keyToAny)) {
+        //             let knifeRescourse: any = KnifeRescourse[key];
+        //             let knifeRescourseEnum: KnifeRescourse = knifeRescourse;
+        //             await Utils.downloadAsset(knifeRescourseEnum);
+        //         }
+        //     }
+        // }
+        /**------------------------------------------- 客户端 ------------------------------------------------ */
+        /**触发器 */
+        this.triggers = [];
+        /**当前客户端玩家 */
+        this.player = null;
+        this.rotaryKnifeTrigger = null;
+        this.rotaryKnifeTriggerLen = 0;
+        /**------------------------------------------- 客户端 ------------------------------------------------ */
+        /**------------------------------------------- 服务端 ------------------------------------------------ */
+        this.playerMapS = new Map();
+        this.animationIdMapS = new Map();
+        this.playerEffectMapId = new Map();
+        /**资源下载 */
+        // public async downloadRes(guid: string): Promise<boolean> {
+        //     if (mw.AssetUtil.assetLoaded(guid)) {
+        //         return true;
+        //     }
+        //     return await mw.AssetUtil.asyncDownloadAsset(guid);
+        // }
+        /**------------------------------------------- 通用 ------------------------------------------------ */
+    }
+    /** 当脚本被实例后，会在第一帧更新前调用此函数 */
+    async onStart() {
+        // await this.onPreloadAssetsChangedInEditor();
+        if (mw.SystemUtil.isClient()) {
+            this.initDataC();
+            this.bindTriggerC();
+            this.registerEventsC();
+            this.useUpdate = false;
+        }
+        if (mw.SystemUtil.isServer()) {
+            this.registerEventsS();
+            this.initDataS();
+            this.useUpdate = true;
+        }
+    }
+    /**初始化数据(客户端) */
+    async initDataC() {
+        this.player = await Player.asyncGetLocalPlayer();
+    }
+    /**绑定触发器(客户端) */
+    async bindTriggerC() {
+        this.rotaryKnifeTrigger = GameConfig.RotaryKnifeTrigger;
+        this.rotaryKnifeTriggerLen = this.rotaryKnifeTrigger.getAllElement().length;
+        if (this.rotaryKnifeTriggerLen == 0)
+            return;
+        for (let i = 0; i < this.rotaryKnifeTriggerLen; ++i) {
+            let trigger = (await GameObject.asyncFindGameObjectById(this.rotaryKnifeTrigger.getElement(i + 1).TriggerGuid));
+            trigger.onEnter.add((char) => {
+                this.onEnterTriggerC(char);
+            });
+        }
+    }
+    /**注册事件（客户端） */
+    registerEventsC() {
+    }
+    /**进入触发器(客户端) */
+    onEnterTriggerC(char) {
+        if (char != Player.localPlayer.character)
+            return;
+        Console.error("[起飞喽]");
+        Event.dispatchToLocal("dianji", 1);
+        Event.dispatchToServer(ListenerEventsType.ClientToServer);
+    }
+    /**客户端的Update */
+    onUpdateC(dt) {
+        // this.isTouchDownS(this.player);
+    }
+    /**初始化数据 */
+    initDataS() {
+    }
+    /**注册事件（服务端） */
+    registerEventsS() {
+        Event.addClientListener(ListenerEventsType.ClientToServer, this.takeOffS.bind(this));
+        Player.onPlayerLeave.add((player) => {
+            let playerId = player.playerId;
+            if (this.playerMapS.has(playerId)) {
+                this.playerMapS.delete(playerId);
+            }
+        });
+    }
+    /**开始起飞（服务端） */
+    takeOffS(player) {
+        let lookUp = player.character.worldTransform.getUpVector();
+        lookUp = lookUp.multiply(this.upImpulse);
+        let lookForward = player.character.worldTransform.getForwardVector();
+        lookForward = lookForward.multiply(-this.backImpulse);
+        let lookBack = new mw.Vector(lookForward.x + lookUp.x, lookForward.y + lookUp.y, lookForward.z + lookUp.z);
+        Console.error("[lookBack--]" + lookBack);
+        player.character.addImpulse(lookBack, true);
+        mw.SoundService.play3DSound(KnifeRescourse.Knife, player.character.worldTransform.position, 1, 1);
+        let playerId = player.playerId;
+        let animationId = null;
+        if (this.animationIdMapS.has(playerId)) {
+            animationId = this.animationIdMapS.get(playerId);
+            if (animationId) {
+                animationId.stop();
+            }
+        }
+        animationId = PlayerManagerExtesion.rpcPlayAnimation(player.character, KnifeRescourse.LieDown, 0, 1);
+        this.animationIdMapS.set(player.playerId, animationId);
+        if (this.playerEffectMapId.has(playerId)) {
+            let effectId = this.playerEffectMapId.get(playerId);
+            if (effectId) {
+                EffectService.stop(effectId);
+            }
+        }
+        let playerEffectId = GeneralManager.rpcPlayEffectOnPlayer(KnifeRescourse.TailEffect, player, mw.HumanoidSlotType.Root, 0, new mw.Vector(0, 0, 0), mw.Rotation.zero, new mw.Vector(2, 2, 2));
+        this.playerEffectMapId.set(playerId, playerEffectId);
+        setTimeout(() => {
+            this.playerMapS.set(playerId, player);
+        }, 500);
+    }
+    /**服务端的Update */
+    onUpdateS(dt) {
+        if (this.playerMapS.size > 0) {
+            this.playerMapS.forEach((v) => {
+                this.isTouchDownS(v);
+            });
+        }
+    }
+    /**判断玩家是否落地（服务端） */
+    isTouchDownS(player) {
+        if (player.character.isJumping)
+            return;
+        this.playerMapS.delete(player.playerId);
+        let p = player;
+        this.dieS(p);
+    }
+    /**玩家死亡（服务端） */
+    dieS(player) {
+        Console.error("[Die]--" + player.playerId);
+        mw.SoundService.play3DSound(KnifeRescourse.Die, player.character.worldTransform.position, 1, 1);
+        let playerId = player.playerId;
+        if (this.animationIdMapS.has(playerId)) {
+            let animationId = this.animationIdMapS.get(playerId);
+            if (animationId) {
+                animationId.stop();
+                this.animationIdMapS.set(playerId, null);
+            }
+        }
+        if (this.playerEffectMapId.has(playerId)) {
+            let effectId = this.playerEffectMapId.get(playerId);
+            if (effectId) {
+                EffectService.stop(effectId);
+                this.playerEffectMapId.set(playerId, null);
+            }
+        }
+        player.character.ragdollEnabled = true;
+        this.spawnTombstoneS(player);
+    }
+    /**生成墓碑（服务端） */
+    spawnTombstoneS(player) {
+        let tombstone = null;
+        if (this.tombstoneGuid) {
+            tombstone = SpawnManager.wornSpawn(this.tombstoneGuid);
+            let pos = player.character.worldTransform.position;
+            tombstone.worldTransform.position = (new mw.Vector(pos.x, pos.y, pos.z - this.tombstonePosZ));
+        }
+        setTimeout(() => {
+            player.character.ragdollEnabled = false;
+            if (this.tombstoneGuid) {
+                tombstone.destroy();
+            }
+        }, this.reborn * 1000);
+    }
+    /**------------------------------------------- 服务端 ------------------------------------------------ */
+    /**------------------------------------------- 通用 ------------------------------------------------ */
+    onUpdate(dt) {
+        if (mw.SystemUtil.isClient()) {
+            this.onUpdateC(dt);
+        }
+        if (mw.SystemUtil.isServer()) {
+            this.onUpdateS(dt);
+        }
+    }
+};
+__decorate([
+    mw.Property({ displayName: "向后的冲量", group: "属性" })
+], RotaryKnifeTrigger.prototype, "backImpulse", void 0);
+__decorate([
+    mw.Property({ displayName: "向上的冲量", group: "属性" })
+], RotaryKnifeTrigger.prototype, "upImpulse", void 0);
+__decorate([
+    mw.Property({ displayName: "重生时间（s）", group: "属性" })
+], RotaryKnifeTrigger.prototype, "reborn", void 0);
+__decorate([
+    mw.Property({ displayName: "墓碑的生成位置偏移", group: "属性" })
+], RotaryKnifeTrigger.prototype, "tombstonePosZ", void 0);
+RotaryKnifeTrigger = __decorate([
+    Component
+], RotaryKnifeTrigger);
+var RotaryKnifeTrigger$1 = RotaryKnifeTrigger;
+/**客户端&服务端发送的事件类型 */
+var ListenerEventsType;
+(function (ListenerEventsType) {
+    /**客户端发给服务端 */
+    ListenerEventsType["ClientToServer"] = "ClientToServer_Knife";
+})(ListenerEventsType || (ListenerEventsType = {}));
+/**优先加载资源 */
+var KnifeRescourse;
+(function (KnifeRescourse) {
+    /**落地摔死叫 */
+    KnifeRescourse["Die"] = "115263";
+    /**闸刀触发 */
+    KnifeRescourse["Knife"] = "19608";
+    /**躺下耍赖 */
+    KnifeRescourse["LieDown"] = "14562";
+    /**拖尾特效 */
+    KnifeRescourse["TailEffect"] = "27392";
+    /**墓碑Guid */
+    KnifeRescourse["TombstoneGuid"] = "110950";
+})(KnifeRescourse || (KnifeRescourse = {}));
+
+var foreign103 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    get KnifeRescourse () { return KnifeRescourse; },
+    get ListenerEventsType () { return ListenerEventsType; },
+    default: RotaryKnifeTrigger$1
 });
 
 /**
@@ -19143,7 +19157,7 @@ var foreign104 = /*#__PURE__*/Object.freeze({
  * WARNING: DO NOT MODIFY THIS FILE,MAY CAUSE CODE LOST.
  * AUTHOR: 爱玩游戏的小胖子
  * UI: UI/common/ImpactRadiusWindow.ui
- * TIME: 2024.08.04-18.39.52
+ * TIME: 2024.12.31-21.32.41
  */
 let ImpactRadiusWindow_Generate = class ImpactRadiusWindow_Generate extends UIScript {
     get img() {
@@ -19198,7 +19212,7 @@ var foreign112 = /*#__PURE__*/Object.freeze({
  * WARNING: DO NOT MODIFY THIS FILE,MAY CAUSE CODE LOST.
  * AUTHOR: 爱玩游戏的小胖子
  * UI: UI/common/JumpGameTips.ui
- * TIME: 2024.08.04-18.39.52
+ * TIME: 2024.12.31-21.32.41
  */
 let JumpGameTips_Generate = class JumpGameTips_Generate extends UIScript {
     onAwake() {
@@ -19214,6 +19228,7 @@ let JumpGameTips_Generate = class JumpGameTips_Generate extends UIScript {
         //文本多语言
         //文本多语言
         this.initLanguage(this.uiWidgetBase.findChildByPath("RootCanvas/TextBlock"));
+        this.initLanguage(this.uiWidgetBase.findChildByPath("RootCanvas/TextBlock_1"));
     }
     /*初始化多语言*/
     initLanguage(ui) {
@@ -19248,7 +19263,7 @@ var foreign113 = /*#__PURE__*/Object.freeze({
  * WARNING: DO NOT MODIFY THIS FILE,MAY CAUSE CODE LOST.
  * AUTHOR: 爱玩游戏的小胖子
  * UI: UI/common/notice/SecondNoticeItem.ui
- * TIME: 2024.08.04-18.39.52
+ * TIME: 2024.12.31-21.32.41
  */
 let SecondNoticeItem_Generate = class SecondNoticeItem_Generate extends UIScript {
     get txt_context() {
@@ -19315,58 +19330,8 @@ var foreign115 = /*#__PURE__*/Object.freeze({
  * AUTO GENERATE BY UI EDITOR.
  * WARNING: DO NOT MODIFY THIS FILE,MAY CAUSE CODE LOST.
  * AUTHOR: 爱玩游戏的小胖子
- * UI: UI/common/world0.ui
- * TIME: 2024.08.04-18.39.52
- */
-let world0_Generate = class world0_Generate extends UIScript {
-    onAwake() {
-        //设置能否每帧触发onUpdate
-        this.canUpdate = false;
-        this.layer = mw.UILayerBottom;
-        this.initButtons();
-    }
-    initButtons() {
-        //按钮添加点击
-        //按钮添加点击
-        //按钮多语言
-        //文本多语言
-        //文本多语言
-        this.initLanguage(this.uiWidgetBase.findChildByPath("RootCanvas/TextBlock"));
-    }
-    /*初始化多语言*/
-    initLanguage(ui) {
-        let call = mw.UIScript.getBehavior("lan");
-        if (call && ui) {
-            call(ui);
-        }
-    }
-    onShow(...params) { }
-    ;
-    /*显示panel*/
-    show(...param) {
-        mw.UIService.showUI(this, this.layer, ...param);
-    }
-    /*隐藏panel*/
-    hide() {
-        mw.UIService.hideUI(this);
-    }
-};
-world0_Generate = __decorate([
-    UIBind('UI/common/world0.ui')
-], world0_Generate);
-var world0_Generate$1 = world0_Generate;
-
-var foreign119 = /*#__PURE__*/Object.freeze({
-    __proto__: null,
-    default: world0_Generate$1
-});
-
-/**
- * AUTO GENERATE BY UI EDITOR.
- * WARNING: DO NOT MODIFY THIS FILE,MAY CAUSE CODE LOST.
- * AUTHOR: 爱玩游戏的小胖子
  * UI: UI/common/world0_副本1.ui
- * TIME: 2024.08.04-18.39.52
+ * TIME: 2024.12.31-21.32.41
  */
 let world0_副本1_Generate = class world0_副本1_Generate extends UIScript {
     onAwake() {
@@ -19406,7 +19371,7 @@ world0_副本1_Generate = __decorate([
 ], world0_副本1_Generate);
 var world0_副本1_Generate$1 = world0_副本1_Generate;
 
-var foreign120 = /*#__PURE__*/Object.freeze({
+var foreign119 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     default: world0_副本1_Generate$1
 });
@@ -19415,8 +19380,58 @@ var foreign120 = /*#__PURE__*/Object.freeze({
  * AUTO GENERATE BY UI EDITOR.
  * WARNING: DO NOT MODIFY THIS FILE,MAY CAUSE CODE LOST.
  * AUTHOR: 爱玩游戏的小胖子
+ * UI: UI/common/world0.ui
+ * TIME: 2024.12.31-21.32.41
+ */
+let world0_Generate = class world0_Generate extends UIScript {
+    onAwake() {
+        //设置能否每帧触发onUpdate
+        this.canUpdate = false;
+        this.layer = mw.UILayerBottom;
+        this.initButtons();
+    }
+    initButtons() {
+        //按钮添加点击
+        //按钮添加点击
+        //按钮多语言
+        //文本多语言
+        //文本多语言
+        this.initLanguage(this.uiWidgetBase.findChildByPath("RootCanvas/TextBlock"));
+    }
+    /*初始化多语言*/
+    initLanguage(ui) {
+        let call = mw.UIScript.getBehavior("lan");
+        if (call && ui) {
+            call(ui);
+        }
+    }
+    onShow(...params) { }
+    ;
+    /*显示panel*/
+    show(...param) {
+        mw.UIService.showUI(this, this.layer, ...param);
+    }
+    /*隐藏panel*/
+    hide() {
+        mw.UIService.hideUI(this);
+    }
+};
+world0_Generate = __decorate([
+    UIBind('UI/common/world0.ui')
+], world0_Generate);
+var world0_Generate$1 = world0_Generate;
+
+var foreign120 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: world0_Generate$1
+});
+
+/**
+ * AUTO GENERATE BY UI EDITOR.
+ * WARNING: DO NOT MODIFY THIS FILE,MAY CAUSE CODE LOST.
+ * AUTHOR: 爱玩游戏的小胖子
  * UI: UI/module/Achievement/AchievementItem.ui
- * TIME: 2024.08.04-18.39.53
+ * TIME: 2024.12.31-21.32.41
  */
 let AchievementItem_Generate = class AchievementItem_Generate extends UIScript {
     get mBgImage_1() {
@@ -19530,7 +19545,7 @@ var foreign121 = /*#__PURE__*/Object.freeze({
  * WARNING: DO NOT MODIFY THIS FILE,MAY CAUSE CODE LOST.
  * AUTHOR: 爱玩游戏的小胖子
  * UI: UI/module/CollectionUI/CollectItem.ui
- * TIME: 2024.08.04-18.39.53
+ * TIME: 2024.12.31-21.32.42
  */
 let CollectItem_Generate = class CollectItem_Generate extends UIScript {
     get mBgImage() {
@@ -19618,7 +19633,7 @@ var foreign127 = /*#__PURE__*/Object.freeze({
  * WARNING: DO NOT MODIFY THIS FILE,MAY CAUSE CODE LOST.
  * AUTHOR: 爱玩游戏的小胖子
  * UI: UI/module/PetUI/PetItem.ui
- * TIME: 2024.08.04-18.39.53
+ * TIME: 2024.12.31-21.32.41
  */
 let PetItem_Generate = class PetItem_Generate extends UIScript {
     get mIconButton() {
@@ -19690,7 +19705,7 @@ var foreign133 = /*#__PURE__*/Object.freeze({
  * WARNING: DO NOT MODIFY THIS FILE,MAY CAUSE CODE LOST.
  * AUTHOR: 爱玩游戏的小胖子
  * UI: UI/module/RankingUI/RankingItem.ui
- * TIME: 2024.08.04-18.39.54
+ * TIME: 2024.12.31-21.32.41
  */
 let RankingItem_Generate = class RankingItem_Generate extends UIScript {
     get mRankingTxt() {
@@ -19780,7 +19795,7 @@ var foreign137 = /*#__PURE__*/Object.freeze({
  * WARNING: DO NOT MODIFY THIS FILE,MAY CAUSE CODE LOST.
  * AUTHOR: 爱玩游戏的小胖子
  * UI: UI/module/ShopUI/ClothItem.ui
- * TIME: 2024.08.04-18.39.54
+ * TIME: 2024.12.31-21.32.42
  */
 let ClothItem_Generate = class ClothItem_Generate extends UIScript {
     get mCanvas() {
@@ -19863,7 +19878,7 @@ var foreign139 = /*#__PURE__*/Object.freeze({
  * WARNING: DO NOT MODIFY THIS FILE,MAY CAUSE CODE LOST.
  * AUTHOR: 爱玩游戏的小胖子
  * UI: UI/module/ShopUI/TailItem.ui
- * TIME: 2024.08.04-18.39.54
+ * TIME: 2024.12.31-21.32.42
  */
 let TailItem_Generate = class TailItem_Generate extends UIScript {
     get mSelectImg() {
@@ -19940,7 +19955,7 @@ var foreign141 = /*#__PURE__*/Object.freeze({
  * WARNING: DO NOT MODIFY THIS FILE,MAY CAUSE CODE LOST.
  * AUTHOR: 爱玩游戏的小胖子
  * UI: UI/module/ShopUI/WeaponItem.ui
- * TIME: 2024.08.04-18.39.54
+ * TIME: 2024.12.31-21.32.42
  */
 let WeaponItem_Generate = class WeaponItem_Generate extends UIScript {
     get mCanvas() {
@@ -20030,7 +20045,7 @@ var foreign142 = /*#__PURE__*/Object.freeze({
  * WARNING: DO NOT MODIFY THIS FILE,MAY CAUSE CODE LOST.
  * AUTHOR: 爱玩游戏的小胖子
  * UI: UI/module/ShopUI/WingItem.ui
- * TIME: 2024.08.04-18.39.54
+ * TIME: 2024.12.31-21.32.42
  */
 let WingItem_Generate = class WingItem_Generate extends UIScript {
     get mSelectImg() {
@@ -20107,7 +20122,7 @@ var foreign143 = /*#__PURE__*/Object.freeze({
  * WARNING: DO NOT MODIFY THIS FILE,MAY CAUSE CODE LOST.
  * AUTHOR: 爱玩游戏的小胖子
  * UI: UI/Prefabs/可弹跳的交互物/UI/Prefab/Trampoline/JumpRecordUI.ui
- * TIME: 2024.08.04-18.39.54
+ * TIME: 2024.12.31-21.32.42
  */
 let JumpRecordUI_Generate = class JumpRecordUI_Generate extends UIScript {
     get mRecordMaxHeightText() {
@@ -20193,8 +20208,8 @@ const MWModuleMap = {
      '8D505D9D47BCCBFBC25CACA016DD9447': foreign13,
      '553725DC427DF80EF2751CB8F2762514': foreign14,
      'C9FCF90C4738035BADDDA38C9677292D': foreign15,
-     '5678A2A54D344DB920AA24B440EE82F5': foreign16,
-     '989E79334DBF0E7C7A101A9405B52E87': foreign17,
+     '989E79334DBF0E7C7A101A9405B52E87': foreign16,
+     '5678A2A54D344DB920AA24B440EE82F5': foreign17,
      '2533CA9D466380D8941118B5FAC4AC8B': foreign18,
      'FB64B0AE4FF3375CC338DBA9451598AC': foreign19,
      'B3F1342D4E87D7EB00062E8E0DB6A10E': foreign20,
@@ -20276,12 +20291,12 @@ const MWModuleMap = {
      '1CF4255D4558936736B0168910CB6E85': foreign96,
      'C983066745C7F20E269D83A032915A5A': foreign97,
      'F927107048D151F143B51F98CFFACCAE': foreign98,
-     'CD82A2E448FA71DD00529A8B5261ED6C': foreign99,
-     'A099C00749C364C9D60BBD885F36EDAB': foreign100,
-     '8631500449380F926E4F61A89F4DDC38': foreign101,
-     '214EADC64028F27CC65544956CE411F1': foreign102,
-     '3B483A84480FD82E59AA5597E7C4D986': foreign103,
-     '189DADBA40C525C5906BC7B220ACD8A8': foreign104,
+     '214EADC64028F27CC65544956CE411F1': foreign99,
+     '3B483A84480FD82E59AA5597E7C4D986': foreign100,
+     '189DADBA40C525C5906BC7B220ACD8A8': foreign101,
+     '8631500449380F926E4F61A89F4DDC38': foreign102,
+     'A099C00749C364C9D60BBD885F36EDAB': foreign103,
+     'CD82A2E448FA71DD00529A8B5261ED6C': foreign104,
      'E6EE5F054BE51F828EFA2E8E2B75BC22': foreign105,
      'B6D27EAC444C85D1D925F986D613D5B3': foreign106,
      'C21422064060FC0412F08EAAD527453E': foreign107,
@@ -20296,8 +20311,8 @@ const MWModuleMap = {
      'CB21811D400FF71D719CE59F97622867': foreign116,
      '710687624B02A2E18DD152A097EB3160': foreign117,
      '370096C546122EE5DA0AE3BF1535FF5A': foreign118,
-     'E3296951464D4AE99A231CABA9DFEB5D': foreign119,
-     '344CCE0A4CCC3E3D40B9DAAF93F9A6BC': foreign120,
+     '344CCE0A4CCC3E3D40B9DAAF93F9A6BC': foreign119,
+     'E3296951464D4AE99A231CABA9DFEB5D': foreign120,
      '8DA9DF4F4EAC6D5635E6E291B56CA262': foreign121,
      'DBFA36A34F3399D56B1662BF1ED3CEF0': foreign122,
      '4364255442302B8A49B73E90991A9583': foreign123,
@@ -20339,8 +20354,8 @@ const MWFileMapping = new WeakMap([[foreign1 || {}, "JavaScripts/Common/AdTips"]
 [foreign13 || {}, "JavaScripts/Common/notice/Updater"],
 [foreign14 || {}, "JavaScripts/Common/NPCSitDance"],
 [foreign15 || {}, "JavaScripts/Common/OnClickPanel"],
-[foreign16 || {}, "JavaScripts/Common/Portal"],
-[foreign17 || {}, "JavaScripts/Common/P_Tips"],
+[foreign16 || {}, "JavaScripts/Common/P_Tips"],
+[foreign17 || {}, "JavaScripts/Common/Portal"],
 [foreign18 || {}, "JavaScripts/Common/Shakes"],
 [foreign19 || {}, "JavaScripts/Common/Sit"],
 [foreign20 || {}, "JavaScripts/Common/SkyWheel"],
@@ -20422,12 +20437,12 @@ const MWFileMapping = new WeakMap([[foreign1 || {}, "JavaScripts/Common/AdTips"]
 [foreign96 || {}, "JavaScripts/module/SignInModule/SignInModuleC"],
 [foreign97 || {}, "JavaScripts/module/SignInModule/SignInModuleS"],
 [foreign98 || {}, "JavaScripts/module/SignInModule/ui/SignInPanel"],
-[foreign99 || {}, "JavaScripts/Prefabs/PrefabEvent"],
-[foreign100 || {}, "JavaScripts/Prefabs/可击飞的交互物/Script/prefab/RotaryKnife/RotaryKnifeTrigger"],
-[foreign101 || {}, "JavaScripts/Prefabs/可发射的交互物/Script/prefab/PlayerLauncher/PlayerLauncher"],
-[foreign102 || {}, "JavaScripts/Prefabs/可弹跳的交互物/Script/prefab/Trampoline/Trampoline"],
-[foreign103 || {}, "JavaScripts/Prefabs/可弹跳的交互物/Script/prefab/Trampoline/ui/P_Game_Trampoline"],
-[foreign104 || {}, "JavaScripts/Prefabs/可电击的交互物/Script/prefab/TelegraphPole/TelegraphPole"],
+[foreign99 || {}, "JavaScripts/Prefabs/可弹跳的交互物/Script/prefab/Trampoline/Trampoline"],
+[foreign100 || {}, "JavaScripts/Prefabs/可弹跳的交互物/Script/prefab/Trampoline/ui/P_Game_Trampoline"],
+[foreign101 || {}, "JavaScripts/Prefabs/可电击的交互物/Script/prefab/TelegraphPole/TelegraphPole"],
+[foreign102 || {}, "JavaScripts/Prefabs/可发射的交互物/Script/prefab/PlayerLauncher/PlayerLauncher"],
+[foreign103 || {}, "JavaScripts/Prefabs/可击飞的交互物/Script/prefab/RotaryKnife/RotaryKnifeTrigger"],
+[foreign104 || {}, "JavaScripts/Prefabs/PrefabEvent"],
 [foreign105 || {}, "JavaScripts/Tools/Console"],
 [foreign106 || {}, "JavaScripts/Tools/InputManager"],
 [foreign107 || {}, "JavaScripts/Tools/ObjectPool"],
@@ -20442,8 +20457,8 @@ const MWFileMapping = new WeakMap([[foreign1 || {}, "JavaScripts/Common/AdTips"]
 [foreign116 || {}, "JavaScripts/ui-generate/common/notice/TopNoticeItem_generate"],
 [foreign117 || {}, "JavaScripts/ui-generate/common/OnClickPanel_generate"],
 [foreign118 || {}, "JavaScripts/ui-generate/common/Test_generate"],
-[foreign119 || {}, "JavaScripts/ui-generate/common/world0_generate"],
-[foreign120 || {}, "JavaScripts/ui-generate/common/world0_副本1_generate"],
+[foreign119 || {}, "JavaScripts/ui-generate/common/world0_副本1_generate"],
+[foreign120 || {}, "JavaScripts/ui-generate/common/world0_generate"],
 [foreign121 || {}, "JavaScripts/ui-generate/module/Achievement/AchievementItem_generate"],
 [foreign122 || {}, "JavaScripts/ui-generate/module/Achievement/AchievementMain_generate"],
 [foreign123 || {}, "JavaScripts/ui-generate/module/Achievement/Completed_generate"],

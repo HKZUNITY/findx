@@ -1,4 +1,4 @@
-{
+﻿{
 	"compilerOptions":
 	{
 		"target": "ES2021",
@@ -8,14 +8,15 @@
 		"module": "ES2022",
 		"sourceMap": true,
 		"typeRoots": [
-			"../../../../../../../WindowsNoEditor/MW/Content/Typing",
-			"../../../../../../../WindowsNoEditor/MW/Content/EditorPluginTyping/MWPluginTyping/PluginCore/Runtime"
+			"../Typing",
+			"../EditorPluginTyping/MWPluginTyping/PluginCore/Runtime"
 		],
 		"lib": [
 			"ES2021"
 		]
 	},
 	"include": [
-		"./**/*"
+		"./**/*",
+		"../common/**/*"
 	]
 }

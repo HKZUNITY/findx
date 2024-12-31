@@ -3,7 +3,7 @@
  * WARNING: DO NOT MODIFY THIS FILE,MAY CAUSE CODE LOST.
  * AUTHOR: 爱玩游戏的小胖子
  * UI: UI/common/JumpGameTips.ui
- * TIME: 2024.08.04-18.39.52
+ * TIME: 2024.12.31-21.32.41
  */
  
 @UIBind('UI/common/JumpGameTips.ui')
@@ -28,6 +28,9 @@ export default class JumpGameTips_Generate extends UIScript {
 		//文本多语言
 		
 		this.initLanguage(this.uiWidgetBase.findChildByPath("RootCanvas/TextBlock") as any);
+		
+	
+		this.initLanguage(this.uiWidgetBase.findChildByPath("RootCanvas/TextBlock_1") as any);
 		
 	
 	}

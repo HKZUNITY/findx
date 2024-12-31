@@ -75,6 +75,9 @@ export default class HUDPanel extends HUDPanel_Generate {
 		this.mRaffleButton.onClicked.add(() => {
 			this.hudModuleC.onOpenRaffleAction.call();
 		});
+		this.mRoleButton.onClicked.add(() => {
+			AvatarEditorService.asyncOpenAvatarEditorModule();
+		});
 		this.initAttackButton();
 
 		this.initMusicButton();

@@ -3,7 +3,7 @@
  * WARNING: DO NOT MODIFY THIS FILE,MAY CAUSE CODE LOST.
  * AUTHOR: 爱玩游戏的小胖子
  * UI: UI/module/PetUI/PetItem.ui
- * TIME: 2024.08.04-18.39.53
+ * TIME: 2024.12.31-21.32.41
  */
  
 @UIBind('UI/module/PetUI/PetItem.ui')
