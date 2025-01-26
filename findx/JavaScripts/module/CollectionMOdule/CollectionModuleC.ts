@@ -46,13 +46,7 @@ export default class CollectionModuleC extends ModuleC<CollectionModuleS, Collec
     }
 
     protected onEnterScene(sceneType: number): void {
-        TimeUtil.setInterval(() => {
-            if (GlobalData.isOpenIAA) {
-                this.adTips.showAdTips(1, AdType.RandomGetId);
-            } else {
-                this.randomGetId();
-            }
-        }, 60);
+
     }
 
     /**找Item的提示 */

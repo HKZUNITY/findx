@@ -10621,14 +10621,6 @@ class CollectionModuleC extends ModuleC {
         this.collectionPanel.onFindTipsAction.add(this.findItemTips.bind(this));
     }
     onEnterScene(sceneType) {
-        TimeUtil.setInterval(() => {
-            if (GlobalData.isOpenIAA) {
-                this.adTips.showAdTips(1, AdType.RandomGetId);
-            }
-            else {
-                this.randomGetId();
-            }
-        }, 60);
     }
     /**找Item的提示 */
     findItemTips(id) {

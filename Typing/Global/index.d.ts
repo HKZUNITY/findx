@@ -5289,14 +5289,6 @@ declare global {
      */
     type OnDescriptionComplete = mw.OnDescriptionComplete;
     /**
-     * @author xiangkun.sun
-     * @description 事件监听器
-     * @groups 基础类型/事件
-     * @networkStatus usage:双端
-     */
-    const EventListener: typeof mw.EventListener;
-    type EventListener = mw.EventListener;
-    /**
      * @author mengyuan.hao
      * @description 事件
      * @description MW编辑器支持多种类型的事件。
@@ -5313,6 +5305,14 @@ declare global {
      */
     const Event: typeof mw.Event;
     type Event = mw.Event;
+    /**
+     * @author xiangkun.sun
+     * @description 事件监听器
+     * @groups 基础类型/事件
+     * @networkStatus usage:双端
+     */
+    const EventListener: typeof mw.EventListener;
+    type EventListener = mw.EventListener;
     /**
      * @description 事件发送的结果
      * @author xiangkun.sun
@@ -5370,6 +5370,13 @@ declare global {
     const LocaleUtil: typeof mw.LocaleUtil;
     type LocaleUtil = mw.LocaleUtil;
     /**
+     * @author baoqiang.han
+     * @description 触摸类型
+     * @groups 输入
+     */
+    const TouchInputType: typeof mw.TouchInputType;
+    type TouchInputType = mw.TouchInputType;
+    /**
      * @author jie.wu
      * @description 输入事件工具
      * @groups 输入
@@ -5407,13 +5414,6 @@ declare global {
      */
     const InputUtil: typeof mw.InputUtil;
     type InputUtil = mw.InputUtil;
-    /**
-     * @author baoqiang.han
-     * @description 触摸类型
-     * @groups 输入
-     */
-    const TouchInputType: typeof mw.TouchInputType;
-    type TouchInputType = mw.TouchInputType;
     /**
      * @author xiangkun.sun
      * @description 数学库工具
