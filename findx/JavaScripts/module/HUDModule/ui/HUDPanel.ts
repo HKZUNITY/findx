@@ -4,15 +4,14 @@
  * TIME: 2023.05.25-10.21.12
  */
 
-import Console from "../../../Tools/Console";
+import { Notice } from "../../../Common/notice/Notice";
 import { Tween, Utils } from "../../../Tools/utils";
 import GlobalData from "../../../const/GlobalData";
+import ExecutorManager from "../../../Tools/WaitingQueue";
 import HUDPanel_Generate from "../../../ui-generate/module/HUDUI/HUDPanel_generate";
-import HUDModuleC, { KillTipData, KillTipType } from "../HUDModuleC";
 import KillTipItem_Generate from "../../../ui-generate/module/HUDUI/KillTipItem_generate";
-import { Notice } from "../../../Common/notice/Notice";
 import { ColdWeapon } from "../../ColdWeapon/ColdWeapon";
-
+import HUDModuleC, { KillTipData, KillTipType } from "../HUDModuleC";
 export default class HUDPanel extends HUDPanel_Generate {
 	private hudModuleC: HUDModuleC = null;
 	/**背景音乐按钮事件（true-打开|false-关闭） */
@@ -76,7 +75,12 @@ export default class HUDPanel extends HUDPanel_Generate {
 			this.hudModuleC.onOpenRaffleAction.call();
 		});
 		this.mRoleButton.onClicked.add(() => {
-			AvatarEditorService.asyncOpenAvatarEditorModule();
+			ExecutorManager.instance.pushAsyncExecutor(async () => {
+				await AvatarEditorService.asyncOpenAvatarEditorModule();
+			});
+		});
+		this.mShareButton.onClicked.add(() => {
+			this.hudModuleC.onOpenShareAction.call();
 		});
 		this.initAttackButton();
 

@@ -3,6 +3,7 @@
 export default class GlobalData {
     /**log级别"None": "0", "Log": "1", "Warn": "2", "Error": "3" */
     public static logLevel: number = 0;
+    public static languageId: number = -1;
 
     /**是否隐藏头顶UI */
     public static isHideHeadUI: boolean = false;

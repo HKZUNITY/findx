@@ -50,6 +50,7 @@ export default class HUDModuleC extends ModuleC<HUDModuleS, HUDDate> {
     public onOpenPetAction: Action = new Action();
     /**打开宠物抽奖界面界面 */
     public onOpenRaffleAction: Action = new Action();
+    public onOpenShareAction: Action = new Action();
 
     /**当前播放的背景音乐 */
     private currentBgmIndex: number = 1;
@@ -106,6 +107,13 @@ export default class HUDModuleC extends ModuleC<HUDModuleS, HUDDate> {
         });
 
         this.onOpenAdsAction.add(this.ads.bind(this));
+
+        Event.addLocalListener(`OnOffMainHUD`, this.addOnOffHUDPannel.bind(this));
+    }
+
+    private addOnOffHUDPannel(isOpen: boolean): void {
+        console.error(`isOpen${isOpen}`)
+        isOpen ? this.hudPanel.show() : this.hudPanel.hide();
     }
 
     /**注册事件 */
@@ -123,6 +131,7 @@ export default class HUDModuleC extends ModuleC<HUDModuleS, HUDDate> {
         TimeUtil.delaySecond(10).then(() => {
             this.initGameGuide();
             this.pickUpWeapon(Utils.getRandomInteger(1, 3));
+            this.pickUpWing(2);
         });
     }
 
@@ -252,8 +261,8 @@ export default class HUDModuleC extends ModuleC<HUDModuleS, HUDDate> {
             //     }
             //     Camera.switch(cameraArray[this.curCameraAnchorLen++], 1, mw.CameraSwitchBlendFunction.Linear);
             // });
-            this.onOpenPetAction.call();
-            this.onOpenSignInAction1.call();
+            // this.onOpenPetAction.call();
+            // this.onOpenSignInAction1.call();
             ModuleService.getModule(CollectionModuleC).startGuide(2);
             this.firstGame();
             this.setCurAttackValue(500);
@@ -263,10 +272,11 @@ export default class HUDModuleC extends ModuleC<HUDModuleS, HUDDate> {
             });
         }
         else {
-            this.onOpenAchAction.call();
-            this.onOpenPetAction.call();
-            this.onOpenSignInAction1.call();
+            // this.onOpenAchAction.call();
+            // this.onOpenPetAction.call();
+            // this.onOpenSignInAction1.call();
         }
+        this.onOpenShareAction.call();
     }
     private locs: mw.Vector[] = [
         new mw.Vector(2430, 1560, 300),

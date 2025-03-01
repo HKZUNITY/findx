@@ -879,14 +879,81 @@ declare namespace UGC {
      */
     function getPrefabAssetId(obj: mw.GameObject): string;
     /**
-     * @author jie.wu
+     * @author maohang.zeng
      * @groups SCRIPTING
      * @description 保存预制体
      * @effect 只在客调用端生效
      * @param  root:usage: 以此为根节点，保存预制体
+     * @param  targetPath:usage: 限制在 UGCMakePrefabs 中，以此为目标路径；如果为空，则使用对象本身名字作为资源名(e.g. 想要生成的资源在 UGCMakePrefabs 文件夹下 名称为 newPrefab 时，此参数填 newPrefab)
      * @returns {string} 返回生成预制体的资源ID
      */
-    function savePrefab(root: mw.GameObject): string;
+    function savePrefab(root: mw.GameObject, targetPath?: string): string;
+    /**
+     * @author maohang.zeng
+     * @groups SCRIPTING
+     * @description 更新预制体
+     * @effect 只在客调用端生效
+     * @param  root:usage: 使用此对象当前数据更新关联的预制体资源
+     * @returns {boolean} 返回是否成功重置
+     */
+    function updatePrefab(root: mw.GameObject): boolean;
+    /**
+     * @author maohang.zeng
+     * @groups SCRIPTING
+     * @description 删除预制体资源，仅能删除UGC预制体
+     * @effect 只在客调用端生效
+     * @param  guid:usage: 计划删除的预制体资源guid
+     * @param  bDestroyReference:usage: 为true时同步删除该预制体资源关联的预制体对象
+     * @returns {boolean} 返回是否成功删除
+     */
+    function deletePrefab(guid: string, bDestroyReference: boolean): boolean;
+    /**
+     * @author maohang.zeng
+     * @groups SCRIPTING
+     * @description 重命名预制体
+     * @effect 只在客调用端生效
+     * @param  guid:usage: 计划移动的预制体资源guid
+     * @param  target:usage: 目标名称
+     * @returns {boolean} 返回是否成功重命名
+     */
+    function renamePrefab(guid: string, target: string): boolean;
+    /**
+     * @author maohang.zeng
+     * @groups SCRIPTING
+     * @description 移动预制体
+     * @effect 只在客调用端生效
+     * @param  guid:usage: 计划移动的预制体资源guid
+     * @param  target:usage: 目标位置(""->移动至 UGCMakePrefabs 文件夹下;
+ "Target"->移动至 UGCMakePrefabs/Target 文件夹下)
+     * @returns {boolean} 返回是否成功移动
+     */
+    function movePrefab(guid: string, target?: string): boolean;
+    /**
+     * @author maohang.zeng
+     * @groups SCRIPTING
+     * @description 操作预制体文件夹(source有，target无->删除)(source无，target有->创建)(两者都有->重命名)
+     * @effect 只在客调用端生效
+     * @param  source:usage: 原始文件夹
+     * @param  target:usage: 目标文件夹
+     * @returns {boolean} 返回是否成功操作
+     */
+    function operatePrefabFolder(source: string, target: string): boolean;
+    /**
+     * @author maohang.zeng
+     * @groups SCRIPTING
+     * @description 获取所有存储UGC预制体的文件夹
+     * @effect 只在客调用端生效
+     * @returns {Map<number, string>} 返回预制体文件夹的创建时间戳->路径 映射
+     */
+    function getAllUGCPrefabFolders(): Map<number, string>;
+    /**
+     * @author maohang.zeng
+     * @groups SCRIPTING
+     * @description 获取所有的UGC预制体
+     * @effect 只在客调用端生效
+     * @returns {Map<string, string>} 返回预制体的路径->guid映射
+     */
+    function getAllUGCPrefab(): Map<string, string>;
     /**
      * @author xiangkun.sun
      * @groups SCRIPTING
@@ -1058,6 +1125,16 @@ declare namespace UGC {
      * @returns 所有的一级节点对象
      */
     function getRootGameObjects(): Array<mw.GameObject>;
+    /**
+     * @author yang.zheng
+     * @description 获取当前关卡下(多关卡)所有的一级节点对象
+     * @groups 基础类型
+     * @effect 调用端生效
+     * @precautions 只在MobileEditor模式下调用生效
+     * @param levelName 需要查询的 Level 名称
+     * @returns 多关卡下当前所有的一级节点对象
+     */
+    function getRootGameObjectsByLevelName(levelName: string): Array<mw.GameObject>;
     /**
     * @author baolin.li
     * @description 保存UI到本地,生成.UI和.meta文件

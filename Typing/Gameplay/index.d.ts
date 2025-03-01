@@ -8076,6 +8076,29 @@ declare namespace mw {
         /** Exponential in-out interpolation */
         ExpInOut = 13
     }
+    /**
+     * @author liaoyun.hao
+     * @groups 角色系统
+     * @description 动态挂件枚举
+     */
+    enum EDynamicAttachmentIndex {
+        /** 第一个插槽 */
+        First = 0,
+        /** 第二个插槽 */
+        Two = 1,
+        /** 第三个插槽 */
+        Three = 2,
+        /** 第四个插槽 */
+        Four = 3,
+        /** 第五个插槽 */
+        Five = 4,
+        /** 第六个插槽 */
+        Six = 5,
+        /** 第七个插槽 */
+        Seven = 6,
+        /** 第八个插槽 */
+        Eight = 7
+    }
 }
 
 declare namespace mw {
@@ -9516,6 +9539,11 @@ declare namespace mw {
                     readonly decoration?: mw.CharacterDecoration;
                 }>;
             };
+            /** @description: 动态挂件 */
+            readonly dynamicAttachments?: ArrayLike<{
+                /** @description: 动态挂件样式 */
+                style?: string;
+            }>;
         };
         /**
          * @groups 角色系统/角色
@@ -13171,7 +13199,7 @@ declare namespace mw {
          */
         onTouchEnd(index: number): void;
         /**
-         * @description 添加需要被坐标轴忽略的object
+         * @description 添加需要被坐标轴忽略的object，被忽略的对象集合设为A , 正在移动的对象为B. B在移动中寻找吸附的对象将会把所有的集合A给忽略掉。B将永远不会吸附到集合A中的任何对象上。
          * @effect 只在客户端调用生效
          * @param actor usage:忽略的object
          */

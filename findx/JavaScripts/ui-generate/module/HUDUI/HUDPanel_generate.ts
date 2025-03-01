@@ -3,7 +3,7 @@
  * WARNING: DO NOT MODIFY THIS FILE,MAY CAUSE CODE LOST.
  * AUTHOR: 爱玩游戏的小胖子
  * UI: UI/module/HUDUI/HUDPanel.ui
- * TIME: 2024.12.31-21.32.41
+ * TIME: 2025.03.01-12.24.16
  */
  
 @UIBind('UI/module/HUDUI/HUDPanel.ui')
@@ -148,6 +148,13 @@ export default class HUDPanel_Generate extends UIScript {
 		}
 		return this.mHomeBtn_Internal
 	}
+	private mShareButton_Internal: mw.Button
+	public get mShareButton(): mw.Button {
+		if(!this.mShareButton_Internal&&this.uiWidgetBase) {
+			this.mShareButton_Internal = this.uiWidgetBase.findChildByPath('RootCanvas/RightTopCanvas/RoleCanvas_1/mShareButton') as mw.Button
+		}
+		return this.mShareButton_Internal
+	}
 	private mMusicCanvas_Internal: mw.Canvas
 	public get mMusicCanvas(): mw.Canvas {
 		if(!this.mMusicCanvas_Internal&&this.uiWidgetBase) {
@@ -204,19 +211,19 @@ export default class HUDPanel_Generate extends UIScript {
 		}
 		return this.mExpProgressBar_Internal
 	}
-	private mHpText_Internal: mw.TextBlock
-	public get mHpText(): mw.TextBlock {
-		if(!this.mHpText_Internal&&this.uiWidgetBase) {
-			this.mHpText_Internal = this.uiWidgetBase.findChildByPath('RootCanvas/LeftCanvas/mHpText') as mw.TextBlock
-		}
-		return this.mHpText_Internal
-	}
 	private mAttackText_Internal: mw.TextBlock
 	public get mAttackText(): mw.TextBlock {
 		if(!this.mAttackText_Internal&&this.uiWidgetBase) {
 			this.mAttackText_Internal = this.uiWidgetBase.findChildByPath('RootCanvas/LeftCanvas/mAttackText') as mw.TextBlock
 		}
 		return this.mAttackText_Internal
+	}
+	private mJumpHeightText_Internal: mw.TextBlock
+	public get mJumpHeightText(): mw.TextBlock {
+		if(!this.mJumpHeightText_Internal&&this.uiWidgetBase) {
+			this.mJumpHeightText_Internal = this.uiWidgetBase.findChildByPath('RootCanvas/LeftCanvas/mJumpHeightText') as mw.TextBlock
+		}
+		return this.mJumpHeightText_Internal
 	}
 	private mMoveSpeedText_Internal: mw.TextBlock
 	public get mMoveSpeedText(): mw.TextBlock {
@@ -232,17 +239,17 @@ export default class HUDPanel_Generate extends UIScript {
 		}
 		return this.mFlySpeedText_Internal
 	}
-	private mJumpHeightText_Internal: mw.TextBlock
-	public get mJumpHeightText(): mw.TextBlock {
-		if(!this.mJumpHeightText_Internal&&this.uiWidgetBase) {
-			this.mJumpHeightText_Internal = this.uiWidgetBase.findChildByPath('RootCanvas/LeftCanvas/mJumpHeightText') as mw.TextBlock
+	private mHpText_Internal: mw.TextBlock
+	public get mHpText(): mw.TextBlock {
+		if(!this.mHpText_Internal&&this.uiWidgetBase) {
+			this.mHpText_Internal = this.uiWidgetBase.findChildByPath('RootCanvas/LeftCanvas/mHpText') as mw.TextBlock
 		}
-		return this.mJumpHeightText_Internal
+		return this.mHpText_Internal
 	}
 	private mPetButton_Internal: mw.Button
 	public get mPetButton(): mw.Button {
 		if(!this.mPetButton_Internal&&this.uiWidgetBase) {
-			this.mPetButton_Internal = this.uiWidgetBase.findChildByPath('RootCanvas/LeftCanvas/mPetButton') as mw.Button
+			this.mPetButton_Internal = this.uiWidgetBase.findChildByPath('RootCanvas/LeftCanvas/Image_14/mPetButton') as mw.Button
 		}
 		return this.mPetButton_Internal
 	}
@@ -366,6 +373,12 @@ export default class HUDPanel_Generate extends UIScript {
 		this.mHomeBtn.touchMethod = (mw.ButtonTouchMethod.PreciseTap);
 		
 	
+		this.mShareButton.onClicked.add(()=>{
+			Event.dispatchToLocal("PlayButtonClick", "mShareButton");
+		});
+		this.mShareButton.touchMethod = (mw.ButtonTouchMethod.PreciseTap);
+		
+	
 		this.mCloseMusicBtn.onClicked.add(()=>{
 			Event.dispatchToLocal("PlayButtonClick", "mCloseMusicBtn");
 		});
@@ -412,10 +425,10 @@ export default class HUDPanel_Generate extends UIScript {
 		this.initLanguage(this.mBeFlyingText)
 		
 	
-		this.initLanguage(this.mHpText)
+		this.initLanguage(this.mAttackText)
 		
 	
-		this.initLanguage(this.mAttackText)
+		this.initLanguage(this.mJumpHeightText)
 		
 	
 		this.initLanguage(this.mMoveSpeedText)
@@ -424,7 +437,7 @@ export default class HUDPanel_Generate extends UIScript {
 		this.initLanguage(this.mFlySpeedText)
 		
 	
-		this.initLanguage(this.mJumpHeightText)
+		this.initLanguage(this.mHpText)
 		
 	
 		this.initLanguage(this.mKillTipTextBlock1)
@@ -468,10 +481,13 @@ export default class HUDPanel_Generate extends UIScript {
 		this.initLanguage(this.uiWidgetBase.findChildByPath("RootCanvas/RightTopCanvas/HomeCanvas/TextBlock_1") as any);
 		
 	
+		this.initLanguage(this.uiWidgetBase.findChildByPath("RootCanvas/RightTopCanvas/RoleCanvas_1/TextBlock") as any);
+		
+	
 		this.initLanguage(this.uiWidgetBase.findChildByPath("RootCanvas/MiddleBottomCanvas/TextBlock_8") as any);
 		
 	
-		this.initLanguage(this.uiWidgetBase.findChildByPath("RootCanvas/LeftCanvas/mPetButton/TextBlock_7") as any);
+		this.initLanguage(this.uiWidgetBase.findChildByPath("RootCanvas/LeftCanvas/Image_14/mPetButton/TextBlock_7") as any);
 		
 	
 	}

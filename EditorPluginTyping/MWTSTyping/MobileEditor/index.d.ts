@@ -354,3 +354,6 @@ declare namespace mw {
 
 declare namespace mw {
 }
+
+declare namespace mw {
+}
