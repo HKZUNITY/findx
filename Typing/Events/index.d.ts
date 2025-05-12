@@ -1,7 +1,6 @@
 ﻿declare namespace mw {
     /**
      * @description 事件发送的结果
-     * @author xiangkun.sun
      * @groups 基础类型/事件
      */
     enum DispatchEventResult {
@@ -15,7 +14,6 @@
         FailureRateLimit = 3
     }
     /**
-     * @author xiangkun.sun
      * @description 事件监听器
      * @groups 基础类型/事件
      * @networkStatus usage:双端
@@ -32,7 +30,6 @@
         disconnect(): void;
     }
     /**
-     * @author mengyuan.hao
      * @description 事件
      * @description MW编辑器支持多种类型的事件。
      * @description 在实现逻辑时，您可以将函数连接到编辑器触发的内置事件以响应它们。还可以创建触发并响应自定义事件。此外，您可以使用网络事件来允许跨客户端-服务器边界进行事件驱动的通信。
@@ -49,7 +46,6 @@
     class Event {
         /**
          * @description 添加本地事件。
-         * @author xiangkun.sun
          * @groups 基础类型/事件
          * @effect 调用端生效
          * @param eventName usage:事件名 <br> range: 长度不做限制，但请设置合适的长度和名称。
@@ -59,7 +55,6 @@
         static addLocalListener(eventName: string, listener: (...params: unknown[]) => void): EventListener;
         /**
          * @description 执行已添加的本地事件。
-         * @author xiangkun.sun
          * @groups 基础类型/事件
          * @effect 调用端生效
          * @param eventName usage:事件名 <br> range: 长度不做限制，与添加事件名配对。
@@ -69,7 +64,6 @@
         static dispatchToLocal(eventName: string, ...params: unknown[]): DispatchEventResult;
         /**
          * @description 服务器监听客户端发来的事件
-         * @author xiangkun.sun
          * @groups 基础类型/事件
          * @effect 只在服务端调用生效
          * @precautions 应该在服务器端的逻辑里面使用
@@ -102,7 +96,6 @@
         static addClientListener(eventName: string, listener: (player: mw.Player, ...params: unknown[]) => void): EventListener;
         /**
          * @description 客户端发送事件给服务器
-         * @author xiangkun.sun
          * @groups 基础类型/事件
          * @effect 只在客户端调用生效
          * @precautions 应在客户端逻辑里面调用
@@ -133,7 +126,6 @@
         static dispatchToServer(eventName: string, ...params: unknown[]): DispatchEventResult;
         /**
          * @description 客户端发送不可靠事件给服务器，不可靠事件没有重发机制，当遭遇网络波动或者其他情况时会丢失
-         * @author xiangkun.sun
          * @groups 基础类型/事件
          * @effect 只在客户端调用生效
          * @precautions 应在客户端逻辑里面调用
@@ -164,7 +156,6 @@
         static dispatchToServerUnreliable(eventName: string, ...params: unknown[]): DispatchEventResult;
         /**
          * @description 客户端监听服务器事件
-         * @author xiangkun.sun
          * @groups 基础类型/事件
          * @effect 只在客户端调用生效
          * @precautions 应在客户端逻辑里调用
@@ -197,7 +188,6 @@
         static addServerListener(eventName: string, listener: ((...params: unknown[]) => void)): EventListener;
         /**
          * @description 服务器发送事件给指定客户端
-         * @author xiangkun.sun
          * @groups 基础类型/事件
          * @effect 只在服务端调用生效
          * @precautions 应在服务器逻辑里调用
@@ -209,7 +199,6 @@
         static dispatchToClient(player: mw.Player, eventName: string, ...params: unknown[]): DispatchEventResult;
         /**
          * @description 服务器发送不可靠事件给指定客户端，不可靠事件没有重发机制，当遭遇网络波动或者其他情况时会丢失
-         * @author xiangkun.sun
          * @groups 基础类型/事件
          * @effect 只在服务端调用生效
          * @precautions 应在服务器逻辑里调用
@@ -221,7 +210,6 @@
         static dispatchToClientUnreliable(player: mw.Player, eventName: string, ...params: unknown[]): DispatchEventResult;
         /**
          * @description 服务器发送事件给所有客户端
-         * @author xiangkun.sun
          * @groups 基础类型/事件
          * @effect 只在服务端调用生效
          * @precautions 应在服务器逻辑里调用
@@ -254,7 +242,6 @@
         static dispatchToAllClient(eventName: string, ...params: unknown[]): DispatchEventResult;
         /**
          * @description 服务器发送不可靠事件给所有客户端，不可靠事件没有重发机制，当遭遇网络波动或者其他情况时会丢失
-         * @author xiangkun.sun
          * @groups 基础类型/事件
          * @effect 只在服务端调用生效
          * @precautions 应在服务器逻辑里调用
@@ -287,7 +274,6 @@
         static dispatchToAllClientUnreliable(eventName: string, ...params: unknown[]): DispatchEventResult;
         /**
          * @description 移除事件监听器
-         * @author mengyuan.hao
          * @groups 基础类型/事件
          * @effect 调用端生效
          * @param event usage:监听器

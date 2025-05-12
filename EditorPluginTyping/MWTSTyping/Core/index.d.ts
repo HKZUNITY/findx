@@ -209,7 +209,7 @@ declare namespace mw {
          */
         setVisibility(status: mw.PropertyStatus | boolean, propagateToChildren?: boolean): void;
         /**
-         * @description 构造一个物体
+         * @description 构造一个物体，创建时请尽量把信息通过 gameObjectInfo 传入以达到性能最优化。
          * @groups 基类/场景所有物体基类
          * @effect 调用端生效
          * @param assetId usage: 资源 id   <br>  range: 根据资源 ID 长度而定
@@ -226,7 +226,7 @@ declare namespace mw {
          */
         static spawn<T extends GameObject>(assetId: string, gameObjectInfo?: mw.GameObjectInfo): T;
         /**
-         * @description 异步构造一个物体
+         * @description 异步构造一个物体，创建时请尽量把信息通过 gameObjectInfo 传入以达到性能最优化。
          * @groups 基类/场景所有物体基类
          * @description 资源不存在会先去下载资源再去创建
          * @effect 调用端生效
@@ -480,13 +480,12 @@ declare namespace mw {
          */
         static bulkPivotTo(gameObjects: Array<GameObject>, transforms: Array<mw.Transform>): void;
         /**
-         * @Editor
-         * @description 返回当前物体是否为预制体
+         * @description 返回当前物体使用的预制体资源ID，如果当前物体不是预制体，则返回空
          * @groups 基类/场景所有物体基类
          * @effect 调用端生效
          * @returns 名称
          */
-        isPrefabActor(): boolean;
+        get prefabAssetId(): string;
         /**
          * @Editor
          * @description 返回当前物体名称
@@ -531,11 +530,6 @@ declare namespace mw {
          * @returns Tag
          */
         get sceneCaptureTag(): string;
-        /**
-         * @description 获取Actor等级
-         * @effect 编辑器端生效
-         */
-        get actorLevel(): number;
         /**
          * @description 获取当前物体同步状态
          * @groups 基类/场景所有物体基类

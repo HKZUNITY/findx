@@ -3419,7 +3419,9 @@ declare namespace mw {
         /** PNG */
         PNG = 1,
         /** JPEG */
-        JPEG = 2
+        JPEG = 2,
+        /** GIF */
+        GIF = 3
     }
     /**
      * @author mengyuan.hao
@@ -4061,6 +4063,36 @@ declare namespace mw {
          * ```
          */
         static delaySecond(second: number): Promise<void>;
+        /**
+         * @description 实时设置定时函数
+         * @effect 调用端生效
+         * @param callback usage: 定时器到达时间时执行的绑定函数 ，dt表示执行回调和定时时间的差值。
+         * @param millisecond usage: 定时时间 range: 不做限制  type: 整数
+         * @returns 时间函数的句柄
+         */
+        static setTimeoutRealTime(callback: (dt: number) => void, millisecond: number): number;
+        /**
+         * @description 实时设置轮询函数
+         * @effect 调用端生效
+         * @param callback usage: 定时器到达时间时执行的绑定函数，dt表示执行回调和定时时间的差值。
+         * @param millisecond usage: 定时时间 range: 最小为1ms  type: 整数
+         * @returns 时间函数的句柄
+         */
+        static setIntervalRealTime(callback: (dt: number) => void, millisecond: number): number;
+        /**
+         * @description 清理时间函数
+         * @effect 调用端生效
+         * @param handler usage: 时间函数的句柄 range: 不做限制  type: 整数
+         */
+        static clearTimerRealTime(handler: number): void;
+        /**
+         * @description 在callback函数执行期间调用获取上下文
+         * @effect 调用端生效
+         * @returns 上下文对象，包含dt属性，表示执行回调和定时时间的差值。
+         */
+        static getRealTimeContext(): {
+            dt: number;
+        };
     }
 }
 

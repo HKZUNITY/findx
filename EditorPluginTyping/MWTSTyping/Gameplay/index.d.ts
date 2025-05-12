@@ -1789,6 +1789,139 @@ declare namespace mw {
     abstract class StanceBase {
     }
     /**
+     * @author huipeng.jia
+     * @groups 动画
+     * @description 支持修改的姿态参数
+     */
+    enum StanceParam {
+        /** 自由泳-待机动画 */
+        Swimming_Free_Idle = "SwimmingAnimData.AS_Free_Idle",
+        /** 自由泳-待机动画-播放速率参数 */
+        Swimming_Free_Idle_Speed = "SwimmingAnimData.AS_Free_Idle.Speed",
+        /** 自由泳-待机动画-初始位置参数 */
+        Swimming_Free_Idle_StartTime = "SwimmingAnimData.AS_Free_Idle.StartTime",
+        /** 自由泳-移动动画 */
+        Swimming_Free_Move = "SwimmingAnimData.AS_Free_Move",
+        /** 自由泳-移动动画-播放速率参数 */
+        Swimming_Free_Move_Speed = "SwimmingAnimData.AS_Free_Move.Speed",
+        /** 自由泳-移动动画-初始位置参数 */
+        Swimming_Free_Move_StartTime = "SwimmingAnimData.AS_Free_Move.StartTime",
+        /** 飞行-待机动画 */
+        Flying_Idle = "FlyingAnimData.AS_Idle",
+        /** 飞行-待机动画-播放速率参数 */
+        Flying_Idle_Speed = "FlyingAnimData.AS_Idle.Speed",
+        /** 飞行-待机动画-初始位置参数 */
+        Flying_Idle_StartTime = "FlyingAnimData.AS_Idle.StartTime",
+        /** 飞行-水平移动动画 */
+        Flying_HorizontalMove = "FlyingAnimData.BS_FlyHorizontalMove",
+        /** 飞行-水平移动动画-播放速率参数 */
+        Flying_HorizontalMove_Speed = "FlyingAnimData.BS_FlyHorizontalMove.Speed",
+        /** 飞行-水平移动动画-初始位置参数 */
+        Flying_HorizontalMove_StartTime = "FlyingAnimData.BS_FlyHorizontalMove.StartTime",
+        /** 飞行-水平移动动画-X轴倍率参数 */
+        Flying_HorizontalMove_MultiplierX = "FlyingAnimData.BS_FlyHorizontalMove.MultiplierX",
+        /** 飞行-水平移动动画-Y轴倍率参数 */
+        Flying_HorizontalMove_MultiplierY = "FlyingAnimData.BS_FlyHorizontalMove.MultiplierY",
+        /** 飞行-垂直移动动画 */
+        Flying_VerticalMove = "FlyingAnimData.BS_FlyVerticalMove",
+        /** 飞行-垂直移动动画-播放速率参数 */
+        Flying_VerticalMove_Speed = "FlyingAnimData.BS_FlyVerticalMove.Speed",
+        /** 飞行-垂直移动动画-初始位置参数 */
+        Flying_VerticalMove_StartTime = "FlyingAnimData.BS_FlyVerticalMove.StartTime",
+        /** 飞行-垂直移动动画-X轴倍率参数 */
+        Flying_VerticalMove_MultiplierX = "FlyingAnimData.BS_FlyVerticalMove.MultiplierX",
+        /** 站姿-待机动画 */
+        Ground_Stand_Idle = "GroundAnimData.AS_StandIdle",
+        /** 站姿-待机动画-播放速率参数 */
+        Ground_Stand_Idle_Speed = "GroundAnimData.AS_StandIdle.Speed",
+        /** 站姿-待机动画-初始位置参数 */
+        Ground_Stand_Idle_StartTime = "GroundAnimData.AS_StandIdle.StartTime",
+        /** 站姿-移动动画 */
+        Ground_Stand_Move = "GroundAnimData.BS_StandMove",
+        /** 站姿-移动动画-播放速率参数 */
+        Ground_Stand_Move_Speed = "GroundAnimData.BS_StandMove.Speed",
+        /** 站姿-移动动画-初始位置参数 */
+        Ground_Stand_Move_StartTime = "GroundAnimData.BS_StandMove.StartTime",
+        /** 站姿-移动动画-X轴倍率参数 */
+        Ground_Stand_Move_MultiplierX = "GroundAnimData.BS_StandMove.MultiplierX",
+        /** 站姿-移动动画-Y轴倍率参数 */
+        Ground_Stand_Move_MultiplierY = "GroundAnimData.BS_StandMove.MultiplierY",
+        /** 下蹲-待机动画 */
+        Ground_Crouch_Idle = "GroundAnimData.AS_CrouchIdle",
+        /** 下蹲-待机动画-播放速率参数 */
+        Ground_Crouch_Idle_Speed = "GroundAnimData.AS_CrouchIdle.Speed",
+        /** 下蹲-待机动画-初始位置参数 */
+        Ground_Crouch_Idle_StartTime = "GroundAnimData.AS_CrouchIdle.StartTime",
+        /** 下蹲-移动动画 */
+        Ground_Crouch_Move = "GroundAnimData.BS_CrouchMove",
+        /** 下蹲-移动动画-播放速率参数 */
+        Ground_Crouch_Move_Speed = "GroundAnimData.BS_CrouchMove.Speed",
+        /** 下蹲-移动动画-初始位置参数 */
+        Ground_Crouch_Move_StartTime = "GroundAnimData.BS_CrouchMove.StartTime",
+        /** 下蹲-移动动画-X轴倍率参数 */
+        Ground_Crouch_Move_MultiplierX = "GroundAnimData.BS_CrouchMove.MultiplierX",
+        /** 下蹲-移动动画-Y轴倍率参数 */
+        Ground_Crouch_Move_MultiplierY = "GroundAnimData.BS_CrouchMove.MultiplierY",
+        /** 下蹲-起身动画 */
+        Ground_Crouch_To_Stand = "GroundAnimData.AS_CrouchToStand",
+        /** 下蹲-起身动画-播放速率参数 */
+        Ground_Crouch_To_Stand_Speed = "GroundAnimData.AS_CrouchToStand.Speed",
+        /** 下蹲-起身动画-初始位置参数 */
+        Ground_Crouch_To_Stand_StartTime = "GroundAnimData.AS_CrouchToStand.StartTime",
+        /** 站姿-下蹲动画 */
+        Ground_Stand_To_Crouch = "GroundAnimData.AS_StandToCrouch",
+        /** 站姿-下蹲动画-播放速率参数 */
+        Ground_Stand_To_Crouch_Speed = "GroundAnimData.AS_StandToCrouch.Speed",
+        /** 站姿-下蹲动画-初始位置参数 */
+        Ground_Stand_To_Crouch_StartTime = "GroundAnimData.AS_StandToCrouch.StartTime",
+        /** 落地-动画 */
+        Ground_Land = "GroundAnimData.AS_Land",
+        /** 落地-动画-播放速率参数 */
+        Ground_Land_Speed = "GroundAnimData.AS_Land.Speed",
+        /** 落地-动画-初始位置参数 */
+        Ground_Land_StartTime = "GroundAnimData.AS_Land.StartTime",
+        /** 原地起跳-动画 */
+        Ground_JumpStart = "GroundAnimData.AS_JumpStart",
+        /** 原地起跳-动画-播放速率参数 */
+        Ground_JumpStart_Speed = "GroundAnimData.AS_JumpStart.Speed",
+        /** 原地起跳-动画-初始位置参数 */
+        Ground_JumpStart_StartTime = "GroundAnimData.AS_JumpStart.StartTime",
+        /** 移动起跳-动画 */
+        Ground_JumpStart_Movement = "GroundAnimData.AS_JumpStartMovement",
+        /** 移动起跳-动画-播放速率参数 */
+        Ground_JumpStart_Movement_Speed = "GroundAnimData.AS_JumpStartMovement.Speed",
+        /** 移动起跳-动画-初始位置参数 */
+        Ground_JumpStart_Movement_StartTime = "GroundAnimData.AS_JumpStartMovement.StartTime",
+        /** 跳跃上升循环-动画 */
+        Ground_RiseLoop = "GroundAnimData.AS_RiseLoop",
+        /** 跳跃上升循环-动画-播放速率参数 */
+        Ground_RiseLoop_Speed = "GroundAnimData.AS_RiseLoop.Speed",
+        /** 跳跃上升循环-动画-初始位置参数 */
+        Ground_RiseLoop_StartTime = "GroundAnimData.AS_RiseLoop.StartTime",
+        /** 跳跃下落循环-动画 */
+        Ground_Falling = "GroundAnimData.AS_Falling",
+        /** 跳跃下落循环-动画-播放速率参数 */
+        Ground_Falling_Speed = "GroundAnimData.AS_Falling.Speed",
+        /** 跳跃下落循环-动画-初始位置参数 */
+        Ground_Falling_StartTime = "GroundAnimData.AS_Falling.StartTime",
+        /** 上升切换下落-动画 */
+        Ground_Rise_To_Falling = "GroundAnimData.AS_RiseToFalling",
+        /** 上升切换下落-动画-播放速率参数 */
+        Ground_Rise_To_Falling_Speed = "GroundAnimData.AS_RiseToFalling.Speed",
+        /** 上升切换下落-动画-初始位置参数 */
+        Ground_Rise_To_Falling_StartTime = "GroundAnimData.AS_RiseToFalling.StartTime",
+        /** 攀爬-移动动画 */
+        Climb_Climb_Idle = "ClimbAnimData.BS_Climb",
+        /** 攀爬-移动动画-播放速率参数 */
+        Climb_Climb_Idle_Speed = "ClimbAnimData.BS_Climb.Speed",
+        /** 攀爬-移动动画-初始位置参数 */
+        Climb_Climb_Idle_StartTime = "ClimbAnimData.BS_Climb.StartTime",
+        /** 攀爬-移动动画-X轴倍率参数 */
+        Climb_Climb_Idle_MultiplierX = "ClimbAnimData.BS_Climb.MultiplierX",
+        /** 攀爬-移动动画-Y轴倍率参数 */
+        Climb_Climb_Idle_MultiplierY = "ClimbAnimData.BS_Climb.MultiplierY"
+    }
+    /**
      * @author yuchen.ren
      * @groups 动画
      * @description 基础姿态
@@ -1802,6 +1935,38 @@ declare namespace mw {
      * @networkStatus usage:双端
      */
     class Stance extends StanceBase {
+        /**
+         * @groups 动画
+         * @description 设置姿态的数值类参数，比如修改某个姿态的播放速率。
+         * @effect 调用端生效
+         * @param key usage: 要设置的参数
+         * @param value usage: 要设置的值 type: 浮点型 range: 无
+         */
+        setNumberParameter(key: StanceParam, value: number): void;
+        /**
+         * @groups 动画
+         * @description 设置姿态的字符串参数，比如修改某个姿态的动画资源。
+         * @effect 调用端生效
+         * @param key usage: 要设置的参数
+         * @param value usage: 要设置的AssetId range: 无
+         */
+        setStringParameter(key: StanceParam, value: string): void;
+        /**
+         * @groups 动画
+         * @description 获取姿态的数值类参数
+         * @effect 调用端生效
+         * @param key usage: 要查询的参数
+         * @returns 对应参数的值，查询不到则返回undefined
+         */
+        getNumberParameter(key: StanceParam): number;
+        /**
+         * @groups 动画
+         * @description 获取姿态的字符串参数
+         * @effect 调用端生效
+         * @param key usage: 要查询的参数
+         * @returns 对应参数的值，查询不到则返回undefined
+         */
+        getStringParameter(key: StanceParam): string;
         /**
          * @groups 动画
          * @description 姿态资源GUID
@@ -2640,6 +2805,15 @@ declare namespace mw {
          * @networkStatus usage:双端
          */
         get velocity(): mw.Vector;
+        /**
+         * @groups 角色系统/角色
+         * @description 获取角色当前移动速度
+         * @effect 调用端生效
+         * @precautions 角色当前移动的速度
+         * @param 移动速度大小和方向的三维向量。
+         * @networkStatus usage:双端
+         */
+        set velocity(value: mw.Vector);
         /**
          * @groups 角色系统/角色
          * @description 获取角色的最大行走速度。角色移动时，并不是直接变为最大速度，而是随着输入或其他控制，速度逐渐增加，最大行走速度为角色可以达到的最大速度。同时也是跌倒时的最大横向速度。
@@ -7518,6 +7692,9 @@ declare namespace mw {
 }
 
 declare namespace mw {
+}
+
+declare namespace mw {
     /**
      * @author chenghao.song
      * @groups 角色系统
@@ -8098,6 +8275,17 @@ declare namespace mw {
         Seven = 6,
         /** 第八个插槽 */
         Eight = 7
+    }
+}
+
+declare namespace mw {
+    /**
+     * @author guang.deng
+     * @groups 角色系统/角色
+     * @description 服装逻辑对象
+     * @networkStatus usage:双端
+     */
+    class ClothObject extends mw.GameObject {
     }
 }
 
@@ -13836,10 +14024,7 @@ declare namespace mw {
     }
 }
 
-/// <reference types="engine" />
 declare namespace mw {
-    // @ts-ignore
-    import * as UE from "ue";
     /**
      * @author hao.huang
      * @description IK锚点类型
@@ -13853,7 +14038,17 @@ declare namespace mw {
         /** 左脚 */
         LeftFoot = 2,
         /** 右脚 */
-        RightFoot = 3
+        RightFoot = 3,
+        /** 左手_新 */
+        HandLeft = 4,
+        /** 右手_新 */
+        HandRight = 5,
+        /** 左脚_新 */
+        FootLeft = 6,
+        /** 右脚_新 */
+        FootRight = 7,
+        /** 盆骨 */
+        Pelvis = 8
     }
     /**
      * @author hao.huang
@@ -13873,15 +14068,27 @@ declare namespace mw {
         /**
          * @description 获取IK锚点激活的对象
          * @effect 调用端生效
-         * @retuns IK锚点激活的对象
+         * @returns IK锚点激活的对象
          */
-        get target(): UE.MWSysCharacter;
+        get target(): mw.Character;
+        /**
+         * @description 设置IK锚点激活的对象
+         * @effect 调用端生效
+         * @param value usage:IK锚点激活的对象
+         */
+        set target(value: mw.Character);
         /**
          * @description 获取IK锚点类型
          * @effect 调用端生效
          * @returns IK锚点类型
          */
         get anchorType(): IKPart;
+        /**
+         * @description 设置关节朝向
+         * @effect 调用端生效
+         * @param value usage:关节朝向
+         */
+        set anchorType(value: IKPart);
         /**
          * @description 获取关节朝向
          * @effect 调用端生效
@@ -21092,6 +21299,21 @@ declare namespace mw {
          * @param newAngle usage:摆动最大角度 range: (0, +∞)  type:浮点数
          */
         set swingAngle(newAngle: number);
+        /**
+         * @groups 玩法/物理
+         * @description 获取停止运动时间
+         * @effect 调用端生效
+         * @returns 停止运动时间
+         */
+        get duration(): number;
+        /**
+         * @groups 玩法/物理
+         * @description 设置停止运动时间，设置为小于等于零的值表示当次运动不会停止
+         * @description 停止运动时间仅针对开始运动前的最后一次设置值生效，开始运动后此设置失效
+         * @effect 调用端生效
+         * @param newDuration usage:停止运动时间 range: (-∞, +∞)  type:浮点数
+         */
+        set duration(newDuration: number);
     }
 }
 

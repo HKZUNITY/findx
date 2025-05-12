@@ -1,6 +1,5 @@
 ﻿declare namespace mw {
     /**
-     * @author xiangkun.sun
      * @groups 输入
      * @description 屏幕坐标转换结果
      * @networkStatus usage:双端
@@ -24,7 +23,6 @@
         screenPosition: mw.Vector2;
     }
     /**
-     * @author xiangkun.sun
      * @groups 基类/场景所有物体基类
      * @description 构建物体的信息
      */
@@ -33,9 +31,10 @@
         replicates?: boolean;
         /** @description transform */
         transform?: mw.Transform;
+        /** @description static */
+        static?: boolean;
     }
     /**
-     * @author zhiqiang.tan
      * @groups 玩法/物理
      * @description 空间查询碰撞参数
      */
@@ -53,7 +52,6 @@
         objectsToQuery?: Array<mw.GameObject>;
     }
     /**
-     * @author zhiqiang.tan
      * @groups 玩法/物理
      * @description 空间查询渲染参数
      */
@@ -98,7 +96,6 @@ declare namespace mw {
      * 代理回调函数签名
      */
     /**
-     * @author xiangkun.sun
      * @groups 基础类型
      * @description 代理回调函数签名
      * @effect 调用端生效
@@ -106,7 +103,6 @@ declare namespace mw {
     type DelegateFuncType = (...arg: unknown[]) => unknown;
     /**
      * @hidden
-     * @author xiangkun.sun
      * @groups 基础类型
      * @description 委托接口
      * @effect 调用端生效
@@ -139,7 +135,6 @@ declare namespace mw {
     }
     /**
      * @hidden
-     * @author xiangkun.sun
      * @groups 基础类型
      * @description 多播委托接口
      * @effect 调用端生效
@@ -170,7 +165,6 @@ declare namespace mw {
         broadcast(...arg: Parameters<T>): void;
     }
     /**
-     * @author xiangkun.sun
      * @groups 基础类型/委托
      * @description 委托
      * @description ----------------------------------------
@@ -242,7 +236,6 @@ declare namespace mw {
         execute(...arg: Parameters<T>): ReturnType<T>;
     }
     /**
-     * @author xiangkun.sun
      * @groups 基础类型/委托
      * @description 多播委托接口
      * @networkStatus usage:双端
@@ -301,7 +294,6 @@ declare namespace mw {
     */
     type GameObjectDelegateFuncType = (gameObject: mw.GameObject) => unknown;
     /**
-     * @author si.wu
      * @groups 基础类型/委托
      * @description 广播代理
      * @networkStatus usage:双端
@@ -357,7 +349,6 @@ declare namespace mw {
 
 declare namespace mw {
     /**
-     * @author xiangkun.sun
      * @description 属性状态
      * @groups 基础类型
      */
@@ -376,7 +367,6 @@ declare namespace mw {
         Off = 2
     }
     /**
-     * @author xiangkun.sun
      * @description 碰撞属性状态
      * @groups 基础类型
     */
@@ -399,7 +389,6 @@ declare namespace mw {
         QueryCollisionOnly = 4
     }
     /**
-     * @author maohang.zeng
      * @description Actor在编辑器中的状态标记
      * @groups 基础类型
      */
@@ -486,7 +475,6 @@ declare namespace mw {
         HideInOutline = 262144
     }
     /**
-     * @author xiangkun.sun
      * @description 同步状态
      * @groups 基础类型
      */
@@ -505,7 +493,6 @@ declare namespace mw {
         ServerAndClient = 2
     }
     /**
-     * @author xiangkun.sun
      * @description 按键Key值
      * @groups 基础类型
      */
@@ -969,7 +956,6 @@ declare namespace mw {
         Colon = "Colon"
     }
     /**
-     * @author xiangkun.sun
      * @description 画质等级
      * @deprecated info:该接口已废弃，在该接口被删除前会仍保持可用，请尽快使用替换方案以免出现问题 since: 030 reason:接口废弃 replacement:
      * @groups 基础类型
@@ -1037,7 +1023,6 @@ declare namespace mw {
         Custom5 = 14
     }
     /**
-     * @author xiangkun.sun
      * @description 运行平台
      * @groups 基础类型
      */
@@ -1054,7 +1039,6 @@ declare namespace mw {
         iOS = 4
     }
     /**
-     * @author xiangkun.sun
      * @description 游戏语言
      * @groups 基础类型
      */
@@ -1073,7 +1057,6 @@ declare namespace mw {
         Portuguese = 3
     }
     /**
-     * @author xiaobo.qi
      * @description 游戏本地化语言
      * @groups 基础类型
      */
@@ -1098,7 +1081,6 @@ declare namespace mw {
         Korean = "Ko"
     }
     /**
-     * @author xiangkun.sun
      * @description 资源类型
      * @groups 基础类型
      */
@@ -1130,7 +1112,6 @@ declare namespace mw {
     }
     /**
   * @description gizmo模式
-  * @author jie.wu
   * @groups 基础类型
   */
     enum GizmoModeType {
@@ -1143,7 +1124,6 @@ declare namespace mw {
     }
     /**
      * @description gizmo空间
-     * @author hao.wu
      * @groups 基础类型
      */
     enum GizmoSpaceType {
@@ -1154,7 +1134,6 @@ declare namespace mw {
     }
     /**
      * @description gizmo空间
-     * @author jie.wu
      * @groups 基础类型
      */
     enum GizmoScaleType {
@@ -1165,7 +1144,6 @@ declare namespace mw {
     }
     /**
      * @description gizmo空间
-     * @author jie.wu
      * @groups 基础类型
      */
     enum GizmoSocketType {
@@ -1175,7 +1153,6 @@ declare namespace mw {
         Pivot = 1
     }
     /**
-     * @author jie.wu
      * @groups 基础类型
      * @description gizmo坐标轴类型
      */
@@ -1231,7 +1208,6 @@ declare namespace mw {
 
 declare namespace mw {
     /**
-     * @author shilong.wang
      * @groups 基础类型/其他
      * @description 类定义，使用这个可以省去类参数繁琐的类型声明    如:fun<T>(c:{new():T}) 可以写成 fun<T>(c:Class<T>)
      */
@@ -1243,7 +1219,6 @@ declare namespace mw {
         new (...args: any[]): T;
     }
     /**
-     * @author shilong.wang
      * @groups 基础类型/代理
      * @description 代理
      * @description ----------------------------------------
@@ -1493,7 +1468,6 @@ declare namespace mw {
         get count(): number;
     }
     /**
-     * @author shilong.wang
      * @groups 基础类型/代理
      * @description 一个参数的代理
      * @networkStatus usage: 双端
@@ -1574,7 +1548,6 @@ declare namespace mw {
         call(arg: T): void;
     }
     /**
-     * @author shilong.wang
      * @groups 基础类型/代理
      * @description 两个参数的代理
      * @networkStatus usage: 双端
@@ -1604,7 +1577,6 @@ declare namespace mw {
         call(a: T1, b: T2): void;
     }
     /**
-     * @author shilong.wang
      * @groups 基础类型/代理
      * @description 三个参数的代理
      * @networkStatus usage: 双端
@@ -1638,7 +1610,6 @@ declare namespace mw {
 
 declare namespace mw {
     /**
-     * @author xiangkun.sun
      * @groups 基础类型/其他
      * @description r, g, b 颜色值的有效范围是 0.0 <= value <= 1.0
      * @networkStatus usage:双端
@@ -1907,7 +1878,6 @@ declare namespace mw {
 
 declare namespace mw {
     /**
-     * @author yuhao.chen
      * @groups 基础类型/变换/矩阵
      * @description 三维矩阵
      * @description -------------------
@@ -2268,7 +2238,6 @@ declare namespace mw {
 
 declare namespace mw {
     /**
-     * @author yuhao.chen
      * @groups 基础类型/变换/矩阵
      * @description 四维矩阵
      * @description ------------------
@@ -2622,7 +2591,6 @@ declare namespace mw {
 
 declare namespace mw {
     /**
-     * @author xiangkun.sun
      * @groups 基础类型/变换/旋转
      * @description 四元数
      * @description ----------------------------
@@ -3034,7 +3002,6 @@ declare namespace mw {
 
 declare namespace mw {
     /**
-     * @author xiangkun.sun
      * @groups 基础类型/变换/旋转
      * @description 欧拉角
      * @description ------------------
@@ -3293,7 +3260,6 @@ declare namespace mw {
 
 declare namespace mw {
     /**
-     * @author xiangkun.sun
      * @groups 基础类型/变换
      * @description 三维变换
      * @description -----------------------
@@ -3441,7 +3407,6 @@ declare namespace mw {
 
 declare namespace mw {
     /**
-     * @author xiangkun.sun
      * @groups 基础类型/变换/向量
      * @description 三维向量
      * @description ------------------
@@ -4017,7 +3982,6 @@ declare namespace mw {
     // @ts-ignore
     import * as UE from "ue";
     /**
-     * @author xiangkun.sun
      * @groups 基础类型/变换/向量
      * @description 二维向量
      * @description ------------------
@@ -4844,7 +4808,6 @@ declare namespace mw {
 
 declare namespace mw {
     /**
-     * @author xiangkun.sun
      * @groups 基础类型/变换/向量
      * @description 齐次向量
      * @description ------------------

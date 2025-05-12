@@ -17,7 +17,7 @@ declare namespace mweditor {
      * @param type 工具栏类型，默认放在插件工具栏
      * @returns
      */
-    function ToolBarItem(name: string, framePrefix: string, type?: number): any;
+    function ToolBarItem(name: string, framePrefix: string, type?: string): any;
 }
 
 declare namespace mweditor {
@@ -1079,8 +1079,8 @@ declare namespace mweditor {
 }
 
 /// <reference types="Extension" />
-/// <reference types="Core" />
 /// <reference types="engine" />
+/// <reference types="Core" />
 declare namespace mweditor {
     // @ts-ignore
     import UE from "ue";
@@ -1094,7 +1094,14 @@ declare namespace mweditor {
          * @returns 返回事件的代理
          */
         get onFocusCharacter(): mw.MulticastDelegate<() => void>;
+        /**
+         * @description 角色保存类型改变代理
+         * @effect  只在客户端调用生效
+         * @returns 返回事件的代理
+         */
+        get onPostOptionChange(): mw.MulticastDelegate<(curNewType: UE.ESaveFileType) => void>;
         private requestFocus;
+        private postOptionChange;
         /**
          * @description 设置视口预览角色
          * @effect  只在客户端调用生效
@@ -1115,6 +1122,21 @@ declare namespace mweditor {
          * @effect  只在客户端调用生效
          */
         setSavePromptState(bSavePrompt: boolean): void;
+        /**
+         * @description 获取当前的保存选项及保存分类
+         * @effect  只在客户端调用生效
+         */
+        getEditorSaveType(): UE.ESaveFileType;
+        /**
+         * @description 获取当前的保存选项及保存分类
+         * @effect  只在客户端调用生效
+         */
+        getEditorSaveCategory(): UE.ESaveFileType;
+        /**
+         * @description 获取当前的保存选项及保存分类
+         * @effect  只在客户端调用生效
+         */
+        setEditorSaveCategory(inCategory: UE.ESaveFileType): void;
     }
 }
 
@@ -1471,6 +1493,7 @@ declare namespace mweditor {
         bIsReleaseGameFailed(): string;
         ReleaseGameHandle(): void;
         SetWaitTranslateLanguage(Language: Array<string>): void;
+        GetProjectPaths(DirName: string): string[];
     }
 }
 
@@ -1517,7 +1540,11 @@ declare namespace mweditor {
     }
 }
 
+/// <reference types="Extension" />
+/// <reference types="engine" />
 declare namespace mweditor {
+    // @ts-ignore
+    import UE from "ue";
     class OpenProjectProcedureBase {
         private procedureName;
         private procedureDesc;
@@ -1559,6 +1586,34 @@ declare namespace mweditor {
         InitGameError = 11,
         NotifyCompilingScene = 12
     }
+    enum ScriptCompileCommandID {
+        None = 0,
+        Init = 1,
+        Building = 2,
+        Cancel = 3,
+        Exit = 4,
+        Error = 5,
+        Success = 6,
+        Loading = 7,
+        Writing = 8
+    }
+    enum ScriptCompileType {
+        Project = 0,
+        Plugin = 1
+    }
+    class ScriptCompileJson {
+        commandID: ScriptCompileCommandID;
+        type: ScriptCompileType;
+        constructor(commandID: ScriptCompileCommandID);
+        projectName: string;
+        rootDir: string;
+        watch: boolean;
+        outDir: string;
+        outFile: string;
+        msg: string;
+        total: number;
+        current: string;
+    }
     class OpenProjectManager extends mweditor.EditorSystemBase {
         allbuild: boolean;
         private openProjectSubsystem;
@@ -1578,6 +1633,13 @@ declare namespace mweditor {
         private openProjectCompletedHandle;
         private openProjectFailed;
         private openProjectFailedHandle;
+        private allPluginAutoCompileArr;
+        private scriptCompile;
+        private RunnableName;
+        private onReceiveProjectExitBind;
+        private onMWPluginScriptCompileBind;
+        onPluginScriptCompileNotify: mw.MulticastDelegate<(runnableName: string, data: string) => void>;
+        copyTyping(): void;
         getCurrentDesc(): string;
         /**
          * 添加新流程，目前只能添加在 ParseCommand 之后和 OpenLevel 之前
@@ -1588,6 +1650,11 @@ declare namespace mweditor {
         static insertProcedure(newProcedureClass: typeof OpenProjectProcedureBase, stage: EOpenProjectStage): boolean;
         StopCompile(): void;
         OpenAllbuildCompilePopover(): void;
+        initPluginAutoCompile(): void;
+        closePluginAutoCompile(): void;
+        startPluginAutoCompile(info: UE.MWPluginData): boolean;
+        onReceiveProjectExit(projectPath: string): void;
+        onMWPluginScriptCompile(bCompile: boolean): void;
     }
 }
 
@@ -1846,7 +1913,7 @@ declare namespace mweditor {
         get newNodePath(): string;
         set newAsset(newAssetGuid: string);
         get newAsset(): string;
-        static get newUIScriptGuidSet(): Set<string>;
+        static get newUIScriptGuidSet(): Set<number>;
         resetPopup(): void;
         get isPopup(): boolean;
         get nodeType(): number[];
@@ -1947,7 +2014,7 @@ declare namespace mweditor {
     import UE from "ue";
     class ToolBar extends mweditor.EditorSystemBase {
         private MWEdToolBarSubsystem;
-        onLogWindowClosed: mw.MulticastDelegate<(name: string) => void>;
+        onTabStateChanged: mw.MulticastDelegate<(name: string) => void>;
         onLogWindowOpen: mw.MulticastDelegate<(name: string) => void>;
         onTSAutoCompileChanged: mw.MulticastDelegate<(auto: boolean) => void>;
         onAlignmentToolTabChanged: mw.MulticastDelegate<(auto: boolean) => void>;
@@ -1966,6 +2033,10 @@ declare namespace mweditor {
         onSwitchBoxChanegd: mw.MulticastDelegate<(mode: string) => void>;
         onPIEChanged: mw.MulticastDelegate<(mode: Number) => void>;
         onChordSettingChanged: mw.MulticastDelegate<(name: string, chord: any) => void>;
+        onMenuUpdate: mw.MulticastDelegate<() => void>;
+        onExitProject: mw.MulticastDelegate<() => void>;
+        Menus: Map<string, any>;
+        Tools: Map<string, any[]>;
         private onBBACheckChangedBind;
         private onTransformChangedBind;
         private onScaleTypeChangedBind;
@@ -1976,8 +2047,7 @@ declare namespace mweditor {
         private onPathFindingBind;
         initialize(): void;
         deinitialize(): void;
-        registerToolBarWidget(uiInfo: string, flag: number): void;
-        registerGamesettingWidget(uiInfo: string): void;
+        addToolBarWidget(uiPath: string, type: string, callback?: (w: mw.Widget) => void): void;
         registerMenuToolBarWidget(uiInfo: string, callback: (widget: mw.Widget) => void, type: string): void;
         ForwardAlignToolCheckBoxEvent(state: mw.CheckBoxState): void;
         OpenSettingPanel(): void;
@@ -1992,10 +2062,11 @@ declare namespace mweditor {
         OnExitProject(): void;
         BackupProject(): void;
         GreatAccount(): void;
+        BatchToolVisible(): boolean;
+        AuditToolVisible(): boolean;
+        UploadToolVisible(): boolean;
         ForwardMultilanguageEvent(): void;
         ForwardPerformanceEvent(state: mw.CheckBoxState): void;
-        ForwardResolutionEvent(): void;
-        DeleteResolution(): void;
         PathFinding(find: boolean): void;
         BBACheckChanged(check: boolean): void;
         ForwardPositionEvent(state: mw.CheckBoxState): void;
@@ -2056,7 +2127,28 @@ declare namespace mweditor {
         OnUnionClicked(): void;
         OnNegateClicked(): void;
         OnSeparateClicked(): void;
+        GetSplitModeText(): string;
+        ChangeSplitEnable(): void;
+        ChangeCopyDefaultImage(): void;
+        GetCopyDefaultImageText(): string;
+        OpenIconDir(): void;
+        OnCheckAllResources(): void;
+        OnCancelTakePhotosCheck(): void;
+        ClearResourceImageList(): void;
+        AutoCaptureIconForSelections(): void;
+        AutoCaptureIconForGuidList(): void;
+        OnDownloadResourceClick(): void;
+        OnUploadScreenshotClick(): void;
+        OpenAssetUpload(): void;
+        OnNewUploadToolButtonClicked(): void;
+        OnResourceAuditButtonClicked(): void;
+        RestoreLayout(): void;
+        GetMainEditorTab(type: number): any[];
+        AssetSave(): void;
+        AssetSaveAS(): void;
         GetActiveChord(id: string): UE.InputChord;
+        OnSlotVisibilityStatusChange(check: boolean): void;
+        OnSaveNoPromptCheckedChange(): void;
         BuildAll(): void;
     }
 }
@@ -3147,6 +3239,9 @@ declare namespace mweditor {
         mw_import_upload = "mw_import_upload",
         mw_ui_propertypanel_change = "mw_ui_propertypanel_change",
         mw_editor_propertypanel_change = "mw_editor_propertypanel_change",
+        mw_editor_propertypanel_component_move = "mw_editor_propertypanel_component_move",
+        mw_editor_propertypanel_copy = "mw_editor_propertypanel_copy",
+        mw_editor_propertypanel_paste = "mw_editor_propertypanel_paste",
         mw_materialpanel_open = "mw_materialpanel_open",
         mw_materialpanel_save = "mw_materialpanel_save",
         mw_materialpanel_save_as_custommaterial = "mw_materialpanel_save_as_custommaterial",
@@ -3328,6 +3423,7 @@ declare namespace mweditor {
 
 /// <reference types="Core" />
 declare namespace mweditor {
+    function setTransactionSustained(sustained: boolean): void;
     /**
      * @description 移除/注销事务
      * @param InTransactionId 用于标识事务的Id
@@ -3351,9 +3447,9 @@ false 事务不存在或不可 Redo
      */
     function Undo(bCanRedo?: boolean): void;
     /**
-    * @description  重做上一个事务
-    * @remark 当前正在进行的事务结束后, 将执行"下一个"操作而不是"上一个"操作.
-    */
+     * @description  重做上一个事务
+     * @remark 当前正在进行的事务结束后, 将执行"下一个"操作而不是"上一个"操作.
+     */
     function Redo(): void;
     /**
      * @description  开始一个新的事件并将其添加到事务列表中
@@ -3365,6 +3461,17 @@ false 事务不存在或不可 Redo
      * @description 结束当前事件并在撤销回复列表中完成它，如果事务成功，则禁用重做选项
      */
     function EndTransaction(): void;
+    /**
+     *
+     * @param inObj 要修改的对象
+     * @param Description 事务的说明
+     * @param Content 配置内容
+     */
+    function BeginDetailsConfigTransaction(inObj: any, TabAssetID: string, Description: string, Content: string): void;
+    /**
+     * @param Content 配置内容
+     */
+    function EndDetailsConfigTransaction(TabAssetID: string, Content: string): void;
     /**
      * @description 添加销毁标记
      */
@@ -3576,15 +3683,29 @@ declare namespace mweditor {
         /** 材质编辑器 */
         MaterialEditor = "MaterialEditor"
     }
-    export enum ToolBarType {
+    export enum EditorOwner {
+        MainEditor = "MainEditor",
+        UIEditor = "UIEditor",
+        PlayerEditor = "PlayerEditor",
+        CustomPluginsEditor = "CustomPluginsEditor"
+    }
+    export enum ToolBarOwner {
+        Build = "Build",
+        Debug = "Debug",
+        Plugin = "Plugin",
+        UIEditor = "UIEditor",
+        PlayerEditor = "PlayerEditor",
+        CustomPluginsEditor = "CustomPluginsEditor"
+    }
+    export enum SaveAssetType {
         None = 0,
-        Debug = 1,
-        Build = 2,
-        Plugin = 4,
-        UI = 8,
-        Material = 16,
-        Character = 32,
-        All = 255
+        MainEditor = 1,
+        PlayerEditor = 2,
+        UIEditor = 3,
+        PrefabEditor = 4,
+        MaterialEditor = 5,
+        ResourceDisclosureAuditEditor = 6,
+        PluginEditor = 7
     }
     export enum Orientation {
         /** 水平布局 */

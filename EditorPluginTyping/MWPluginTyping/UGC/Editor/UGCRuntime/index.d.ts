@@ -165,128 +165,6 @@ declare namespace UGC {
 /// <reference types="extension" />
 declare namespace UGC {
     /**
-* @author tangbin.zhang
-* @description 移动编辑器上传预制体返回状态
-* @groups 数据处理
-*/
-    enum UploadPrefabResultType {
-        /**
-        * 上传成功
-        */
-        Success = 0,
-        /**
-         * 上传因未知原因失败
-         */
-        Failure = 1,
-        /**
-         * 未找到id对应的预制体
-         */
-        PrefabNotFound = 2,
-        /**
-         * 非法名称
-         */
-        IllegalName = 3,
-        /**
-         * 图片未找到
-         */
-        ImageNotFound = 4,
-        /**
-         * 图片大小不匹配
-         */
-        ImageNotMatch = 5,
-        /**
-        * 预制体非法文件名
-        */
-        PrefabIllegalFileName = 6,
-        /**
-        * 服务器已经存在这个资源
-        */
-        ExistingAsset = 7
-    }
-    /**
-    * @author tangbin.zhang
-    * @description 资源审核状态
-    * @groups 数据处理
-    */
-    enum ResourcesStatus {
-        /**
-        * 未知状态
-        */
-        None = 0,
-        /**
-         * 审核中
-         */
-        AuditIng = 1,
-        /**
-         * 审核未通过
-         */
-        AuditRefuse = 2,
-        /**
-        * 可使用
-        */
-        Available = 3
-    }
-    /**
-    * @author boxin.liu
-    * @description 上传资源类型
-    * @groups 数据处理
-    */
-    enum ResourceType {
-        Prefab = 0,
-        SceneTexture = 1
-    }
-    /**
-    * @author boxin.liu
-    * @description 移动编辑器上传贴图返回状态
-    * @groups 数据处理
-    */
-    enum UploadTextureResultType {
-        /**
-         * 上传成功
-         */
-        Success = 0,
-        /**
-         * 上传因未知原因失败
-         */
-        Failure = 1,
-        /**
-        * 服务器已经存在这个资源
-        */
-        ExistingAsset = 2,
-        /**
-         * 未找到
-         */
-        TextureNotFound = 10,
-        /**
-         * 大小不是2的N次幂
-         */
-        SizeNotPowerOfTwo = 11,
-        /**
-         * 大小超限
-         */
-        TextureOversized = 12,
-        /**
-         * 非法名称
-         */
-        IllegalName = 13,
-        /**
-        * 贴图非法文件名
-        */
-        TextureIllegalFileName = 14,
-        /**
-         * 缩略图未找到
-         */
-        ThumbnailNotFound = 20,
-        /**
-         * 缩略图大小超限
-         */
-        ThumbnailOversized = 21,
-        /**
-         * 文件格式不支持
-         */
-        UnsupportedFormat = 30
-    }
-    /**
      * @author jie.wu
      * @description UGC Editor使用的装饰器,避免数据被还原
      * @groups SCRIPTING
@@ -616,67 +494,125 @@ declare namespace UGC {
      */
     function getLocalMaterialsCount(): number;
     /**
-  * @author boxin.liu
-  * @description 移动编辑器上传资源信息
-  * @groups DATATYPE
-  * @param id usage: id
-  * @param guid usage: 资源id入库前为空
-  * @param uuid usage: 入库前的唯一标识
-  * @param ResourcesStatus usage: 资源状态
-  * @param ResourcesType usage:资源类型
-  */
-    type MyAllResourcesResultInfo = {
-        id: number;
-        guid: string;
-        uuid: string;
-        ResourcesStatus: MobileEditor_EditorMode.ResourcesStatus;
-        ResourcesType: MobileEditor_EditorMode.ResourceType;
+    * @author tangbin.zhang
+    * @description 上传GIF返回结果
+    * @groups 数据处理
+    * @param uploadGIFResultType usage: 上传GIF返回状态
+    * @param assetId usage: 资源标识  range: 字符串长度依据资源 ID 长度而定
+    */
+    type UploadGIFResult = {
+        uploadGIFResultType: UGC.UploadGIFResultType;
+        assetId: string;
     };
     /**
-     * @author boxin.liu
-     * @description 移动编辑器获取上传的所有资源信息
-     * @groups DATATYPE
-     * @param lastId usage: 尾部Id
-     * @param AllMyResourcesInfos usage: 移动编辑器上传资源信息
-     */
-    type MyAllResourcesResult = {
-        lastId: number;
-        AllMyResourcesInfos: Array<MyAllResourcesResultInfo>;
-    };
-    /**
-     * @author boxin.liu
-     * @groups SCRIPTING
-     * @description 移动编辑器获取用户上传的所有资源和状态
-     * @effect 调用端生效；内部使用
-     * @precautions 只在MobileEditor模式下调用生效；异步请求；滚动分页接口请求
-     * @param lastId usage:尾部Id
-     * @param size usage:每页数量
-     * @returns {Promise<MyAllResourcesResult>} 移动编辑器获取自己上传的所有资源信息
+     * @author tangbin.zhang
+     * @groups 基础类型
+     * @description 上传GIF
+     * @effect 调用端生效
+     * @precautions 异步请求
+     * @param gifPath usage: 第一帧小于等于1024*1024得gif路径
+     * @param name usage:名字
+     * @param comment usage:资源描述
+     * @returns {Promise<UploadGIFResult>} 上传GIF返回结果
      * @example
-     * 使用示例:调用方法 新建一个脚本 NewScript
+     * 使用示例：调用方法 新建一个脚本 NewScript
      * ```
      * @Component
-     * export default class NewScript extends Script {
-     *   //当脚本被实例后，会在第一帧更新前调用此函数
-     *   protected onStart(): void {
-     *     //获取当前用户上传的所有的资源
-     *     MobileEditor.getAllMyResources(0,20).then(item =>{
-     *       for (let Index: number = 0;
- Index < item.AllMyResourcesInfos.length;
- ++Index) {
-     *         console.log(item.AllMyResourcesInfos[Index].guid);
-     *       }
+     * export default class NewScript extent Script {
+     * //当脚本被实例后，会在第一帧更新前调用此函数
+     * protected onStart(): void {
+     *     //gifPath=C:/Texture.gif，name=我的GIF，comment=这是个GIF;
+     *     MobileEditor.uploadGIF('C:/Texture.gif','我的GIF','这是个GIF').then(item =>{
+     *        console.log(item.AssetId)
      *     });
      *   }
      * }
      * ```
      */
-    function getAllMyResources(lastId: number, size: number): Promise<MyAllResourcesResult>;
+    function uploadGIF(gifPath: string, name: string, comment: string): Promise<UploadGIFResult>;
     /**
     * @author tangbin.zhang
-    * @description 移动编辑器上传预制体返回结果
+    * @description 上传贴图返回结果
+    * @groups 数据处理
+    * @param UploadTextureResultType usage: 上传贴图返回状态
+    * @param assetId usage: 上传贴图返回UUId
+    * @param onlineGuid usage: 资源库Guid
+    */
+    type FastUploadTextureResult = {
+        uploadTextureResultType: UGC.UploadTextureResultType;
+        assetId: string;
+        onlineGuid: string;
+    };
+    /**
+     * @author tangbin.zhang
+     * @groups 基础类型
+     * @description 上传贴图(场景贴图、角色贴图、UI贴图)
+     * @effect 调用端生效
+     * @precautions 异步请求
+     * @param texturePath usage:小于等于2048*2048(如果不是UI贴图，必须符合2的N次幂)的贴图
+     * @param name usage:名字
+     * @param comment usage:资源描述
+     * @param uploadTextureType usage:上传的贴图类型
+     * @returns {Promise<FastUploadTextureResult>} 上传贴图返回结果
+     * @example
+     * 使用示例：调用方法 新建一个脚本 NewScript
+     * ```
+     * @Component
+     * export default class NewScript extent Script {
+     * //当脚本被实例后，会在第一帧更新前调用此函数
+     * protected onStart(): void {
+     *     //贴图=C:/Texture.png，贴图的名字=我的贴图，贴图的描述=这是个贴图，贴图类型= MobileEditor_EditorMode.UploadTextureType.Local_CharacterTexture;
+     *     UGC.fastUploadTexture('C:/Texture.png','我的贴图','这是个贴图', MobileEditor_EditorMode.UploadTextureType.Local_CharacterTexture).then(item =>{
+     *        console.log(item.AssetId)
+     *     });
+     *   }
+     * }
+     * ```
+     */
+    function fastUploadTexture(texturePath: string, name: string, comment: string, uploadTextureType: UGC.UploadTextureType): Promise<FastUploadTextureResult>;
+    /**
+    * @author boxin.liu
     * @groups DATATYPE
-    * @param uploadPrefabResultType usage: 移动编辑器上传预制体返回状态
+    * @description 上传贴图返回结果
+    * @groups 数据处理
+    * @param UploadTextureResultType usage: 上传贴图返回状态
+    */
+    type UploadTextureResult = {
+        UploadTextureResultType: UGC.UploadTextureResultType;
+        assetId: string;
+    };
+    /**
+     * @author boxin.liu
+     * @groups SCRIPTING
+     * @description 上传贴图(场景贴图、角色贴图、UI贴图)
+     * @effect 调用端生效
+     * @precautions 异步请求
+     * @param texturePath usage:小于等于2048*2048(如果不是UI贴图，必须符合2的N次幂)的贴图
+     * @param name usage:名字
+     * @param comment usage:资源描述
+     * @param uploadTextureType usage:上传的贴图类型
+     * @returns {Promise<UploadTextureResult>} 上传贴图返回结果
+     * @example
+     * 使用示例：调用方法 新建一个脚本 NewScript
+     * ```
+     * @Component
+     * export default class NewScript extent Script {
+     * //当脚本被实例后，会在第一帧更新前调用此函数
+     * protected onStart(): void {
+     *     //贴图=C:/Texture.png，贴图的名字=我的贴图，贴图的描述=这是个贴图，贴图类型= UGC.UploadTextureType.Local_CharacterTexture;
+     *     UGC.uploadTexture('C:/Texture.png','我的贴图','这是个贴图', UGC.UploadTextureType.Local_CharacterTexture).then(item =>{
+     *        console.log(item.AssetId)
+     *     });
+     *   }
+     * }
+     * ```
+     */
+    function uploadTexture(texturePath: string, name: string, comment: string, uploadTextureType: UGC.UploadTextureType): Promise<UploadTextureResult>;
+    /**
+    * @author tangbin.zhang
+    * @description 上传预制体返回结果
+    * @groups DATATYPE
+    * @param uploadPrefabResultType usage: 上传预制体返回状态
     * @param assetId usage: 资源标识
     */
     type UploadPrefabResult = {
@@ -686,13 +622,14 @@ declare namespace UGC {
     /**
      * @author tangbin.zhang
      * @groups SCRIPTING
-     * @description 移动编辑器上传预制体
-     * @effect 调用端生效；内部使用
-     * @precautions 只在MobileEditor模式下调用生效；异步请求
+     * @description 上传预制体
+     * @effect 调用端生效
+     * @precautions 异步请求
      * @param assetId usage:预制体资源Id
      * @param name usage:名字
+     * @param comment usage:资源描述
      * @param imagePath usage:512*512的透明png缩略图
-     * @returns {Promise<UploadPrefabResult>} 移动编辑器上传预制体返回结果
+     * @returns {Promise<UploadPrefabResult>} 上传预制体返回结果
      * @example
      * 使用示例:调用方法 新建一个脚本 NewScript
      * ```
@@ -700,15 +637,74 @@ declare namespace UGC {
      * export default class NewScript extends Core.Script {
      *   //当脚本被实例后，会在第一帧更新前调用此函数
      *   protected onStart(): void {
-     *     //把guid='23C1ED241027B9E0'的预制体上传到服务器上，预制体的名字=我的预制体，缩略图=C:/icon.png
-     *     MobileEditor.uploadPrefab('23C1ED241027B9E0','我的预制体','C:/icon.png').then(item =>{
+     *     //把guid='23C1ED241027B9E0'的预制体上传到服务器上，预制体的名字=我的预制体，预制体的描述=这是个预制体，缩略图=C:/icon.png
+     *     UGC.uploadPrefab('23C1ED241027B9E0','我的预制体','C:/icon.png','这是个预制体').then(item =>{
      *        console.log(item.AssetId)
      *     });
      *   }
      * }
      * ```
      */
-    function uploadPrefab(assetId: string, name: string, imagePath: string): Promise<UploadPrefabResult>;
+    function uploadPrefab(assetId: string, name: string, imagePath: string, comment?: string): Promise<UploadPrefabResult>;
+    /**
+    * @author tangbin.zhang
+    * @groups 基础类型
+    * @description 上传预制体
+    * @effect 调用端生效
+    * @precautions 异步请求
+    * @param assetId usage:预制体资源Id  range: 字符串长度依据资源 ID 长度而定
+    * @param name usage:名字
+    * @param comment usage:资源描述
+    * @param imagePath usage:512*512的透明png缩略图
+    * @returns {Promise<UploadPrefabResult>} 上传预制体返回结果
+    * @example
+    * 使用示例:调用方法 新建一个脚本 NewScript
+    * ```
+    * @Component
+    * export default class NewScript extends Script {
+    *   //当脚本被实例后，会在第一帧更新前调用此函数
+    *   protected onStart(): void {
+    *     //把guid='23C1ED241027B9E0'的预制体上传到服务器上，预制体的名字=我的预制体，，预制体的描述=这是个预制体，缩略图=C:/icon.png
+    *     UGC.fastUploadPrefab('23C1ED241027B9E0','C:/icon.png','我的预制体','这是个预制体').then(item =>{
+    *        console.log(item.AssetId)
+    *     });
+    *   }
+    * }
+    * ```
+    */
+    function fastUploadPrefab(assetId: string, imagePath: string, name: string, comment: string): Promise<UploadPrefabResult>;
+    /**
+     * @author tangbin.zhang
+     * @groups 基础类型
+     * @description 获取资源状态(是否入库)
+     * @effect 调用端生效
+     * @precautions 异步请求
+     * @param assetId usage:资源Guid
+     * @param startTime usage:设置开始时间,必须小于timeout,默认值1.5秒后请求
+     * @param timeout usage:设置超时时间,startTime,默认5秒
+     * @returns {Promise<bool>} 资源是否入库成功
+     * @example
+     * 使用示例:调用方法 新建一个脚本 NewScript
+     * ```
+     * @Component
+     * export default class NewScript extends Script {
+     *   //当脚本被实例后，会在第一帧更新前调用此函数
+     *   protected onStart(): void {
+     *     UGC.getAssetStatus('23C1ED241027B9E0',1.5,5).then(item =>{
+     *        console.log(item)
+     *     });
+     *   }
+     * }
+     * ```
+     */
+    function getAssetStatus(assetId: string, startTime?: number, timeout?: number): Promise<boolean>;
+    /**
+     */
+    type StringCallback = (dataString: string) => void;
+    /**
+     * @param aspectRatio usage:当mw.Vector2(0, 0)时返回的时图片的原图，否则是裁剪图
+     */
+    function selectPhoto(callback: StringCallback, format?: MobileEditor_Type.UGCTextureFormat, aspectRatio?: mw.Vector2, maxSize?: number): Promise<void>;
     /**
      * @author yongfei.zheng
      * @description 刷新本地资源表
@@ -732,32 +728,6 @@ declare namespace UGC {
     function IsUGCPrefab(prefabAssetId: string): boolean;
     /**
      * @author tangbin.zhang
-     * @description 移动编辑器上传预制体资源信息
-     * @groups DATATYPE
-     * @param id usage: id
-     * @param guid usage: 资源id入库前为空
-     * @param uuid usage: 入库前的唯一标识
-     * @param prefabStatus usage: 资源状态
-     */
-    type MyPrefabsResultInfo = {
-        id: number;
-        guid: string;
-        uuid: string;
-        prefabStatus: UGC.PrefabStatus;
-    };
-    /**
-     * @author tangbin.zhang
-     * @description 移动编辑器获取自己上传的所有预制体资源信息
-     * @groups DATATYPE
-     * @param lastId usage: 尾部Id
-     * @param prefabInfos usage: 移动编辑器上传预制体资源信息
-     */
-    type MyPrefabsResult = {
-        lastId: number;
-        prefabInfos: Array<MyPrefabsResultInfo>;
-    };
-    /**
-     * @author tangbin.zhang
      * @description 移动编辑器推送shipping下的日志
      * @groups DATATYPE
      * @param logLevel usage: 日志等级
@@ -765,12 +735,29 @@ declare namespace UGC {
      */
     function pushShippingLog(logLevel: MobileEditor_Type.LogLevel, log: string): void;
     /**
+     * @deprecated 谨慎使用，将于后续版本弃用
      * @author tangbin.zhang
      * @description 移动编辑器推送shipping下的日志
      * @groups DATATYPE
      * @param uploadCurrentLog usage: true 上传当前的log false 上传备份log
      */
     function uploadShippingLog(uploadCurrentLog: boolean): Promise<string>;
+    /**
+     * @author tangbin.zhang
+     * @description 移动编辑器推送shipping下的日志
+     * @groups DATATYPE
+     * @param uploadCounter usage: 上传最近的几次游玩的日志记录，上传成功的日志会被删除
+     */
+    function uploadShippingLogToServer(uploadCounter: number): Promise<Array<MobileEditor_Type.LogUploadState>>;
+    /**
+     * @author hao.wu
+     * @groups SCRIPTING
+     * @description 通过URL设置图片控件图片
+     * @effect  只在客户端调用生效,下载图片需要时间，失败时暂无回调
+     * @param MaxLogFileCounter usage:最多支持缓存多少次的游玩日志，设置后会删除之前超期的日志文件
+     * @param MaxLogLinesCounter usage:最多支持每个日志切片的行数
+     */
+    function setShipLogParams(MaxLogFileCounter: number, MaxLogLinesCounter: number): void;
     /**
      * @author hao.wu
      * @groups SCRIPTING
@@ -887,16 +874,27 @@ declare namespace UGC {
      * @param  targetPath:usage: 限制在 UGCMakePrefabs 中，以此为目标路径；如果为空，则使用对象本身名字作为资源名(e.g. 想要生成的资源在 UGCMakePrefabs 文件夹下 名称为 newPrefab 时，此参数填 newPrefab)
      * @returns {string} 返回生成预制体的资源ID
      */
-    function savePrefab(root: mw.GameObject, targetPath?: string): string;
+    function savePrefab(root: mw.GameObject, targetPath?: string, bUpdateReference?: boolean): string;
     /**
      * @author maohang.zeng
      * @groups SCRIPTING
      * @description 更新预制体
      * @effect 只在客调用端生效
      * @param  root:usage: 使用此对象当前数据更新关联的预制体资源
+     * @param  bUpdateToRelationObj:usage: 是否将更新后的预制体资源信息同步到绑定的其他预制体对象上
      * @returns {boolean} 返回是否成功重置
      */
-    function updatePrefab(root: mw.GameObject): boolean;
+    function updatePrefab(root: mw.GameObject, bUpdateToRelationObj?: boolean): boolean;
+    /**
+     * @author maohang.zeng
+     * @groups SCRIPTING
+     * @description 使用预制体对象重置其他对象
+     * @effect 只在客调用端生效
+     * @param  sourceObj:usage: 用于更新的源预制体对象
+     * @param  targetObj:usage: 想更新的目标对象
+     * @returns {boolean} 返回是否成功重置
+     */
+    function resetPrefabToObject(sourceObj: mw.GameObject, targetObj: mw.GameObject): boolean;
     /**
      * @author maohang.zeng
      * @groups SCRIPTING
@@ -954,6 +952,23 @@ declare namespace UGC {
      * @returns {Map<string, string>} 返回预制体的路径->guid映射
      */
     function getAllUGCPrefab(): Map<string, string>;
+    /**
+     * @author maohang.zeng
+     * @groups SCRIPTING
+     * @description 通过对象实例获取关联预制体资源
+     * @effect 只在客调用端生效
+     * @param  targetObject:usage: 对象实例
+     * @returns {string} 关联的预制体资源Guid
+     */
+    function getPrefabByInstance(targetObject: mw.GameObject): string;
+    /**
+     * @author maohang.zeng
+     * @groups SCRIPTING
+     * @description 通过预制体资源获取关联对象实例
+     * @effect 只在客调用端生效
+     * @returns {mw.GameObject[]} 关联对象实例列表
+     */
+    function getInstanceListByPrefab(assetGuid: string): mw.GameObject[];
     /**
      * @author xiangkun.sun
      * @groups SCRIPTING
@@ -1107,6 +1122,15 @@ declare namespace UGC {
      * @returns 否支持存档
      */
     function asyncGetProjectArchiveFlag(): Promise<boolean>;
+    /**
+     * @author shuhan.liu
+     * @description 移动端编辑器获取fileId
+     * @groups 基础类型
+     * @effect 调用端生效
+     * @precautions 只在MobileEditor模式下调用生效
+     * @returns fileId
+     */
+    function getFileId(): string;
     /**
      * @author jie.wu
      * @description 设置消费态游戏人数
@@ -1283,10 +1307,10 @@ declare namespace UGC {
         publisherName: string;
     };
     /**
- * @author tangbin.zhang
- * @description 移动编辑器上传预制体返回状态
- * @groups DATATYPE
- */
+    * @author tangbin.zhang
+    * @description 上传预制体返回状态
+    * @groups DATATYPE
+    */
     enum UploadPrefabResultType {
         /**
         * 上传成功
@@ -1322,47 +1346,128 @@ declare namespace UGC {
         ExistingAsset = 7
     }
     /**
-    * @author tangbin.zhang
-    * @description 预制体审核状态
+    * @author boxin.liu
+    * @description 上传贴图资源类型
     * @groups DATATYPE
     */
-    enum PrefabStatus {
+    enum UploadTextureType {
         /**
-        * 未知状态
+         * 场景贴图
+         */
+        Local_SceneTexture = 0,
+        /**
+         * 角色贴图
+         */
+        Local_CharacterTexture = 1,
+        /**
+         * UI贴图
+         */
+        Local_UITexture = 2
+    }
+    /**
+    * @author boxin.liu
+    * @description 上传贴图返回状态
+    * @groups DATATYPE
+    */
+    enum UploadTextureResultType {
+        /**
+         * 上传成功
+         */
+        Success = 0,
+        /**
+         * 上传因未知原因失败
         */
-        None = 0,
+        Failure = 1,
         /**
-         * 校验中
-         */
-        Verify = 1,
-        /**
-         * 审核中
-         */
-        AuditIn = 2,
-        /**
-         * 资源描述信息审核中
-         */
-        DescribeAuditIn = 3,
-        /**
-         * 审核未通过
-         */
-        AuditRefuse = 4,
-        /**
-         * 资源描述信息审核拒绝
-         */
-        DescribeAuditRefuse = 5,
-        /**
-         * 打包中
-         */
-        Packing = 6,
-        /**
-         * 资源打包失败
-         */
-        PackFail = 7,
-        /**
-        * 可使用
+        * 服务器已经存在这个资源
         */
-        Available = 8
+        ExistingAsset = 2,
+        /**
+         * 未找到
+         */
+        TextureNotFound = 10,
+        /**
+         * 大小不是2的N次幂
+         */
+        SizeNotPowerOfTwo = 11,
+        /**
+         * 大小超限
+         */
+        TextureOversized = 12,
+        /**
+         * 非法名称
+         */
+        IllegalName = 13,
+        /**
+        * 贴图非法文件名
+        */
+        TextureIllegalFileName = 14,
+        /**
+         * 缩略图未找到
+         */
+        ThumbnailNotFound = 20,
+        /**
+         * 缩略图大小超限
+         */
+        ThumbnailOversized = 21,
+        /**
+         * 文件格式不支持
+         */
+        UnsupportedFormat = 30
+    }
+    /**
+    * @author tangbin.zhang
+    * @description 上传GIF返回状态
+    * @groups 数据处理
+    */
+    enum UploadGIFResultType {
+        /**
+         * 上传成功
+         */
+        Success = 0,
+        /**
+         * 上传因未知原因失败
+         */
+        Failure = 1,
+        /**
+        * 服务器已经存在这个资源
+        */
+        ExistingAsset = 2,
+        /**
+         * 未找到
+         */
+        GIFNotFound = 3,
+        /**
+         * 非法名称
+         */
+        IllegalName = 4,
+        /**
+        * 非法文件名
+        */
+        IllegalFileName = 5,
+        /**
+        * 大小超限
+        */
+        GIFOversized = 6,
+        /**
+         * 文件格式不支持
+         */
+        UnsupportedFormat = 7
+    }
+    /**
+ * @author guang.deng
+ * @description 贴图格式
+ * @groups 基础类型
+ */
+    enum UGCTextureFormat {
+        /** Default */
+        Default = 0,
+        /** PNG */
+        PNG = 1,
+        /** JPEG */
+        JPEG = 2,
+        /** GIF */
+        GIF = 3
     }
     /**
      * @author xiangkun.sun
@@ -1402,6 +1507,22 @@ declare namespace UGC {
         NameIncludeIllegalText = 1,
         /** 超出10MB限制 */
         OutOfSizeLimit = 2
+    }
+    /**
+     * @author tangbin.zhang
+     * @description 日志上传的数据信息
+     * @groups DATATYPE
+     * @param uploadCounter usage: 上传最近的几次游玩的日志记录
+     */
+    class LogUploadState {
+        /**日志上传位置*/
+        ossUrl: string;
+        /**日志序号，越大代表越早之前的日志*/
+        gameLogOrder: number;
+        /**日志单次输出的切片顺序，只有0和1,1代表当前日志，0代表备份日志*/
+        gameLogSliceOrder: number;
+        /**日志上传状态*/
+        uploadSuccess: boolean;
     }
 }
 
@@ -1646,6 +1767,48 @@ declare namespace UGC {
      * @returns 剩余任务数量
      */
     function getBuildNavDataTaskNum(): number;
+}
+
+/// <reference types="extension" />
+/// <reference types="extension" />
+declare namespace UGC {
+    /**
+     * @author jie.wu
+     * @description 把指定的UI控件渲染到指定的图片上
+     * @groups SCRIPTING
+     * @effect 只在客户端调用生效
+     * @param targetImage usage:指定渲染到的图片控件
+     * @param showWidget usage:指定的UI控件
+     * @param inSize usage:inSize 绘制区域大小，如果需要调整绘制的图的大小，就需要重新调用
+     */
+    function setImageRenderDataFromWidget(targetImage: mw.Image, showWidget: mw.Widget, inSize: mw.Vector2): void;
+    /**
+     * @author jie.wu
+     * @description 刷新指定UI控件的渲染数据缓存
+     * @groups SCRIPTING
+     * @effect 只在客户端调用生效
+     * @param showWidget usage:指定的UI控件
+     * @param scale usage:缩放比例
+     */
+    function flushTargetWidgetRenderData(showWidget: mw.Widget, scale?: number): void;
+    /**
+     * @author jie.wu
+     * @description 销毁指定的对象的渲染数据缓存
+     * @groups SCRIPTING
+     * @effect 只在客户端调用生效
+     * @param showWidget usage:指定的UI控件
+     */
+    function destroyTargetWidgetRenderData(showWidget: mw.Widget): void;
+    /**
+     * @author jie.wu
+     * @description 保存指定的对象的渲染数据缓存到本地
+     * @groups SCRIPTING
+     * @effect 只在客户端调用生效
+     * @param showWidget usage:指定的UI控件
+     * @param savePath usage:保存路径
+     * param saveSize usage:保存的文件大小
+     */
+    function saveRenderDataToLocal(showWidget: mw.Widget, savePath: string, saveSize: mw.Vector2): void;
 }
 
 /// <reference types="extension" />

@@ -1184,6 +1184,139 @@ declare namespace mw {
 declare namespace mw {
     /**
      * @author jie.wu
+     * @groups 界面/控件/绘图画板
+     * @description UI 画板
+     * @networkStatus usage:客户端
+     */
+    class DrawBoard extends mw.Widget {
+        /**
+         * @groups 界面/控件/绘图画板
+         * @description 创建绘画控件
+         * @description 当parent和inName与已有的对象相同时，旧的对象会被销毁
+         * @effect 只在客户端调用生效
+         * @param parent usage:创建控件的外parent对象 default: null
+         * @param inName usage:创建控件的名称 default:null   range:设置合理的名称即可
+         * @returns 返回创建的对象
+         */
+        static newObject(parent?: mw.Canvas, inName?: string): DrawBoard;
+        /**
+         * @groups 界面/控件/绘图画板
+         * @description 清除全部绘制
+         * @effect 只在客户端调用生效
+         */
+        clearDraws(): void;
+        /**
+         * @groups 界面/控件/绘图画板
+         * @effect 只在客户端调用生效
+         * @description 画多段线
+         * @param points usage:线的各个点坐标
+         * @param lineData usage:绘制图元信息 default: new DrawDataBase()
+         * @returns 返回drawId
+         */
+        drawLines(points: mw.Vector2[], lineData?: mw.DrawDataBase): number;
+        /**
+         * @groups 界面/控件/绘图画板
+         * @effect 只在客户端调用生效
+         * @description 画文字
+         * @param text usage:要绘制的文本 range: 无
+         * @param position usage:位置
+         * @param fontSize usage:字体大小 type: 整形 range: 无
+         * @param fontColor usage:颜色
+         * @param drawLayerId usage:绘制层级 default: 0 range: 无 type: 整形
+         * @returns 返回drawId
+         */
+        drawText(text: string, position: mw.Vector2, fontSize: number, fontColor: mw.LinearColor, drawLayerId?: number): number;
+        /**
+         * @groups 界面/控件/绘图画板
+         * @effect 只在客户端调用生效
+         * @description 自定义绘制图元
+         * @param vertex usage:顶点图元数据信息
+         * @param index usage:顶点图元索引信息
+         * @param assetId usage:UI贴图资源 default: "" range: 无
+         * @param drawLayerId usage:绘制层级 default: 0 range: 无 type: 整形
+         * @returns 返回drawId
+         */
+        drawCustom(vertex: mw.UIDrawCustomVertex[], index: number[], assetId?: string, drawLayerId?: number): number;
+        /**
+         * @groups 界面/控件/绘图画板
+         * @effect 只在客户端调用生效
+         * @description 填充自定圆形区域内的像素颜色
+         * @param center usage:圆中心
+         * @param radius usage:圆半径 range: >0 type: 整形
+         * @param color usage:填充颜色
+         */
+        fillCircle(center: mw.Vector2, radius: number, color: mw.LinearColor): void;
+        /**
+         * @groups 界面/控件/绘图画板
+         * @effect 只在客户端调用生效
+         * @description 最大撤销恢复的数据栈内存大小，单位字节，默认20MB，必须在有绘制操作前才能生效
+         * @returns 返回最大撤销恢复的数据栈内存大小
+         */
+        get maxTransactionSize(): number;
+        /**
+          * @groups 界面/控件/绘图画板
+          * @effect 只在客户端调用生效
+          * @description 最大撤销恢复的数据栈内存大小，单位字节，默认20MB，必须在有绘制操作前才能生效
+          * @param count usage:字节大小 count: >0 type: 整形
+          * @returns 返回最大撤销恢复的数据栈内存大小
+          */
+        set maxTransactionSize(count: number);
+        /**
+          * @groups 界面/控件/绘图画板
+          * @effect 只在客户端调用生效
+          * @description 提交一次撤销恢复的事务，会把之前的数据和当前数据进行比较，完成一次撤销恢复事务
+          */
+        addTransaction(): void;
+        /**
+          * @groups 界面/控件/绘图画板
+          * @effect 只在客户端调用生效
+          * @description 恢复一次上次的撤销
+          * @returns 返回撤销恢复是否成功
+          */
+        redo(): boolean;
+        /**
+          * @groups 界面/控件/绘图画板
+          * @effect 只在客户端调用生效
+          * @description 获取当前是否可以恢复上次的撤销
+          * @returns 返回撤销恢复是否可执行
+          */
+        get canRedo(): boolean;
+        /**
+          * @groups 界面/控件/绘图画板
+          * @effect 只在客户端调用生效
+          * @description 撤销一次事务
+          * @returns 返回撤销恢复是否成功
+          */
+        undo(): boolean;
+        /**
+          * @groups 界面/控件/绘图画板
+          * @effect 只在客户端调用生效
+          * @description 获取当前是否可以撤销一次事务
+          * @returns 返回撤销恢复是否可执行
+          */
+        get canUndo(): boolean;
+        /**
+          * @groups 界面/控件/绘图画板
+          * @effect 只在客户端调用生效
+          * @description 导出当前画布信息到缓存文件
+          * @param name usage:导出文件名字 range: 无
+          * @returns 是否成功
+          */
+        exportSaveData(name: string): boolean;
+        /**
+          * @groups 界面/控件/绘图画板
+          * @effect 只在客户端调用生效
+          * @description 导入缓存文件到当前画布
+          * @param name usage:导出文件名字 range: 无
+          * @returns 是否成功
+          */
+        importSaveData(name: string): boolean;
+    }
+}
+
+declare namespace mw {
+    /**
+     * @author jie.wu
      * @groups 界面/控件/绘图画布
      * @description 自定义绘制图元数据
      * @networkStatus usage:客户端
@@ -1516,6 +1649,13 @@ declare namespace mw {
          * @returns 菜单是否打开
          */
         get isOpened(): boolean;
+        /**
+         * @groups 界面/控件/下拉框
+         * @description 设置下拉菜单打开/关闭
+         * @effect 只在客户端调用生效
+         * @param bOpen usage: 是否打开菜单
+         */
+        setIsOpen(bOpen: boolean): void;
         /**
          * @groups 界面/控件/下拉框
          * @description 设置显示的选中文本的可见性
@@ -6279,7 +6419,7 @@ declare namespace mw {
          * @param inPayLoad usage:拖拽事件数据信息 default:null
          * @param inPivot usage:拖拽显示UI的锚点 default:UIType.DragPivot.TopLeft
          * @param inOffset usage:拖拽显示UI相对于锚点的偏移的百分比 default:vector2(0,0)
-         * @returns 返回触发的事件回复
+         * @returns 返回触发的事件回复数据
          */
         newDragDrop(inVisualWidget: mw.Widget, inTag?: string, inPayLoad?: any, inPivot?: mw.DragPivot, inOffset?: mw.Vector2): mw.DragDropOperation;
     }
@@ -8036,6 +8176,18 @@ declare namespace mw {
     class ImageInfo {
         private constructor();
         /**
+         * @description 获取图片加载失败的回调事件
+         * @effect 客户端生效
+         * @returns 失败事件
+         */
+        static get onImageLoadedFailed(): mw.MulticastDelegate<(resourceName: string) => void>;
+        /**
+         * @description 通过 resourceName 信息重新触发贴图资源的重新加载
+         * @effect 只在客户端调用生效
+         * @param resourceName usage:失败的图片资源信息，onImageLoadedFailed事件提供 <br> range: 依据 ID 长度而定
+         */
+        static reLoadUIImage(resourceName: string): void;
+        /**
          * @description 通过 Id 设置图片信息
          * @effect 只在客户端调用生效
          * @param id usage:图片Id  <br> range: 依据 ID 长度而定
@@ -9132,17 +9284,17 @@ declare namespace mw {
          */
         get name(): string;
         /**
-         * @description 设置可见性
-         * @effect  只在客户端调用生效
-         * @param Visibility usage:可见性
-         */
-        set visibility(Visibility: mw.SlateVisibility);
-        /**
          * @description 获取可见性
          * @effect  只在客户端调用生效
          * @returns 返回可见性
          */
         get visibility(): mw.SlateVisibility;
+        /**
+         * @description 设置可见性
+         * @effect  只在客户端调用生效
+         * @param Visibility usage:可见性
+         */
+        set visibility(Visibility: mw.SlateVisibility);
         /**
          * @description 是否可见
          * @effect  只在客户端调用生效

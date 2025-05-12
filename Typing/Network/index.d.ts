@@ -1,6 +1,5 @@
 ﻿declare namespace mw {
     /**
-     * @author si.wu
      * @groups 玩法/其他
      * @description HTTP请求信息的对象
      * @networkStatus usage:双端
@@ -16,7 +15,6 @@
         body?: string;
     }
     /**
-     * @author si.wu
      * @groups 玩法/其他
      * @description HTTP响应信息的对象
      * @networkStatus usage:双端
@@ -48,7 +46,6 @@
         json<T>(): Promise<T>;
     }
     /**
-     * @author si.wu
      * @description HTTP请求
      * @groups 玩法
      * @effect 调用端生效
@@ -58,7 +55,6 @@
      */
     function fetch(url: string, init?: RequestInit): Promise<Response>;
     /**
-     * @author si.wu
      * @description url转码
      * @groups 玩法
      * @effect 调用端生效
@@ -67,7 +63,6 @@
      */
     function urlEncode(str: string): string;
     /**
-     * @author si.wu
      * @description url解码
      * @groups 玩法
      * @effect 调用端生效
@@ -76,7 +71,6 @@
      */
     function urlDecode(str: string): string;
     /**
-     * @author si.wu
      * @description 获取 url 参数
      * @groups 玩法
      * @effect 调用端生效
@@ -88,12 +82,10 @@
 }
 
 /**
- * @author junwen.hua
  * @description 暴露给用户使用的Http请求接口,用户可选的是网络身份(服务器,客户端)
  */
 declare namespace mw {
     /**
-     * @author junwen.hua
      * @description 开放给用户用的URL枚举，需要与C++层的枚举对应
      * @groups 玩法
      */
@@ -124,7 +116,6 @@ declare namespace mw {
         Translation = 11
     }
     /**
-     * @author junwen.hua
      * @description 开发给用户用的Http请求类型枚举
      * @groups 玩法
      */
@@ -139,7 +130,6 @@ declare namespace mw {
         Post = 1
     }
     /**
-     * @author junwen.hua
      * @description Http请求的回调消息格式
      * @groups 基础类型
      * @precautions 无需主动销毁，生命周期由UObject管理
@@ -149,7 +139,6 @@ declare namespace mw {
      */
     type HttpResponse = (result: boolean, content: string, responseCode: number) => void;
     /**
-     * @author junwen.hua
      * @description 商城通信回调消息格式
      * @groups 基础类型
      * @param isSuccess usage: 通信结果
@@ -157,7 +146,6 @@ declare namespace mw {
      */
     type TransactionType = (isSuccess: boolean, content: string) => void;
     /**
-     * @author junwen.hua
      * @description Http请求接口
      * @groups 玩法
      * @effect 调用端生效
@@ -169,7 +157,6 @@ declare namespace mw {
      */
     function httpRequestTransmitData(response: HttpResponse, paramUrl: string, jsonContent: string, requestType: HttpRequestType): boolean;
     /**
-     * @author junwen.hua
      * @groups 玩法
      * @description 通用 Http 请求
      * @effect 调用端生效

@@ -162,3 +162,271 @@
         static asyncRemoveLocalData(key: string): Promise<DataStorageResultCode>;
     }
 }
+
+/**
+ * @author zhaoyang.hou
+ * @groups 数据处理
+ * @description 数据存储
+ * @description MemoryStorage
+ */
+declare namespace mw {
+    /**
+     * @author zhaoyang.hou
+     * @groups 数据处理
+     * @description 数据存储
+     * @description 内存存储结果状态码
+     */
+    enum MemoryStorageResultCode {
+        /** API请求速率超出限制 */
+        RateLimitExceeded = 100,
+        /** 单个数据结构kv数量超出上限 */
+        StructureKeyCountLimitExceeded = 101,
+        /** 单个数据结构占用内存超出上限 */
+        StructureTotalSizeLimitExceeded = 102,
+        /** 游戏创建的数据结构数量超出上限 */
+        GameStuctureCountLimitExceeded = 103,
+        /** 操作成功 */
+        Success = 200,
+        /** 未知错误失败 */
+        Failure = 400,
+        /** 没有找到该键 */
+        KeyNotFound = 401,
+        /** 该接口只允许服务端调用 */
+        OnlyServerCall = 402,
+        /** 调用过早，MemoryStorage未初始化完成 */
+        TooEarlyCall = 403,
+        /** 请求超时 */
+        TimeOut = 408,
+        /** 请求过于频繁 */
+        RequestTooFrequent = 424,
+        /** 不允许lisenServer调用 */
+        LisenServerNotAvailable = 603,
+        /** key或者value格式错误，或者大小超出限制，key大小不能大于128字节，value大小不能大于32kb */
+        KeyValueError = 1010,
+        /** 设置超时超过了3888000秒 */
+        SetTimeoutError = 1070
+    }
+    /**
+     * @author zhaoyang.hou
+     * @groups 数据处理
+     * @description 数据存储
+     * @description 排序映射数据结果
+     */
+    interface SortedMapGetDataResult {
+        /**
+         * @description 状态码
+         */
+        code: MemoryStorageResultCode;
+        /**
+         * @description 值
+         */
+        value: any;
+        /**
+         * @description 排序键
+         */
+        sortKey: string | number;
+    }
+    /**
+     * @author zhaoyang.hou
+     * @groups 数据处理
+     * @description 数据存储
+     * @description 范围排序映射数据回调函数结果
+     */
+    interface SortedMapGetRangeDataResult {
+        /**
+         * @description 状态码
+         */
+        code: MemoryStorageResultCode;
+        /**
+         * @description 一个符合条件的数据的数组，数组每个项有所有符合标准的键、值、排序键
+         */
+        array: Array<{
+            key: string;
+            value: any;
+            sortKey: string | number;
+        }>;
+    }
+    /**
+     * @author zhaoyang.hou
+     * @groups 数据处理
+     * @description 数据存储
+     * @description SortedMapGetRankResult
+     */
+    interface SortedMapGetRankResult {
+        /**
+         * @description 状态码
+         */
+        code: MemoryStorageResultCode;
+        /**
+         * @description 位置数据,如果rank不存在就返回-1
+         */
+        rank: number;
+    }
+    /**
+     * @author zhaoyang.hou
+     * @groups 数据处理
+     * @description 数据存储
+     * @description 队列数据结果
+     */
+    interface QueueReadDataResult {
+        /**
+         * @description 状态码
+         */
+        code: MemoryStorageResultCode;
+        /**
+         * @description 用于给 asyncRemoveData 调用的字符串id，用于指向读取出来的队列项
+         */
+        id: string;
+        /**
+         * @description 读取出来的队列项的值的数组
+         */
+        values: any[];
+    }
+    /**
+     * @author zhaoyang.hou
+     * @groups 数据处理
+     * @description 数据存储
+     * @description MemoryStorageSortedMap
+     * @networkStatus usage:服务端
+     */
+    class MemoryStorageSortedMap {
+        /**
+         * @description 添加项或覆盖项
+         * @author zhaoyang.hou
+         * @groups 数据处理
+         * @effect 只在服务端调用生效
+         * @param key usage:键名称 <br> range: max:128Byte
+         * @param value usage:值 <br> range: max:32KB
+         * @param sortKey usage:用于排序的键，必须为数字或者字符串 <br> range: max:128Byte
+         * @param expiration usage:该项的过期时间，以秒为单位，过期后该项自动从排序映射中删除 <br> default: 259200 range: max:2592000 type: number
+         * @returns 状态码
+         */
+        asyncSetData(key: string, value: any, sortKey: string | number, expiration?: number): Promise<MemoryStorageResultCode>;
+        /**
+         * @description 获得键对应项的值和排序键
+         * @author zhaoyang.hou
+         * @groups 数据处理
+         * @effect 只在服务端调用生效
+         * @param key usage:键名称 <br>.SaveStringToFile range: max:128Byte
+         * @returns 排序映射数据结果
+         */
+        asyncGetData(key: string): Promise<SortedMapGetDataResult>;
+        /**
+         * @description 获得键和排序键范围内的项的值和排序键
+         * @author zhaoyang.hou
+         * @groups 数据处理
+         * @effect 只在服务端调用生效
+         * @param isAscending usage:输出数据的排序方向，为true时升序排列，为false时倒序排列
+         * @param count usage:获得数据的量 <br> range: <max:200> type: number
+         * @param lowerSortKey usage:区间的下限，可以限定sortKey  <br> default:""
+         * @param upperSortKey usage:区间的上限，可以限定sortKey  <br> default:""
+         * @returns 范围排序映射数据结果
+         */
+        asyncGetRangeData(isAscending: boolean, count: number, lowerSortKey?: string | number, upperSortKey?: string | number): Promise<SortedMapGetRangeDataResult>;
+        /**
+         * @description 删除项
+         * @author zhaoyang.hou
+         * @groups 数据处理
+         * @effect 只在服务端调用生效
+         * @param key usage:键名称 <br> range: max:128Byte
+         * @returns 状态码
+         */
+        asyncRemoveData(key: string): Promise<MemoryStorageResultCode>;
+        /**
+         * @description 获取键在排序映射中的位置
+         * @author zhaoyang.hou
+         * @groups 数据处理
+         * @effect 只在服务端调用生效
+         * @param key usage:键名称 <br> range: max:128Byte
+         * @param isAscending usage:输出数据的排序方向，为true时升序排列，为false时倒序排列
+         * @returns 键在排序映射中的位置结果
+         */
+        asyncGetRank(key: string, isAscending: boolean): Promise<SortedMapGetRankResult>;
+    }
+    /**
+     * @author zhaoyang.hou
+     * @groups 数据处理
+     * @description 数据存储
+     * @description MemoryStorageQueue
+     * @networkStatus usage:服务端
+     */
+    class MemoryStorageQueue {
+        /**
+         * @description 添加项
+         * @author zhaoyang.hou
+         * @groups 数据处理
+         * @effect 只在服务端调用生效
+         * @param value usage:值 <br> range: max:32KB
+         * @param expiration usage:该项的过期时间，以秒为单位，过期后该项自动从排序映射中删除 <br> default: 259200, range: max:2592000 type: number
+         * @param priority usage:队列项的优先级。<br> default:0 range:无限制 type: number
+         * @returns 状态码
+         */
+        asyncAddData(value: any, expiration?: number, priority?: number): Promise<MemoryStorageResultCode>;
+        /**
+         * @description 从队首读出固定数量的项
+         * @author zhaoyang.hou
+         * @groups 数据处理
+         * @effect 只在服务端调用生效
+         * @param count usage:需要读出的项数量 range:(0, 50000] type: number
+         * @param allOrNothing usage:当count数量大于队列剩余数量时，如果allOrNothing为true，则不返回任何值；如果为false，则返回剩余的所有项。 default:false
+         * @returns 队列项数据结果
+         */
+        asyncReadData(count: number, allOrNothing?: boolean): Promise<QueueReadDataResult>;
+        /**
+         * @description 删除项
+         * @author zhaoyang.hou
+         * @groups 数据处理
+         * @effect 只在服务端调用生效
+         * @param id usage:由asyncReadData得到的指向要删除的数据的指针 range: 无限制
+         * @returns 状态码
+         */
+        asyncRemoveData(id: string): Promise<MemoryStorageResultCode>;
+    }
+    /**
+     * @author zhaoyang.hou
+     * @groups 数据处理
+     * @description 数据存储
+     * @description MemoryStorage
+     * @networkStatus usage:服务端
+     */
+    class MemoryStorage {
+        /**
+         * @description 创建或获取排序映射
+         * @author zhaoyang.hou
+         * @groups 数据处理
+         * @effect 只在服务端调用生效
+         * @param name usage:排序映射名 <br> range: 字符串长度不做限制，但请设置合适的标识。
+         * @returns 排序映射
+         */
+        static getSortedMap(name: string): MemoryStorageSortedMap;
+        /**
+        * @description 删除排序映射
+        * @author zhaoyang.hou
+        * @groups 数据处理
+        * @effect 只在服务端调用生效
+        * @param sortMap usage:想要删除的排序映射
+        * @returns 状态码
+        */
+        static asyncRemoveSortedMap(sortMap: MemoryStorageSortedMap): Promise<MemoryStorageResultCode>;
+        /**
+         * @description 创建或获取队列
+         * @author zhaoyang.hou
+         * @groups 数据处理
+         * @effect 只在服务端调用生效
+         * @param name usage:队列名 <br> range: 字符串长度不做限制，但请设置合适的标识。
+         * @param invisibilityTimeout usage:读取操作的可见性超时时间，以秒为单位。 default:30 range:(0, 600) type: number
+         * @returns 队列
+         * @networkStatus usage:服务端
+         */
+        static getQueue(name: string, invisibilityTimeout?: number): MemoryStorageQueue;
+        /**
+         * @description 检查value大小
+         * @author zhaoyang.hou
+         * @groups 数据处理
+         * @effect 只在服务端调用生效
+         * @param value usage:任何值
+         * @returns value的大小（如果做压缩了就是压缩后的大小），单位是字节
+         */
+        static getDataSize(value: any): number;
+    }
+}

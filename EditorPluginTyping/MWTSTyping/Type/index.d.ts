@@ -33,6 +33,8 @@
         replicates?: boolean;
         /** @description transform */
         transform?: mw.Transform;
+        /** @description static */
+        static?: boolean;
     }
     /**
      * @author zhiqiang.tan

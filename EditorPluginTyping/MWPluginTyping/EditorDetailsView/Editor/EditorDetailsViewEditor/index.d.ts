@@ -161,11 +161,13 @@ declare namespace EditorPlugin {
         private searchBK;
         private searchBtn;
         private expandButton;
-        private allFold;
+        allFold: boolean;
         private openCharacterEditor;
         private openCharacterText;
         private searchClearBtn;
         private beginDrop;
+        private topZone;
+        private bottomZone;
         private dropAsset;
         selectObjs: any[];
         private configSection;
@@ -180,19 +182,21 @@ declare namespace EditorPlugin {
         private setObjsBind;
         private updateSelectionBind;
         private propertyChangedBind;
+        private freshDetailsConfigBind;
         private openBind;
         private closeBind;
         onMaterialIndexChange: mw.MulticastDelegate<(curIndex: number) => void>;
         onClearData: mw.MulticastDelegate<() => void>;
         curMaterialIndex: number;
-        onShowTipsErrorPost: mw.MulticastDelegate<(bindData: mweditor.PropertyDataBase, bVisible: boolean) => void>;
         private timerHandler;
         private onIntervalUpdateBind;
         myInternationalization: mweditor.Internationalization;
         private curInternationalization;
-        private BDataSystem;
+        BDataSystem: mweditor.BDataMgr;
         private bFreshUpData;
         ProPertyName: string;
+        refreshNewData(newData: mweditor.PropertyDataBase[]): void;
+        freshDetailsConfig(fileName: string): void;
         get curSourceData(): mweditor.PropertyDataBase[];
         get detailTabOwner(): Readonly<mweditor.TabOwner>;
         get detailsTool(): mweditor.DetailsTool;
@@ -213,6 +217,7 @@ declare namespace EditorPlugin {
         freshInternationalization(bFresh?: boolean): void;
         private initMenuList;
         private onPreviewItemSize;
+        private onItemHovered;
         private onMakeMenu;
         private onClickMenuItem;
         private Redo;
@@ -227,6 +232,7 @@ declare namespace EditorPlugin {
         private CheckSelectionHasChanged;
         changeObject(objs: any[]): void;
         private ExpansionNode;
+        allFoldItem(reSave?: boolean): void;
         private onRowGenerate;
         private onItemClicked;
         private toggleAllExpansion;
@@ -443,7 +449,8 @@ declare namespace EditorPlugin {
         DeleteRowBtn = 8,
         DeleteArrayItem = 9,
         CaptureProperty = 10,
-        ColorGradient = 11
+        DragRowBtn = 11,
+        ColorGradient = 12
     }
     class CustomRowHeightData {
         constructor(customRowHeight: number, propertyContent: number);

@@ -9,8 +9,66 @@ declare namespace mw {
 
 declare namespace mw {
     /**
+    * @author tangbin.zhang
+    * @description 上传预制体返回状态
+    * @groups 数据处理
+    */
+    enum UploadPrefabResultType {
+        /**
+        * 上传成功
+        */
+        Success = 0,
+        /**
+         * 上传因未知原因失败
+         */
+        Failure = 1,
+        /**
+         * 未找到id对应的预制体
+         */
+        PrefabNotFound = 2,
+        /**
+         * 非法名称
+         */
+        IllegalName = 3,
+        /**
+         * 图片未找到
+         */
+        ImageNotFound = 4,
+        /**
+         * 图片大小不匹配
+         */
+        ImageNotMatch = 5,
+        /**
+        * 预制体非法文件名
+        */
+        PrefabIllegalFileName = 6,
+        /**
+        * 服务器已经存在这个资源
+        */
+        ExistingAsset = 7
+    }
+    /**
     * @author boxin.liu
-    * @description 移动编辑器上传贴图返回状态
+    * @description 上传贴图资源类型
+    * @groups 数据处理
+    */
+    enum UploadTextureType {
+        /**
+         * 场景贴图
+         */
+        Local_SceneTexture = 0,
+        /**
+         * 角色贴图
+         */
+        Local_CharacterTexture = 1,
+        /**
+         * UI贴图
+         */
+        Local_UITexture = 2
+    }
+    /**
+    * @author boxin.liu
+    * @description 上传贴图返回状态
     * @groups 数据处理
     */
     enum UploadTextureResultType {
@@ -58,6 +116,45 @@ declare namespace mw {
          * 文件格式不支持
          */
         UnsupportedFormat = 30
+    }
+    /**
+    * @author tangbin.zhang
+    * @description 上传GIF返回状态
+    * @groups 数据处理
+    */
+    enum UploadGIFResultType {
+        /**
+         * 上传成功
+         */
+        Success = 0,
+        /**
+         * 上传因未知原因失败
+         */
+        Failure = 1,
+        /**
+        * 服务器已经存在这个资源
+        */
+        ExistingAsset = 2,
+        /**
+         * 未找到
+         */
+        GIFNotFound = 3,
+        /**
+         * 非法名称
+         */
+        IllegalName = 4,
+        /**
+        * 非法文件名
+        */
+        IllegalFileName = 5,
+        /**
+        * 大小超限
+        */
+        GIFOversized = 6,
+        /**
+         * 文件格式不支持
+         */
+        UnsupportedFormat = 7
     }
 }
 
@@ -239,6 +336,210 @@ declare namespace mw {
 }
 
 declare namespace mw {
+    /**
+    * @author tangbin.zhang
+    * @description 上传GIF返回结果
+    * @groups 数据处理
+    * @param uploadGIFResultType usage: 上传GIF返回状态
+    * @param assetId usage: 资源标识  range: 字符串长度依据资源 ID 长度而定
+    */
+    type UploadGIFResult = {
+        uploadGIFResultType: mw.UploadGIFResultType;
+        assetId: string;
+    };
+    /**
+     * @author tangbin.zhang
+     * @groups 基础类型
+     * @description 上传GIF
+     * @effect 调用端生效
+     * @precautions 异步请求
+     * @param gifPath usage: 第一帧小于等于1024*1024得gif路径
+     * @param name usage:名字
+     * @param comment usage:资源描述
+     * @returns {Promise<UploadGIFResult>} 上传GIF返回结果
+     * @example
+     * 使用示例：调用方法 新建一个脚本 NewScript
+     * ```
+     * @Component
+     * export default class NewScript extent Script {
+     * //当脚本被实例后，会在第一帧更新前调用此函数
+     * protected onStart(): void {
+     *     //gifPath=C:/Texture.gif，name=我的GIF，comment=这是个GIF;
+     *     mw.uploadGIF('C:/Texture.gif','我的GIF','这是个GIF').then(item =>{
+     *        console.log(item.AssetId)
+     *     });
+     *   }
+     * }
+     * ```
+     */
+    function uploadGIF(gifPath: string, name: string, comment: string): Promise<UploadGIFResult>;
+    /**
+    * @author tangbin.zhang
+    * @description 上传贴图返回结果
+    * @groups 数据处理
+    * @param UploadTextureResultType usage: 上传贴图返回状态
+    * @param assetId usage: 上传贴图返回UUId
+    * @param onlineGuid usage: 资源库Guid
+    */
+    type FastUploadTextureResult = {
+        uploadTextureResultType: mw.UploadTextureResultType;
+        assetId: string;
+        onlineGuid: string;
+    };
+    /**
+     * @author tangbin.zhang
+     * @groups 基础类型
+     * @description 上传贴图(场景贴图、角色贴图、UI贴图)
+     * @effect 调用端生效
+     * @precautions 异步请求
+     * @param texturePath usage:小于等于2048*2048(如果不是UI贴图，必须符合2的N次幂)的贴图
+     * @param name usage:名字
+     * @param comment usage:资源描述
+     * @param uploadTextureType usage:上传的贴图类型
+     * @returns {Promise<FastUploadTextureResult>} 上传贴图返回结果
+     * @example
+     * 使用示例：调用方法 新建一个脚本 NewScript
+     * ```
+     * @Component
+     * export default class NewScript extent Script {
+     * //当脚本被实例后，会在第一帧更新前调用此函数
+     * protected onStart(): void {
+     *     //贴图=C:/Texture.png，贴图的名字=我的贴图，贴图的描述=这是个贴图，贴图类型= mw.UploadTextureType.Local_CharacterTexture;
+     *     mw.fastUploadTexture('C:/Texture.png','我的贴图','这是个贴图', mw.UploadTextureType.Local_CharacterTexture).then(item =>{
+     *        console.log(item.AssetId)
+     *     });
+     *   }
+     * }
+     * ```
+     */
+    function fastUploadTexture(texturePath: string, name: string, comment: string, uploadTextureType: mw.UploadTextureType): Promise<FastUploadTextureResult>;
+    /**
+    * @author boxin.liu
+    * @description 上传贴图返回结果
+    * @groups 数据处理
+    * @param UploadTextureResultType usage: 上传贴图返回状态
+    */
+    type UploadTextureResult = {
+        UploadTextureResultType: mw.UploadTextureResultType;
+        assetId: string;
+    };
+    /**
+     * @author boxin.liu
+     * @groups 基础类型
+     * @description 上传贴图(场景贴图、角色贴图、UI贴图)
+     * @effect 调用端生效
+     * @precautions 异步请求
+     * @param texturePath usage:小于等于2048*2048(如果不是UI贴图，必须符合2的N次幂)的贴图
+     * @param name usage:名字
+     * @param comment usage:资源描述
+     * @param uploadTextureType usage:上传的贴图类型
+     * @returns {Promise<UploadTextureResult>} 上传贴图返回结果
+     * @example
+     * 使用示例：调用方法 新建一个脚本 NewScript
+     * ```
+     * @Component
+     * export default class NewScript extent Script {
+     * //当脚本被实例后，会在第一帧更新前调用此函数
+     * protected onStart(): void {
+     *     //贴图=C:/Texture.png，贴图的名字=我的贴图，贴图的描述=这是个贴图，贴图类型= mw.UploadTextureType.Local_CharacterTexture;
+     *     mw.uploadTexture('C:/Texture.png','我的贴图','这是个贴图', mw.UploadTextureType.Local_CharacterTexture).then(item =>{
+     *        console.log(item.AssetId)
+     *     });
+     *   }
+     * }
+     * ```
+     */
+    function uploadTexture(texturePath: string, name: string, comment: string, uploadTextureType: mw.UploadTextureType): Promise<UploadTextureResult>;
+    /**
+    * @author tangbin.zhang
+    * @description 上传预制体返回结果
+    * @groups 数据处理
+    * @param uploadPrefabResultType usage: 上传预制体返回状态
+    * @param assetId usage: 资源标识  range: 字符串长度依据资源 ID 长度而定
+    */
+    type UploadPrefabResult = {
+        uploadPrefabResultType: mw.UploadPrefabResultType;
+        assetId: string;
+    };
+    /**
+     * @author tangbin.zhang
+     * @groups 基础类型
+     * @description 上传预制体
+     * @effect 调用端生效
+     * @precautions 异步请求
+     * @param assetId usage:预制体资源Id  range: 字符串长度依据资源 ID 长度而定
+     * @param name usage:名字
+     * @param comment usage:资源描述
+     * @param imagePath usage:512*512的透明png缩略图
+     * @returns {Promise<UploadPrefabResult>} 上传预制体返回结果
+     * @example
+     * 使用示例:调用方法 新建一个脚本 NewScript
+     * ```
+     * @Component
+     * export default class NewScript extends Script {
+     *   //当脚本被实例后，会在第一帧更新前调用此函数
+     *   protected onStart(): void {
+     *     //把guid='23C1ED241027B9E0'的预制体上传到服务器上，预制体的名字=我的预制体，，预制体的描述=这是个预制体，缩略图=C:/icon.png
+     *     mw.uploadPrefab('23C1ED241027B9E0','我的预制体','C:/icon.png','这是个预制体').then(item =>{
+     *        console.log(item.AssetId)
+     *     });
+     *   }
+     * }
+     * ```
+     */
+    function uploadPrefab(assetId: string, name: string, imagePath: string, comment?: string): Promise<UploadPrefabResult>;
+    /**
+     * @author tangbin.zhang
+     * @groups 基础类型
+     * @description 上传预制体
+     * @effect 调用端生效
+     * @precautions 异步请求
+     * @param assetId usage:预制体资源Id  range: 字符串长度依据资源 ID 长度而定
+     * @param name usage:名字
+     * @param comment usage:资源描述
+     * @param imagePath usage:512*512的透明png缩略图
+     * @returns {Promise<UploadPrefabResult>} 上传预制体返回结果
+     * @example
+     * 使用示例:调用方法 新建一个脚本 NewScript
+     * ```
+     * @Component
+     * export default class NewScript extends Script {
+     *   //当脚本被实例后，会在第一帧更新前调用此函数
+     *   protected onStart(): void {
+     *     //把guid='23C1ED241027B9E0'的预制体上传到服务器上，预制体的名字=我的预制体，，预制体的描述=这是个预制体，缩略图=C:/icon.png
+     *     mw.fastUploadPrefab('23C1ED241027B9E0','C:/icon.png','我的预制体','这是个预制体').then(item =>{
+     *        console.log(item.AssetId)
+     *     });
+     *   }
+     * }
+     * ```
+     */
+    function fastUploadPrefab(assetId: string, imagePath: string, name: string, comment: string): Promise<UploadPrefabResult>;
+    /**
+     * @author tangbin.zhang
+     * @groups 基础类型
+     * @description 获取资源状态(是否入库)
+     * @effect 调用端生效
+     * @precautions 异步请求
+     * @param assetId usage:资源Guid
+     * @param startTime usage:设置开始时间,必须小于timeout,默认值1.5秒后请求
+     * @param timeout usage:设置超时时间,startTime,默认5秒
+     * @returns {Promise<bool>} 资源是否入库成功
+     * @example
+     * 使用示例:调用方法 新建一个脚本 NewScript
+     * ```
+     * @Component
+     * export default class NewScript extends Script {
+     *   //当脚本被实例后，会在第一帧更新前调用此函数
+     *   protected onStart(): void {
+     *     mw.getAssetStatus('23C1ED241027B9E0',1.5,5).then(item =>{
+     *        console.log(item)
+     *     });
+     *   }
+     * }
+     * ```
+     */
+    function getAssetStatus(assetId: string, startTime?: number, timeout?: number): Promise<boolean>;
     /**
      * @author xiangkun.sun,mengyuan.hao
      * @description  获取当前CPU画质等级
